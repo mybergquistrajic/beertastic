@@ -25,9 +25,17 @@
             }
             $highestId = $highestId + 1;
             $newReview = ["review_id" => $highestId, "username" => $r_data["username"], "rating" => $r_data["rating"], "message" => $r_data["reviewContent"]];
+
+            $beer["reviews"][] = $newReview;
+
+            $beersJSON = json_encode($beers, JSON_PRETTY_PRINT);
+            $beersData = file_put_contents($beerDatabase, $beersJSON);
+           
+            sendJSON(json_encode($newReview));
+            // LÄGG TILL DATUM TID PÅ REVIEWN OVAN!!
         }
     }
 
-    sendJSON($r_data);
+
 ?>
 
