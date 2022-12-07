@@ -2,6 +2,12 @@
     {
         "username": "mybr",
         "password": "mrPotatoHead",
+        "birthday": 
+        [
+            {"day": 2},
+            {"month": 10},
+            {"year": 2000}
+        ],
         "likedBeers":
         [
             {"id": 6},
@@ -11,6 +17,12 @@
     {
         "username": "beerLover",
         "password": "beerLover95",
+        "birthday": 
+        [
+            {"day": 22},
+            {"month": 7},
+            {"year": 1995}
+        ],
         "likedBeers":
         [
             {"id": 1},
@@ -20,6 +32,12 @@
     {
         "username": "gabriel",
         "password": "password",
+        "birthday": 
+        [
+            {"day": 7},
+            {"month": 4},
+            {"year": 2000}
+        ],
         "likedBeers":
         [
             {"id": 1},
