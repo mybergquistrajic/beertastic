@@ -144,41 +144,6 @@
                 "username": "test",
                 "rating": 1,
                 "message": "Well, not exactly a new favorite. Too bitter and too much aftertaste of something that I can't really identify. Kinda tastes like medicine, which isn\u2019t really positive. I don't like it."
-            },
-            {
-                "review_id": 1,
-                "username": "beerLover",
-                "rating": 2,
-                "message": "sucks",
-                "date": "22-12-07"
-            }
-        ],
-        "img": "\/to_ol_implosion.png"
-    },
-    {
-        "id": 9,
-        "name": "To \u00d8l Implosion",
-        "type": "Pale Ale",
-        "avb": 0.3,
-        "reviews": [
-            {
-                "review_id": 14,
-                "username": "test",
-                "rating": 3,
-                "message": "A really good and hoppy, alcohol-free beer from To \u00d8l and their new brewery! Crisp with plenty of flavor for the style, notes of hops and peach and a balancing sweetness. Really fun!"
-            },
-            {
-                "review_id": 15,
-                "username": "test",
-                "rating": 1,
-                "message": "Well, not exactly a new favorite. Too bitter and too much aftertaste of something that I can't really identify. Kinda tastes like medicine, which isn\u2019t really positive. I don't like it."
-            },
-            {
-                "review_id": 1,
-                "username": "beerLover",
-                "rating": 2,
-                "message": "sucks",
-                "date": "22-12-07"
             }
         ],
         "img": "\/to_ol_implosion.png"
