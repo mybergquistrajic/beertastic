@@ -1,16 +1,4 @@
 <?php
-
-
-if($request_method == "OPTIONS"){
-    header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Allow-Headers: *");
-    header("Access-Control-Allow-Methods: *");
-    
-    exit();
-}else{
-    header("Access-Control-Allow-Origin: *");
-};
-
 //Variables 
 
 //JSON - files 
@@ -44,6 +32,17 @@ if($request_method != "GET"){
     }
 }
 
+if($request_method == "OPTIONS"){
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Headers: *");
+    header("Access-Control-Allow-Methods: *");
+    
+    exit();
+}else{
+    header("Access-Control-Allow-Origin: *");
+};
+
+
 //if the userDatabase.json exists uptade and decode it
 if(file_exists($userDatabase)){
     $user_json = file_get_contents($userDatabase);
@@ -66,6 +65,7 @@ function sendJSON($data, $statusCode = 200) {
     echo json_encode($data);
     exit();
 }
+
 
 
 ?>
