@@ -4,10 +4,13 @@
         "username": "mybr",
         "password": "mrPotatoHead",
         "age": 22,
-        "likedBeers":
-        [
-            {"id": 6},
-            {"id": 8}
+        "likedBeers": [
+            {
+                "id": 6
+            },
+            {
+                "id": 8
+            }
         ]
     },
     {
@@ -15,22 +18,27 @@
         "username": "beerLover",
         "password": "beerLover95",
         "age": 27,
-        "likedBeers":
-        [
-            {"id": 1},
-            {"id": 2}
+        "likedBeers": [
+            {
+                "id": 1
+            },
+            {
+                "id": 2
+            }
         ]
     },
     {
-        "usedId": 3,
+        "userId": 3,
         "username": "Eminem",
         "password": "EyBroIsTheBest",
         "age": 22,
-        "likedBeers":
-        [
-            {"id": 1},
-            {"id": 2}
+        "likedBeers": [
+            {
+                "id": 1
+            },
+            {
+                "id": 2
+            }
         ]
     }
 ]
-    
