@@ -20,5 +20,10 @@ $r_json = file_get_contents("php://input");
 $r_data = json_decode($r_json, true);
 
 
-
+function sendJSON($data, $statusCode = 200) {
+    header('Content-Type: application/json');
+    http_response_code($statusCode);
+    echo json_encode($data);
+    exit();
+}
 ?>
