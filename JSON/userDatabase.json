@@ -1,0 +1,30 @@
+[
+    {
+        "username": "mybr",
+        "password": "mrPotatoHead",
+        "likedBeers":
+        [
+            {"id": 6},
+            {"id": 8}
+        ]
+    },
+    {
+        "username": "miranda",
+        "password": "password",
+        "likedBeers":
+        [
+            {"id": 1},
+            {"id": 2}
+        ]
+    },
+    {
+        "username": "gabriel",
+        "password": "password",
+        "likedBeers":
+        [
+            {"id": 1},
+            {"id": 2}
+        ]
+    }
+]
+    
