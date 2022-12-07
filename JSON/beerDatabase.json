@@ -1,289 +1,288 @@
 [
     {
-        "id":  1,				
+        "id": 1,
         "name": "Newcastle Brown Ale",
         "type": "Brown Ale",
-        "avb": 4.7,		
-        "reviews": 
-        [{
-            "review_id": 1,			
-            "username": "test",
-            "rating": 5,			
-            "message": "Amazing beer! I drank it when I was on vacation and haven't stopped thinking about it since."
-        },
-        {
-            "review_id": 2,			
-            "username": "test",
-            "rating": 3,			
-            "message": "A very nice Brown Ale. I really recommend it."		
-        }
+        "avb": 4.7,
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "test",
+                "rating": 5,
+                "message": "Amazing beer! I drank it when I was on vacation and haven't stopped thinking about it since."
+            },
+            {
+                "review_id": 2,
+                "username": "test",
+                "rating": 3,
+                "message": "A very nice Brown Ale. I really recommend it."
+            }
         ],
-        "img": "/Newcastle.png"			
+        "img": "\/Newcastle.png"
     },
     {
-        "id":  2, 			
+        "id": 2,
         "name": "Chocolate Truffle Stout",
         "type": "Ale",
-        "avb": 4.2,				
-        "reviews": 
-        [
-        {
-            "review_id": 3,			
-            "username": "test",			
-            "rating": 5,				
-            "message": "Poured off the tap in my home bar (yes, be jealous). I like dessert stouts a lot, but sometimes they can be TOO sweet. Not this stuff. Smells like you are going to drink a chocolate malted milkshake before the first sip. However, much dryer than you would expect. Just the right amount of sweetness. Great balance. Great stout."			
-        }],
-        "img": "/Chocolate_Truffle.png"	
-    },
-    {
-        "id":  3,				
-        "name": "Ey Bro", 
-        "type": "Pale Lager",
-        "avb": 5, 				
-        "reviews": 
-        [{
-            "review_id": 4,			
-            "username": "test",			
-            "rating": 3,				
-            "message": "I just kept thinking of Eminem drinking Åbro while shouting 'Ey Bro'. Also my go to beer when playing beer pong."			
-        }, 
-        {
-            "review_id": 5,			
-            "username": "test",			
-            "rating": 5, 			
-            "message": "Best and cheapest beer ever."
-        }
+        "avb": 4.2,
+        "reviews": [
+            {
+                "review_id": 3,
+                "username": "test",
+                "rating": 5,
+                "message": "Poured off the tap in my home bar (yes, be jealous). I like dessert stouts a lot, but sometimes they can be TOO sweet. Not this stuff. Smells like you are going to drink a chocolate malted milkshake before the first sip. However, much dryer than you would expect. Just the right amount of sweetness. Great balance. Great stout."
+            }
         ],
-            "img": "/Ey_bro.png"		
+        "img": "\/Chocolate_Truffle.png"
     },
     {
-        "id":  4, 			
-        "name": "Peroni Nastro Azzurro", 
-        "type": "Pale Lager", 
-        "avb":  5, 			
-        "reviews": 
-        [{
-            "review_id": 6,			
-            "username": "test",			
-            "rating": 4,				
-            "message": "Drank straight from the bottle. You know what you're getting with this one, and as long as you know that you're good. Don't expect much but a light, easy drinking Euro Lager. Order a large pie from Patsy's and grab a 6 of Peroni and you're good. It does exactly what it's supposed to do. Also a very good summer quencher."	
-        }],
-        "img": "/Peroni_nastro_azzurro.png"		
+        "id": 3,
+        "name": "Ey Bro",
+        "type": "Pale Lager",
+        "avb": 5,
+        "reviews": [
+            {
+                "review_id": 4,
+                "username": "test",
+                "rating": 3,
+                "message": "I just kept thinking of Eminem drinking \u00c5bro while shouting 'Ey Bro'. Also my go to beer when playing beer pong."
+            },
+            {
+                "review_id": 5,
+                "username": "test",
+                "rating": 5,
+                "message": "Best and cheapest beer ever."
+            }
+        ],
+        "img": "\/Ey_bro.png"
     },
     {
-        "id":  5,			
-        "name": "Sofiero Original",  
-        "type": "Pale Lager", 
-        "avb":  5.2, 			
-        "reviews": 
-        [],
-        "img": "/Sofiero_original.png"		
+        "id": 4,
+        "name": "Peroni Nastro Azzurro",
+        "type": "Pale Lager",
+        "avb": 5,
+        "reviews": [
+            {
+                "review_id": 6,
+                "username": "test",
+                "rating": 4,
+                "message": "Drank straight from the bottle. You know what you're getting with this one, and as long as you know that you're good. Don't expect much but a light, easy drinking Euro Lager. Order a large pie from Patsy's and grab a 6 of Peroni and you're good. It does exactly what it's supposed to do. Also a very good summer quencher."
+            }
+        ],
+        "img": "\/Peroni_nastro_azzurro.png"
     },
     {
-        "id":  6,			
-        "name": "Carlsberg Alcohol Free",  
-        "type": "Lager", 
-        "avb":  0.5, 			
-        "reviews": 
-        [{
-            "review_id": 7,			
-            "username": "test",			
-            "rating": 4,				
-            "message": "Just like the real deal! …I think?"			
-        },
-        {
-            "review_id": 8,			
-            "username": "test",			
-            "rating": 1,				
-            "message": "Watery! Sad. WATERY!!!"			
-        },
-        {
-            "review_id": 9,			
-            "username": "test",			
-            "rating": 3,				
-            "message": "With the growing market of alcohol free beers, Carlsberg really could do better. That said, it could be much worse…"			
-        }],
-        "img": "/carlsberg_alcohol_free.png"	
+        "id": 5,
+        "name": "Sofiero Original",
+        "type": "Pale Lager",
+        "avb": 5.2,
+        "reviews": [],
+        "img": "\/Sofiero_original.png"
     },
     {
-        "id":  7,			
-        "name": "Brooklyn Special Effects",  
-        "type": "Pale Lager", 
-        "avb":  0.4, 			
-        "reviews": 
-        [{
-            "review_id": 10,			
-            "username": "test",			
-            "rating": 3,				
-            "message": "Tastes just like Brooklyn! Meaning art shows and rats. Take that as you will."
-        },
-        {
-            "review_id": 11,			
-            "username": "test",			
-            "rating": 4,				
-            "message": "The aroma is nicely balanced between sweet fruit and savory herbs and there's a decent amount of variety in the flavors too. My only qualm is that it's quite sweet and lacks bitterness. But this might only be an issue for you if you plan to knock a few back in a session."
-        }],
-        "img": "/brooklyn_special_effects.png"	
+        "id": 6,
+        "name": "Carlsberg Alcohol Free",
+        "type": "Lager",
+        "avb": 0.5,
+        "reviews": [
+            {
+                "review_id": 7,
+                "username": "test",
+                "rating": 4,
+                "message": "Just like the real deal! \u2026I think?"
+            },
+            {
+                "review_id": 8,
+                "username": "test",
+                "rating": 1,
+                "message": "Watery! Sad. WATERY!!!"
+            },
+            {
+                "review_id": 9,
+                "username": "test",
+                "rating": 3,
+                "message": "With the growing market of alcohol free beers, Carlsberg really could do better. That said, it could be much worse\u2026"
+            }
+        ],
+        "img": "\/carlsberg_alcohol_free.png"
     },
     {
-        "id":  8,			
-        "name": "Staropramen Non Alcoholic",  
-        "type": "Pale Lager", 
-        "avb":  0.5, 			
-        "reviews": 
-        [{
-            "review_id": 12,			
-            "username": "test",			
-            "rating": 1,				
-            "message": "I'd rather have someone pee in my mouth after they've just won an asparagus-eating contest"	
-        },
-        {
-            "review_id": 13,			
-            "username": "test",			
-            "rating": 3,				
-            "message": "Nice and easy to enjoy. However, I don't like the smell, it smells a bit like a basement." 	
-        }],
-        "img": "/staropramen_non_alcoholic.png"
+        "id": 7,
+        "name": "Brooklyn Special Effects",
+        "type": "Pale Lager",
+        "avb": 0.4,
+        "reviews": [
+            {
+                "review_id": 10,
+                "username": "test",
+                "rating": 3,
+                "message": "Tastes just like Brooklyn! Meaning art shows and rats. Take that as you will."
+            },
+            {
+                "review_id": 11,
+                "username": "test",
+                "rating": 4,
+                "message": "The aroma is nicely balanced between sweet fruit and savory herbs and there's a decent amount of variety in the flavors too. My only qualm is that it's quite sweet and lacks bitterness. But this might only be an issue for you if you plan to knock a few back in a session."
+            }
+        ],
+        "img": "\/brooklyn_special_effects.png"
     },
     {
-        "id":  9,			
-        "name": "To Øl Implosion",  
-        "type": "Pale Ale", 
-        "avb":  0.3, 			
-        "reviews": 
-        [{
-            "review_id": 14,			
-            "username": "test",			
-            "rating": 3,				
-            "message": "A really good and hoppy, alcohol-free beer from To Øl and their new brewery! Crisp with plenty of flavor for the style, notes of hops and peach and a balancing sweetness. Really fun!"	
-        },
-        {
-            "review_id": 15,			
-            "username": "test",			
-            "rating": 1,				
-            "message": "Well, not exactly a new favorite. Too bitter and too much aftertaste of something that I can't really identify. Kinda tastes like medicine, which isn’t really positive. I don't like it."	
-        }],
-        "img": "/to_ol_implosion.png"
+        "id": 8,
+        "name": "Staropramen Non Alcoholic",
+        "type": "Pale Lager",
+        "avb": 0.5,
+        "reviews": [
+            {
+                "review_id": 12,
+                "username": "test",
+                "rating": 1,
+                "message": "I'd rather have someone pee in my mouth after they've just won an asparagus-eating contest"
+            },
+            {
+                "review_id": 13,
+                "username": "test",
+                "rating": 3,
+                "message": "Nice and easy to enjoy. However, I don't like the smell, it smells a bit like a basement."
+            }
+        ],
+        "img": "\/staropramen_non_alcoholic.png"
     },
     {
-        "id":  10,			
-        "name": "Spaten München",  
-        "type": "Pale Lager", 
-        "avb": 5.2, 			
-        "reviews": 
-        [{
-            "review_id": 16,			
-            "username": "test",			
-            "rating": 4,				
-            "message": "Spaten is good for a lot. Pleasantly hoppy, an excellent mealtime drink. Of course, it also stands completely on its own. Tough in the 'name' of honesty, it must be said that Spaten straight from the barrel in Munich is worth a higher 'rating' than bottled imported."	
-        },
-        {
-            "review_id": 17,			
-            "username": "test",			
-            "rating": 3,				
-            "message": "A standard German lager. No bullshit or nonsense. Doesn't taste much, but is an excellent thirst quencher."	
-        },
-        {
-            "review_id": 18,			
-            "username": "test",			
-            "rating": 5,				
-            "message": "This, my friends, I consider to be the best, most affordable pale lager available at bolaget. It tastes great, has a nice bitterness and tastes like a pale lager should taste."	
-        },
-        {
-            "review_id": 19,			
-            "username": "test",			
-            "rating": 1,				
-            "message": "Absolutely zero taste."	
-        }],
-        "img": "/spaten_munchen.png"		
+        "id": 9,
+        "name": "To \u00d8l Implosion",
+        "type": "Pale Ale",
+        "avb": 0.3,
+        "reviews": [
+            {
+                "review_id": 14,
+                "username": "test",
+                "rating": 3,
+                "message": "A really good and hoppy, alcohol-free beer from To \u00d8l and their new brewery! Crisp with plenty of flavor for the style, notes of hops and peach and a balancing sweetness. Really fun!"
+            },
+            {
+                "review_id": 15,
+                "username": "test",
+                "rating": 1,
+                "message": "Well, not exactly a new favorite. Too bitter and too much aftertaste of something that I can't really identify. Kinda tastes like medicine, which isn\u2019t really positive. I don't like it."
+            }
+        ],
+        "img": "\/to_ol_implosion.png"
     },
     {
-        "id": 11,			
-        "name": "Brewdog Punk IPA",  
-        "type": "India Pale Ale", 
-        "avb":  5.4, 			
-        "reviews": 
-        [{
-            "review_id": 20,			
-            "username": "test",			
-            "rating": 3,				
-            "message": "Brewdog Punk IPA is the beer to drink with company on a hot summer day or with food such as grilled bbq or hamburgers. The beer carries a hop-aromatic tropical scent of pineapple, grapefruit, citrus peel and some pine needles. It feels like a summer beer, to say the least."
-        },
-        {
-            "review_id": 21,			
-            "username": "test",			
-            "rating": 5,				
-            "message": "This is a beer I like to always have in the fridge as it suits pretty much every activity and time of day. My go-to!"	
-        },
-        {
-            "review_id": 22,			
-            "username": "test",			
-            "rating": 4,				
-            "message": "This classic has a special place in my heart. We’ve been through thick and thin, successful date nights and disastrous afterworks. Punk IPA has always been there for me. Alas, it has sometimes left me stuck in the bathroom for a few hours, hence the point reduction. That's really on me, though… It’s not you Punk IPA, it’s me. Love you bud."	
-        }],
-        "img": "/brewdog_punk_ipa.png"		
+        "id": 10,
+        "name": "Spaten M\u00fcnchen",
+        "type": "Pale Lager",
+        "avb": 5.2,
+        "reviews": [
+            {
+                "review_id": 16,
+                "username": "test",
+                "rating": 4,
+                "message": "Spaten is good for a lot. Pleasantly hoppy, an excellent mealtime drink. Of course, it also stands completely on its own. Tough in the 'name' of honesty, it must be said that Spaten straight from the barrel in Munich is worth a higher 'rating' than bottled imported."
+            },
+            {
+                "review_id": 17,
+                "username": "test",
+                "rating": 3,
+                "message": "A standard German lager. No bullshit or nonsense. Doesn't taste much, but is an excellent thirst quencher."
+            },
+            {
+                "review_id": 18,
+                "username": "test",
+                "rating": 5,
+                "message": "This, my friends, I consider to be the best, most affordable pale lager available at bolaget. It tastes great, has a nice bitterness and tastes like a pale lager should taste."
+            },
+            {
+                "review_id": 19,
+                "username": "test",
+                "rating": 1,
+                "message": "Absolutely zero taste."
+            }
+        ],
+        "img": "\/spaten_munchen.png"
     },
     {
-        "id": 12,			
-        "name": "Mariestads Export",  
-        "type": "Pale Lager", 
-        "avb":  5.3, 			
-        "reviews": 
-        [],
-        "img": "/mariestads_export.png"		
+        "id": 11,
+        "name": "Brewdog Punk IPA",
+        "type": "India Pale Ale",
+        "avb": 5.4,
+        "reviews": [
+            {
+                "review_id": 20,
+                "username": "test",
+                "rating": 3,
+                "message": "Brewdog Punk IPA is the beer to drink with company on a hot summer day or with food such as grilled bbq or hamburgers. The beer carries a hop-aromatic tropical scent of pineapple, grapefruit, citrus peel and some pine needles. It feels like a summer beer, to say the least."
+            },
+            {
+                "review_id": 21,
+                "username": "test",
+                "rating": 5,
+                "message": "This is a beer I like to always have in the fridge as it suits pretty much every activity and time of day. My go-to!"
+            },
+            {
+                "review_id": 22,
+                "username": "test",
+                "rating": 4,
+                "message": "This classic has a special place in my heart. We\u2019ve been through thick and thin, successful date nights and disastrous afterworks. Punk IPA has always been there for me. Alas, it has sometimes left me stuck in the bathroom for a few hours, hence the point reduction. That's really on me, though\u2026 It\u2019s not you Punk IPA, it\u2019s me. Love you bud."
+            }
+        ],
+        "img": "\/brewdog_punk_ipa.png"
     },
     {
-        "id": 13,			
-        "name": "Carlsberg Export",  
-        "type": "Pale Lager", 
-        "avb":  5, 			
-        "reviews": 
-        [],
-        "img": "/carlsberg_export.png"		
+        "id": 12,
+        "name": "Mariestads Export",
+        "type": "Pale Lager",
+        "avb": 5.3,
+        "reviews": [],
+        "img": "\/mariestads_export.png"
     },
     {
-        "id": 14,			
-        "name": "Corona Extra",  
-        "type": "Pale Lager", 
-        "avb":  4.5, 			
-        "reviews": 
-        [],
-        "img": "/corona_extra.png"			
+        "id": 13,
+        "name": "Carlsberg Export",
+        "type": "Pale Lager",
+        "avb": 5,
+        "reviews": [],
+        "img": "\/carlsberg_export.png"
     },
     {
-        "id": 15,			
-        "name": "Heineken",  
-        "type": "Pale Lager", 
-        "avb":  5, 			
-        "reviews": 
-        [],
-        "img": "/heineken.png"		
+        "id": 14,
+        "name": "Corona Extra",
+        "type": "Pale Lager",
+        "avb": 4.5,
+        "reviews": [],
+        "img": "\/corona_extra.png"
     },
     {
-        "id": 16,			
-        "name": "Three Hearts",  
-        "type": "Pale Lager", 
-        "avb":  5.2, 			
-        "reviews": 
-        [],
-        "img": "/three_hearts.png"		
+        "id": 15,
+        "name": "Heineken",
+        "type": "Pale Lager",
+        "avb": 5,
+        "reviews": [],
+        "img": "\/heineken.png"
     },
     {
-        "id": 17,			
-        "name": "Pistonhead Kustom Lager",  
-        "type": "Pale Lager", 
-        "avb":  4.9, 			
-        "reviews": 
-        [],
-        "img": "/pistonhead_kuston_lager.png"		
+        "id": 16,
+        "name": "Three Hearts",
+        "type": "Pale Lager",
+        "avb": 5.2,
+        "reviews": [],
+        "img": "\/three_hearts.png"
     },
     {
-        "id": 18,			
-        "name": "Mythos",  
-        "type": "Pale Lager", 
-        "avb":  4.7, 			
-        "reviews": 
-        [],
-        "img": "/mythos.png"	
+        "id": 17,
+        "name": "Pistonhead Kustom Lager",
+        "type": "Pale Lager",
+        "avb": 4.9,
+        "reviews": [],
+        "img": "\/pistonhead_kuston_lager.png"
+    },
+    {
+        "id": 18,
+        "name": "Mythos",
+        "type": "Pale Lager",
+        "avb": 4.7,
+        "reviews": [],
+        "img": "\/mythos.png"
     }
 ]
