@@ -16,28 +16,21 @@ if ($request_method != "DELETE"){
 //Checks that the requestet data contains "id" and 
 if(isset($r_data["review_id"])){
 
-    $review_id = $r_data["review_id"];
-
-    foreach($beers["reviews"] as $index => $beer){
+    foreach($beers as $beer){
         
-        foreach($beer as $review){
+        foreach($beer["reviews"] as $index => $review){
+            if($review["review_id"] == $r_data["review_id"]){
+                
+                array_splice($review, $index, 1);
 
-            if($review["review_id"] == $review_id){
-
-                array_splice($review["review_id"], $index, 1);
-                $beer_json = json_encode($review, JSON_PRETTY_PRINT);
-                file_put_contents($beerDatabase, $beer_json);
-                sendJSON($review["review_id"]);
+                $beers_json = json_encode($beers, JSON_PRETTY_PRINT);
+                file_put_contents($beerDatabase, $beers_json);
+                sendJSON($review["review_id"]);  
             }
-
         }
-
     }
-
-    
 }else{
-$error = ["error" => "Bad request. The object doesn't exist."];
-sendJSON($error, 400);
-exit();
+    $error = ["error" => "Bad request. The object doesn't exist."];
+    sendJSON($error, 404);
 }
 ?>
