@@ -28,7 +28,7 @@
             $highestId = $highestId + 1;
             
             // Create and add new review to array
-            $newReview = ["review_id" => $highestId, "username" => $r_data["username"], "rating" => $r_data["rating"], "message" => $r_data["reviewContent"]];
+            $newReview = ["review_id" => $highestId, "username" => $r_data["username"], "rating" => $r_data["rating"], "message" => $r_data["reviewContent"], "date" => date("y-m-d")];
             array_push($beer["reviews"], $newReview);
 
             // Remove old beer, add new beer (including new review), and sort
@@ -40,7 +40,7 @@
             // Update database and send JSON
             $beersJSON = json_encode($beers, JSON_PRETTY_PRINT);
             $beersData = file_put_contents($beerDatabase, $beersJSON);
-            sendJSON(json_encode($newReview));
+            sendJSON($newReview);
 
             // ADD:
                 // Date to review

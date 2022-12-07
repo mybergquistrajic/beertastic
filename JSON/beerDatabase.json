@@ -165,6 +165,12 @@
                 "username": "test",
                 "rating": 1,
                 "message": "Well, not exactly a new favorite. Too bitter and too much aftertaste of something that I can't really identify. Kinda tastes like medicine, which isn\u2019t really positive. I don't like it."
+            },
+            {
+                "review_id": 1,
+                "username": "beerLover",
+                "rating": 2,
+                "message": "sucks"
             }
         ],
         "img": "\/to_ol_implosion.png"
