@@ -4,6 +4,8 @@
 require_once "functions.php";
 
 ini_set("display_errors", 1);
+
+
 //Checks that the method is POST 
 if($request_method != "POST"){
     $error = ["error" => "Wrong method. Please try again."];

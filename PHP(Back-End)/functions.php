@@ -58,6 +58,7 @@ if(file_exists($beerDatabase)){
 
 }
 
+
 //function for sending the JSON-data and statusCode
 
 function sendJSON($data, $statusCode = 200) {
