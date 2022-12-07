@@ -14,11 +14,7 @@
         exit();
     }
 
-    $sucess = ["succes" => "u gots"]; 
-    sendJSON($sucess, 400);
+    // If everythings good, send beers
+    sendJSON($beers);
     exit();
-
-
-
-
 ?>
