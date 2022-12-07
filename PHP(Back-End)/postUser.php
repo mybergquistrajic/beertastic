@@ -1,8 +1,9 @@
 <?php
 //File for creating a new user
-ini_set("display_errors", 1);
+
 require_once "functions.php";
 
+ini_set("display_errors", 1);
 //Checks that the method is POST 
 if($request_method != "POST"){
     $error = ["error" => "Wrong method. Please try again."];
@@ -18,7 +19,6 @@ if(!isset($r_data["username"], $r_data["password"], $r_data["age"])){
 
 //Checks that the user data isn't empty and that the user is over 18 and the lenght of so the password is shorter than 5 characters 
 if($r_data["username"] == "" 
-or strln($r_data["password"]) < 5 
 or $r_data["password"] == ""
 or $r_data["age"] < 18){
 
@@ -27,10 +27,10 @@ or $r_data["age"] < 18){
 }
 
 //Checks that the user isn't already in the database of users 
-if($r_data["username"] == $userDatabase["username"]){
-    $error = ["error" => "Username already taken. Please try again."];
-    sendJSON($error, 400);
-}
+// if($r_data["username"] == $userDatabase["username"]){
+//     $error = ["error" => "Username already taken. Please try again."];
+//     sendJSON($error, 400);
+// }
 
     
 
@@ -39,6 +39,30 @@ if($r_data["username"] == $userDatabase["username"]){
     $age = $r_data["age"];
 
     
+    //The highest ID starts at 0 
+    $highest_id = 0; 
+
+    //Controls the highest ID in the array of users 
+    foreach($users as $user){
+        if($user["userId"] > $highest_id){
+            $highest_id = $user["userId"];
+        }
+    }
+
+    //The new id of the user is the highest existing ID + 1 
+    $new_id = $highest_id + 1; 
+
+    //The new user contains the id, username, age and the empty array of likedBeers 
+    $newUser = ["userId" => $new_id, "username" => $username, "password" => $password ,"age" => $age, "likedBeers" => []];
+    
+    //Adding the user to the array of users and updates the database 
+    $users[] = $newUser;
+    $users_json = json_decode($users, JSON_PRETTY_PRINT); 
+    file_put_contents($userDatabase, $users_json);
+    sendJSON($newUser);
+
+
+
 
 
 

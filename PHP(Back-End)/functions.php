@@ -8,8 +8,20 @@ $beerDatabase = "../JSON/beerDatabase.json";
 //Request methods
 $request_method = $_SERVER["REQUEST_METHOD"];
 
+
+
+if($request_method == "OPTIONS"){
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Headers: *");
+    header("Access-Control-Allow-Methods: *");
+    
+    exit();
+}else{
+    header("Access-Control-Allow-Origin: *");
+};
+
 //Content type 
-$content_type = $_SERVER["CONTENT_TYPE"];
+$content_type = $_SERVER['CONTENT_TYPE'];
 
 //Requested JSON 
 $r_json = file_get_contents("php://input");
@@ -31,17 +43,6 @@ if($request_method != "GET"){
         sendJSON($error, 400);
     }
 }
-
-if($request_method == "OPTIONS"){
-    header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Allow-Headers: *");
-    header("Access-Control-Allow-Methods: *");
-    
-    exit();
-}else{
-    header("Access-Control-Allow-Origin: *");
-};
-
 
 //if the userDatabase.json exists uptade and decode it
 if(file_exists($userDatabase)){
