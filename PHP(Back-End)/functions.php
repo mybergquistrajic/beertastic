@@ -36,7 +36,7 @@ if(file_exists($userDatabase)){
     $users = json_decode($json, true);
 }
 
-//Funtion for sending JSON-data 
+
 function sendJSON($data, $statusCode = 200) {
     header('Content-Type: application/json');
     http_response_code($statusCode);
