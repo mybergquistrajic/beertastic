@@ -46,15 +46,15 @@ if($request_method != "GET"){
 
 //if the userDatabase.json exists uptade and decode it
 if(file_exists($userDatabase)){
-    $user_json = file_get_contents($userDatabase);
-    $users = json_decode($json, true);
+    $users_json = file_get_contents($userDatabase);
+    $users = json_decode($users_json, true);
 }
 
 
 //if the beerDatabase exists uodate and decode it 
 if(file_exists($beerDatabase)){
     $beers_json = file_get_contents($beerDatabase);
-    $beers = json_decode($json, true);
+    $beers = json_decode($beers_json, true);
 
 }
 
