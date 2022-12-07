@@ -1,4 +1,4 @@
-<?php
+ <?php
     require_once ("functions.php");
 
     // If method is not post
@@ -15,27 +15,27 @@
         exit();
     }
 
+    // Finding the right beer
     foreach($beers as $beer){
         if($beer["id"] == $r_data["beerId"]){
             $highestId = 0;
+            // For each review, change highestId
             foreach($beer["reviews"] as $review){
                 if ($review["id"] > $highestId){
                     $highestId = $review["id"];
                 }
             }
             $highestId = $highestId + 1;
+            
+            // New review
             $newReview = ["review_id" => $highestId, "username" => $r_data["username"], "rating" => $r_data["rating"], "message" => $r_data["reviewContent"]];
 
-            $beer["reviews"][] = $newReview;
-
-            $beersJSON = json_encode($beers, JSON_PRETTY_PRINT);
-            $beersData = file_put_contents($beerDatabase, $beersJSON);
-           
-            sendJSON(json_encode($newReview));
-            // LÄGG TILL DATUM TID PÅ REVIEWN OVAN!!
+            // ADD:
+                // Date to review
+                // Update the beer review list with new review (encode, put)
+                // Send JSON
         }
     }
-
 
 ?>
 
