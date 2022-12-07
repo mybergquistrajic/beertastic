@@ -41,9 +41,6 @@
             $beersJSON = json_encode($beers, JSON_PRETTY_PRINT);
             $beersData = file_put_contents($beerDatabase, $beersJSON);
             sendJSON($newReview);
-
-            // ADD:
-                // Date to review
         }
     }
 
