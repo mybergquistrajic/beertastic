@@ -51,7 +51,7 @@
                     // Update database and send JSON with id of removed beer
                     $usersJSON = json_encode($users, JSON_PRETTY_PRINT);
                     $usersData = file_put_contents($userDatabase, $usersJSON);
-                    sendJSON($r_data["beerId"]);
+                    sendJSON(0);
                     exit();
                 }
             }
@@ -70,7 +70,7 @@
             // Update database and send JSON with id of added beer
             $usersJSON = json_encode($users, JSON_PRETTY_PRINT);
             $usersData = file_put_contents($userDatabase, $usersJSON);
-            sendJSON($r_data["beerId"]);
+            sendJSON(1);
             exit();
 
             }
