@@ -38,17 +38,20 @@
 
     // If requested action is add
     if($r_data["action"] === "add"){
+        // Finding the right user
         foreach($users as $index => $user){
             if($user["username"] == $r_data["username"]){
+                // Create array for the new favorite and push to likedBeers array
                 $newFavorite = ["id" => $r_data["beerId"]];
-
                 array_push($user["likedBeers"], $newFavorite);
 
+                // Remove old user, add new user (including new favorite), and sort
                 $updatedUser = $user;
                 array_splice($users, $index, 1);
                 $users[] = $updatedUser;
                 array_multisort($users);
 
+                // Update database and send JSON with id of added beer
                 $usersJSON = json_encode($users, JSON_PRETTY_PRINT);
                 $usersData = file_put_contents($userDatabase, $usersJSON);
                 sendJSON($r_data["beerId"]);
@@ -59,17 +62,22 @@
 
     // If requested action is remove
     if($r_data["action"] === "remove"){
+        // Finding the right user
         foreach($users as $userindex => $user){
             if($user["username"] == $r_data["username"]){
+                // Finding the right beer
                 foreach($user["likedBeers"] as $beerindex => $beer){
                     if($beer["id"] == $r_data["beerId"]){
+                        // Removing the beer
                         array_splice($user["likedBeers"], $beerindex, 1);
 
+                        // Remove old user, add new user (without the deleted beer), and sort
                         $updatedUser = $user;
                         array_splice($users, $userindex, 1);
                         $users[] = $updatedUser;
                         array_multisort($users);
-        
+                        
+                        // Update database and send JSON with id of removed beer
                         $usersJSON = json_encode($users, JSON_PRETTY_PRINT);
                         $usersData = file_put_contents($userDatabase, $usersJSON);
                         sendJSON($r_data["beerId"]);
