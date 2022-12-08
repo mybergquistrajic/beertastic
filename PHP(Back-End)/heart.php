@@ -16,7 +16,7 @@
     }
 
     // If username or action paramaters aren't strings
-    if(!is_string($r_data["username"], $r_data["action"])){
+    if(!is_string($r_data["username"]) or !is_string($r_data["action"])){
         $error = ["error" => "The username or action paramater(s) have to be strings"]; 
         sendJSON($error, 400);
         exit();
@@ -30,12 +30,36 @@
     }
 
     // If the action is not add or remove
-    if($r_data["action"] !== "add" or $r_data["action"] !== "remove"){
+    if($r_data["action"] !== "add"){
         $error = ["error" => "Action was not given correctly"]; 
         sendJSON($error, 400);
         exit();
     }
 
+    // If requested action is add
+    if($r_data["action"] === "add"){
+        foreach($users as $index => $user){
+            if($user["username"] == $r_data["username"]){
+                $newFavorite = ["id" => $r_data["beerId"]];
+
+                array_push($user["likedBeers"], $newFavorite);
+
+                $updatedUser = $user;
+                array_splice($users, $index, 1);
+                $users[] = $updatedUser;
+                array_multisort($users);
+
+                $usersJSON = json_encode($users, JSON_PRETTY_PRINT);
+                $usersData = file_put_contents($userDatabase, $usersJSON);
+                sendJSON($newFavorite);
+            }
+        }
+    }
+
+    // If requested action is remove
+    if($r_data["action"] === "remove"){
+        
+    }
 
 
 ?>
