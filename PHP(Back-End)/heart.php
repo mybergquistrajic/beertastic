@@ -30,7 +30,7 @@
     }
 
     // If the action is not add or remove
-    if($r_data["action"] !== "add"){
+    if($r_data["action"] != "add" and $r_data["action"] != "remove"){
         $error = ["error" => "Action was not given correctly"]; 
         sendJSON($error, 400);
         exit();
@@ -51,14 +51,33 @@
 
                 $usersJSON = json_encode($users, JSON_PRETTY_PRINT);
                 $usersData = file_put_contents($userDatabase, $usersJSON);
-                sendJSON($newFavorite);
+                sendJSON($r_data["beerId"]);
+                exit();
             }
         }
     }
 
     // If requested action is remove
     if($r_data["action"] === "remove"){
+        foreach($users as $userindex => $user){
+            if($user["username"] == $r_data["username"]){
+                foreach($user["likedBeers"] as $beerindex => $beer){
+                    if($beer["id"] == $r_data["beerId"]){
+                        array_splice($user["likedBeers"], $beerindex, 1);
+
+                        $updatedUser = $user;
+                        array_splice($users, $userindex, 1);
+                        $users[] = $updatedUser;
+                        array_multisort($users);
         
+                        $usersJSON = json_encode($users, JSON_PRETTY_PRINT);
+                        $usersData = file_put_contents($userDatabase, $usersJSON);
+                        sendJSON($r_data["beerId"]);
+                        exit();
+                    }
+                }
+            }
+        }
     }
 
 
