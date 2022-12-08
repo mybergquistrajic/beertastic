@@ -24,6 +24,7 @@ $users = [];
 $beers = [];
 
 //IF-STATMENTS
+
 //If statment to check that the content-type is JSON if the method is not GET
 if($request_method != "GET"){
     if($content_type != "application/json"){
@@ -57,9 +58,7 @@ if($request_method == "OPTIONS"){
     header("Access-Control-Allow-Origin: *");
 };
 
-
-
-//Function for sending the JSON-data and statusCode
+//Function for sending the JSON-data and statusCode. The statusCode is 200 by default. 
 
 function sendJSON($data, $statusCode = 200) {
     header('Content-Type: application/json');
