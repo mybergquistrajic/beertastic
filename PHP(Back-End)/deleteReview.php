@@ -15,14 +15,15 @@ if ($request_method != "DELETE"){
 
 //Checks that the requested data contains "id" 
 
-if(isset($r_data["review_id"])){
+if(isset($r_data["review_id"],$r_data["username"])){
 
     //Loops through the beers in the database
     foreach($beers as $beer){
         //Loops through the array of reviews 
         foreach($beer["reviews"] as $index => $review){
-            //If the review id is the same as the requested data id delete delete it
-            if($review["review_id"] == $r_data["review_id"]){
+            //If the review id is the same as the requested data id and the username in the requested data is the same as the 
+            //Username in the review delete it. 
+            if($review["review_id"] == $r_data["review_id"] and $r_data["username"] == $review["username"]){
                 
                 array_splice($review, $index, 1);
 
