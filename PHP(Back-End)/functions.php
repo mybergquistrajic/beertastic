@@ -8,18 +8,6 @@ $beerDatabase = "../JSON/beerDatabase.json";
 //Request methods
 $request_method = $_SERVER["REQUEST_METHOD"];
 
-
-
-if($request_method == "OPTIONS"){
-    header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Allow-Headers: *");
-    header("Access-Control-Allow-Methods: *");
-    
-    exit();
-}else{
-    header("Access-Control-Allow-Origin: *");
-};
-
 //Content type 
 $content_type = $_SERVER['CONTENT_TYPE'];
 
@@ -58,8 +46,20 @@ if(file_exists($beerDatabase)){
 
 }
 
+//Allows all methods, Origins and Methods to acess the API  
+if($request_method == "OPTIONS"){
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Headers: *");
+    header("Access-Control-Allow-Methods: *");
+    
+    exit();
+}else{
+    header("Access-Control-Allow-Origin: *");
+};
 
-//function for sending the JSON-data and statusCode
+
+
+//Function for sending the JSON-data and statusCode
 
 function sendJSON($data, $statusCode = 200) {
     header('Content-Type: application/json');
