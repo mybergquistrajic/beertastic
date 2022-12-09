@@ -28,8 +28,8 @@ function showLogInView() {}
 //FAVORITES LIST (The hearts)
 //Loops through the user and for each favorite render beerBeers favorite.
 function favorites(user) {
-  //Loops through the users and rendersBeers based on the users favorites
-  user.favorites.forEach((favorite) => {
-    renderFavorites(favorite);
+  //Loops through the users and rendersBeers based on the users liked beers
+  user.likedBeers.forEach((favorite) => {
+    renderBeers(favorite);
   });
 }
