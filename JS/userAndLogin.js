@@ -22,8 +22,12 @@ function logIn_answer(response_answer) {
   }
 }
 
-//function for the view while logged in
-function showLogInView() {}
+//function for the when the user is logged in
+function showLogInView(user) {
+  //Run the functions that are only accessed through logged in ?
+  //Add more.
+  favorites(user);
+}
 
 //FAVORITES LIST (The hearts)
 //Loops through the user and for each favorite render beerBeers favorite.
