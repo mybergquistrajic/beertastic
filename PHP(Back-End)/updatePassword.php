@@ -36,7 +36,7 @@ if($request_method == "PUT") {
     
     // Update the password
     foreach($users as $index => $user){
-        if ($user["username"] == $username) {
+        if ($user["userId"] == $r_data["userId"]) {
             $users[$index]["userId"] = $user["userId"];
             $users[$index]["username"] = $user["username"];
             $users[$index]["password"] = $newPassword;
