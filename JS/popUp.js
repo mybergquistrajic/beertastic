@@ -8,24 +8,41 @@ function renderPopUp(type) {
 
   if (type === "checkage") {
     popUpDiv.innerHTML = `
-      <div>Are you over 18 years of age?<div>
-      <div id = "ageCheck">
+      <div>
+      <h1>Hi!</h1>
+      <p>Are you over 18 years of age?</p>
       <button>Yes</button>
       <button>No</button>
-      </div>`;
+      </div>
+      `;
   } else if (type === "underAgeAccount") {
     popUpDiv.innerHTML = `
-    <div>Sorry you have to be 18 to create an account.<div>`;
+    <div>
+    <h1>Sorry!</h1>
+    <p>You need to be to be at least 18 to create an account</p>
+    <button>Ok</button>
+    </div>`;
   } else if (type === "underAgeBeer") {
     popUpDiv.innerHTML = `
-    <div>Sorry you have to be over 18 years of age to view this beer.<div>`;
+    <div>
+    <h1>Sorry!</h1>
+    <p>You have to be over the age of 18 to view this beers</p>
+    <button>Ok</button>
+    </div>`;
   } else if (type === "ratingReview") {
     popUpDiv.innerHTML = `
-    <div>You have to add a rating or a review.<div>`;
+    <div>
+    <h1>Oops!</h1>
+    <p>You have to add a rating or a review.</p>
+    <button>Ok</button>
+    </div>`;
   } else if (type === "haveToLogIn") {
     popUpDiv.innerHTML = `
-    <div>You have to log in or create an account to view this.<div>
-    <button>Log in</button>`;
+    <div>
+    <h1>Sorry!</h1>
+    <p>You have to be logged in to view this.</p>
+    <button>Log in</button>
+    </div>`;
   }
 
   //append the popUpDiv here:
