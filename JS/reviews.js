@@ -1,3 +1,39 @@
+function renderReviews(beer) {
+
+    const reviews = beer.reviews;
+    const reviewsContainer = document.querySelector(".reviews");
+    reviewsContainer.innerHTML = "";
+
+    reviews.forEach(function (review) {
+
+        const reviewContainer = document.createElement("div");
+        reviewContainer.classList.add("review");
+
+        const reviewUser = document.createElement("p");
+        reviewUser.classList.add("reviewUser");
+        reviewUser.innerHTML = review.username;
+        reviewContainer.appendChild(reviewUser);
+
+        const reviewDate = document.createElement("p");
+        reviewDate.classList.add("reviewDate");
+        reviewDate.innerHTML = review.date;
+        reviewContainer.appendChild(reviewDate);
+
+        const reviewMessage = document.createElement("p");
+        reviewMessage.classList.add("reviewMessage");
+        reviewMessage.innerHTML = review.message;
+        reviewContainer.appendChild(reviewMessage);
+
+        const reviewRating = document.createElement("p");
+        reviewRating.classList.add("reviewRating");
+        reviewRating.innerHTML = // Function for stars: review.rating;
+        reviewContainer.appendChild(reviewRating);
+    });
+
+}
+
+
+
 // function renderRewievs(beer){
 //     foreach beer of review {
 //     review.username
