@@ -22,7 +22,7 @@ if(!isset($r_data["username"], $r_data["password"], $r_data["age"])){
 
 
 //Checks that the user data isn't empty and that the user is over 18. The password also has to be longer than 5 characters. 
-if($r_data["username"] == "" or $r_data["password"] == "" or $r_data["age"] < 18 or strlen($r_data["password"]) < 5) {
+if(empty($r_data["username"]) or empty($r_data["password"]) or $r_data["age"] < 18 or strlen($r_data["password"]) < 5) {
  
         $error = ["error" => "Missing data."];
         sendJSON($error, 404);
