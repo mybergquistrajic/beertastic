@@ -5,7 +5,7 @@ ini_set('display_errors', 1);
 require_once 'functions.php';
 
 if($request_method == "PUT") {
-    if(!isset($r_data["username"]) || !isset($r_data["password"]) || !isset($r_data["newPassword"])) {
+    if(!isset($r_data["username"], $r_data["password"], $r_data["newPassword"])) {
         $error = ["error" => "The password and new Password must be set."];
         sendJSON($error, 400);
     } elseif (empty($r_data["username"]) || empty($r_data["password"]) || empty($r_data["newPassword"])) {
