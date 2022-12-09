@@ -24,9 +24,7 @@ if(isset($r_data["username"], $r_data["password"])){
         }
     }
 }else{
-    //If the user is not in the database, send error message and don't allow to login. 
-
-     
+    //If the user is not in the database, send error message and don't allow to login.      
     sendJSON([], 400);
 }
 
