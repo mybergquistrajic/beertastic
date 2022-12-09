@@ -18,4 +18,7 @@
 //         “You have to log in to blablabla”
 //         X button
 //         Login button
+//     if type == deleteReview
+//         “Are you sure you want to delete this review?”
+//         button - yes / no
 //     }

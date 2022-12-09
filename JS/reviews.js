@@ -5,9 +5,46 @@ function renderReviews(beer) {
     reviewsContainer.innerHTML = "";
 
     reviews.forEach(function (review) {
-
         const reviewContainer = document.createElement("div");
         reviewContainer.classList.add("review");
+
+        if (review.username === user) {
+            const deleteButton = document.createElement("div");
+            deleteButton.classList.add("reviewDelete");
+            deleteButton.innerHTML = //trashcan icon?
+            deleteButton.addEventListener("click", function () {
+                
+                renderPopup("deleteReview");
+
+                const yesButton = document.querySelector(".yesButton");
+                yesButton.addEventListener("click", function () {
+                    fetch("http://localhost:8888/deleteReview",
+                    {
+                        method: "DELETE",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            beerId: beer.id,
+                            reviewId: review.id
+                        })
+                        
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        renderReviews(beer)
+                    })
+                })
+
+                const noButton = document.querySelector(".noButton");
+                noButton.addEventListener("click", function () {
+                    renderPopup("none");
+                })
+            
+                reviewContainer.appendChild(deleteButton);
+            })
+        }
 
         const reviewUser = document.createElement("p");
         reviewUser.classList.add("reviewUser");
@@ -28,8 +65,9 @@ function renderReviews(beer) {
         reviewRating.classList.add("reviewRating");
         reviewRating.innerHTML = // Function for stars: review.rating;
         reviewContainer.appendChild(reviewRating);
-    });
-
+        
+        reviewsContainer.appendChild(reviewContainer);
+    })
 }
 
 
