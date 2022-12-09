@@ -2,10 +2,8 @@
 
 // Global variables, username & password to be changes
 let beerResult;
-let username = "username";
-let password = "password";
-
-
+let username = "mybr";
+let password = "mrPotatoHead";
 
 // Fetch all beers
 function getAllBeers() {
@@ -51,6 +49,7 @@ function renderBeers(result) {
 function renderBeer(beer) {
     // Render each beer
     let beerDiv = document.createElement("div");
+
     // Dont forget heart and rating <3 
     beerDiv.innerHTML = `
     <img src="../IMAGES/${beer["img"]}">
@@ -62,6 +61,9 @@ function renderBeer(beer) {
     `
     document.querySelector(".beerResults").appendChild(beerDiv);
 }
+
+// Might need another PHP for reading users, to be able to render hearts correctly
+// based on the users favorites... 
 
 // DIRECT CODE
 getAllBeers()
