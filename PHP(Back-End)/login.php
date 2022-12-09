@@ -7,7 +7,7 @@ require_once "functions.php";
 ini_set("display_errors", 1);
 
 // If request method is not POST send error message 
-if($request_method !== "POST"){
+if($request_method != "POST"){
     $error = ["error" => "The method must be POST"]; 
     sendJSON($error, 400);
 }
