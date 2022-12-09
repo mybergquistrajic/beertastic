@@ -12,3 +12,5 @@
 //     )
 
 //     createAccountButton.eventListener("click, create.html)
+
+//Check age click events? if yes if no based on the popUpDiv "checkAge"?
