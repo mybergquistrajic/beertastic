@@ -1,3 +1,73 @@
+"use strict"
+
+let beerResult;
+
+document.querySelector(".searchBar input").onkeyup = function () {
+    filterBeers();
+}
+
+// Render searchbar
+// function searchBar() {
+//     let div = document.createElement("div");
+//     let input = document.createElement("input");
+//     div.classList.add("searchBar");
+//     div.appendChild(input);
+//     document.querySelector("body").appendChild(div);
+//     // Call renderBeers when writing in searchbar
+//     input.onkeyup = function () {
+//         filterBeers();
+//     }
+// }
+
+// Fetch all beers
+function getAllBeers() {
+    // UN PW To be changed
+    let username = "username";
+    let password = "password";
+    fetch(`../PHP(Back-End)/read_beerDatabase.php?un=${username}&pw=${password}&beers`)
+        .then(r => r.json())
+        .then(result => {
+            // Fill the global result variable, and then call renderBeers
+            beerResult = result;
+            filterBeers();
+        })
+}
+
+// Filter beers (if search bar is filled, else keeps all beers)
+function filterBeers() {
+    // If there's no value in searchbar, render all beers
+    if (document.querySelector(".searchBar input").value == "") {
+        // Console = render
+        console.log(beerResult);
+        renderBeers(beerResult);
+    }
+    // If there is a value in searchbar, filter the beers and then render
+    if (document.querySelector(".searchBar input").value !== "") {
+        let filteredResult = beerResult.filter(beer => beer["name"].toLowerCase().includes(document.querySelector(".searchBar input").value));
+        // Console == render
+        if (filteredResult.length < 1) {
+            console.log("Sorry, no beer with that name")
+        } else {
+            console.log(filteredResult);
+            renderBeers(filteredResult);
+        }
+    }
+}
+
+function renderBeers(result) {
+    document.querySelector(".beerResults").innerHTML = "";
+    result.forEach(beer => {
+        let beerDiv = document.createElement("div");
+        beerDiv.innerHTML = beer["name"];
+        document.querySelector(".beerResults").appendChild(beerDiv);
+    });
+}
+
+// DIRECT CODE
+// searchBar()
+getAllBeers()
+
+
 // function searchBar(){
 //     renders and appends searchbar
 //     searchbars inputValue filters the results
