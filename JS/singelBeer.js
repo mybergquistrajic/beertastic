@@ -1,12 +1,27 @@
-// function render_one_beer(beer){
-//     render info about the beer based on parameter:
+"use strict";
 
-//     beer.name
-//     beer.type
-//     beer.AVB
-//     beer.img
+//Function to render one beer from the database
+function render_one_beer(beer) {
+  //adding a div for the beer
+  const one_beer_div = document.createElement("div");
+  //adding classList for styling to one beer
+  one_beer_div.classList.add("one_beer");
+  //Adding id to the div that's the same as the beer id
+  one_beer_div.id = beer.id;
+  //InnerHTML for one beer and fills it with content + button for writing review.
+  one_beer_div.innerHTML = `
+        <div>${beer.img}</div>
+        <div>${beer.name}</div>
+        <div>${beer.type}</div>
+        <div>${beer.avb}%</div>
+        <button id= write_review_button>Write review</button>
+        `;
+  //Runs the functions for showing the reviews, the ratings and the heart.
+  renderReviews(beer);
+  renderRatings(beer);
+  renderHeart();
 
-//     renderReviews(beer)
-//     render button for adding review → write_review()
-//     renderRatings(beer)
-//     renderHeart()}
+  //adding eventListner to the button write review
+  const write_review_button = document.getElementById("write_review_buttion");
+  write_review_button.addEventListener("click", write_review);
+}
