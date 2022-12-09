@@ -19,7 +19,7 @@ if(isset($r_data["username"], $r_data["password"])){
     foreach($users as $user){
         if($user["username"] == $r_data["username"] and $user["password"] == $r_data["password"]){
             //Allwo the user to login if it's in the database.
-            sendJSON(1);
+            sendJSON($user);
 
         }
     }
@@ -27,7 +27,7 @@ if(isset($r_data["username"], $r_data["password"])){
     //If the user is not in the database, send error message and don't allow to login. 
 
      
-    sendJSON(0, 400);
+    sendJSON([], 400);
 }
 
 

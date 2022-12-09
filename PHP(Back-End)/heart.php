@@ -15,13 +15,6 @@
         exit();
     }
 
-    // If username or action paramaters aren't strings
-    if(!is_string($r_data["username"])){
-        $error = ["error" => "The username paramater has to be strings"]; 
-        sendJSON($error, 400);
-        exit();
-    }
-
     // If beerId paramater isn't numeric
     if(!is_numeric($r_data["beerId"])){
         $error = ["error" => "The beerId paramater has to be numeric"]; 
