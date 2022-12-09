@@ -1,19 +1,23 @@
+// render Reviews for selected beer
 function renderReviews(beer) {
 
     const reviews = beer.reviews;
     const reviewsContainer = document.querySelector(".reviews");
     reviewsContainer.innerHTML = "";
 
+    // render a review for each review in the array
     reviews.forEach(function (review) {
         const reviewContainer = document.createElement("div");
         reviewContainer.classList.add("review");
 
+        // if user has written review, add delete button
         if (review.username === user) {
             const deleteButton = document.createElement("div");
             deleteButton.classList.add("reviewDelete");
             deleteButton.innerHTML = //trashcan icon?
             deleteButton.addEventListener("click", function () {
                 
+                // Confirm delete review
                 renderPopup("deleteReview");
 
                 const yesButton = document.querySelector(".yesButton");
@@ -39,7 +43,7 @@ function renderReviews(beer) {
 
                 const noButton = document.querySelector(".noButton");
                 noButton.addEventListener("click", function () {
-                    renderPopup("none");
+                    renderPopup("none"); //right way to close popup?
                 })
             
                 reviewContainer.appendChild(deleteButton);
@@ -60,6 +64,18 @@ function renderReviews(beer) {
         reviewMessage.classList.add("reviewMessage");
         reviewMessage.innerHTML = review.message;
         reviewContainer.appendChild(reviewMessage);
+
+        // if review is longer than 100 characters, add show more button
+        if (review.message.length > 100) {
+            const showMore = document.createElement("p");
+            showMore.classList.add("showMore");
+            showMore.innerHTML = "Show more";
+            showMore.addEventListener("click", function () {
+                reviewMessage.classList.toggle("showMore");
+                showMore.classList.toggle("showMore");
+            })
+            reviewContainer.appendChild(showMore);
+        }
 
         const reviewRating = document.createElement("p");
         reviewRating.classList.add("reviewRating");
