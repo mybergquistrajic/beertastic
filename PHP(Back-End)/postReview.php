@@ -9,7 +9,7 @@
     }
 
     // If paramaters are missing (fetch)
-    if(!isset($r_data["username"], $r_data["password"], $r_data["beerId"], $r_data["rating"], $r_data["reviewContent"])){
+    if(!isset($r_data["username"], $r_data["beerId"], $r_data["rating"], $r_data["reviewContent"])){
         $error = ["error" => "One or more paramaters are missing"]; 
         sendJSON($error, 400);
         exit();
