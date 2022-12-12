@@ -3,8 +3,11 @@
 //Function to load different answers based on the type - parameter.
 
 function renderPopUp(type) {
+  //Creates the popUpDiv
   const popUpDiv = document.createElement("div");
+  //Adding a class for styling the popUpDiv
   popUpDiv.classList.add("popUpDiv");
+  //Depending on the popUp type , the HTML is different
 
   if (type === "checkage") {
     popUpDiv.innerHTML = `
