@@ -12,7 +12,7 @@ let password = "mrPotatoHead";
 
 // Fetch all beers
 function getAllBeers() {
-    fetch(`../PHP(Back-End)/read_beerDatabase.php?un=${username}&pw=${password}&beers`)
+    fetch(`../PHP/read_beerDatabase.php?un=${username}&pw=${password}&beers`)
         .then(r => r.json())
         .then(result => {
             // Fill the global result variable, and then call filterBeers
@@ -90,7 +90,7 @@ async function renderBeer(beer) {
             document.getElementById(`heart${beer["id"]}`).className = "filled"
         }
         // Fetch to update database
-        fetch("../PHP(Back-End)/heart.php", {
+        fetch("../PHP/heart.php", {
             method: "PATCH",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -102,7 +102,7 @@ async function renderBeer(beer) {
 
 // Check if current beer (from renderBeer function) is a favorite
 async function getFavorites(beer) {
-    let user = await (await fetch(`../PHP(Back-End)/readUsersDatabase.php?un=${username}`)).json();
+    let user = await (await fetch(`../PHP/readUsersDatabase.php?un=${username}`)).json();
     // Loop through current users favorites
     for (let i = 0; i < await user.likedBeers.length; i++) {
         if (user.likedBeers[i].id == beer["id"]) {
