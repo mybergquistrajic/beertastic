@@ -103,40 +103,83 @@ function renderReviews(beer) {
 })
 }
 
+// Funtion for creating write review window
+function writeReview(beer) {
+    const reviewWindow = document.createElement("div");
+    reviewWindow.classList.add("reviewWindow");
+
+    // Exit button
+    const reviewExit = document.createElement("div");
+    reviewExit.classList.add("reviewExit");
+    reviewExit.innerHTML = "X"
+        reviewExit.addEventListener("click", function () {
+            reviewWindow.remove();
+        })
+    reviewWindow.appendChild(reviewExit);
+
+    // Beer image
+    const reviewImage = document.createElement("div");
+    reviewImage.classList.add("reviewImage");
+    reviewImage.innerHTML = `<img src="../IMAGES/${beer.img}">`
+    reviewWindow.appendChild(reviewImage);
+
+    // Beer name
+    const reviewBeername = document.createElement("div");
+    reviewBeername.classList.add("reviewBeername");
+    reviewBeername.innerHTML = beer.name;
+    reviewWindow.appendChild(reviewBeername);
+
+    // Render stars for rating 
+    const reviewRating = document.createElement("div");
+    reviewRating.classList.add("reviewRating");
+    reviewRating.innerHTML = createStars();
+    reviewWindow.appendChild(reviewRating);
+
+    // Review Message
+    const reviewInput = document.createElement("div");
+    reviewInput.classList.add("reviewInput");
+    reviewInput.innerHTML = `<input type="text" placeholder="Write review">`
+    reviewWindow.appendChild(reviewInput);
+
+    // Submit button
+    const reviewSubmit = document.createElement("div");
+    reviewSubmit.classList.add("reviewSubmit");
+    reviewSubmit.innerHTML = "Submit"
+    reviewSubmit.addEventListener("click", function () {
+        const reviewMessage = document.querySelector(".reviewInput input").value;
+        const reviewRating = document.querySelector(".reviewRating").value;
+        fetch("http://localhost:8888/postReview",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                beerId: beer.id,
+                username: globalUsername,
+                message: reviewMessage,
+                rating: reviewRating
             })
-            reviewContainer.appendChild(showMore);
-        }
+        })
+        .then(res => {
+            if (res.status === 200) {
+                console.log("Review posted");
+            } else {
+                const errorMessage = document.createElement("p");
+                errorMessage.classList.add("errorMessage");
+                errorMessage.innerHTML = "Please fill out atleast one field";
+            }
 
-        const reviewRating = document.createElement("p");
-        reviewRating.classList.add("reviewRating");
-        reviewRating.innerHTML = // Function for stars: review.rating;
-        reviewContainer.appendChild(reviewRating);
-        
-        reviewsContainer.appendChild(reviewContainer);
+            return res.json();
+        })
+        .then(data => {
+            console.log(data)
+            reviewContainer.remove();
+            renderReviews(beer)
+        })
     })
+
 }
-
-// To be continued
-
-
-//  function write_review(beer) {
-//  render popup: white background, exit button, image, rating, inputfield, submitbutton, etc
-//  for each star → event listener add_rating(number)
-//  on submit: POST request
-
-//  if  POST -request is empty : alert ("review or rating needs to be filled in")
-//  else (
-//  submit & close reviewpop )
-//  renderRatings(beer)
-//  renderReviews(beer)
-//  }
-
-
-
-
-
-
-
 
 
 
