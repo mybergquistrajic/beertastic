@@ -199,6 +199,21 @@ function createStars() {
     return starContainer;
 }
 
+// Function for when clicking on star
+function addRating(number) {
+    document.querySelector(".starContainer").setAttribute("value", number + 1);
+    const allStars = document.querySelectorAll(".star");
+    allStars.forEach(function (star, i) {
+
+        // If star clicked fill or clear previous stars with ★ or ☆
+        // example: if star 3 is clicked, star 1 and 2 will be filled with ★ and star 4 and 5 will be cleared with ☆
+        if (i <= number) {
+            star.innerHTML = "★";
+        } else {
+            star.innerHTML = "☆";
+        }
+    })
+}
 
 
 //  function showmore(){
