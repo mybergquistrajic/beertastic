@@ -48,6 +48,8 @@ function renderBeers(result) {
 
 async function renderBeer(beer) {
 
+    // Checking if the beer is a favorite,
+    // and deciding on heart filled or not filled
     let favorite = await getFavorites(beer);
     if (await favorite == 1) {
         favorite = "../IMAGES/heart-filled.png"
@@ -58,7 +60,7 @@ async function renderBeer(beer) {
     // Render each beer
     let beerDiv = document.createElement("div");
 
-    // Dont forget heart and rating <3 
+    // Dont forget heart click to switch and rating <3 
     beerDiv.innerHTML = `
     <div>
     <img src="../IMAGES/${beer["img"]}">
@@ -74,30 +76,20 @@ async function renderBeer(beer) {
     `
     document.querySelector(".beerResults").appendChild(beerDiv);
     beerDiv.classList.add("beerDiv");
-
-
 }
 
+// Check if current beer (from renderBeer function) is a favorite
 async function getFavorites(beer) {
     let user = await (await fetch(`../PHP(Back-End)/readUsersDatabase.php?un=${username}`)).json();
+    // Loop through current users favorites
     for (let i = 0; i < await user.likedBeers.length; i++) {
         if (user.likedBeers[i].id == beer["id"]) {
+            // If yes, return 1
             return 1;
         }
     }
+    // If no, return 0
     return 0;
-    // let foundBeer = 0;
-    // fetch(`../PHP(Back-End)/readUsersDatabase.php?un=${username}`)
-    //     .then(r => r.json())
-    //     .then(user => {
-    //         return user;
-    //         // for (let i = 0; i < user.likedBeers.length; i++) {
-    //         //     if (user.likedBeers[i].id == beer["id"]) {
-    //         //         return foundBeer = 1;
-    //         //     }
-    //         // }
-    //     })
-    // // return user;
 }
 
 // Might need another PHP for reading users, to be able to render hearts correctly
