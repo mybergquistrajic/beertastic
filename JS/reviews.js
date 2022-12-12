@@ -181,6 +181,23 @@ function writeReview(beer) {
 
 }
 
+// Function for creating clickable stars when writing review
+function createStars() {
+    const starContainer = document.createElement("div");
+    starContainer.classList.add("starContainer");
+
+    for (let i = 0; i < 5; i++) {
+        const star = document.createElement("div");
+        star.classList.add("star");
+        star.innerHTML = "☆"
+        star.addEventListener("click", function () {
+            addRating(i);
+        })
+        starContainer.appendChild(star);
+    }
+
+    return starContainer;
+}
 
 
 
