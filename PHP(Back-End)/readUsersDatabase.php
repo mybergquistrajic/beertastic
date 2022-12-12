@@ -18,7 +18,7 @@
     // Finding the right user
     foreach($users as $user){
         if($user["username"] == $_GET["un"]){
-            sendJSON($user, 400);
+            sendJSON($user, 200);
             exit();
         }
     }

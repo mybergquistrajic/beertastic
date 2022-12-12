@@ -46,7 +46,15 @@ function renderBeers(result) {
     }
 }
 
-function renderBeer(beer) {
+async function renderBeer(beer) {
+
+    let favorite = await getFavorites(beer);
+    if (await favorite == 1) {
+        favorite = "../IMAGES/heart-filled.png"
+    } else {
+        favorite = "../IMAGES/heart-nofilled.png"
+    }
+
     // Render each beer
     let beerDiv = document.createElement("div");
 
@@ -56,6 +64,7 @@ function renderBeer(beer) {
     <img src="../IMAGES/${beer["img"]}">
     </div>
     <div>
+        <img class="beerDivHeart" src="${favorite}">
         ${beer["name"]} <br>
         ${beer["avb"]} <br>
         ${beer["type"]} <br>
@@ -65,6 +74,30 @@ function renderBeer(beer) {
     `
     document.querySelector(".beerResults").appendChild(beerDiv);
     beerDiv.classList.add("beerDiv");
+
+
+}
+
+async function getFavorites(beer) {
+    let user = await (await fetch(`../PHP(Back-End)/readUsersDatabase.php?un=${username}`)).json();
+    for (let i = 0; i < await user.likedBeers.length; i++) {
+        if (user.likedBeers[i].id == beer["id"]) {
+            return 1;
+        }
+    }
+    return 0;
+    // let foundBeer = 0;
+    // fetch(`../PHP(Back-End)/readUsersDatabase.php?un=${username}`)
+    //     .then(r => r.json())
+    //     .then(user => {
+    //         return user;
+    //         // for (let i = 0; i < user.likedBeers.length; i++) {
+    //         //     if (user.likedBeers[i].id == beer["id"]) {
+    //         //         return foundBeer = 1;
+    //         //     }
+    //         // }
+    //     })
+    // // return user;
 }
 
 // Might need another PHP for reading users, to be able to render hearts correctly
