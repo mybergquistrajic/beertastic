@@ -66,7 +66,7 @@ async function renderBeer(beer) {
     <img src="../IMAGES/${beer["img"]}">
     </div>
     <div>
-        <img class="beerDivHeart" src="${favorite}">
+        <img class="beerDivHeart" id="heart${beer["id"]}" src="${favorite}">
         ${beer["name"]} <br>
         ${beer["avb"]} <br>
         ${beer["type"]} <br>
@@ -76,6 +76,13 @@ async function renderBeer(beer) {
     `
     document.querySelector(".beerResults").appendChild(beerDiv);
     beerDiv.classList.add("beerDiv");
+
+    document.getElementById(`heart${beer["id"]}`).addEventListener("click", function () {
+        console.log("hello!")
+        if (document.getElementById(`heart${beer["id"]}`).src == "../IMAGES/heart-filled.png") {
+            document.getElementById(`heart${beer["id"]}`).src = "../IMAGES/heart-nofilled.png"
+        }
+    })
 }
 
 // Check if current beer (from renderBeer function) is a favorite
