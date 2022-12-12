@@ -1,4 +1,8 @@
 "use strict"
+// NOTES – To Do //
+// – Fetch to change heart saves heart in database as string, not int... 
+//   might be a problem on the PHP side?
+// – Add star-rating to the review 
 
 // Global variables, username & password to be changes
 let beerResult;
@@ -47,7 +51,6 @@ function renderBeers(result) {
 }
 
 async function renderBeer(beer) {
-
     // Checking if the beer is a favorite, and deciding on heart filled or not filled.
     // Used as a class to determine if the heart will be filled or not
     let favorite = await getFavorites(beer);
@@ -59,8 +62,6 @@ async function renderBeer(beer) {
 
     // Render each beer
     let beerDiv = document.createElement("div");
-
-    // Dont forget heart click to switch and rating <3 
     beerDiv.innerHTML = `
     <div>
         <img src="../IMAGES/${beer["img"]}">
@@ -79,13 +80,22 @@ async function renderBeer(beer) {
 
     // When clicking on the heart
     document.getElementById(`heart${beer["id"]}`).addEventListener("click", function () {
-        console.log(document.getElementById(`heart${beer["id"]}`))
         // If the heart is filled, make it not filled
-        if (document.getElementById(`heart${beer["id"]}`).className == "filled")
+        if (document.getElementById(`heart${beer["id"]}`).className == "filled") {
             document.getElementById(`heart${beer["id"]}`).className = "notfilled"
+        }
         // If the heart is not filled, fill it
-        else
+        else {
             document.getElementById(`heart${beer["id"]}`).className = "filled"
+        }
+        // Fetch to update database
+        fetch("../PHP(Back-End)/heart.php", {
+            method: "PATCH",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                username: username, beerId: `${beer["id"]}`
+            })
+        }).then(r => r.json()).then(console.log)
     })
 }
 
@@ -102,9 +112,6 @@ async function getFavorites(beer) {
     // If no, return 0
     return 0;
 }
-
-// Might need another PHP for reading users, to be able to render hearts correctly
-// based on the users favorites... 
 
 // DIRECT CODE
 getAllBeers()
