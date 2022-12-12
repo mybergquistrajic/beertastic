@@ -1,24 +1,47 @@
 "use strict";
+//Global variabel for user to see if logged in or not.
+let globalUser;
 
 //USER LOGIN
 //function to log in with the user_status to define logged in or not
 function logIn(user_status) {
-  //request to log in PHP-file
-  const user_status_request = new Request("login.php");
+  const username = document.getElementById("logIn_username").value;
+  const password = document.getElementById("logIn_password").value;
 
+  //user that is in the body with username and password
+  const user = {
+    username: username,
+    password: password,
+  };
+
+  //the method, body and headers in the request
+  const options = {
+    method: "POST",
+    body: JSON.stringify(user),
+    headers: { "Content-type": "application/json" },
+  };
+
+  //request to log in PHP-file
+  const user_status_request = new Request("../PHP/login.php", options);
   //fetch the request , when the resource promise comes call the function logIn_answer
   fetch(user_status_request)
     .then((r) => r.json())
-    .then(logIn_answer(user_status));
+    .then(logIn_answer(user_status, username));
 }
 
 //Function for the response to the request to log in
-function logIn_answer(response_answer) {
+function logIn_answer(response, username) {
   //If the user is in the database and the log in is sucessful show the log in view.
-  if (response_answer === 200) {
+  if (response === 200) {
+    //Update the global variabel to the username
+    globalUser = username;
+    //Run the funciton for the Log in view
     showLogInView();
   } else {
-    //error message here?
+    //Update the global variabel to 0 to show that user is not logged in
+    globalUser = 0;
+    // render popup for no user found in the databas
+    renderPopUp("NoUserFound");
   }
 }
 
@@ -37,3 +60,44 @@ function favorites(user) {
     renderBeers(favorite);
   });
 }
+
+//CreateAccount for the new user
+function renderNewUser() {
+  const c_username = document.getElementById("c_username").value;
+  const c_password = document.getElementById("c_password").value;
+  const age = document.getElementById("age").value;
+
+  //newUser that is in the body with username and password and age
+  const newUser = {
+    username: c_username,
+    password: c_password,
+    age: age,
+  };
+
+  //the method, body and headers in the request
+  const options = {
+    method: "POST",
+    body: JSON.stringify(newUser),
+    headers: { "Content-type": "application/json" },
+  };
+
+  //request create new user to the postuser php file
+  const new_user_request = new Request("../PHP/postUser.php", options);
+  //fetch the request ,
+  fetch(new_user_request)
+    .then((response) => {
+      if (newUser.age < 18) {
+        renderPopUp("underAgeAccount");
+      } else if (response === 400) {
+        renderPopUp("takenUsername");
+      } else if (response === 404) {
+        renderPopUp("missingInfo");
+      }
+      return response.json();
+    })
+    //Fucntion to update the userJSON-file?
+    .then(console.log);
+}
+
+const c_button = document.getElementById("createAccountButton");
+c_button.addEventListener("click", renderNewUser);

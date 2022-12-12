@@ -6,3 +6,15 @@
 //     5 empty stars
 //     render stars a new
 //     }
+
+// Calculate median of beer ratings
+function calculateRating(beer) {
+  let sum = [];
+  beer["reviews"].forEach((review) => {
+    sum.push(review["rating"]);
+  });
+  // Sum all ratings
+  let finalSum = sum.reduce((a, b) => a + b, 0) / sum.length;
+  // Round to two decimals
+  console.log(Math.round(finalSum * 100) / 100);
+}

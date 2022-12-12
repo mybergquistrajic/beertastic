@@ -3,6 +3,7 @@
 // – Fetch to change heart saves heart in database as string, not int... 
 //   might be a problem on the PHP side?
 // – Add star-rating to the review 
+// – Link to beer when clicking on it
 
 // Global variables, username & password to be changes
 let beerResult;
@@ -11,7 +12,7 @@ let password = "mrPotatoHead";
 
 // Fetch all beers
 function getAllBeers() {
-    fetch(`../PHP(Back-End)/read_beerDatabase.php?un=${username}&pw=${password}&beers`)
+    fetch(`../PHP/read_beerDatabase.php?un=${username}&pw=${password}&beers`)
         .then(r => r.json())
         .then(result => {
             // Fill the global result variable, and then call filterBeers
@@ -39,8 +40,9 @@ function renderBeers(result) {
     // If result is empty
     if (result.length < 1) {
         let noResult = document.createElement("div");
-        noResult.innerHTML = "Sorry, no beer with that name";
+        noResult.innerHTML = "<p>Sorry!</p><p>No beer with that name</p>";
         document.querySelector(".beerResults").appendChild(noResult);
+        noResult.classList.add("noResult");
     }
     // Else call renderBeer() for each beer
     else {
@@ -72,7 +74,6 @@ async function renderBeer(beer) {
         ${beer["avb"]} <br>
         ${beer["type"]} <br>
         <p>rating to be added...<p>
-        <p>heart to be added...<p>
     </div>
     `
     document.querySelector(".beerResults").appendChild(beerDiv);
@@ -89,7 +90,7 @@ async function renderBeer(beer) {
             document.getElementById(`heart${beer["id"]}`).className = "filled"
         }
         // Fetch to update database
-        fetch("../PHP(Back-End)/heart.php", {
+        fetch("../PHP/heart.php", {
             method: "PATCH",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -101,7 +102,7 @@ async function renderBeer(beer) {
 
 // Check if current beer (from renderBeer function) is a favorite
 async function getFavorites(beer) {
-    let user = await (await fetch(`../PHP(Back-End)/readUsersDatabase.php?un=${username}`)).json();
+    let user = await (await fetch(`../PHP/readUsersDatabase.php?un=${username}`)).json();
     // Loop through current users favorites
     for (let i = 0; i < await user.likedBeers.length; i++) {
         if (user.likedBeers[i].id == beer["id"]) {

@@ -1,1 +1,77 @@
 <!-- The input fields for the login -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log in</title>
+  </head>
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow-x: hidden;
+      margin: 0;
+    }
+    #logInWrapper {
+      height: 80%;
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #logIn {
+      background-color: #fff1d4;
+      height: 60%;
+      padding: 10%;
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      margin: 5% 0 5% 0;
+      justify-content: center;
+      border-radius: 10px;
+    }
+
+    #logIn > input {
+      height: 10%;
+      background-color: #fffbf3;
+      margin: 10px;
+      border-radius: 10px;
+      border: 5px solid #fffbf3;
+    }
+
+    .logInButtons {
+      background-color: #fffbf3;
+      margin: 10px;
+      border-radius: 10px;
+      border: solid 5px #fffbf3;
+      width: 50%;
+    }
+
+    #buttonDiv {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+  <body>
+    <div id="logInWrapper">
+      <h1>BEERTASTIC</h1>
+      <h2>Log in</h2>
+      <div id="logIn">
+        <input type="text" name="username" id="logIn_username" placeholder="username" />
+        <input type="password" name="password" id="logIn_password" placeholder="password" />
+        <div id="buttonDiv"><button class="logInButtons">Log in</button></div>
+      </div>
+      <p>Don't have an account?</p>
+      <button class="logInButtons">Create account</button>
+    </div>
+    <script src="../JS/userAndLogin.js"></script>
+  </body>
+</html>
