@@ -101,6 +101,7 @@ getAllBeers()
 document.querySelector(".searchBar input").onkeyup = function () {
     filterBeers();
 }
+menuBar();
 
 // function searchBar(){
 //     renders and appends searchbar
