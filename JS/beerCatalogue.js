@@ -48,8 +48,8 @@ function renderBeers(result) {
 
 async function renderBeer(beer) {
 
-    // Checking if the beer is a favorite,
-    // and deciding on heart filled or not filled
+    // Checking if the beer is a favorite, and deciding on heart filled or not filled.
+    // Used as a class to determine if the heart will be filled or not
     let favorite = await getFavorites(beer);
     if (await favorite == 1) {
         favorite = "filled"
@@ -77,10 +77,13 @@ async function renderBeer(beer) {
     document.querySelector(".beerResults").appendChild(beerDiv);
     beerDiv.classList.add("beerDiv");
 
+    // When clicking on the heart
     document.getElementById(`heart${beer["id"]}`).addEventListener("click", function () {
         console.log(document.getElementById(`heart${beer["id"]}`))
+        // If the heart is filled, make it not filled
         if (document.getElementById(`heart${beer["id"]}`).className == "filled")
             document.getElementById(`heart${beer["id"]}`).className = "notfilled"
+        // If the heart is not filled, fill it
         else
             document.getElementById(`heart${beer["id"]}`).className = "filled"
     })
