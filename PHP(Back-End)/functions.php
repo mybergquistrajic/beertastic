@@ -8,9 +8,6 @@ $beerDatabase = "../JSON/beerDatabase.json";
 //Request methods
 $request_method = $_SERVER["REQUEST_METHOD"];
 
-//Content type 
-$content_type = $_SERVER['CONTENT_TYPE'];
-
 //Requested JSON 
 $r_json = file_get_contents("php://input");
 
@@ -27,6 +24,9 @@ $beers = [];
 
 //If statment to check that the content-type is JSON if the method is not GET
 if($request_method != "GET"){
+    //Content type 
+    $content_type = $_SERVER['CONTENT_TYPE'];
+
     if($content_type != "application/json"){
         $error = ["error" => "The content-type must be JSON."]; 
         sendJSON($error, 400);
