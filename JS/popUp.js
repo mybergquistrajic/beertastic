@@ -53,6 +53,20 @@ function renderPopUp(type) {
     <p>No user found. Please create an account.</p>
     <button>Ok</button>
     </div>`;
+  } else if (type === "missingInfo") {
+    popUpDiv.innerHTML = `
+    <div>
+    <h1>Sorry!</h1>
+    <p>You have to fill in all of the information to create an account.</p>
+    <button>Ok</button>
+    </div>`;
+  } else if (type === "takenUsername") {
+    popUpDiv.innerHTML = `
+    <div>
+    <h1>Sorry!</h1>
+    <p>The username is already taken. Please try again.</p>
+    <button>Ok</button>
+    </div>`;
   }
 
   //append the popUpDiv here:

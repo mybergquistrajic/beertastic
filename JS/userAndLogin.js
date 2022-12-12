@@ -22,7 +22,7 @@ function logIn(user_status) {
   };
 
   //request to log in PHP-file
-  const user_status_request = new Request("login.php", options);
+  const user_status_request = new Request("../PHP/login.php", options);
   //fetch the request , when the resource promise comes call the function logIn_answer
   fetch(user_status_request)
     .then((r) => r.json())
@@ -60,3 +60,44 @@ function favorites(user) {
     renderBeers(favorite);
   });
 }
+
+//CreateAccount for the new user
+function renderNewUser() {
+  const c_username = document.getElementById("c_username").value;
+  const c_password = document.getElementById("c_password").value;
+  const age = document.getElementById("age").value;
+
+  //newUser that is in the body with username and password and age
+  const newUser = {
+    username: c_username,
+    password: c_password,
+    age: age,
+  };
+
+  //the method, body and headers in the request
+  const options = {
+    method: "POST",
+    body: JSON.stringify(newUser),
+    headers: { "Content-type": "application/json" },
+  };
+
+  //request create new user to the postuser php file
+  const new_user_request = new Request("../PHP/postUser.php", options);
+  //fetch the request ,
+  fetch(new_user_request)
+    .then((response) => {
+      if (newUser.age < 18) {
+        renderPopUp("underAgeAccount");
+      } else if (response === 400) {
+        renderPopUp("takenUsername");
+      } else if (response === 404) {
+        renderPopUp("missingInfo");
+      }
+      return response.json();
+    })
+    //Fucntion to update the userJSON-file?
+    .then(console.log);
+}
+
+const c_button = document.getElementById("createAccountButton");
+c_button.addEventListener("click", renderNewUser);
