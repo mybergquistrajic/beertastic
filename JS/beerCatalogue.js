@@ -52,9 +52,9 @@ async function renderBeer(beer) {
     // and deciding on heart filled or not filled
     let favorite = await getFavorites(beer);
     if (await favorite == 1) {
-        favorite = "../IMAGES/heart-filled.png"
+        favorite = "filled"
     } else {
-        favorite = "../IMAGES/heart-nofilled.png"
+        favorite = "notfilled"
     }
 
     // Render each beer
@@ -63,10 +63,10 @@ async function renderBeer(beer) {
     // Dont forget heart click to switch and rating <3 
     beerDiv.innerHTML = `
     <div>
-    <img src="../IMAGES/${beer["img"]}">
+        <img src="../IMAGES/${beer["img"]}">
     </div>
     <div>
-        <img class="beerDivHeart" id="heart${beer["id"]}" src="${favorite}">
+        <div class="${favorite}" id="heart${beer["id"]}"></div>
         ${beer["name"]} <br>
         ${beer["avb"]} <br>
         ${beer["type"]} <br>
@@ -78,10 +78,11 @@ async function renderBeer(beer) {
     beerDiv.classList.add("beerDiv");
 
     document.getElementById(`heart${beer["id"]}`).addEventListener("click", function () {
-        console.log("hello!")
-        if (document.getElementById(`heart${beer["id"]}`).src == "../IMAGES/heart-filled.png") {
-            document.getElementById(`heart${beer["id"]}`).src = "../IMAGES/heart-nofilled.png"
-        }
+        console.log(document.getElementById(`heart${beer["id"]}`))
+        if (document.getElementById(`heart${beer["id"]}`).className == "filled")
+            document.getElementById(`heart${beer["id"]}`).className = "notfilled"
+        else
+            document.getElementById(`heart${beer["id"]}`).className = "filled"
     })
 }
 
