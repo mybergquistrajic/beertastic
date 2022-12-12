@@ -3,6 +3,7 @@
 // – Fetch to change heart saves heart in database as string, not int... 
 //   might be a problem on the PHP side?
 // – Add star-rating to the review 
+// – Link to beer when clicking on it
 
 // Global variables, username & password to be changes
 let beerResult;
@@ -39,8 +40,9 @@ function renderBeers(result) {
     // If result is empty
     if (result.length < 1) {
         let noResult = document.createElement("div");
-        noResult.innerHTML = "Sorry, no beer with that name";
+        noResult.innerHTML = "<p>Sorry!</p><p>No beer with that name</p>";
         document.querySelector(".beerResults").appendChild(noResult);
+        noResult.classList.add("noResult");
     }
     // Else call renderBeer() for each beer
     else {
@@ -72,7 +74,6 @@ async function renderBeer(beer) {
         ${beer["avb"]} <br>
         ${beer["type"]} <br>
         <p>rating to be added...<p>
-        <p>heart to be added...<p>
     </div>
     `
     document.querySelector(".beerResults").appendChild(beerDiv);
