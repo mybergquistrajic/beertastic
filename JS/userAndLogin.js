@@ -1,23 +1,27 @@
 "use strict";
 
+let globalUser;
+
 //USER LOGIN
 //function to log in with the user_status to define logged in or not
 function logIn(user_status) {
   //request to log in PHP-file
   const user_status_request = new Request("login.php");
-
   //fetch the request , when the resource promise comes call the function logIn_answer
   fetch(user_status_request)
     .then((r) => r.json())
-    .then(logIn_answer(user_status));
+    .then(logIn_answer(user_status, username));
 }
 
 //Function for the response to the request to log in
-function logIn_answer(response_answer) {
+function logIn_answer(response, username) {
   //If the user is in the database and the log in is sucessful show the log in view.
-  if (response_answer === 200) {
+  if (response === 200) {
+    globalUser = username;
     showLogInView();
   } else {
+    globalUser = 0
+    // render popup
     //error message here?
   }
 }
