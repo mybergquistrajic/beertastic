@@ -7,6 +7,8 @@ function render_one_beer(beer) {
   //adding classList for styling to one beer
   one_beer_div.classList.add("one_beer");
   //Adding id to the div that's the same as the beer id
+
+  //Maybe just run the renderBeer??
   one_beer_div.id = beer.id;
   //InnerHTML for one beer and fills it with content + button for writing review.
   one_beer_div.innerHTML = `
@@ -14,7 +16,7 @@ function render_one_beer(beer) {
         <div>${beer.name}</div>
         <div>${beer.type}</div>
         <div>${beer.avb}%</div>
-        <button id= write_review_button>Write review</button>
+        <button id= write_review_button>Review</button>
         `;
   //Runs the functions for showing the reviews, the ratings and the heart.
   renderReviews(beer);
