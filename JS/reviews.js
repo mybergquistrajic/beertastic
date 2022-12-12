@@ -215,7 +215,22 @@ function addRating(number) {
     })
 }
 
+// Function for creating rating stars when viewing reviews
+function reviewRating(reviewRating) {
+    const ratingContainer = document.createElement("div");
+    ratingContainer.classList.add("ratingContainer");
 
-//  function showmore(){
-//   measures the text-height and width or amount of characters
-//  if length && height === limit add a showMore button}
+    for (let i = 0; i < 5; i++) {
+        const star = document.createElement("div");
+        star.classList.add("star");
+        // If star is less than or equal to review rating fill with ★ else clear with ☆
+        if (i < reviewRating) {
+            star.innerHTML = "★";
+        } else {
+            star.innerHTML = "☆";
+        }
+        ratingContainer.appendChild(star);
+    }
+
+    return ratingContainer;
+}
