@@ -4,7 +4,7 @@
 //function to log in with the user_status to define logged in or not
 function logIn(user_status) {
   //request to log in PHP-file
-  const user_status_request = new Request("login.php");
+  const user_status_request = new Request("../PHP/login.php");
 
   //fetch the request , when the resource promise comes call the function logIn_answer
   fetch(user_status_request)
