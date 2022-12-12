@@ -28,6 +28,43 @@
             width: 90%;
             height: 80%;
         }
+        .beerResults{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        /* .beerDiv {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            height: 55vw;
+            margin: 10px;
+            background-color: bisque;
+        }
+        .beerDiv > img {
+            margin-right: auto;
+            height: 100%;
+        } */
+        .beerDiv {
+            display: grid;
+            grid-template-columns: 40% 60%;
+            width: 90vw;
+            height: 55vw;
+            margin: 10px;
+            background-color: lightgray;
+        }
+        .beerDiv > div:first-child {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 55vw;
+        }
+        .beerDiv > div:first-child > img {
+            height: 60%;
+        }
+
     </style>
 </head>
 <body>

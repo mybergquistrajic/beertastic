@@ -52,14 +52,19 @@ function renderBeer(beer) {
 
     // Dont forget heart and rating <3 
     beerDiv.innerHTML = `
+    <div>
     <img src="../IMAGES/${beer["img"]}">
-    ${beer["name"]} <br>
-    ${beer["avb"]} <br>
-    ${beer["type"]} <br>
-    <p>rating to be added...<p>
-    <p>heart to be added...<p>
+    </div>
+    <div>
+        ${beer["name"]} <br>
+        ${beer["avb"]} <br>
+        ${beer["type"]} <br>
+        <p>rating to be added...<p>
+        <p>heart to be added...<p>
+    </div>
     `
     document.querySelector(".beerResults").appendChild(beerDiv);
+    beerDiv.classList.add("beerDiv");
 }
 
 // Might need another PHP for reading users, to be able to render hearts correctly
