@@ -61,7 +61,6 @@ async function renderBeer(beer) {
     } else {
         favorite = "notfilled"
     }
-
     // Render each beer
     let beerDiv = document.createElement("div");
     beerDiv.innerHTML = `
@@ -69,35 +68,18 @@ async function renderBeer(beer) {
         <img src="../IMAGES/${beer["img"]}">
     </div>
     <div>
-        <div class="${favorite}" id="heart${beer["id"]}"></div>
+        <div class="${favorite} heart${beer["id"]}"></div>
         ${beer["name"]} <br>
         ${beer["avb"]} <br>
         ${beer["type"]} <br>
         <p>rating to be added...<p>
     </div>
     `
+    // Append beer and give class
     document.querySelector(".beerResults").appendChild(beerDiv);
     beerDiv.classList.add("beerDiv");
-
-    // When clicking on the heart
-    document.getElementById(`heart${beer["id"]}`).addEventListener("click", function () {
-        // If the heart is filled, make it not filled
-        if (document.getElementById(`heart${beer["id"]}`).className == "filled") {
-            document.getElementById(`heart${beer["id"]}`).className = "notfilled"
-        }
-        // If the heart is not filled, fill it
-        else {
-            document.getElementById(`heart${beer["id"]}`).className = "filled"
-        }
-        // Fetch to update database
-        fetch("../PHP/heart.php", {
-            method: "PATCH",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                username: username, beerId: `${beer["id"]}`
-            })
-        }).then(r => r.json()).then(console.log)
-    })
+    // When clicking the heart
+    document.querySelector(`.heart${beer["id"]}`).addEventListener("click", heartOnClick)
 }
 
 // Check if current beer (from renderBeer function) is a favorite
@@ -159,9 +141,3 @@ menuBar();
 //     }
 //     }
 
-//     function renderHeart(){
-//     if not logged in {render empty heart}
-//     if logged in {check user database if beer is in favorites, if yes = heart filled; if no = heart empty}
-//     append
-//     eventlistener – when heart is clicked, call function heartOnClick()
-//     }
