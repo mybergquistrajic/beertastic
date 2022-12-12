@@ -1,4 +1,8 @@
 "use strict"
+// NOTES – To Do //
+// – Fetch to change heart saves heart in database as string, not int... 
+//   might be a problem on the PHP side?
+// – Add star-rating to the review 
 
 // Global variables, username & password to be changes
 let beerResult;
@@ -46,16 +50,24 @@ function renderBeers(result) {
     }
 }
 
-function renderBeer(beer) {
+async function renderBeer(beer) {
+    // Checking if the beer is a favorite, and deciding on heart filled or not filled.
+    // Used as a class to determine if the heart will be filled or not
+    let favorite = await getFavorites(beer);
+    if (await favorite == 1) {
+        favorite = "filled"
+    } else {
+        favorite = "notfilled"
+    }
+
     // Render each beer
     let beerDiv = document.createElement("div");
-
-    // Dont forget heart and rating <3 
     beerDiv.innerHTML = `
     <div>
-    <img src="../IMAGES/${beer["img"]}">
+        <img src="../IMAGES/${beer["img"]}">
     </div>
     <div>
+        <div class="${favorite}" id="heart${beer["id"]}"></div>
         ${beer["name"]} <br>
         ${beer["avb"]} <br>
         ${beer["type"]} <br>
@@ -65,10 +77,41 @@ function renderBeer(beer) {
     `
     document.querySelector(".beerResults").appendChild(beerDiv);
     beerDiv.classList.add("beerDiv");
+
+    // When clicking on the heart
+    document.getElementById(`heart${beer["id"]}`).addEventListener("click", function () {
+        // If the heart is filled, make it not filled
+        if (document.getElementById(`heart${beer["id"]}`).className == "filled") {
+            document.getElementById(`heart${beer["id"]}`).className = "notfilled"
+        }
+        // If the heart is not filled, fill it
+        else {
+            document.getElementById(`heart${beer["id"]}`).className = "filled"
+        }
+        // Fetch to update database
+        fetch("../PHP(Back-End)/heart.php", {
+            method: "PATCH",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                username: username, beerId: `${beer["id"]}`
+            })
+        }).then(r => r.json()).then(console.log)
+    })
 }
 
-// Might need another PHP for reading users, to be able to render hearts correctly
-// based on the users favorites... 
+// Check if current beer (from renderBeer function) is a favorite
+async function getFavorites(beer) {
+    let user = await (await fetch(`../PHP(Back-End)/readUsersDatabase.php?un=${username}`)).json();
+    // Loop through current users favorites
+    for (let i = 0; i < await user.likedBeers.length; i++) {
+        if (user.likedBeers[i].id == beer["id"]) {
+            // If yes, return 1
+            return 1;
+        }
+    }
+    // If no, return 0
+    return 0;
+}
 
 // DIRECT CODE
 getAllBeers()
