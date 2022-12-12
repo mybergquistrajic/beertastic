@@ -1,5 +1,7 @@
 //Here the swipe-functions, menu, and the direct code will be
 
+//Global variables
+
 // function swipe(){
 // renders swipe beers
 // }

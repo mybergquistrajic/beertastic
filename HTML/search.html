@@ -1,1 +1,90 @@
 <!-- The catalouge of beers -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beer Catalogue</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 0;
+        }
+        .searchBar{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 10px;
+            width: 100%;
+            height: 10vw;
+            background-color: lightgray; 
+        }
+        .searchBar > input{
+            width: 90%;
+            height: 80%;
+        }
+        .beerResults{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        /* .beerDiv {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            height: 55vw;
+            margin: 10px;
+            background-color: bisque;
+        }
+        .beerDiv > img {
+            margin-right: auto;
+            height: 100%;
+        } */
+        .beerDiv {
+            display: grid;
+            grid-template-columns: 40% 60%;
+            width: 90vw;
+            height: 55vw;
+            margin: 10px;
+            background-color: lightgray;
+        }
+        .beerDiv > div:first-child {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 55vw;
+        }
+        .beerDiv > div:first-child > img {
+            height: 60%;
+        }
+        .filled{
+            height: 10%;
+            background-image: url(../IMAGES/heart-filled.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        .notfilled{
+            height: 10%;
+            background-image: url(../IMAGES/heart-nofilled.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="searchBar">
+        <input>
+    </div>
+    <div class="beerResults">
+    </div>
+    <script src="../JS/beerCatalogue.js"></script>
+</body>
+</html>
