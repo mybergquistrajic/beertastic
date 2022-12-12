@@ -86,27 +86,8 @@ function renderReviews(beer) {
     })
 }
 
+// To be continued
 
-
-// function renderRewievs(beer){
-//     foreach beer of review {
-//     review.username
-//     review.date
-//     review.message
-//     review.rating
-
-//  if user has written review
-//  (add remove button delete_review(review, beer))
-//  else (don't add remove)
-//     showmore()
-//    }
-//  }
-
-//  delete_review(review, beer){
-//  popup → if yes{fetch delete med review ID}
-//  renderRatings(beer)
-//  renderReviews(beer)
-//  }
 
 //  function write_review(beer) {
 //  render popup: white background, exit button, image, rating, inputfield, submitbutton, etc
@@ -119,6 +100,16 @@ function renderReviews(beer) {
 //  renderRatings(beer)
 //  renderReviews(beer)
 //  }
+
+
+
+
+
+
+
+
+
+
 
 //  function showmore(){
 //   measures the text-height and width or amount of characters
