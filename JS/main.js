@@ -6,11 +6,7 @@
 // renders swipe beers
 // }
 
-// Menu
-// function menu_bar ()
-// flaticon for favorites, catalog and account with links
-
-
+// Menubar, to be called in all JS-files that are directly connected to HTML-files
 function menuBar() {
     let menu = document.createElement("div");
     menu.innerHTML = `
@@ -20,8 +16,6 @@ function menuBar() {
     `
     document.querySelector("body").appendChild(menu);
     menu.id = "mainMenu";
-
-    document.getElementById("favoritesBtn").addEventListener("click", fu)
 }
 
 // Direct code:
