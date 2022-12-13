@@ -306,5 +306,112 @@
         "avb": 4.7,
         "reviews": [],
         "img": "\/mythos.png"
+    },
+    {
+        "id": 19,
+        "name": "Brooklyn Lager",
+        "type": "Pale Lager",
+        "avb": 5.2,
+        "reviews": [],
+        "img": "\/Brooklyn.png"
+    },
+    {
+        "id": 20,
+        "name": "Dugges Ka-Pow!",
+        "type": "Ale",
+        "avb": 10.7,
+        "reviews": [],
+        "img": "\/Dugges_KP.png"
+    },
+    {
+        "id": 21,
+        "name": "1664 Blanc",
+        "type": "Ale",
+        "avb": 5,
+        "reviews": [],
+        "img": "\/1664.png"
+    },
+    {
+        "id": 22,
+        "name": "Budvar",
+        "type": "Pale Lager",
+        "avb": 5,
+        "reviews": [],
+        "img": "\/Budvar.png"
+    }
+    ,
+    {
+        "id": 23,
+        "name": "Chang Classic",
+        "type": "Pale Lager",
+        "avb": 5,
+        "reviews": [],
+        "img": "\/Chang.png"
+    },
+    {
+        "id": 24,
+        "name": "Karlovacko",
+        "type": "Pale Lager",
+        "avb": 5,
+        "reviews": [],
+        "img": "\/Karlovacko.png"
+    },
+    {
+        "id": 25,
+        "name": "Guinness Draught",
+        "type": "Porter & Stout",
+        "avb": 4.2,
+        "reviews": [],
+        "img": "\/Guinness.png"
+    },
+    {
+        "id": 26,
+        "name": "Stella Artois",
+        "type": "Pale Lager",
+        "avb": 5,
+        "reviews": [],
+        "img": "\/Stella.png"
+    },
+    {
+        "id": 27,
+        "name": "Bright Brew",
+        "type": "Pale Lager",
+        "avb": 5,
+        "reviews": [],
+        "img": "\/BrightBrew.png"
+    },
+    {
+        "id": 28,
+        "name": "Stockholm Noir",
+        "type": "Porter & Stout",
+        "avb": 8,
+        "reviews": [],
+        "img": "\/Stockholm.png"
+    },
+    {
+        "id": 29,
+        "name": "DAB",
+        "type": "Pale Lager",
+        "avb": 5,
+        "reviews": [],
+        "img": "\/DAB.png"
+    },
+    {
+        "id": 30,
+        "name": "S:t Eriks IPA",
+        "type": "India Pale Ale",
+        "avb": 5.3,
+        "reviews": [],
+        "img": "\/Eriks.png"
+    },
+    {
+        "id": 31,
+        "name": "Lusse Lelle",
+        "type": "Sour Ale",
+        "avb": 6.5,
+        "reviews": [],
+        "img": "\/Lelle.png"
     }
 ]
+
+
