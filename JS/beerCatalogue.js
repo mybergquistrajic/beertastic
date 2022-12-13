@@ -1,8 +1,8 @@
-"use strict"
+"use strict";
 // NOTES – To Do //
-// – Fetch to change heart saves heart in database as string, not int... 
+// – Fetch to change heart saves heart in database as string, not int...
 //   might be a problem on the PHP side?
-// – Add star-rating to the review 
+// – Add star-rating to the review
 // – Link to beer when clicking on it
 
 // Global variables, username & password to be changes
@@ -12,71 +12,74 @@ let password = "mrPotatoHead";
 
 // Fetch all beers
 function getAllBeers() {
-    fetch(`../PHP/read_beerDatabase.php?un=${username}&pw=${password}&beers`)
-        .then(r => r.json())
-        .then(result => {
-            // Fill the global result variable, and then call filterBeers
-            beerResult = result;
-            filterBeers();
-        })
+  fetch(`../PHP/read_beerDatabase.php?un=${username}&pw=${password}&beers`)
+    .then((r) => r.json())
+    .then((result) => {
+      // Fill the global result variable, and then call filterBeers
+      beerResult = result;
+      filterBeers();
+    });
 }
 
 // Filter beers (if search bar is filled, else keeps all beers)
 function filterBeers() {
-    // If there's no value in searchbar, render all beers
-    if (document.querySelector(".searchBar input").value == "") {
-        renderBeers(beerResult);
-    }
-    // If there is a value in searchbar, filter the beers and then render
-    if (document.querySelector(".searchBar input").value !== "") {
-        let filteredResult = beerResult.filter(beer => beer["name"].toLowerCase().includes(document.querySelector(".searchBar input").value));
-        renderBeers(filteredResult);
-    }
+  // If there's no value in searchbar, render all beers
+  if (document.querySelector(".searchBar input").value == "") {
+    renderBeers(beerResult);
+  }
+  // If there is a value in searchbar, filter the beers and then render
+  if (document.querySelector(".searchBar input").value !== "") {
+    let filteredResult = beerResult.filter((beer) =>
+      beer["name"].toLowerCase().includes(document.querySelector(".searchBar input").value)
+    );
+    renderBeers(filteredResult);
+  }
 }
 
 // Render beers
 function renderBeers(result) {
-    document.querySelector(".beerResults").innerHTML = "";
-    // If result is empty
-    if (result.length < 1) {
-        let noResult = document.createElement("div");
-        noResult.innerHTML = "<p style='font-weight: bolder;'>Sorry!</p><p style='font-size: 0.7em;'>No beer with that name</p>";
-        document.querySelector(".beerResults").appendChild(noResult);
-        noResult.classList.add("noResult");
-    }
-    // Else call renderBeer() for each beer
-    else {
-        result.forEach(beer => {
-            renderBeer(beer);
-        })
-    }
+  document.querySelector(".beerResults").innerHTML = "";
+  // If result is empty
+  if (result.length < 1) {
+    let noResult = document.createElement("div");
+    noResult.innerHTML =
+      "<p style='font-weight: bolder;'>Sorry!</p><p style='font-size: 0.7em;'>No beer with that name</p>";
+    document.querySelector(".beerResults").appendChild(noResult);
+    noResult.classList.add("noResult");
+  }
+  // Else call renderBeer() for each beer
+  else {
+    result.forEach((beer) => {
+      renderBeer(beer);
+    });
+  }
 }
 
 async function renderBeer(beer) {
-    // Checking if the beer is a favorite, and deciding on heart filled or not filled.
-    // Used as a class to determine if the heart will be filled or not
-    let favorite = await getFavorites(beer);
-    if (await favorite == 1) {
-        favorite = "filled"
-    } else {
-        favorite = "notfilled"
-    }
+  // Checking if the beer is a favorite, and deciding on heart filled or not filled.
+  // Used as a class to determine if the heart will be filled or not
+  let favorite = await getFavorites(beer);
+  if ((await favorite) == 1) {
+    favorite = "filled";
+  } else {
+    favorite = "notfilled";
+  }
 
-    // Calculating rating and deciding on content & class
-    let ratingContent;
-    let ratingClass;
-    let ratingSum = calculateRating(beer);
-    if (ratingSum == 0) {
-        ratingContent = "No ratings yet..."
-        ratingClass = "norating"
-    } else {
-        ratingContent = `★★★★★`
-        ratingClass = "rating"
-    }
+  // Calculating rating and deciding on content & class
+  let ratingContent;
+  let ratingClass;
+  let ratingSum = calculateRating(beer);
+  if (ratingSum == 0) {
+    ratingContent = "No ratings yet...";
+    ratingClass = "norating";
+  } else {
+    ratingContent = `★★★★★`;
+    ratingClass = "rating";
+  }
 
-    // Render each beer
-    let beerDiv = document.createElement("div");
-    beerDiv.innerHTML = `
+  // Render each beer
+  let beerDiv = document.createElement("div");
+  beerDiv.innerHTML = `
     <div>
         <img src="../IMAGES/${beer["img"]}">
     </div>
@@ -87,39 +90,39 @@ async function renderBeer(beer) {
         ${beer["type"]} <br>
         <div class="${ratingClass} rating${beer["id"]}">${ratingContent}</div>
     </div>
-    `
+    `;
 
-    // Append beer and give class
-    document.querySelector(".beerResults").appendChild(beerDiv);
-    beerDiv.classList.add("beerDiv");
-    // If the bees has (at least one) rating(s)
-    if (ratingSum !== 0) {
-        // Call function with the ratingSum and star-element as parameters
-        calculateStars(document.querySelector(`.rating${beer["id"]}`), ratingSum)
-    }
-    // When clicking the heart
-    document.querySelector(`.heart${beer["id"]}`).addEventListener("click", heartOnClick)
+  // Append beer and give class
+  document.querySelector(".beerResults").appendChild(beerDiv);
+  beerDiv.classList.add("beerDiv");
+  // If the bees has (at least one) rating(s)
+  if (ratingSum !== 0) {
+    // Call function with the ratingSum and star-element as parameters
+    calculateStars(document.querySelector(`.rating${beer["id"]}`), ratingSum);
+  }
+  // When clicking the heart
+  document.querySelector(`.heart${beer["id"]}`).addEventListener("click", heartOnClick);
 }
 
 // Check if current beer (from renderBeer function) is a favorite
 async function getFavorites(beer) {
-    let user = await (await fetch(`../PHP/readUsersDatabase.php?un=${username}`)).json();
-    // Loop through current users favorites
-    for (let i = 0; i < await user.likedBeers.length; i++) {
-        if (user.likedBeers[i].id == beer["id"]) {
-            // If yes, return 1
-            return 1;
-        }
+  let user = await (await fetch(`../PHP/readUsersDatabase.php?un=${username}`)).json();
+  // Loop through current users favorites
+  for (let i = 0; i < (await user.likedBeers.length); i++) {
+    if (user.likedBeers[i].id == beer["id"]) {
+      // If yes, return 1
+      return 1;
     }
-    // If no, return 0
-    return 0;
+  }
+  // If no, return 0
+  return 0;
 }
 
 // DIRECT CODE
-getAllBeers()
+getAllBeers();
 document.querySelector(".searchBar input").onkeyup = function () {
-    filterBeers();
-}
+  filterBeers();
+};
 menuBar();
 
 // function searchBar(){
@@ -159,4 +162,3 @@ menuBar();
 //     render_one_beer(beer);
 //     }
 //     }
-
