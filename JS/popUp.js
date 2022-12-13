@@ -44,7 +44,7 @@ function renderPopUp(type) {
     <div>
     <h1>Sorry!</h1>
     <p>You have to be logged in to view this.</p>
-    <button>Log in</button>
+    <button>Log in</button> 
     </div>`;
   } else if (type === "deleteReview") {
     popUpDiv.innerHTML = `
