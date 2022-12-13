@@ -52,7 +52,7 @@ function renderPopUp(type) {
     <h1>Are you sure?</h1>
     <p>You want to delete this review?</p>
     <button class="yesButton">Yes</button>
-    <button class="noButton">No</button>
+    <button class="noButton">No</button>`;
   } else if (type === "NoUserFound") {
     popUpDiv.innerHTML = `
     <div>
