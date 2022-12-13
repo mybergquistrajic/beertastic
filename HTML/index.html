@@ -1,1 +1,88 @@
 <!-- Homepage/Startpage -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/style.css" />
+  </head>
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow-x: hidden;
+      margin: 0;
+    }
+
+    #mainWrapper {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    #indexContent {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 40px;
+      gap: 20px;
+    }
+
+    #logInStartpage {
+      background-color: #fffbf3;
+
+      border-radius: 10px;
+      border: solid 5px #fffbf3;
+      width: 200px;
+      padding: 5px;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    #swipeBox {
+      display: grid;
+      grid-template-columns: 40% 60%;
+      width: 90vw;
+      height: 50vw;
+      margin: 3.3vw;
+      background-color: #fffbf3;
+      border-radius: 15px;
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+      filter: drop-shadow(0 0 0.3rem #00000030);
+    }
+    p {
+      text-align: center;
+    }
+  </style>
+  <body>
+    <div id="mainWrapper">
+      <div id="indexContent">
+        <h1>BEERTASTIC</h1>
+
+        <a href="login.html">
+          <button id="logInStartpage">Sign in</button>
+        </a>
+
+        <a href="create_account.html">Create Account</a>
+      </div>
+      <div id="swipeWrapper">
+        <div id="swipeBox"></div>
+        <p><-swipe-></p>
+      </div>
+    </div>
+
+    <script src="../JS/main.js"></script>
+    <script></script>
+  </body>
+</html>
