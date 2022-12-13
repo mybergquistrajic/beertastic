@@ -1,20 +1,19 @@
-// function renderRatings(beer){
-//     get star ratings for the beer, average value, append stars + show number of reviews and average value in number
-//     }
+"use strict"
 
-//     function add_rating (number (ex. 3 for star nr 3){
-//     5 empty stars
-//     render stars a new
-//     }
-
-// Calculate median of beer ratings
-function calculateRating(beer) {
-  let sum = [];
+// Calculating rating and "rendering" stars
+// Beer–paramater: the corresponding beer
+// Element–paramater: the corresponding star-element, meaning when calling the function, 
+// the star element has to be created and appended already. See beerCatalogue.js for example.
+function calculateRating(beer, element) {
+  // Sum all ratings and getting median
+  let ratings = [];
   beer["reviews"].forEach((review) => {
-    sum.push(review["rating"]);
+    ratings.push(review["rating"]);
   });
-  // Sum all ratings
-  let finalSum = sum.reduce((a, b) => a + b, 0) / sum.length;
-  // Round to two decimals
-  console.log(Math.round(finalSum * 100) / 100);
+  let sum = ratings.reduce((a, b) => a + b, 0) / ratings.length;
+  let finalSum = (Math.round(sum * 100) / 100);
+  // Get the original width of the star-element
+  let cw = element.clientWidth;
+  // Set new width of element based on median (final sum)
+  element.style.width = Math.round(cw * (finalSum / 5)) + 'px';
 }
