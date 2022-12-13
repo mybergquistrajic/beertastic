@@ -95,6 +95,15 @@
             font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             font-size: 2em;
         }
+        .rating {
+        font-size: 48px;
+        color: orange;
+        display: inline-block;
+        overflow: hidden;
+        }
+        .rating::before { 
+        content: "★★★★★" 
+        }
     </style>
 </head>
 <body>
@@ -105,6 +114,7 @@
     </div>
     <script src="../JS/main.js"></script>
     <script src="../JS/eventFunctions.js"></script>
+    <script src="../JS/ratings.js"></script>
     <script src="../JS/beerCatalogue.js"></script>
 </body>
 </html>

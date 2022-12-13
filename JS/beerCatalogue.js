@@ -72,6 +72,7 @@ async function renderBeer(beer) {
         ${beer["name"]} <br>
         ${beer["avb"]} <br>
         ${beer["type"]} <br>
+        <div class="rating rating${beer["id"]}"></div>
         <p>rating to be added...<p>
     </div>
     `
@@ -80,6 +81,8 @@ async function renderBeer(beer) {
     beerDiv.classList.add("beerDiv");
     // When clicking the heart
     document.querySelector(`.heart${beer["id"]}`).addEventListener("click", heartOnClick)
+
+    calculateRating(beer, document.querySelector(`.rating${beer["id"]}`))
 }
 
 // Check if current beer (from renderBeer function) is a favorite
