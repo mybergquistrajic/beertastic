@@ -4,9 +4,9 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: lightgray;
+    background-color: #F0D39B;
     width: 100vw;
-    height: 20vw;
+    height: 25vw;
     position: sticky;
     bottom: 0px;
     filter: drop-shadow(0 -2mm 4mm rgba(207, 207, 207, 0.529));
