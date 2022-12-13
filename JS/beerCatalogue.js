@@ -40,7 +40,7 @@ function renderBeers(result) {
     // If result is empty
     if (result.length < 1) {
         let noResult = document.createElement("div");
-        noResult.innerHTML = "<p>Sorry!</p><p>No beer with that name</p>";
+        noResult.innerHTML = "<p style='font-weight: bolder;'>Sorry!</p><p style='font-size: 0.7em;'>No beer with that name</p>";
         document.querySelector(".beerResults").appendChild(noResult);
         noResult.classList.add("noResult");
     }
