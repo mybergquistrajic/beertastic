@@ -101,3 +101,5 @@ function renderNewUser() {
 
 const c_button = document.getElementById("createAccountButton");
 c_button.addEventListener("click", renderNewUser);
+
+document.getElementById("favoritesBtn").addEventListener("click", favorites);
