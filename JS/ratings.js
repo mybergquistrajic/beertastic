@@ -1,10 +1,7 @@
 "use strict"
 
-// Calculating rating and "rendering" stars
-// Beer–paramater: the corresponding beer
-// Element–paramater: the corresponding star-element, meaning when calling the function, 
-// the star element has to be created and appended already. See beerCatalogue.js for example.
-function calculateRating(beer, element) {
+// Calculating median rating
+function calculateRating(beer) {
   // Sum all ratings and getting median
   let ratings = [];
   beer["reviews"].forEach((review) => {
@@ -12,6 +9,15 @@ function calculateRating(beer, element) {
   });
   let sum = ratings.reduce((a, b) => a + b, 0) / ratings.length;
   let finalSum = (Math.round(sum * 100) / 100);
+  // If no ratings avaliable, return 0
+  if (isNaN(finalSum)) {
+    return 0;
+  } else {
+    return finalSum;
+  }
+}
+
+function calculateStars(element, finalSum) {
   // Get the original width of the star-element
   let cw = element.clientWidth;
   // Set new width of element based on median (final sum)

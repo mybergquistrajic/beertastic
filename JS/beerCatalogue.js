@@ -61,6 +61,19 @@ async function renderBeer(beer) {
     } else {
         favorite = "notfilled"
     }
+
+    // Calculating rating and deciding on content & class
+    let ratingContent;
+    let ratingClass;
+    let ratingSum = calculateRating(beer);
+    if (ratingSum == 0) {
+        ratingContent = "No ratings yet..."
+        ratingClass = "norating"
+    } else {
+        ratingContent = `★★★★★`
+        ratingClass = "rating"
+    }
+
     // Render each beer
     let beerDiv = document.createElement("div");
     beerDiv.innerHTML = `
@@ -72,14 +85,18 @@ async function renderBeer(beer) {
         ${beer["name"]} <br>
         ${beer["avb"]}% <br>
         ${beer["type"]} <br>
-        <div class="rating rating${beer["id"]}"></div>
+        <div class="${ratingClass} rating${beer["id"]}">${ratingContent}</div>
     </div>
     `
+
     // Append beer and give class
     document.querySelector(".beerResults").appendChild(beerDiv);
     beerDiv.classList.add("beerDiv");
-    // Calculate rating for stars to show correct number
-    calculateRating(beer, document.querySelector(`.rating${beer["id"]}`))
+    // If the bees has (at least one) rating(s)
+    if (ratingSum !== 0) {
+        // Call function with the ratingSum and star-element as parameters
+        calculateStars(document.querySelector(`.rating${beer["id"]}`), ratingSum)
+    }
     // When clicking the heart
     document.querySelector(`.heart${beer["id"]}`).addEventListener("click", heartOnClick)
 }
