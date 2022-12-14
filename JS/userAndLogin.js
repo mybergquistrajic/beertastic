@@ -37,7 +37,7 @@ function logIn_answer(response, username) {
     localStorage.setItem("globalUser", username);
     //Run the funciton for the Log in view
     // showFavorites(username);
-    window.location.href="favorites.html";
+    window.location.href = "favorites.html";
   } else {
     //Update the global variabel to 0 to show that user is not logged in
     globalUser = 0;
@@ -48,13 +48,20 @@ function logIn_answer(response, username) {
 
 //Function to show users favorites
 function showFavorites(username) {
+  // Empty array to fill with beers
   let faveBeers = [];
   // Get user object from fetch
   fetch(`../PHP/readUsersDatabase.php?un=${username}`)
     .then((r) => r.json())
     .then(user => {
-      // Empty array to fill with beers
-
+      // If no favorites, display message
+      if (user["likedBeers"].length == 0) {
+        let noResult = document.createElement("div");
+        noResult.innerHTML =
+          "<p style='font-weight: bolder;'>Sorrrrrry!</p><p style='font-size: 0.7em;'>No beer with that name</p>";
+        document.querySelector(".beerResults").appendChild(noResult);
+        noResult.classList.add("noResult");
+      }
       user["likedBeers"].forEach(favorite => {
         // For each beer ID, fetch readBeerDatabase to get the full beer object 
         fetch(`../PHP/read_beerDatabase.php?un=${username}&id=${favorite.id}&beers`)
