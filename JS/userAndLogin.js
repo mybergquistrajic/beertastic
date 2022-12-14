@@ -47,12 +47,13 @@ function logIn_answer(response, username) {
 
 //Function to show users favorites
 function showFavorites(username) {
+  let faveBeers = [];
   // Get user object from fetch
   fetch(`../PHP/readUsersDatabase.php?un=${username}`)
     .then((r) => r.json())
     .then(user => {
       // Empty array to fill with beers
-      let faveBeers = [];
+
       user["likedBeers"].forEach(favorite => {
         // For each beer ID, fetch readBeerDatabase to get the full beer object 
         fetch(`../PHP/read_beerDatabase.php?un=${username}&id=${favorite.id}&beers`)
@@ -61,7 +62,9 @@ function showFavorites(username) {
             // For each beer, push the beer to the faveBeers array
             faveBeers.push(result)
             // At last, call renderBeers (in beerCatalogue.js)
-            renderBeers(faveBeers)
+            if (faveBeers.length == user["likedBeers"].length) {
+              renderBeers(faveBeers)
+            }
           })
       })
     })
