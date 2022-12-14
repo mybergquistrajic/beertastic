@@ -19,7 +19,7 @@ function menuBar() {
 //HEARTS
 //filles and unfills the hearts and updates the database [favorites]
 function heartOnClick(event) {
-  console.log(event)
+  console.log(event);
   // The heart we clicked on
   let heart = event.target;
   // Takes the class name (ex heart5) and splices 5, to only get the beer ID
