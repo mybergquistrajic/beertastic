@@ -90,14 +90,6 @@ function renderReviews(beer) {
             reviewRating.innerHTML = reviewRating(review.rating);
                 reviewContainer.appendChild(reviewRating);
         
-        
-            const writeReview = document.createElement("div");
-            writeReview.classList.add("writeReview");
-            writeReview.innerHTML = "Write review";
-            writeReview.addEventListener("click", function () {
-                writeReview(beer);
-            })
-        
             reviewsContainer.appendChild(reviewContainer);
         }
 })

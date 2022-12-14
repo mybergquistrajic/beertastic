@@ -119,6 +119,8 @@ function renderPopUp(type) {
     <p>The username is already taken. Please try again.</p>
     <button>Ok</button>
     </div>`;
+  } else if (type === "none") {
+    popUpDiv.innerHTML = "";
   }
 
   //append the popUpDiv here:

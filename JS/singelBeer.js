@@ -25,5 +25,5 @@ function render_one_beer(beer) {
 
   //adding eventListner to the button write review
   const write_review_button = document.getElementById("write_review_buttion");
-  write_review_button.addEventListener("click", write_review);
+  write_review_button.addEventListener("click", () => { writeReview(beer) });
 }
