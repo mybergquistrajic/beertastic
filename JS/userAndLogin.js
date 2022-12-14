@@ -36,7 +36,7 @@ function logIn_answer(response, username) {
     //Update the global variabel to the username
     globalUser = username;
     //Run the funciton for the Log in view
-    showLogInView();
+    showLogInView(username);
   } else {
     //Update the global variabel to 0 to show that user is not logged in
     globalUser = 0;
@@ -46,17 +46,33 @@ function logIn_answer(response, username) {
 }
 
 //function for the when the user is logged in
-function showLogInView(user) {
+function showLogInView(username) {
   //Run the functions that are only accessed through logged in ?
+  fetch(`../PHP/readUsersDatabase.php?un=${username}`)
+    .then((r) => r.json())
+    .then(user => {
+      let faveBeers = [];
+      user["likedBeers"].forEach(favorite => {
+        fetch(`../PHP/read_beerDatabase.php?un=${username}&id=${favorite.id}&beers`)
+          .then(r => r.json())
+          .then(result => {
+            faveBeers.push(result)
+            renderBeers(faveBeers)
+          })
+
+      })
+    })
+
+  // favorites(user));
   //Add more.
-  favorites(user);
 }
 
 //FAVORITES LIST (The hearts)
 //Loops through the user and for each favorite render beerBeers favorite.
 function favorites(user) {
+  console.log(user["likedBeers"])
   //Loops through the users and rendersBeers based on the users liked beers
-  user.likedBeers.forEach((favorite) => {
+  user["likedBeers"].forEach((favorite) => {
     renderBeers(favorite);
   });
 }

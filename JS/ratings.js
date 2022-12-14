@@ -2,6 +2,7 @@
 
 // Calculating median rating
 function calculateRating(beer) {
+  console.log(beer)
   // Sum all ratings and getting median
   let ratings = [];
   beer["reviews"].forEach((review) => {

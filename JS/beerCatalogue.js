@@ -49,6 +49,7 @@ function renderBeers(result) {
   }
   // Else call renderBeer() for each beer
   else {
+    console.log(result)
     result.forEach((beer) => {
       renderBeer(beer);
     });
@@ -120,19 +121,27 @@ async function getFavorites(beer) {
 
 // Search & main 
 function renderSearchAndMain() {
+  // Search
   let searchDiv = document.createElement("div")
   searchDiv.classList.add("searchBar")
   searchDiv.innerHTML = `<input placeholder="search by name..."></input>`
   document.querySelector("body").appendChild(searchDiv)
 
+  // Result
   let main = document.createElement("div")
   main.classList.add("beerResults")
   document.querySelector("body").appendChild(main)
 }
 
+if (window.location.pathname.endsWith('favorites.html')) {
+  showLogInView(username)
+} else {
+  getAllBeers();
+}
+
 // DIRECT CODE
 renderSearchAndMain();
-getAllBeers();
+
 document.querySelector(".searchBar input").onkeyup = function () {
   filterBeers();
 };

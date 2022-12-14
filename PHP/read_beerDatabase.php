@@ -8,7 +8,7 @@
         exit();
     }
     // If username, password or beers is not set in get paramaters
-    if(!isset($_GET["un"], $_GET["pw"], $_GET["beers"])){
+    if(!isset($_GET["un"], $_GET["beers"])){
         $error = ["error" => "The parameters: username, password or beers are not set"]; 
         sendJSON($error, 400);
         exit();
