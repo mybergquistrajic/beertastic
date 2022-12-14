@@ -34,9 +34,11 @@ function logIn_answer(response, username) {
   //If the user is in the database and the log in is sucessful show the log in view.
   if (response === 200) {
     //Update the global variabel to the username
+    // localStorage.setItem("globalUser", username);
     globalUser = username;
     //Run the funciton for the Log in view
-    showLogInView(username);
+    // showFavorites(username);
+    window.location.href="favorites.html";
   } else {
     //Update the global variabel to 0 to show that user is not logged in
     globalUser = 0;
@@ -108,8 +110,12 @@ function renderNewUser() {
     .then(console.log);
 }
 
-const c_button = document.getElementById("createAccountButton");
-c_button.addEventListener("click", renderNewUser);
+// const c_button = document.getElementById("createAccountButton");
+// c_button.addEventListener("click", renderNewUser);
 
-document.getElementById("favoritesBtn").addEventListener("click", favorites);
+// document.getElementById("favoritesBtn").addEventListener("click", favorites);
+// const c_button = document.getElementById("createAccountButton");
+// c_button.addEventListener("click", renderNewUser);
+const logInButton = document.getElementById("login_button");
+logInButton.addEventListener("click", () => { logIn(200) });
 

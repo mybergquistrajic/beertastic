@@ -43,5 +43,12 @@
                 "id": 2
             }
         ]
+    },
+    {
+        "userId": 4,
+        "username": "test",
+        "password": "testtest",
+        "age": "22",
+        "likedBeers": []
     }
 ]
