@@ -120,22 +120,41 @@ async function getFavorites(beer) {
 
 // Search & main 
 function renderSearchAndMain() {
+  // Search
   let searchDiv = document.createElement("div")
   searchDiv.classList.add("searchBar")
   searchDiv.innerHTML = `<input placeholder="search by name..."></input>`
   document.querySelector("body").appendChild(searchDiv)
 
+  // Result
   let main = document.createElement("div")
   main.classList.add("beerResults")
   document.querySelector("body").appendChild(main)
 }
 
+
+
 // DIRECT CODE
-renderSearchAndMain();
-getAllBeers();
-document.querySelector(".searchBar input").onkeyup = function () {
-  filterBeers();
-};
+// If current file/view is favorites
+if (window.location.pathname.endsWith('favorites.html')) {
+  let main = document.createElement("div")
+  main.classList.add("beerResults")
+  document.querySelector("body").appendChild(main)
+  showFavorites(username)
+}
+// If current file/view is beerCatalogue
+else {
+  // Render searchbar and main (beerResults)
+  renderSearchAndMain();
+  // Render all beers
+  getAllBeers();
+  // Eventlistener on searchbar
+  document.querySelector(".searchBar input").onkeyup = function () {
+    filterBeers();
+  };
+}
+
+
 
 // function searchBar(){
 //     renders and appends searchbar
