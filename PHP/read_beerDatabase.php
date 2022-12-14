@@ -20,7 +20,7 @@
         if(is_numeric($_GET["id"])){
             foreach($beers as $beer){
                 if($beer["id"] == $_GET["id"]){
-                    sendJSON($beer, 400);
+                    sendJSON($beer);
                     exit();
                 }
             }

@@ -45,36 +45,26 @@ function logIn_answer(response, username) {
   }
 }
 
-//function for the when the user is logged in
-function showLogInView(username) {
-  //Run the functions that are only accessed through logged in ?
+//Function to show users favorites
+function showFavorites(username) {
+  // Get user object from fetch
   fetch(`../PHP/readUsersDatabase.php?un=${username}`)
     .then((r) => r.json())
     .then(user => {
+      // Empty array to fill with beers
       let faveBeers = [];
       user["likedBeers"].forEach(favorite => {
+        // For each beer ID, fetch readBeerDatabase to get the full beer object 
         fetch(`../PHP/read_beerDatabase.php?un=${username}&id=${favorite.id}&beers`)
           .then(r => r.json())
           .then(result => {
+            // For each beer, push the beer to the faveBeers array
             faveBeers.push(result)
+            // At last, call renderBeers (in beerCatalogue.js)
             renderBeers(faveBeers)
           })
-
       })
     })
-
-  // favorites(user));
-  //Add more.
-}
-
-//FAVORITES LIST (The hearts)
-//Loops through the user and for each favorite render beerBeers favorite.
-function favorites(user) {
-  console.log(user["likedBeers"])
-  //Loops through the users and rendersBeers based on the users liked beers
-  user["likedBeers"].forEach((favorite) => {
-    renderBeers(favorite);
-  });
 }
 
 //CreateAccount for the new user

@@ -49,7 +49,6 @@ function renderBeers(result) {
   }
   // Else call renderBeer() for each beer
   else {
-    console.log(result)
     result.forEach((beer) => {
       renderBeer(beer);
     });
@@ -133,18 +132,29 @@ function renderSearchAndMain() {
   document.querySelector("body").appendChild(main)
 }
 
-if (window.location.pathname.endsWith('favorites.html')) {
-  showLogInView(username)
-} else {
-  getAllBeers();
-}
+
 
 // DIRECT CODE
-renderSearchAndMain();
+// If current file/view is favorites
+if (window.location.pathname.endsWith('favorites.html')) {
+  let main = document.createElement("div")
+  main.classList.add("beerResults")
+  document.querySelector("body").appendChild(main)
+  showFavorites(username)
+}
+// If current file/view is beerCatalogue
+else {
+  // Render searchbar and main (beerResults)
+  renderSearchAndMain();
+  // Render all beers
+  getAllBeers();
+  // Eventlistener on searchbar
+  document.querySelector(".searchBar input").onkeyup = function () {
+    filterBeers();
+  };
+}
 
-document.querySelector(".searchBar input").onkeyup = function () {
-  filterBeers();
-};
+
 
 // function searchBar(){
 //     renders and appends searchbar
