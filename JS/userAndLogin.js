@@ -105,7 +105,7 @@ function renderNewUser() {
     .then(console.log);
 }
 
-const c_button = document.getElementById("createAccountButton");
-c_button.addEventListener("click", renderNewUser);
+// const c_button = document.getElementById("createAccountButton");
+// c_button.addEventListener("click", renderNewUser);
 
-document.getElementById("favoritesBtn").addEventListener("click", favorites);
+// document.getElementById("favoritesBtn").addEventListener("click", favorites);
