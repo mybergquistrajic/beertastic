@@ -7,12 +7,13 @@
 
 // Global variables, username & password to be changes
 let beerResult;
-let username = "mybr";
-let password = "mrPotatoHead";
+// let username = "mybr";
+// let password = "mrPotatoHead";
+globalUser = localStorage.getItem("globalUser");
 
 // Fetch all beers
 function getAllBeers() {
-  fetch(`../PHP/read_beerDatabase.php?un=${username}&pw=${password}&beers`)
+  fetch(`../PHP/read_beerDatabase.php?un=${globalUser}&beers`)
     .then((r) => r.json())
     .then((result) => {
       // Fill the global result variable, and then call filterBeers
@@ -106,7 +107,7 @@ async function renderBeer(beer) {
 
 // Check if current beer (from renderBeer function) is a favorite
 async function getFavorites(beer) {
-  let user = await (await fetch(`../PHP/readUsersDatabase.php?un=${username}`)).json();
+  let user = await (await fetch(`../PHP/readUsersDatabase.php?un=${globalUser}`)).json();
   // Loop through current users favorites
   for (let i = 0; i < (await user.likedBeers.length); i++) {
     if (user.likedBeers[i].id == beer["id"]) {
@@ -140,7 +141,7 @@ if (window.location.pathname.endsWith('favorites.html')) {
   let main = document.createElement("div")
   main.classList.add("beerResults")
   document.querySelector("body").appendChild(main)
-  showFavorites(username)
+  showFavorites(globalUser)
 }
 // If current file/view is beerCatalogue
 else {

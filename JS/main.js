@@ -1,6 +1,8 @@
 "use strict";
 //This contains the code that runs all the time
 
+globalUser = localStorage.getItem("globalUser");
+
 //MENU
 // Menubar, to be called in all JS-files that are directly connected to HTML-files
 function menuBar() {
@@ -37,7 +39,7 @@ function heartOnClick(event) {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      username: username,
+      username: globalUser,
       beerId: beerId,
     }),
   })

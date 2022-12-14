@@ -34,8 +34,7 @@ function logIn_answer(response, username) {
   //If the user is in the database and the log in is sucessful show the log in view.
   if (response === 200) {
     //Update the global variabel to the username
-    // localStorage.setItem("globalUser", username);
-    globalUser = username;
+    localStorage.setItem("globalUser", username);
     //Run the funciton for the Log in view
     // showFavorites(username);
     window.location.href="favorites.html";
