@@ -411,7 +411,105 @@
         "avb": 6.5,
         "reviews": [],
         "img": "\/Lelle.png"
+    },
+    {
+        "id": 32,
+        "name": "Polar Monkeys, Great Dane",
+        "type": "Pale Lager",
+        "avb": 4.6,
+        "reviews": [],
+        "img": "\/Polar_M.png"
+    },
+    {
+        "id": 33,
+        "name": "Oppigårds,Norn Pale Ale",
+        "type": "American Pale Ale",
+        "avb": 5.6,
+        "reviews": [],
+        "img": "\/Oppis.png"
+    },
+    {
+        "id": 33,
+        "name": "Sierra Nevada",
+        "type": "American Pale Ale",
+        "avb": 5.6,
+        "reviews": [],
+        "img": "\/Sierra.png"
+    },
+    {
+        "id": 34,
+        "name": "Crocodile Lager",
+        "type": "Pale Lager",
+        "avb": 5.2,
+        "reviews": [],
+        "img": "\/Crocodile.png"
+    },
+    {
+        "id": 35,
+        "name": "Lusse Lelle",
+        "type": "Sour Ale",
+        "avb": 6.5,
+        "reviews": [],
+        "img": "\/Lelle.png"
+    },
+    {
+        "id": 36,
+        "name": "Gränges Pilsner",
+        "type": "Pale Lager",
+        "avb": 5,
+        "reviews": [],
+        "img": "\/Granges.png"
+    },
+    {
+        "id": 37,
+        "name": "Brooklyn,East IPA",
+        "type": "Indian Pale Ale",
+        "avb": 6.9,
+        "reviews": [],
+        "img": "\/Brooklyn_East.png"
     }
+    ,
+    {
+        "id": 38,
+        "name": "Arte in Lattina",
+        "type": "Pale Lager",
+        "avb": 5.2,
+        "reviews": [],
+        "img": "\/Arte.png"
+    },
+    {
+        "id": 39,
+        "name": "Kona, Big Wave",
+        "type": "Golden/Blond Ale",
+        "avb": 4.4,
+        "reviews": [],
+        "img": "\/Kona.png"
+    },
+    {
+        "id": 40,
+        "name": "Nordliga Sarek",
+        "type": "Pale Lager",
+        "avb": 5.2,
+        "reviews": [],
+        "img": "\/Sarek.png"
+    },
+    {
+        "id": 41,
+        "name": "Stigbergets, Existens essens transcendens",
+        "type": "Indian Pale Ale",
+        "avb": 5.9,
+        "reviews": [],
+        "img": "\/Stigbergets.png"
+    },
+    {
+        "id": 42,
+        "name": "Bron IPA",
+        "type": "Indian Pale Ale",
+        "avb": 5.9,
+        "reviews": [],
+        "img": "\/Bron.png"
+    }
+
 ]
 
 
