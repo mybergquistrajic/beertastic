@@ -17,9 +17,12 @@ function calculateRating(beer) {
   }
 }
 
+// Calculate stars 'width'
 function calculateStars(element, finalSum) {
   // Get the original width of the star-element
-  let cw = element.clientWidth;
+  let elementWidth = element.offsetWidth;
   // Set new width of element based on median (final sum)
-  element.style.width = Math.round(cw * (finalSum / 5)) + 'px';
+  // times two (since stars is by 5 and not by 10)
+  // then divided by the elements width times 1000 to get the final percentage
+  element.style.width = ((finalSum / elementWidth) * 1000) + '%'
 }
