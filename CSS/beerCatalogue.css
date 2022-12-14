@@ -111,10 +111,38 @@ body{
 
 /* ONE BEER POPUP */
 .oneBeerPopUp{
-    background-color: yellowgreen;
+    background-color: white;
     width: 100vw;
     height: 100vh;
     position: absolute;
     top: 0;
     z-index: 5;
+}
+
+.oneBeerPopUpHeader{
+    display: flex;
+    align-items: center;
+    height: 10vh;
+}
+
+.oneBeerPopUpHeader img:first-child {
+    height: 50%;
+}
+
+.oneBeerPopUpHeader img:last-child {
+    height: 60%;
+    margin-left: auto;
+    padding-right: 3%;
+}
+
+.oneBeerPopUpInfo {
+    height: 35vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.oneBeerPopUpInfo img{
+    height: 70%;
 }
