@@ -56,5 +56,12 @@
         "password": "testtest",
         "age": "22",
         "likedBeers": []
+    },
+    {
+        "userId": 5,
+        "username": "gabbe123",
+        "password": "miranda123",
+        "age": "18",
+        "likedBeers": []
     }
 ]
