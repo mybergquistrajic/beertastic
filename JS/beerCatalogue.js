@@ -1,9 +1,4 @@
 "use strict";
-// NOTES – To Do //
-// – Fetch to change heart saves heart in database as string, not int...
-//   might be a problem on the PHP side?
-// – Add star-rating to the review
-// – Link to beer when clicking on it
 
 // Global variables, username & password to be changes
 let beerResult;
@@ -96,6 +91,7 @@ async function renderBeer(beer) {
   // Append beer and give class
   document.querySelector(".beerResults").appendChild(beerDiv);
   beerDiv.classList.add("beerDiv");
+  beerDiv.id = "beer" + beer.id;
   // If the bees has (at least one) rating(s)
   if (ratingSum !== 0) {
     // Call function with the ratingSum and star-element as parameters
@@ -103,6 +99,19 @@ async function renderBeer(beer) {
   }
   // When clicking the heart
   document.querySelector(`.heart${beer["id"]}`).addEventListener("click", heartOnClick);
+
+  beerDiv.addEventListener("click", () => {
+    popUpBeer(beer);
+
+  })
+}
+
+function popUpBeer(beer) {
+  let oneBeerPopUp = document.createElement("div");
+  oneBeerPopUp.classList.add("oneBeerPopUp");
+  document.querySelector("body").appendChild(oneBeerPopUp);
+  console.log(beer)
+  // console.log(event.target.parentElement)
 }
 
 // Check if current beer (from renderBeer function) is a favorite
@@ -154,44 +163,3 @@ else {
     filterBeers();
   };
 }
-
-
-
-// function searchBar(){
-//     renders and appends searchbar
-//     searchbars inputValue filters the results
-//     }
-
-//     function getAllBeers(){
-//     GET - fetch with the read.php-file
-//     In the resource promise run the function seachBeers
-//     then (r=> r.json)
-//     then(result => {searchBeers(result)})
-//     }
-
-//     function searchBeers(beers){
-//     if ( searchFieldIsFilled ){
-//     filter beers
-//     renderBeers(beers)
-//     }
-//     else (no result is found send a message "Sorry! No results found")
-//     }
-
-//     function renderBeers (beers){
-//     forEach loop that loops through databaseOfBeers =>
-//     beer.name
-//     beer.type
-//     beer.AVB
-//     beer.img
-
-//     renderRatings(beer)
-//     renderHeart()
-
-//     beerDiv.event.listener – when beer is clicked, (){
-//     if not logged in → popup: you have to be logged in
-//     else{
-//     load one_beer.html
-//     render_one_beer(beer);
-//     }
-//     }
-

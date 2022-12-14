@@ -10,6 +10,7 @@
     position: sticky;
     bottom: 0px;
     filter: drop-shadow(0 -2mm 4mm rgba(207, 207, 207, 0.529));
+    z-index: 10;
 }
 
 #mainMenu a img {

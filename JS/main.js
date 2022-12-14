@@ -1,7 +1,7 @@
 "use strict";
 //This contains the code that runs all the time
 
-globalUser = localStorage.getItem("globalUser");
+
 
 //MENU
 // Menubar, to be called in all JS-files that are directly connected to HTML-files
@@ -19,7 +19,8 @@ function menuBar() {
 //HEARTS
 //filles and unfills the hearts and updates the database [favorites]
 function heartOnClick(event) {
-  console.log(event);
+  globalUser = localStorage.getItem("globalUser");
+  console.log(event)
   // The heart we clicked on
   let heart = event.target;
   // Takes the class name (ex heart5) and splices 5, to only get the beer ID

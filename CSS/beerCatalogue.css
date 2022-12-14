@@ -108,3 +108,13 @@ body{
 .norating{
     font-style: italic;
 }
+
+/* ONE BEER POPUP */
+.oneBeerPopUp{
+    background-color: yellowgreen;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    z-index: 5;
+}
