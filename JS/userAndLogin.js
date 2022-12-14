@@ -37,7 +37,7 @@ function logIn_answer(response, username) {
     localStorage.setItem("globalUser", username);
     //Run the funciton for the Log in view
     // showFavorites(username);
-    window.location.href="favorites.html";
+    window.location.href = "favorites.html";
   } else {
     //Update the global variabel to 0 to show that user is not logged in
     globalUser = 0;
@@ -52,23 +52,23 @@ function showFavorites(username) {
   // Get user object from fetch
   fetch(`../PHP/readUsersDatabase.php?un=${username}`)
     .then((r) => r.json())
-    .then(user => {
+    .then((user) => {
       // Empty array to fill with beers
 
-      user["likedBeers"].forEach(favorite => {
-        // For each beer ID, fetch readBeerDatabase to get the full beer object 
+      user["likedBeers"].forEach((favorite) => {
+        // For each beer ID, fetch readBeerDatabase to get the full beer object
         fetch(`../PHP/read_beerDatabase.php?un=${username}&id=${favorite.id}&beers`)
-          .then(r => r.json())
-          .then(result => {
+          .then((r) => r.json())
+          .then((result) => {
             // For each beer, push the beer to the faveBeers array
-            faveBeers.push(result)
+            faveBeers.push(result);
             // At last, call renderBeers (in beerCatalogue.js)
             if (faveBeers.length == user["likedBeers"].length) {
-              renderBeers(faveBeers)
+              renderBeers(faveBeers);
             }
-          })
-      })
-    })
+          });
+      });
+    });
 }
 
 //CreateAccount for the new user
@@ -105,16 +105,27 @@ function renderNewUser() {
       }
       return response.json();
     })
-    //Fucntion to update the userJSON-file?
-    .then(console.log);
+    //Function to update the userJSON-file?
+    .then((new_user) => {
+      createdUser(new_user);
+    });
 }
 
+//function for the created user
+function createdUser(newUser) {
+  //Stores the new user in localStorage
+  localStorage.setItem("globalUser", newUser["username"]);
+  //the new user gets send to user.html
+  window.location.href = "user.html";
+}
 // const c_button = document.getElementById("createAccountButton");
 // c_button.addEventListener("click", renderNewUser);
 
 // document.getElementById("favoritesBtn").addEventListener("click", favorites);
-// const c_button = document.getElementById("createAccountButton");
-// c_button.addEventListener("click", renderNewUser);
-const logInButton = document.getElementById("login_button");
-logInButton.addEventListener("click", () => { logIn(200) });
+const c_button = document.getElementById("createAccountButton");
+c_button.addEventListener("click", renderNewUser);
 
+const logInButton = document.getElementById("login_button");
+logInButton.addEventListener("click", () => {
+  logIn(200);
+});
