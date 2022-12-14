@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Log in</title>
+    <link rel="stylesheet" href="../CSS/style.css" />
   </head>
   <style>
     body {
@@ -67,11 +68,14 @@
       <div id="logIn">
         <input type="text" name="username" id="logIn_username" placeholder="username" />
         <input type="password" name="password" id="logIn_password" placeholder="password" />
-        <div id="buttonDiv"><button class="logInButtons">Log in</button></div>
+        <div id="buttonDiv"><button id="login_button" class="logInButtons">Log in</button></div>
       </div>
       <p>Don't have an account?</p>
-      <button id="createAccountButton" class="logInButtons">Create account</button>
+      <a href="../HTML/create_account.html"
+        ><button id="createAccountButton" class="logInButtons">Create account</button></a
+      >
     </div>
+    <script src="../JS/main.js"></script>
     <script src="../JS/userAndLogin.js"></script>
   </body>
 </html>
