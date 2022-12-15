@@ -100,17 +100,52 @@ async function renderBeer(beer) {
   // When clicking the heart
   document.querySelector(`.heart${beer["id"]}`).addEventListener("click", heartOnClick);
 
+
   beerDiv.addEventListener("click", () => {
     popUpBeer(beer);
   });
+
+  beerDiv.addEventListener("click", () => { popUpBeer(beer); })
+
 }
 
 function popUpBeer(beer) {
+  // Create popup
   let oneBeerPopUp = document.createElement("div");
   oneBeerPopUp.classList.add("oneBeerPopUp");
+  // Create header
+  let header = document.createElement("div");
+  header.classList.add("oneBeerPopUpHeader")
+  // Create back button
+  let backBtn = document.createElement("img");
+  backBtn.src = "../IMAGES/left-arrow.png";
+  // Create heart
+  let heartBtn = document.createElement("img");
+  heartBtn.src = "../IMAGES/heart-nofilled.png";
+  // Create info div
+  let infoDiv = document.createElement("div");
+  infoDiv.classList.add("oneBeerPopUpInfo");
+  infoDiv.innerHTML = `
+  <img src="../IMAGES/${beer["img"]}">
+  ${beer["name"]} <br>
+  ${beer["avb"]}% <br>
+  ${beer["type"]} <br>
+  `
+  // Append everything
   document.querySelector("body").appendChild(oneBeerPopUp);
+
   console.log(beer);
+
+  oneBeerPopUp.appendChild(header);
+  header.appendChild(backBtn);
+  header.appendChild(heartBtn);
+  oneBeerPopUp.appendChild(infoDiv);
+  console.log(beer)
+
   // console.log(event.target.parentElement)
+
+  // Remove popup on arrow click
+  backBtn.addEventListener("click", () => { oneBeerPopUp.remove() })
 }
 
 // Check if current beer (from renderBeer function) is a favorite
