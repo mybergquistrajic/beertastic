@@ -1,1 +1,93 @@
 <!-- The userpage for changing the password etc. -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User page</title>
+    <link rel="stylesheet" href="../CSS/style.css" />
+  </head>
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow-x: hidden;
+      margin: 0;
+    }
+    #userPageWrapper {
+      height: 100vh;
+      width: 90vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #userInfo {
+      padding: 5vh;
+    }
+
+    #changePassword {
+      background-color: #fff1d4;
+      height: 70%;
+      padding: 10%;
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      margin: 5% 0 5% 0;
+      justify-content: center;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    #changePassword > input {
+      height: 4vh;
+      background-color: #fffbf3;
+      margin: 10px;
+      border-radius: 10px;
+      border: 5px solid #fffbf3;
+    }
+    .Buttons {
+      background-color: #fffbf3;
+      margin: 10px;
+      border-radius: 10px;
+      border: solid 5px #fffbf3;
+      width: 50%;
+      padding: 1vh;
+    }
+
+    #buttonChangePW {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #userImage {
+      height: 20vh;
+      width: 20vh;
+    }
+  </style>
+  <body>
+    <div id="userPageWrapper">
+      <div id="userInfo">
+        <img id="userImage" src="../IMAGES/userprofile.png" alt="" />
+      </div>
+      <div id="changePassword">
+        <h2>Change password</h2>
+        <input type="password" name="currentPW" id="currentPW" placeholder="Old password" />
+        <input type="password" name="newPW" id="newPW" placeholder="New password" />
+        <div id="buttonChangePW">
+          <button id="changePW" class="Buttons">Change Password</button>
+        </div>
+      </div>
+      <button id="logOutButton" class="Buttons">Log out</button>
+    </div>
+    <script src="../JS/userPage.js"></script>
+    <script src="../JS/userAndLogin.js"></script>
+    <script src="../JS/main.js"></script>
+  </body>
+</html>

@@ -446,11 +446,11 @@
     },
     {
         "id": 35,
-        "name": "Lusse Lelle",
-        "type": "Sour Ale",
-        "avb": 6.5,
+        "name": "Sitting Bulldog IPA",
+        "type": "Indian Pale Ale",
+        "avb": 6.4,
         "reviews": [],
-        "img": "\/Lelle.png"
+        "img": "\/SittingIPA.png"
     },
     {
         "id": 36,
@@ -508,6 +508,110 @@
         "avb": 5.9,
         "reviews": [],
         "img": "\/Bron.png"
+    },
+    {
+        "id": 43,
+        "name": "Leffe Blonde",
+        "type": "Pale Ale",
+        "avb": 6.6,
+        "reviews": [],
+        "img": "\/Leffe.png"
+    },
+    {
+        "id": 44,
+        "name": "Tuborg Grön",
+        "type": "Pale Lager",
+        "avb": 4.2,
+        "reviews": [],
+        "img": "\/Tuborg.png"
+    },
+    {
+        "id": 45,
+        "name": "Eriksberg",
+        "type": "Pale Lager",
+        "avb": 5.3,
+        "reviews": [],
+        "img": "\/Eriksberg.png"
+    },
+    {
+        "id": 46,
+        "name": "Zlatopramen, Half n' Half",
+        "type": "Dark Lager",
+        "avb": 4.8,
+        "reviews": [],
+        "img": "\/Zlato.png"
+    },
+    {
+        "id": 47,
+        "name": "Norrlands Guld Export",
+        "type": "Pale Lager",
+        "avb": 5.3,
+        "reviews": [],
+        "img": "\/Norrlands.png"
+    },
+    {
+        "id": 48,
+        "name": "Norrlands Ljus Ekologisk",
+        "type": "Pale Lager",
+        "avb": 4.7,
+        "reviews": [],
+        "img": "\/NorrlandsEko.png"
+    },
+    {
+        "id": 49,
+        "name": "Kung",
+        "type": "Pale Lager",
+        "avb": 5.2,
+        "reviews": [],
+        "img": "\/Kung.png"
+    },
+    {
+        "id": 50,
+        "name": "Swedish Elk Brew",
+        "type": "Pale Lager",
+        "avb": 7.5,
+        "reviews": [],
+        "img": "\/Elk.png"
+    },
+    {
+        "id": 51,
+        "name": "Moosehead, Grapefruit Radler",
+        "type": "Flavored Beer",
+        "avb": 4,
+        "reviews": [],
+        "img": "\/Moosehead.png"
+    },
+    {
+        "id": 52,
+        "name": "Desperados, Tequila Flavoured Beer",
+        "type": "Flavored Beer",
+        "avb": 5.9,
+        "reviews": [],
+        "img": "\/Desperados.png"
+    },
+    {
+        "id": 53,
+        "name": "Two Lights",
+        "type": "Flavored Beer",
+        "avb": 6.7,
+        "reviews": [],
+        "img": "\/TwoLights.png"
+    },
+    {
+        "id": 54,
+        "name": "Rue B Soho",
+        "type": "Mix of different beertypes",
+        "avb": 5,
+        "reviews": [],
+        "img": "\/Rue.png"
+    },
+    {
+        "id": 55,
+        "name": "Omaka Afrodite",
+        "type": "Mix of different beertypes",
+        "avb": 6,
+        "reviews": [],
+        "img": "\/Omaka.png"
     }
 
 ]
