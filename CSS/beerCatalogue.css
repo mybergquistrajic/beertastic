@@ -1,120 +1,143 @@
-body{
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    overflow-x: hidden;
+body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow-x: hidden;
+
+  background-image: url(../IMAGES/Background_yellow.png);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 /* SEARCH BAR */
-.searchBar{
-    width: 100vw;
-    height: 10vw;
-    margin: 0;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: sticky;
-    top: 0px;
-    z-index: 1;
-    background-color: #F0D39B;; 
-    filter: drop-shadow(0 2mm 4mm rgba(207, 207, 207, 0.529));
+.searchBar {
+  width: 100vw;
+  height: 15vw;
+  margin: 0;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0px;
+  z-index: 1;
+  background-color: #ab4300;
+  filter: drop-shadow(0 2mm 4mm rgba(207, 207, 207, 0.529));
 }
-.searchBar > input{
-    width: 87%;
-    height: 70%;
-    background-image: url(../IMAGES/search.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: right 10px top 0px;
-    background-color: white;
-    border-radius: 10px;
-    border: 5px solid white;
+.searchBar > input {
+  width: 87%;
+  height: 70%;
+  background-image: url(../IMAGES/search.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right 10px top 0px;
+  background-color: white;
+  border-radius: 10px;
+  border: 5px solid white;
 }
 
 /* BEER RESULTS */
-.beerResults{
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    overflow-y: scroll;
+.beerResults {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow-y: scroll;
 }
 
-.noResult{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 2em;
+.noResult {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Shadows Into Light", cursive;
+  font-size: 2em;
+}
+
+.noResult > p {
+  font-family: "Snippet", sans-serif;
 }
 
 /* EACH INDIVIDUAL BEER "PANE" */
 .beerDiv {
-    width: 90vw;
-    height: 50vw;
-    margin: 3.3vw;
-    display: grid;
-    grid-template-columns: 40% 60%;
-    background-color: #FFFBF3;
-    border-radius: 15px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    filter: drop-shadow(0 0 0.3rem #00000030);
+  width: 90vw;
+  height: 50vw;
+  margin: 3.3vw;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  background-color: white;
+  opacity: 90%;
+  border-radius: 15px;
+  font-family: "Snippet", sans-serif;
+  filter: drop-shadow(0 0 0.3rem #00000030);
+  color: #ab4300;
+}
+
+.beerDiv > div > h3 {
+  font-family: "Shadows Into Light", cursive;
+  letter-spacing: 2px;
+  line-height: 0em;
 }
 .beerDiv > div:first-child {
-    height: 55vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 55vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .beerDiv > div:first-child > img {
-    height: 70%;
+  height: 70%;
 }
 
 /* HEARTS */
-.filled{
-    height: 20%;
-    width: 20%;
-    position: relative;
-    left: 73%;
-    top: 5%;
-    background-image: url(../IMAGES/heart-filled.png);
-    background-size: contain;
-    background-repeat: no-repeat;
+.filled {
+  height: 20%;
+  width: 20%;
+  position: relative;
+  left: 73%;
+  top: 5%;
+  background-image: url(../IMAGES/heart-filled.png);
+  background-size: contain;
+  background-repeat: no-repeat;
 }
-.notfilled{
-    height: 20%;
-    width: 20%;
-    position: relative;
-    left: 73%;
-    top: 5%;
-    background-image: url(../IMAGES/heart-nofilled.png);
-    background-size: contain;
-    background-repeat: no-repeat;
+.notfilled {
+  height: 20%;
+  width: 20%;
+  position: relative;
+  left: 73%;
+  top: 5%;
+  background-image: url(../IMAGES/heart-nofilled.png);
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 /* RATING (STARS) */
 .rating {
-    display: inline-block;
-    overflow: hidden;
-    font-size: 6vw;
-    color: rgb(0, 0, 0);
+  display: inline-block;
+  overflow: hidden;
+  font-size: 6vw;
+  color: rgb(0, 0, 0);
 }
-.norating{
-    font-style: italic;
+.norating {
+  font-style: italic;
 }
 
 /* ONE BEER POPUP */
-.oneBeerPopUp{
-    background-color: yellowgreen;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    z-index: 5;
+.oneBeerPopUp {
+  background-color: yellowgreen;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  z-index: 5;
+}
+
+#favorites {
+  font-family: "Shadows Into Light", cursive;
+  color: #eddc46;
+  font-size: 5vh;
+  font-weight: 100;
 }

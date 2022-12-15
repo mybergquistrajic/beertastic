@@ -39,7 +39,7 @@ function renderBeers(result) {
   if (result.length < 1) {
     let noResult = document.createElement("div");
     noResult.innerHTML =
-      "<p style='font-weight: bolder;'>Sorry!</p><p style='font-size: 0.7em;'>No beer with that name</p>";
+      "<h2 style='font-weight: bolder;'>Sorry!</h2><p style='font-size: 0.7em;'>No beer with that name</p>";
     document.querySelector(".beerResults").appendChild(noResult);
     noResult.classList.add("noResult");
   }
@@ -81,7 +81,7 @@ async function renderBeer(beer) {
     </div>
     <div>
         <div class="${favorite} heart${beer["id"]}"></div>
-        ${beer["name"]} <br>
+        <h3>${beer["name"]} </h3>
         ${beer["avb"]}% <br>
         ${beer["type"]} <br>
         <div class="${ratingClass} rating${beer["id"]}">${ratingContent}</div>
@@ -102,15 +102,14 @@ async function renderBeer(beer) {
 
   beerDiv.addEventListener("click", () => {
     popUpBeer(beer);
-
-  })
+  });
 }
 
 function popUpBeer(beer) {
   let oneBeerPopUp = document.createElement("div");
   oneBeerPopUp.classList.add("oneBeerPopUp");
   document.querySelector("body").appendChild(oneBeerPopUp);
-  console.log(beer)
+  console.log(beer);
   // console.log(event.target.parentElement)
 }
 
@@ -128,29 +127,27 @@ async function getFavorites(beer) {
   return 0;
 }
 
-// Search & main 
+// Search & main
 function renderSearchAndMain() {
   // Search
-  let searchDiv = document.createElement("div")
-  searchDiv.classList.add("searchBar")
-  searchDiv.innerHTML = `<input placeholder="search by name..."></input>`
-  document.querySelector("body").appendChild(searchDiv)
+  let searchDiv = document.createElement("div");
+  searchDiv.classList.add("searchBar");
+  searchDiv.innerHTML = `<input placeholder="search by name..."></input>`;
+  document.querySelector("body").appendChild(searchDiv);
 
   // Result
-  let main = document.createElement("div")
-  main.classList.add("beerResults")
-  document.querySelector("body").appendChild(main)
+  let main = document.createElement("div");
+  main.classList.add("beerResults");
+  document.querySelector("body").appendChild(main);
 }
-
-
 
 // DIRECT CODE
 // If current file/view is favorites
-if (window.location.pathname.endsWith('favorites.html')) {
-  let main = document.createElement("div")
-  main.classList.add("beerResults")
-  document.querySelector("body").appendChild(main)
-  showFavorites(globalUser)
+if (window.location.pathname.endsWith("favorites.html")) {
+  let main = document.createElement("div");
+  main.classList.add("beerResults");
+  document.querySelector("body").appendChild(main);
+  showFavorites(globalUser);
 }
 // If current file/view is beerCatalogue
 else {
