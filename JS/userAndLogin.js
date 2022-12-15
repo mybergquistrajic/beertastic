@@ -54,7 +54,7 @@ function showFavorites(username) {
   fetch(`../PHP/readUsersDatabase.php?un=${username}`)
     .then((r) => r.json())
 
-    .then(user => {
+    .then((user) => {
       // If no favorites, display message
       if (user["likedBeers"].length == 0) {
         let noResult = document.createElement("div");
@@ -63,8 +63,8 @@ function showFavorites(username) {
         document.querySelector(".beerResults").appendChild(noResult);
         noResult.classList.add("noResult");
       }
-      user["likedBeers"].forEach(favorite => {
-        // For each beer ID, fetch readBeerDatabase to get the full beer object 
+      user["likedBeers"].forEach((favorite) => {
+        // For each beer ID, fetch readBeerDatabase to get the full beer object
         fetch(`../PHP/read_beerDatabase.php?un=${username}&id=${favorite.id}&beers`)
           .then((r) => r.json())
           .then((result) => {

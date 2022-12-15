@@ -19,8 +19,8 @@
       margin: 0;
     }
     #logInWrapper {
-      height: 100%;
-      width: 90%;
+      height: 100vh;
+      width: 90vw;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -29,7 +29,7 @@
 
     #logIn {
       background-color: #fff1d4;
-      height: 60%;
+      text-align: center;
       padding: 10%;
       width: 80%;
       display: flex;
@@ -40,19 +40,20 @@
     }
 
     #logIn > input {
-      height: 10%;
+      height: 4vh;
       background-color: #fffbf3;
       margin: 10px;
       border-radius: 10px;
       border: 5px solid #fffbf3;
     }
 
-    .logInButtons {
+    .Buttons {
       background-color: #fffbf3;
       margin: 10px;
       border-radius: 10px;
       border: solid 5px #fffbf3;
       width: 50%;
+      padding: 1vh;
     }
 
     #buttonDiv {
@@ -64,15 +65,15 @@
   <body>
     <div id="logInWrapper">
       <h1>BEERTASTIC</h1>
-      <h2>Log in</h2>
       <div id="logIn">
+        <h2>Log in</h2>
         <input type="text" name="username" id="logIn_username" placeholder="username" />
         <input type="password" name="password" id="logIn_password" placeholder="password" />
-        <div id="buttonDiv"><button id="login_button" class="logInButtons">Log in</button></div>
+        <div id="buttonDiv"><button id="login_button" class="Buttons">Log in</button></div>
       </div>
       <p>Don't have an account?</p>
       <a href="../HTML/create_account.html"
-        ><button id="createAccountButton" class="logInButtons">Create account</button></a
+        ><button id="createAccountButton" class="Buttons">Create account</button></a
       >
     </div>
     <script src="../JS/main.js"></script>
