@@ -120,11 +120,19 @@ body {
 .rating {
   display: inline-block;
   overflow: hidden;
-  font-size: 6vw;
+  font-size: 6.1vw;
   color: rgb(0, 0, 0);
 }
 .norating {
   font-style: italic;
+  font-family: "Snippet", sans-serif;
+}
+
+.starDivPopup .norating{
+  height: 17vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #favorites {
@@ -142,6 +150,9 @@ body {
   position: absolute;
   top: 0;
   z-index: 5;
+  background-image: url(../IMAGES/Background_red.png);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .oneBeerPopUpHeader {
@@ -180,4 +191,16 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: 50vw;
+}
+
+.reviewBtn {
+  margin-left: auto;
+  margin-right: auto;
+  width: 30vw;
+  background-color: #AB4300;
+  color: white;
+  padding: 4vw;
+  border-radius: 15px;
+  font-family: "Snippet", sans-serif;
+  text-align: center;
 }
