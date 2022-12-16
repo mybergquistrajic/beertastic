@@ -25,6 +25,11 @@ body {
 #userInfo {
   padding: 5vh;
   height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3vh;
 }
 
 #changePassword {
@@ -56,8 +61,13 @@ body {
 }
 
 #userImage {
-  height: 20vh;
-  width: 20vh;
+  height: 15vh;
+  width: 15vh;
+}
+
+#userInfo > div {
+  color: #ab4300;
+  font-size: 4vh;
 }
 
 #logOutButton {

@@ -47,8 +47,9 @@ function logOut() {
 //Funciton to get the username in the h1
 function welcomeUser(username) {
   const userInfo = document.getElementById("userInfo");
-  const h1 = (document.createElement("h1").innerText = `Welcome ${username}`);
-  userInfo.append(h1);
+  const div = document.createElement("div");
+  div.innerText = `Welcome ${username}`;
+  userInfo.append(div);
 }
 
 //Eventfuntion on logout that runs logout  funciton
