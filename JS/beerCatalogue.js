@@ -199,6 +199,7 @@ if (window.location.pathname.endsWith("favorites.html")) {
   let main = document.createElement("div");
   main.classList.add("beerResults");
   document.querySelector("body").appendChild(main);
+  main.style.maskImage = "linear-gradient(to top, black calc(100% - 40px), transparent 100%)"
   showFavorites(globalUser);
 }
 // If current file/view is beerCatalogue
