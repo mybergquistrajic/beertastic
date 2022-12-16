@@ -119,15 +119,15 @@ function renderNewUser() {
       if (response.status === 400) {
         return renderPopUp("takenUsername");
       }
-      
-      if (response.status === 404) {
-        return renderPopUp("missingInfo");
-      }
 
       if (newUser.age < 18) {
         return renderPopUp("underAgeAccount");
       }
       
+      if (response.status === 404) {
+        return renderPopUp("missingInfo");
+      }
+
       return response.json();
       
     })
