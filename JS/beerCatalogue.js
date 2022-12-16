@@ -139,6 +139,9 @@ function popUpBeer(beer, favorite, ratingClass, ratingContent, ratingSum) {
   let reviewBtn = document.createElement("div");
   reviewBtn.classList.add("reviewBtn")
   reviewBtn.innerHTML = `Review Beer`
+  // Create reviewsDiv
+  let reviewsDiv = document.createElement("div");
+  starDiv.classList.add("reviews")
   // Append everything
   document.querySelector("body").appendChild(oneBeerPopUp);
   oneBeerPopUp.appendChild(header);
@@ -148,6 +151,8 @@ function popUpBeer(beer, favorite, ratingClass, ratingContent, ratingSum) {
   oneBeerPopUp.appendChild(starDiv);
   oneBeerPopUp.appendChild(reviewBtn);
   console.log(beer)
+
+  renderReviews(beer)
 
   // When clicking heart
   heartBtn.addEventListener("click", heartOnClick);
