@@ -29,15 +29,27 @@ function putPassword() {
   };
 
   //The request to the update password file
-
+  let responseStatus;
   const putRequest = new Request("../PHP/updatePassword.php", options);
 
   //Fetthing the request
   fetch(putRequest)
-    .then((r) => r.json())
-    .then(console.log);
+    .then((r) => {
+      responseStatus = r;
+      return r.json();
+    })
+    .then((responseStatus) => {
+      changedPWStatus(responseStatus);
+    });
 }
 
+function changedPWStatus(response) {
+  if (response.status === 200) {
+    renderPopUp("changedPW");
+  } else if (response.status === 400) {
+    renderPopUp("missingInfo");
+  }
+}
 //Logout that clears the localstorage and sends the user to the startpage
 function logOut() {
   localStorage.clear();

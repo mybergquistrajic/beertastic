@@ -1,7 +1,7 @@
 "use strict";
 //This contains the code that runs all the time
 
-menuBar()
+menuBar();
 
 //MENU
 // Menubar, to be called in all JS-files that are directly connected to HTML-files
@@ -127,6 +127,13 @@ function renderPopUp(type) {
     </div>`;
   } else if (type === "none") {
     popUpDiv.innerHTML = "";
+  } else if (type === "changedPW") {
+    popUpDiv.innerHTML = `
+    <div>
+    <h1>Perfect!</h1>
+    <p>Your password has been changed.</p>
+    <button class = "ok">Ok</button>
+    </div>`;
   }
 
   //append the popUpDiv to body
