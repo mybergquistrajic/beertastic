@@ -60,6 +60,8 @@
 .display_error div > h1 {
   font-family: "Shadows Into Light", cursive;
   color: #ab4300;
+  font-size: 8vh;
+  font-weight: 100;
 }
 
 .display_error div > p {
@@ -76,4 +78,9 @@
   font-family: "Shadows Into Light", cursive;
   color: #ab4300;
   font-size: x-large;
+}
+
+.display_error div > button > a {
+  text-decoration: none;
+  color: #ab4300;
 }
