@@ -1,0 +1,70 @@
+body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  background-image: url(../IMAGES/Background_yellow.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+#userPageWrapper {
+  height: 100vh;
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Shadows Into Light", cursive;
+  color: #eddc46;
+  font-weight: 50;
+}
+
+#userInfo {
+  padding: 5vh;
+  height: 20vh;
+}
+
+#changePassword {
+  background-color: #ab4300;
+  height: 40vh;
+  padding: 10%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin: 5% 0 5% 0;
+  justify-content: center;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#changePassword > input {
+  height: 4vh;
+  background-color: white;
+  margin: 10px;
+  border-radius: 10px;
+  border: 5px solid white;
+}
+
+#buttonChangePW {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: inherit;
+}
+
+#userImage {
+  height: 20vh;
+  width: 20vh;
+}
+
+#logOutButton {
+  background-color: #ab4300;
+  color: #eddc46;
+}
+h2 {
+  font-weight: 50;
+  font-size: 4vh;
+}
