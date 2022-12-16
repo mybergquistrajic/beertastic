@@ -116,17 +116,26 @@ function renderNewUser() {
   //fetch the request ,
   fetch(new_user_request)
     .then((response) => {
-      if (newUser.age < 18) {
-        renderPopUp("underAgeAccount");
-      } else if (response === 400) {
-        renderPopUp("takenUsername");
-      } else if (response === 404) {
-        renderPopUp("missingInfo");
+      if (response.status === 400) {
+        return renderPopUp("takenUsername");
       }
+
+      if (newUser.age < 18) {
+        return renderPopUp("underAgeAccount");
+      }
+      
+      if (response.status === 404) {
+        return renderPopUp("missingInfo");
+      }
+
       return response.json();
+      
     })
     //Function to update the userJSON-file?
     .then((new_user) => {
+      if (new_user === undefined) {
+        return;
+      }
       createdUser(new_user);
     });
 }
