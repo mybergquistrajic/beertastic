@@ -8,17 +8,17 @@ require_once 'functions.php';
 if($request_method == "PUT") {
 
     // Check if the request body is empty
-    if(!isset($r_data["userId"], $r_data["password"], $r_data["newPassword"])) {
+    if(!isset($r_data["username"], $r_data["password"], $r_data["newPassword"])) {
         $error = ["error" => "The password and new Password must be set."];
         sendJSON($error, 400);
-    } elseif (empty($r_data["userId"]) || empty($r_data["password"]) || empty($r_data["newPassword"])) {
+    } elseif (empty($r_data["username"]) || empty($r_data["password"]) || empty($r_data["newPassword"])) {
         $error = ["error" => "The password and new Password must not be empty."];
         sendJSON($error, 400);
     } 
     
     // Check if the password is correct
     foreach($users as $user){
-        if ($user["userId"] == $r_data["userId"]) { if($user["password"] != $r_data["password"]) {
+        if ($user["username"] == $r_data["username"]) { if($user["password"] != $r_data["password"]) {
             $error = ["error" => "The password is incorrect."];
             sendJSON($error, 400);};
         }
@@ -30,13 +30,13 @@ if($request_method == "PUT") {
         sendJSON($error, 400);
     }
 
-    $userId = $r_data["userId"];
+    $username = $r_data["username"];
     $password = $r_data["password"];
     $newPassword = $r_data["newPassword"];
     
     // Update the password
     foreach($users as $index => $user){
-        if ($user["userId"] == $r_data["userId"]) {
+        if ($user["username"] == $r_data["username"]) {
             $users[$index]["userId"] = $user["userId"];
             $users[$index]["username"] = $user["username"];
             $users[$index]["password"] = $newPassword;
