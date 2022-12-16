@@ -76,15 +76,17 @@ async function renderBeer(beer) {
   // Render each beer
   let beerDiv = document.createElement("div");
   beerDiv.innerHTML = `
-    <div>
-        <img src="../IMAGES/${beer["img"]}">
-    </div>
-    <div>
-        <div class="${favorite} heart${beer["id"]}"></div>
-        <h3>${beer["name"]} </h3>
-        ${beer["avb"]}% <br>
-        ${beer["type"]} <br>
-        <div style="width: ${reviewWidth}"><div class="${ratingClass} rating${beer["id"]}">${ratingContent}</div></div>
+    <div class="${favorite} heart${beer["id"]}"></div>
+    <div class="popUp${beer["id"]}">
+        <div>
+          <img src="../IMAGES/${beer["img"]}">
+        </div>
+        <div>
+          <h3>${beer["name"]} </h3>
+          ${beer["avb"]}% <br>
+          ${beer["type"]} <br>
+          <div style="width: ${reviewWidth}"><div class="${ratingClass} rating${beer["id"]}">${ratingContent}</div></div>
+        </div>
     </div>
     `;
 
@@ -100,7 +102,7 @@ async function renderBeer(beer) {
   // When clicking the heart
   document.querySelector(`.heart${beer["id"]}`).addEventListener("click", heartOnClick);
 
-  beerDiv.addEventListener("click", () => { popUpBeer(beer, favorite, ratingClass, ratingContent, ratingSum); })
+  document.querySelector(`.popUp${beer["id"]}`).addEventListener("click", () => { popUpBeer(beer, favorite, ratingClass, ratingContent, ratingSum); })
 }
 
 // Render the popup when clicking beer

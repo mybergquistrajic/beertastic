@@ -66,9 +66,9 @@ body {
 .beerDiv {
   width: 90vw;
   height: 50vw;
-  margin: 3.3vw;
   display: grid;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 1% 99%;
+  margin: 3.3vw;
   background-color: white;
   opacity: 90%;
   border-radius: 15px;
@@ -77,37 +77,63 @@ body {
   color: #ab4300;
 }
 
-.beerDiv > div > h3 {
-  font-family: "Shadows Into Light", cursive;
-  letter-spacing: 2px;
-  line-height: 0em;
+.beerDiv > div:last-child{
+  display: grid;
+  grid-template-columns: 40% 60%;
+  height: 100%;
 }
-.beerDiv > div:first-child {
-  height: 55vw;
+
+.beerDiv > div:last-child > div:first-child{
+  height: 50vw;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.beerDiv > div:first-child > img {
+
+.beerDiv > div:last-child > div:first-child img{
   height: 70%;
 }
 
+.beerDiv > div:last-child > div:last-child{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.beerDiv > div:last-child > div:last-child > h3 {
+  font-family: "Shadows Into Light", cursive;
+  letter-spacing: 2px;
+  line-height: 0em;
+}
+
+/* .beerDiv > div > h3 {
+  font-family: "Shadows Into Light", cursive;
+  letter-spacing: 2px;
+  line-height: 0em;
+} */
+/* .beerDiv > div:first-child {
+
+} */
+/* .beerDiv > div:first-child > img {
+  height: 70%;
+} */
+
 /* HEARTS */
 .filled {
-  height: 20%;
-  width: 20%;
+  height: 10vw;
+  width: 10vw;
   position: relative;
-  left: 73%;
+  left: 77vw;
   top: 5%;
   background-image: url(../IMAGES/heart-filled.png);
   background-size: contain;
   background-repeat: no-repeat;
 }
 .notfilled {
-  height: 20%;
-  width: 20%;
+  height: 10vw;
+  width: 10vw;
   position: relative;
-  left: 73%;
+  left: 77vw;
   top: 5%;
   background-image: url(../IMAGES/heart-nofilled.png);
   background-size: contain;
