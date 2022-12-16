@@ -1,9 +1,6 @@
 "use strict";
 
-// Global variables, username & password to be changes
-let beerResult;
-// let username = "mybr";
-// let password = "mrPotatoHead";
+// Global variables
 globalUser = localStorage.getItem("globalUser");
 
 // Fetch all beers
@@ -11,21 +8,19 @@ function getAllBeers() {
   fetch(`../PHP/read_beerDatabase.php?un=${globalUser}&beers`)
     .then((r) => r.json())
     .then((result) => {
-      // Fill the global result variable, and then call filterBeers
-      beerResult = result;
-      filterBeers();
+      filterBeers(result);
     });
 }
 
 // Filter beers (if search bar is filled, else keeps all beers)
-function filterBeers() {
+function filterBeers(result) {
   // If there's no value in searchbar, render all beers
   if (document.querySelector(".searchBar input").value == "") {
-    renderBeers(beerResult);
+    renderBeers(result);
   }
   // If there is a value in searchbar, filter the beers and then render
   if (document.querySelector(".searchBar input").value !== "") {
-    let filteredResult = beerResult.filter((beer) =>
+    let filteredResult = result.filter((beer) =>
       beer["name"].toLowerCase().includes(document.querySelector(".searchBar input").value)
     );
     renderBeers(filteredResult);
@@ -133,16 +128,11 @@ function popUpBeer(beer) {
   `
   // Append everything
   document.querySelector("body").appendChild(oneBeerPopUp);
-
-  console.log(beer);
-
   oneBeerPopUp.appendChild(header);
   header.appendChild(backBtn);
   header.appendChild(heartBtn);
   oneBeerPopUp.appendChild(infoDiv);
   console.log(beer)
-
-  // console.log(event.target.parentElement)
 
   // Remove popup on arrow click
   backBtn.addEventListener("click", () => { oneBeerPopUp.remove() })
