@@ -3,7 +3,7 @@
 //Function for the patching of the password/Changing the password
 function putPassword(username) {
   //the username in the body is the same as the user that is logged in
-  localStorage.getItem("globalUser", username);
+  globalUser = localStorage.getItem("globalUser");
 
   //reads the value of the inputfields for changing the password
   const currentPW = document.getElementById("currentPW").value;
@@ -11,7 +11,7 @@ function putPassword(username) {
 
   //the request body  contains username, old password and new password
   const putPW = {
-    username: username,
+    username: globalUser,
     password: currentPW,
     newPassword: newPW,
   };
