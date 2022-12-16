@@ -152,8 +152,6 @@ function popUpBeer(beer, favorite, ratingClass, ratingContent, ratingSum) {
   oneBeerPopUp.appendChild(reviewBtn);
   console.log(beer)
 
-  renderReviews(beer)
-
   // When clicking heart
   heartBtn.addEventListener("click", heartOnClick);
   // Stars
