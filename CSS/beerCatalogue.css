@@ -98,12 +98,14 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 85%;
 }
 
 .beerDiv > div:last-child > div:last-child > h3 {
   font-family: "Shadows Into Light", cursive;
   letter-spacing: 2px;
-  line-height: 0em;
+  line-height: 1em;
+  margin: 5px 0px 5px 0px;
 }
 
 /* .beerDiv > div > h3 {
