@@ -28,7 +28,6 @@ function logIn() {
   //fetch the request , when the resource promise comes call the function logIn_answer
   fetch(user_status_request)
     .then((r) => {
-      console.log(r);
       responseStatus = r;
       return r.json();
     })
@@ -123,13 +122,12 @@ function renderNewUser() {
       if (newUser.age < 18) {
         return renderPopUp("underAgeAccount");
       }
-      
+
       if (response.status === 404) {
         return renderPopUp("missingInfo");
       }
 
       return response.json();
-      
     })
     //Function to update the userJSON-file?
     .then((new_user) => {
