@@ -50,6 +50,9 @@ function heartOnClick(event) {
 
 //Function to load different answers based on the "type" - parameter
 function renderPopUp(type) {
+  if(document.querySelector(".popUpDiv") != null){
+    document.querySelector(".popUpDiv").remove();
+  }
   //Creates the popUpDiv
   const popUpDiv = document.createElement("div");
   //Adding a class for styling the popUpDiv
@@ -125,7 +128,7 @@ function renderPopUp(type) {
     popUpDiv.innerHTML = "";
   }
 
-  //append the popUpDiv here:
+  document.querySelector("body").appendChild(popUpDiv);
 }
 
 //EVENT-FUNCTIONS

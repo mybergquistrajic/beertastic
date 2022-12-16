@@ -127,10 +127,6 @@ body {
   font-style: italic;
 }
 
-/* ONE BEER POPUP */
-
-
-
 #favorites {
   font-family: "Shadows Into Light", cursive;
   color: #eddc46;
@@ -138,29 +134,30 @@ body {
   font-weight: 100;
 }
 
-.oneBeerPopUp{
-    background-color: white;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    z-index: 5;
+/* ONE BEER POPUP */
+.oneBeerPopUp {
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  z-index: 5;
 }
 
-.oneBeerPopUpHeader{
-    display: flex;
-    align-items: center;
-    height: 10vh;
+.oneBeerPopUpHeader {
+  display: flex;
+  align-items: center;
+  height: 10vh;
 }
 
 .oneBeerPopUpHeader img:first-child {
-    height: 50%;
+  height: 50%;
 }
 
 .oneBeerPopUpHeader img:last-child {
-    height: 60%;
-    margin-left: auto;
-    padding-right: 3%;
+  height: 60%;
+  margin-left: auto;
+  padding-right: 3%;
 }
 
 .oneBeerPopUpInfo {
@@ -172,8 +169,8 @@ body {
     font-family: "Snippet", sans-serif;
 }
 
-.oneBeerPopUpInfo img{
-    height: 70%;
+.oneBeerPopUpInfo img {
+  height: 70%;
 }
 
 .starDivPopup {
@@ -184,4 +181,3 @@ body {
   margin-right: auto;
   width: 50vw;
 }
-

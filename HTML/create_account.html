@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create account</title>
     <link rel="stylesheet" href="../CSS/style.css" />
+    <link rel="stylesheet" href="../CSS/create_account.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,74 +16,29 @@
       rel="stylesheet"
     />
   </head>
-  <style>
-    body {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      margin: 0;
-
-      background-image: url(../IMAGES/Background_red.png);
-      background-size: cover;
-      background-repeat: no-repeat;
-    }
-    #CreateWrapper {
-      height: 100%;
-      width: 90%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      font-family: "Shadows Into Light", cursive;
-      color: #eddc46;
-    }
-
-    #createAccount {
-      background-color: #ab4300;
-      height: 50%;
-      padding: 10%;
-      width: 80%;
-      display: flex;
-      flex-direction: column;
-
-      justify-content: center;
-      border-radius: 10px;
-      text-align: center;
-
-      font-weight: 50;
-    }
-
-    #createAccount > input {
-      height: 10%;
-      background-color: white;
-      margin: 10px;
-      border-radius: 10px;
-      border: 5px solid white;
-    }
-
-    #buttonDivCreate {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    h1 {
-      font-size: 8vh;
-      color: #eddc46;
-      font-weight: 100;
-    }
-  </style>
   <body>
     <div id="CreateWrapper">
       <h1>BEERTASTIC</h1>
       <div id="createAccount">
         <h2>Create Account</h2>
-        <input type="text" name="c_username" id="c_username" placeholder="username" />
-        <input type="password" name="c_password" id="c_password" placeholder="password" />
+        <input
+          type="text"
+          name="c_username"
+          id="c_username"
+          placeholder="username"
+        />
+        <input
+          type="password"
+          name="c_password"
+          id="c_password"
+          placeholder="password"
+        />
         <input type="number" name="age" id="age" placeholder="age" />
-        <div id="buttonDivCreate"><button class="Buttons">Create Account</button></div>
+        <div id="buttonDivCreate">
+          <button class="Buttons" id="createAccountButton">
+            Create Account
+          </button>
+        </div>
       </div>
     </div>
     <script src="../JS/main.js"></script>
