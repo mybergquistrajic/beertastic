@@ -116,6 +116,7 @@ function popUpBeer(beer, favorite, ratingClass, ratingContent, ratingSum) {
   // Create popup
   let oneBeerPopUp = document.createElement("div");
   oneBeerPopUp.classList.add("oneBeerPopUp");
+  let oneBeerPopUpContent = document.createElement("div");
   // Create header
   let header = document.createElement("div");
   header.classList.add("oneBeerPopUpHeader")
@@ -132,7 +133,7 @@ function popUpBeer(beer, favorite, ratingClass, ratingContent, ratingSum) {
   infoDiv.classList.add("oneBeerPopUpInfo");
   infoDiv.innerHTML = `
   <img src="../IMAGES/${beer["img"]}">
-  <h2>${beer["name"]}</h2>
+  <h2 style="margin-bottom: 1.5vw;">${beer["name"]}</h2>
   ${beer["avb"]}% <br>
   ${beer["type"]} <br>
   `
@@ -149,12 +150,12 @@ function popUpBeer(beer, favorite, ratingClass, ratingContent, ratingSum) {
   // Append everything
   document.querySelector("body").appendChild(oneBeerPopUp);
   oneBeerPopUp.appendChild(header);
+  oneBeerPopUp.appendChild(oneBeerPopUpContent);
   header.appendChild(backBtn);
   header.appendChild(heartBtn);
-  oneBeerPopUp.appendChild(infoDiv);
-  oneBeerPopUp.appendChild(starDiv);
-  oneBeerPopUp.appendChild(reviewBtn);
-  console.log(beer)
+  oneBeerPopUpContent.appendChild(infoDiv);
+  oneBeerPopUpContent.appendChild(starDiv);
+  oneBeerPopUpContent.appendChild(reviewBtn);
 
   // When clicking heart
   heartBtn.addEventListener("click", heartOnClick);
