@@ -144,4 +144,4 @@ ok_button.addEventListner("click", addAndRemoveClass);
 //EVENT-FUNCTIONS
 
 // Direct code:
-menuBar();
+// menuBar();
