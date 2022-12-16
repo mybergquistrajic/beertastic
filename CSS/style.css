@@ -33,3 +33,47 @@
   color: #ab4300;
   font-size: large;
 }
+
+/* POPUP for errors */
+
+.display_none {
+  display: none;
+}
+
+.display_error {
+  background-color: white;
+  position: absolute;
+  top: 20vh;
+  bottom: 20vh;
+  left: 5vw;
+  right: 5vw;
+  filter: drop-shadow(0 -2mm 4mm rgba(207, 207, 207, 0.529));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 3vh;
+  color: #ab4300;
+  font-family: "Snippet", sans-serif;
+}
+
+.display_error div > h1 {
+  font-family: "Shadows Into Light", cursive;
+  color: #ab4300;
+}
+
+.display_error div > p {
+  font-size: 3vh;
+}
+
+.display_error div > button {
+  background-color: white;
+  margin: 10px;
+  border-radius: 10px;
+  border: solid 3px #ab4300;
+  width: 50%;
+  padding: 1vh;
+  font-family: "Shadows Into Light", cursive;
+  color: #ab4300;
+  font-size: x-large;
+}
