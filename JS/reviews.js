@@ -1,3 +1,5 @@
+globalUser = localStorage.getItem("globalUser");
+
 // render Reviews for selected beer
 function renderReviews(beer) {
 
@@ -14,12 +16,12 @@ function renderReviews(beer) {
             reviewContainer.classList.add("review");
 
             // if user has written review, add delete button
-            if (review.username === user) {
+            if (review.username === globalUser) {
                 const deleteButton = document.createElement("div");
                 deleteButton.classList.add("reviewDelete");
                 deleteButton.innerHTML = //trashcan icon?
                     deleteButton.addEventListener("click", function () {
-                
+
                         // Confirm delete review
                         renderPopup("deleteReview");
 
@@ -35,7 +37,7 @@ function renderReviews(beer) {
                                         beerId: beer.id,
                                         reviewId: review.id
                                     })
-                        
+
                                 })
                                 .then(res => res.json())
                                 .then(data => {
@@ -48,7 +50,7 @@ function renderReviews(beer) {
                         noButton.addEventListener("click", function () {
                             renderPopup("none"); //right way to close popup?
                         })
-            
+
                         reviewContainer.appendChild(deleteButton);
                     })
             }
@@ -87,12 +89,12 @@ function renderReviews(beer) {
             // Review rating
             const reviewRating = document.createElement("p");
             reviewRating.classList.add("reviewRating");
-            reviewRating.innerHTML = reviewRating(review.rating);
-                reviewContainer.appendChild(reviewRating);
-        
+            // reviewRating.innerHTML = reviewRating(review.rating);
+            // reviewContainer.appendChild(reviewRating);
+
             reviewsContainer.appendChild(reviewContainer);
         }
-})
+    })
 }
 
 // Funtion for creating write review window
@@ -104,9 +106,9 @@ function writeReview(beer) {
     const reviewExit = document.createElement("div");
     reviewExit.classList.add("reviewExit");
     reviewExit.innerHTML = "X"
-        reviewExit.addEventListener("click", function () {
-            reviewWindow.remove();
-        })
+    reviewExit.addEventListener("click", function () {
+        reviewWindow.remove();
+    })
     reviewWindow.appendChild(reviewExit);
 
     // Beer image
@@ -141,34 +143,34 @@ function writeReview(beer) {
         const reviewMessage = document.querySelector(".reviewInput input").value;
         const reviewRating = document.querySelector(".reviewRating").value;
         fetch("http://localhost:8888/postReview",
-        {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                beerId: beer.id,
-                username: globalUsername,
-                message: reviewMessage,
-                rating: reviewRating
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    beerId: beer.id,
+                    username: globalUsername,
+                    message: reviewMessage,
+                    rating: reviewRating
+                })
             })
-        })
-        .then(res => {
-            if (res.status === 200) {
-                console.log("Review posted");
-            } else {
-                const errorMessage = document.createElement("p");
-                errorMessage.classList.add("errorMessage");
-                errorMessage.innerHTML = "Please fill out atleast one field";
-            }
+            .then(res => {
+                if (res.status === 200) {
+                    console.log("Review posted");
+                } else {
+                    const errorMessage = document.createElement("p");
+                    errorMessage.classList.add("errorMessage");
+                    errorMessage.innerHTML = "Please fill out atleast one field";
+                }
 
-            return res.json();
-        })
-        .then(data => {
-            console.log(data)
-            reviewContainer.remove();
-            renderReviews(beer)
-        })
+                return res.json();
+            })
+            .then(data => {
+                console.log(data)
+                reviewContainer.remove();
+                renderReviews(beer)
+            })
     })
 
 }
