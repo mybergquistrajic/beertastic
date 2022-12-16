@@ -184,7 +184,7 @@ body {
 .oneBeerPopUpHeader {
   display: flex;
   align-items: center;
-  height: 10vh;
+  height: 8vh;
   background-color: #ab4300;
   position: sticky;
   top: 0;
@@ -192,6 +192,8 @@ body {
 
 .oneBeerPopUpHeader img:first-child {
   height: 50%;
+  /* Negative margin to help with positioning heart */
+  margin: 0vw -1.5vw 0vw 2vw;
 }
 
 .oneBeerPopUpHeader img:last-child {
@@ -211,6 +213,7 @@ body {
 
 .oneBeerPopUpInfo img {
   height: 70%;
+  padding-top: 4vw;
 }
 
 .starDivPopup {
