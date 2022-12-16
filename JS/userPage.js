@@ -1,7 +1,11 @@
-"user strict";
+"use strict";
+
+if (localStorage.getItem("globalUser") === null) {
+  renderPopUp("haveToLogIn");
+}
 
 //Function for the patching of the password/Changing the password
-function putPassword(username) {
+function putPassword() {
   //the username in the body is the same as the user that is logged in
   globalUser = localStorage.getItem("globalUser");
 
@@ -42,7 +46,6 @@ function logOut() {
 
 //Funciton to get the username in the h1
 function welcomeUser(username) {
-  localStorage.setItem("globalUser", username);
   const userInfo = document.getElementById("userInfo");
   const h1 = (document.createElement("h1").innerText = `Welcome ${username}`);
   userInfo.append(h1);
@@ -56,4 +59,4 @@ log_out_b.addEventListener("click", logOut);
 const changePWbutton = document.getElementById("changePW");
 changePWbutton.addEventListener("click", putPassword);
 //Direct code
-welcomeUser(globalUser);
+welcomeUser(localStorage.getItem("globalUser"));
