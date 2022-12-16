@@ -4,7 +4,7 @@ let globalUser;
 
 //USER LOGIN
 //function to log in with the user_status to define logged in or not
-function logIn(user_status) {
+function logIn() {
   const username = document.getElementById("logIn_username").value;
   const password = document.getElementById("logIn_password").value;
 
@@ -23,26 +23,38 @@ function logIn(user_status) {
 
   //request to log in PHP-file
   const user_status_request = new Request("../PHP/login.php", options);
+
+  let responseStatus;
   //fetch the request , when the resource promise comes call the function logIn_answer
   fetch(user_status_request)
-    .then((r) => r.json())
-    .then(logIn_answer(user_status, username));
+    .then((r) => {
+      console.log(r);
+      responseStatus = r;
+      return r.json();
+    })
+    .then((resource) => {
+      logIn_answer(responseStatus, resource.username);
+    });
 }
 
 //Function for the response to the request to log in
-function logIn_answer(response, username) {
+function logIn_answer(responseStatus, username) {
   //If the user is in the database and the log in is sucessful show the log in view.
-  if (response === 200) {
+
+  if (responseStatus.status === 200) {
     //Update the global variabel to the username
+
     localStorage.setItem("globalUser", username);
     //Run the funciton for the Log in view
     // showFavorites(username);
     window.location.href = "favorites.html";
-  } else {
-    //Update the global variabel to 0 to show that user is not logged in
-    globalUser = 0;
+  } else if (responseStatus.status === 400) {
     // render popup for no user found in the databas
     renderPopUp("NoUserFound");
+    //Update the global variabel to 0 to show that user is not logged in
+    globalUser = 0;
+  } else if (responseStatus.status === 404) {
+    renderPopUp("missingInfo");
   }
 }
 
@@ -135,5 +147,5 @@ c_button.addEventListener("click", renderNewUser);
 
 const logInButton = document.getElementById("login_button");
 logInButton.addEventListener("click", () => {
-  logIn(200);
+  logIn(globalUser);
 });
