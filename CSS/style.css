@@ -41,13 +41,12 @@
 }
 
 .display_error {
-  background-color: white;
+  background-color: #ffffffbe;
   position: absolute;
-  top: 20vh;
-  bottom: 20vh;
-  left: 5vw;
-  right: 5vw;
-  filter: drop-shadow(0 -2mm 4mm rgba(207, 207, 207, 0.529));
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,6 +56,16 @@
   font-family: "Snippet", sans-serif;
 }
 
+.display_error > div {
+  filter: drop-shadow(0 -2mm 4mm rgba(207, 207, 207, 0.529));
+
+  background-color: white;
+  position: absolute;
+  top: 25vh;
+  bottom: 25vh;
+  left: 5vw;
+  right: 5vw;
+}
 .display_error div > h1 {
   font-family: "Shadows Into Light", cursive;
   color: #ab4300;
