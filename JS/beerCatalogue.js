@@ -79,7 +79,7 @@ async function renderBeer(beer) {
         <h3>${beer["name"]} </h3>
         ${beer["avb"]}% <br>
         ${beer["type"]} <br>
-        <div class="${ratingClass} rating${beer["id"]}">${ratingContent}</div>
+        <div style="width: 50%"><div class="${ratingClass} rating${beer["id"]}">${ratingContent}</div></div>
     </div>
     `;
 
