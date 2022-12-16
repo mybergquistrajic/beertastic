@@ -101,6 +101,7 @@ async function renderBeer(beer) {
   beerDiv.addEventListener("click", () => { popUpBeer(beer, favorite, ratingClass, ratingContent, ratingSum); })
 }
 
+// Render the popup when clicking beer
 function popUpBeer(beer, favorite, ratingClass, ratingContent, ratingSum) {
   let popUpRating;
   if (ratingSum == 0) {
