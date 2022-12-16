@@ -1,6 +1,8 @@
 "use strict";
 //This contains the code that runs all the time
 
+menuBar()
+
 //MENU
 // Menubar, to be called in all JS-files that are directly connected to HTML-files
 function menuBar() {
