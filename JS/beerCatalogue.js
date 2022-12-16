@@ -1,6 +1,7 @@
 "use strict";
 
 // Global variables
+let globalBeers;
 globalUser = localStorage.getItem("globalUser");
 
 // Fetch all beers
@@ -8,19 +9,20 @@ function getAllBeers() {
   fetch(`../PHP/read_beerDatabase.php?un=${globalUser}&beers`)
     .then((r) => r.json())
     .then((result) => {
-      filterBeers(result);
+      globalBeers = result;
+      filterBeers();
     });
 }
 
 // Filter beers (if search bar is filled, else keeps all beers)
-function filterBeers(result) {
+function filterBeers() {
   // If there's no value in searchbar, render all beers
   if (document.querySelector(".searchBar input").value == "") {
-    renderBeers(result);
+    renderBeers(globalBeers);
   }
   // If there is a value in searchbar, filter the beers and then render
   if (document.querySelector(".searchBar input").value !== "") {
-    let filteredResult = result.filter((beer) =>
+    let filteredResult = globalBeers.filter((beer) =>
       beer["name"].toLowerCase().includes(document.querySelector(".searchBar input").value)
     );
     renderBeers(filteredResult);
