@@ -18,10 +18,19 @@ function calculateRating(beer) {
 }
 
 // Calculate stars 'width'
+// function calculateStars(element, finalSum) {
+//   console.log(finalSum * 2)
+//   // Get the original width of the star-element
+//   let elementWidth = element.offsetWidth;
+
+//   // Set new width of element based on median (final sum)
+//   // divided by the elements width times 1000 to get the final percentage
+//   element.style.width = ((finalSum * 2 / elementWidth) * 1000) + '%'
+// }
+
 function calculateStars(element, finalSum) {
-  // Get the original width of the star-element
-  let elementWidth = element.offsetWidth;
   // Set new width of element based on median (final sum)
-  // divided by the elements width times 1000 to get the final percentage
-  element.style.width = ((finalSum / elementWidth) * 1000) + '%'
+  // times two (since the ratings are by 5 and not 10),
+  // then multiplied by 10 to get percentage and add %
+  element.style.width = ((finalSum * 2) * 10) + '%'
 }

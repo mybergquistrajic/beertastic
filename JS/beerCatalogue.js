@@ -95,16 +95,10 @@ async function renderBeer(beer) {
   // When clicking the heart
   document.querySelector(`.heart${beer["id"]}`).addEventListener("click", heartOnClick);
 
-
-  beerDiv.addEventListener("click", () => {
-    popUpBeer(beer);
-  });
-
-  beerDiv.addEventListener("click", () => { popUpBeer(beer); })
-
+  beerDiv.addEventListener("click", () => { popUpBeer(beer, favorite, ratingClass, ratingContent, ratingSum); })
 }
 
-function popUpBeer(beer) {
+function popUpBeer(beer, favorite, ratingClass, ratingContent, ratingSum) {
   // Create popup
   let oneBeerPopUp = document.createElement("div");
   oneBeerPopUp.classList.add("oneBeerPopUp");
@@ -115,25 +109,39 @@ function popUpBeer(beer) {
   let backBtn = document.createElement("img");
   backBtn.src = "../IMAGES/left-arrow.png";
   // Create heart
-  let heartBtn = document.createElement("img");
-  heartBtn.src = "../IMAGES/heart-nofilled.png";
+  let heartBtn = document.createElement("div");
+  heartBtn.classList.add(`${favorite}`)
+  heartBtn.classList.add(`heart${beer["id"]}`)
+  heartBtn.style.height = "65%";
   // Create info div
   let infoDiv = document.createElement("div");
   infoDiv.classList.add("oneBeerPopUpInfo");
   infoDiv.innerHTML = `
   <img src="../IMAGES/${beer["img"]}">
-  ${beer["name"]} <br>
+  <h2>${beer["name"]}</h2>
   ${beer["avb"]}% <br>
   ${beer["type"]} <br>
   `
+  // Create starDiv
+  let starDiv = document.createElement("div");
+  starDiv.classList.add("starDivPopup")
+  starDiv.innerHTML = `<div class="${ratingClass} ratingPopup${beer["id"]}" style="font-size: 11.5vw">${ratingContent}</div>`
   // Append everything
   document.querySelector("body").appendChild(oneBeerPopUp);
   oneBeerPopUp.appendChild(header);
   header.appendChild(backBtn);
   header.appendChild(heartBtn);
   oneBeerPopUp.appendChild(infoDiv);
+  oneBeerPopUp.appendChild(starDiv);
   console.log(beer)
 
+  // When clicking heart
+  heartBtn.addEventListener("click", heartOnClick);
+  // Stars
+  if (ratingSum !== 0) {
+    // Call function with the ratingSum and star-element as parameters
+    calculateStars(document.querySelector(`.ratingPopup${beer["id"]}`), ratingSum);
+  }
   // Remove popup on arrow click
   backBtn.addEventListener("click", () => { oneBeerPopUp.remove() })
 }
