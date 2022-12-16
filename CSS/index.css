@@ -7,7 +7,7 @@ body {
   overflow-x: hidden;
   margin: 0;
 
-  background-image: url(../IMAGES/Background_red.png);
+  background-image: url(../IMAGES/Background_red.svg);
   background-size: cover;
   background-repeat: no-repeat;
   font-family: "Shadows Into Light", cursive;

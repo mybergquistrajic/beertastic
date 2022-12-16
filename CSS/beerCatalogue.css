@@ -7,7 +7,7 @@ body {
   flex-direction: column;
   overflow-x: hidden;
 
-  background-image: url(../IMAGES/Background_yellow.png);
+  background-image: url(../IMAGES/Background_yellow.svg);
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -77,24 +77,24 @@ body {
   color: #ab4300;
 }
 
-.beerDiv > div:last-child{
+.beerDiv > div:last-child {
   display: grid;
   grid-template-columns: 40% 60%;
   height: 100%;
 }
 
-.beerDiv > div:last-child > div:first-child{
+.beerDiv > div:last-child > div:first-child {
   height: 50vw;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.beerDiv > div:last-child > div:first-child img{
+.beerDiv > div:last-child > div:first-child img {
   height: 70%;
 }
 
-.beerDiv > div:last-child > div:last-child{
+.beerDiv > div:last-child > div:last-child {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -152,7 +152,7 @@ body {
   font-family: "Snippet", sans-serif;
 }
 
-.starDivPopup .norating{
+.starDivPopup .norating {
   height: 17vw;
   display: flex;
   justify-content: center;
@@ -174,7 +174,7 @@ body {
   position: absolute;
   top: 0;
   z-index: 5;
-  background-image: url(../IMAGES/Background_red.png);
+  background-image: url(../IMAGES/Background_red.svg);
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -183,7 +183,7 @@ body {
   display: flex;
   align-items: center;
   height: 10vh;
-  background-color: #AB4300;
+  background-color: #ab4300;
   position: sticky;
   top: 0;
 }
@@ -199,12 +199,12 @@ body {
 }
 
 .oneBeerPopUpInfo {
-    height: 35vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-family: "Snippet", sans-serif;
+  height: 35vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Snippet", sans-serif;
 }
 
 .oneBeerPopUpInfo img {
@@ -224,7 +224,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: 30vw;
-  background-color: #AB4300;
+  background-color: #ab4300;
   color: white;
   padding: 4vw;
   border-radius: 15px;

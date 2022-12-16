@@ -6,7 +6,7 @@ body {
   align-items: center;
   flex-direction: column;
 
-  background-image: url(../IMAGES/Background_yellow.png);
+  background-image: url(../IMAGES/Background_yellow.svg);
   background-size: cover;
   background-repeat: no-repeat;
 }
