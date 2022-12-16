@@ -95,16 +95,10 @@ async function renderBeer(beer) {
   // When clicking the heart
   document.querySelector(`.heart${beer["id"]}`).addEventListener("click", heartOnClick);
 
-
-  beerDiv.addEventListener("click", () => {
-    popUpBeer(beer);
-  });
-
-  beerDiv.addEventListener("click", () => { popUpBeer(beer); })
-
+  beerDiv.addEventListener("click", () => { popUpBeer(beer, favorite); })
 }
 
-function popUpBeer(beer) {
+function popUpBeer(beer, favorite) {
   // Create popup
   let oneBeerPopUp = document.createElement("div");
   oneBeerPopUp.classList.add("oneBeerPopUp");
@@ -115,14 +109,17 @@ function popUpBeer(beer) {
   let backBtn = document.createElement("img");
   backBtn.src = "../IMAGES/left-arrow.png";
   // Create heart
-  let heartBtn = document.createElement("img");
-  heartBtn.src = "../IMAGES/heart-nofilled.png";
+  let heartBtn = document.createElement("div");
+  heartBtn.classList.add(`${favorite}`)
+  heartBtn.classList.add(`heart${beer["id"]}`)
+  heartBtn.style.height = "65%";
+
   // Create info div
   let infoDiv = document.createElement("div");
   infoDiv.classList.add("oneBeerPopUpInfo");
   infoDiv.innerHTML = `
   <img src="../IMAGES/${beer["img"]}">
-  ${beer["name"]} <br>
+  <h2>${beer["name"]}</h2>
   ${beer["avb"]}% <br>
   ${beer["type"]} <br>
   `
@@ -133,6 +130,9 @@ function popUpBeer(beer) {
   header.appendChild(heartBtn);
   oneBeerPopUp.appendChild(infoDiv);
   console.log(beer)
+
+  // When clicking heart
+  heartBtn.addEventListener("click", heartOnClick);
 
   // Remove popup on arrow click
   backBtn.addEventListener("click", () => { oneBeerPopUp.remove() })
