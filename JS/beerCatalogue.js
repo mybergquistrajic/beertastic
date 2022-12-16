@@ -95,10 +95,10 @@ async function renderBeer(beer) {
   // When clicking the heart
   document.querySelector(`.heart${beer["id"]}`).addEventListener("click", heartOnClick);
 
-  beerDiv.addEventListener("click", () => { popUpBeer(beer, favorite); })
+  beerDiv.addEventListener("click", () => { popUpBeer(beer, favorite, ratingClass, ratingContent, ratingSum); })
 }
 
-function popUpBeer(beer, favorite) {
+function popUpBeer(beer, favorite, ratingClass, ratingContent, ratingSum) {
   // Create popup
   let oneBeerPopUp = document.createElement("div");
   oneBeerPopUp.classList.add("oneBeerPopUp");
@@ -113,6 +113,10 @@ function popUpBeer(beer, favorite) {
   heartBtn.classList.add(`${favorite}`)
   heartBtn.classList.add(`heart${beer["id"]}`)
   heartBtn.style.height = "65%";
+  // Create starDiv
+  let starDiv = document.createElement("div");
+  starDiv.classList.add("starDivPopup")
+  starDiv.innerHTML = `<div class="${ratingClass} ratingPopup${beer["id"]}" style="font-size: 11.5vw">${ratingContent}</div>`
 
   // Create info div
   let infoDiv = document.createElement("div");
@@ -129,10 +133,16 @@ function popUpBeer(beer, favorite) {
   header.appendChild(backBtn);
   header.appendChild(heartBtn);
   oneBeerPopUp.appendChild(infoDiv);
+  oneBeerPopUp.appendChild(starDiv);
   console.log(beer)
 
   // When clicking heart
   heartBtn.addEventListener("click", heartOnClick);
+
+  if (ratingSum !== 0) {
+    // Call function with the ratingSum and star-element as parameters
+    calculateStars(document.querySelector(`.ratingPopup${beer["id"]}`), ratingSum);
+  }
 
   // Remove popup on arrow click
   backBtn.addEventListener("click", () => { oneBeerPopUp.remove() })
