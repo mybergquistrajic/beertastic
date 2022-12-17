@@ -39,10 +39,10 @@ function renderReviews(beer, ratingClass, ratingContent) {
 
                     // Confirm delete review
                     renderPopUp("deleteReview");
-
+                    console.log(beer)
                     const yesButton = document.querySelector(".yesButton");
                     yesButton.addEventListener("click", function () {
-                        fetch("http://localhost:8888/deleteReview",
+                        fetch("../PHP/deleteReview.php",
                             {
                                 method: "DELETE",
                                 headers: {
@@ -50,14 +50,20 @@ function renderReviews(beer, ratingClass, ratingContent) {
                                 },
                                 body: JSON.stringify({
                                     beerId: beer.id,
-                                    reviewId: review.id
+                                    reviewId: review.review_id
                                 })
 
                             })
                             .then(res => res.json())
                             .then(data => {
-                                console.log(data)
-                                renderReviews(beer)
+                                //Fetching anew to get beer without the deleted review
+                                fetch(`../PHP/read_beerDatabase.php?un=${globalUser}&id=${beer.id}&beers`)
+                                    .then(r => r.json())
+                                    .then(updatedBeer => {
+                                        console.log(updatedBeer)
+                                        renderReviews(updatedBeer, ratingClass, ratingContent)
+                                        document.querySelector(".display_error").remove()
+                                    })
                             })
                     })
 
