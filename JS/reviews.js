@@ -1,7 +1,7 @@
 globalUser = localStorage.getItem("globalUser");
 
 // render Reviews for selected beer
-function renderReviews(beer, ratingClass, ratingContent, ratingSum) {
+function renderReviews(beer, ratingClass, ratingContent) {
 
     const reviews = beer.reviews;
     const reviewsContainer = document.querySelector(".reviews");
@@ -9,7 +9,6 @@ function renderReviews(beer, ratingClass, ratingContent, ratingSum) {
 
     // render a review for each review in the array
     reviews.forEach(function (review) {
-        console.log(review)
 
         // if reviewMessage is not empty, render review
         if (review.message != "") {
@@ -22,16 +21,12 @@ function renderReviews(beer, ratingClass, ratingContent, ratingSum) {
             reviewHeader.classList.add("reviewHeader");
             reviewContainer.appendChild(reviewHeader);
 
-            // Review rating
-
-
             if (review.rating !== "") {
                 const reviewRating = document.createElement("div");
                 reviewRating.classList.add("reviewRating");
                 reviewRating.innerHTML = `<div class="${ratingClass} ratingReview${review.review_id}" style="font-size: 6.4vw">${ratingContent}</div>`
                 reviewHeader.appendChild(reviewRating);
                 // Call function with the ratingSum and star-element as parameters
-                console.log(document.querySelector(`.ratingReview${review.review_id}`))
                 calculateStars(document.querySelector(`.ratingReview${review.review_id}`), review.rating);
             }
 

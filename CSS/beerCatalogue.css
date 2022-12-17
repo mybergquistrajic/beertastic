@@ -179,6 +179,7 @@ body {
   background-image: url(../IMAGES/Background_red.svg);
   background-size: cover;
   background-repeat: no-repeat;
+  overflow-y: scroll;
 }
 
 .oneBeerPopUpHeader {
