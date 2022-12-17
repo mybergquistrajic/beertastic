@@ -247,7 +247,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20vw;
+  margin: 10vw auto 20vw auto;
 }
 
 .review{
