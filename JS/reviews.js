@@ -76,17 +76,12 @@ function renderReviews(beer, ratingClass, ratingContent, ratingSum) {
                 reviewHeader.appendChild(deleteButton);
             }
 
-            // Review username
+            // Review username & date
             const reviewUser = document.createElement("p");
             reviewUser.classList.add("reviewUser");
-            reviewUser.innerHTML = review.username;
+            reviewUser.style.margin = 0;
+            reviewUser.innerHTML = `<span style="font-weight: bolder; margin-right: 2vw; color: #ab4300;">${review.username}</span><span>(${review.date})</span>`
             reviewContainer.appendChild(reviewUser);
-
-            // Review date
-            const reviewDate = document.createElement("p");
-            reviewDate.classList.add("reviewDate");
-            reviewDate.innerHTML = review.date;
-            reviewContainer.appendChild(reviewDate);
 
             // Review message
             const reviewMessage = document.createElement("p");

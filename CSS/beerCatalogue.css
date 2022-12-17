@@ -249,14 +249,14 @@ body {
 
 .review{
   width: 90vw;
-  height: 50vw;
+  max-height: 50vw;
   margin: 3.3vw;
   background-color: white;
   opacity: 90%;
   border-radius: 15px;
   font-family: "Snippet", sans-serif;
   filter: drop-shadow(0 0 0.3rem #00000030);
-  padding: 2vw;
+  padding: 3vw;
   box-sizing: border-box;
 }
 
@@ -275,4 +275,6 @@ body {
 
 .reviewRating{
   width: 40%;
+  display: flex;
+  align-items: center;
 }
