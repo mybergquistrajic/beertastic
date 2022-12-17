@@ -236,3 +236,43 @@ body {
   font-family: "Snippet", sans-serif;
   text-align: center;
 }
+
+/* REVIEWS */
+
+
+.reviews{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.review{
+  width: 90vw;
+  height: 50vw;
+  margin: 3.3vw;
+  background-color: white;
+  opacity: 90%;
+  border-radius: 15px;
+  font-family: "Snippet", sans-serif;
+  filter: drop-shadow(0 0 0.3rem #00000030);
+  padding: 2vw;
+  box-sizing: border-box;
+}
+
+.reviewHeader{
+  display: grid;
+  grid-template-columns: 80% 20%;
+  height: 20%;
+}
+
+.reviewDelete{
+  background-image: url(../IMAGES/delete.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.reviewRating{
+  width: 40%;
+}

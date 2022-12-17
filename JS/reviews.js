@@ -1,7 +1,7 @@
 globalUser = localStorage.getItem("globalUser");
 
 // render Reviews for selected beer
-function renderReviews(beer) {
+function renderReviews(beer, ratingClass, ratingContent, ratingSum) {
 
     const reviews = beer.reviews;
     const reviewsContainer = document.querySelector(".reviews");
@@ -9,50 +9,71 @@ function renderReviews(beer) {
 
     // render a review for each review in the array
     reviews.forEach(function (review) {
+        console.log(review)
 
         // if reviewMessage is not empty, render review
         if (review.message != "") {
             const reviewContainer = document.createElement("div");
             reviewContainer.classList.add("review");
+            // APPEND REVIEW!!!
+            reviewsContainer.appendChild(reviewContainer);
+
+            const reviewHeader = document.createElement("div");
+            reviewHeader.classList.add("reviewHeader");
+            reviewContainer.appendChild(reviewHeader);
+
+            // Review rating
+
+
+            if (review.rating !== "") {
+                const reviewRating = document.createElement("div");
+                reviewRating.classList.add("reviewRating");
+                reviewRating.innerHTML = `<div class="${ratingClass} ratingReview${review.review_id}" style="font-size: 6.4vw">${ratingContent}</div>`
+                reviewHeader.appendChild(reviewRating);
+                // Call function with the ratingSum and star-element as parameters
+                console.log(document.querySelector(`.ratingReview${review.review_id}`))
+                calculateStars(document.querySelector(`.ratingReview${review.review_id}`), review.rating);
+            }
 
             // if user has written review, add delete button
-            if (review.username === globalUser) {
+            if (review.username == globalUser) {
                 const deleteButton = document.createElement("div");
                 deleteButton.classList.add("reviewDelete");
-                deleteButton.innerHTML = //trashcan icon?
-                    deleteButton.addEventListener("click", function () {
+                // deleteButton.innerHTML = `<img src="../IMAGES/delete.png">`
+                deleteButton.addEventListener("click", function () {
 
-                        // Confirm delete review
-                        renderPopup("deleteReview");
+                    // Confirm delete review
+                    renderPopup("deleteReview");
 
-                        const yesButton = document.querySelector(".yesButton");
-                        yesButton.addEventListener("click", function () {
-                            fetch("http://localhost:8888/deleteReview",
-                                {
-                                    method: "DELETE",
-                                    headers: {
-                                        "Content-Type": "application/json"
-                                    },
-                                    body: JSON.stringify({
-                                        beerId: beer.id,
-                                        reviewId: review.id
-                                    })
-
+                    const yesButton = document.querySelector(".yesButton");
+                    yesButton.addEventListener("click", function () {
+                        fetch("http://localhost:8888/deleteReview",
+                            {
+                                method: "DELETE",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify({
+                                    beerId: beer.id,
+                                    reviewId: review.id
                                 })
-                                .then(res => res.json())
-                                .then(data => {
-                                    console.log(data)
-                                    renderReviews(beer)
-                                })
-                        })
 
-                        const noButton = document.querySelector(".noButton");
-                        noButton.addEventListener("click", function () {
-                            renderPopup("none"); //right way to close popup?
-                        })
-
-                        reviewContainer.appendChild(deleteButton);
+                            })
+                            .then(res => res.json())
+                            .then(data => {
+                                console.log(data)
+                                renderReviews(beer)
+                            })
                     })
+
+                    const noButton = document.querySelector(".noButton");
+                    noButton.addEventListener("click", function () {
+                        renderPopup("none"); //right way to close popup?
+                    })
+
+
+                })
+                reviewHeader.appendChild(deleteButton);
             }
 
             // Review username
@@ -86,13 +107,6 @@ function renderReviews(beer) {
                 reviewContainer.appendChild(showMore);
             }
 
-            // Review rating
-            const reviewRating = document.createElement("p");
-            reviewRating.classList.add("reviewRating");
-            // reviewRating.innerHTML = reviewRating(review.rating);
-            // reviewContainer.appendChild(reviewRating);
-
-            reviewsContainer.appendChild(reviewContainer);
         }
     })
 }
