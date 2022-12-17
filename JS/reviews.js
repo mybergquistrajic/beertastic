@@ -38,7 +38,7 @@ function renderReviews(beer, ratingClass, ratingContent) {
                 deleteButton.addEventListener("click", function () {
 
                     // Confirm delete review
-                    renderPopup("deleteReview");
+                    renderPopUp("deleteReview");
 
                     const yesButton = document.querySelector(".yesButton");
                     yesButton.addEventListener("click", function () {
@@ -63,7 +63,7 @@ function renderReviews(beer, ratingClass, ratingContent) {
 
                     const noButton = document.querySelector(".noButton");
                     noButton.addEventListener("click", function () {
-                        renderPopup("none"); //right way to close popup?
+                        document.querySelector(".display_error").remove()
                     })
 
 

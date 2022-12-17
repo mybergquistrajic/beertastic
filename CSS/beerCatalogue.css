@@ -189,6 +189,7 @@ body {
   background-color: #ab4300;
   position: sticky;
   top: 0;
+  z-index: 10;
 }
 
 .oneBeerPopUpHeader img:first-child {
