@@ -94,7 +94,7 @@
             {
                 "review_id": 7,
                 "username": "mybr",
-                "rating": 4,
+                "rating": 5,
                 "message": "Just like the real deal! \u2026I think?",
                 "date": "22-11-02"
             },
@@ -338,8 +338,7 @@
         "avb": 5,
         "reviews": [],
         "img": "\/Budvar.png"
-    }
-    ,
+    },
     {
         "id": 23,
         "name": "Chang Classic",
@@ -422,7 +421,7 @@
     },
     {
         "id": 33,
-        "name": "Oppigårds,Norn Pale Ale",
+        "name": "Oppig\u00e5rds,Norn Pale Ale",
         "type": "American Pale Ale",
         "avb": 5.6,
         "reviews": [],
@@ -454,7 +453,7 @@
     },
     {
         "id": 36,
-        "name": "Gränges Pilsner",
+        "name": "Gr\u00e4nges Pilsner",
         "type": "Pale Lager",
         "avb": 5,
         "reviews": [],
@@ -467,8 +466,7 @@
         "avb": 6.9,
         "reviews": [],
         "img": "\/Brooklyn_East.png"
-    }
-    ,
+    },
     {
         "id": 38,
         "name": "Arte in Lattina",
@@ -480,7 +478,7 @@
     {
         "id": 39,
         "name": "Kona, Big Wave",
-        "type": "Golden/Blond Ale",
+        "type": "Golden\/Blond Ale",
         "avb": 4.4,
         "reviews": [],
         "img": "\/Kona.png"
@@ -519,7 +517,7 @@
     },
     {
         "id": 44,
-        "name": "Tuborg Grön",
+        "name": "Tuborg Gr\u00f6n",
         "type": "Pale Lager",
         "avb": 4.2,
         "reviews": [],
@@ -613,7 +611,4 @@
         "reviews": [],
         "img": "\/Omaka.png"
     }
-
 ]
-
-

@@ -60,8 +60,13 @@ function renderReviews(beer, ratingClass, ratingContent) {
                                 fetch(`../PHP/read_beerDatabase.php?un=${globalUser}&id=${beer.id}&beers`)
                                     .then(r => r.json())
                                     .then(updatedBeer => {
-                                        console.log(updatedBeer)
+                                        let newRatingSum = calculateRating(updatedBeer)
                                         renderReviews(updatedBeer, ratingClass, ratingContent)
+                                        if (newRatingSum !== null) {
+                                            console.log(newRatingSum)
+                                            // Call function with the ratingSum and star-element as parameters
+                                            calculateStars(document.querySelector(`.ratingPopup${beer["id"]}`), newRatingSum);
+                                        }
                                         document.querySelector(".display_error").remove()
                                     })
                             })
@@ -108,14 +113,13 @@ function renderReviews(beer, ratingClass, ratingContent) {
 }
 
 // Funtion for creating write review window
-function writeReview(beer) {
+function writeReview(beer, ratingClass, ratingContent) {
     const reviewWindow = document.createElement("div");
     reviewWindow.classList.add("reviewWindow");
 
     // Exit button
     const reviewExit = document.createElement("div");
     reviewExit.classList.add("reviewExit");
-    reviewExit.innerHTML = "X"
     reviewExit.addEventListener("click", function () {
         reviewWindow.remove();
     })
@@ -131,28 +135,32 @@ function writeReview(beer) {
     const reviewBeername = document.createElement("div");
     reviewBeername.classList.add("reviewBeername");
     reviewBeername.innerHTML = beer.name;
+    reviewBeername.style.fontFamily = `'Shadows Into Light', cursive`
+    reviewBeername.style.fontSize = `2em`
     reviewWindow.appendChild(reviewBeername);
 
     // Render stars for rating 
     const reviewRating = document.createElement("div");
-    reviewRating.classList.add("reviewRating");
-    reviewRating.innerHTML = createStars();
+    reviewRating.classList.add("reviewRatingStars");
+    reviewRating.appendChild(createStars());
+    console.log(reviewRating.value)
     reviewWindow.appendChild(reviewRating);
 
     // Review Message
     const reviewInput = document.createElement("div");
     reviewInput.classList.add("reviewInput");
-    reviewInput.innerHTML = `<input type="text" placeholder="Write review">`
+    reviewInput.innerHTML = `<textarea></textarea>`
     reviewWindow.appendChild(reviewInput);
 
     // Submit button
     const reviewSubmit = document.createElement("div");
     reviewSubmit.classList.add("reviewSubmit");
     reviewSubmit.innerHTML = "Submit"
+    reviewWindow.appendChild(reviewSubmit);
     reviewSubmit.addEventListener("click", function () {
-        const reviewMessage = document.querySelector(".reviewInput input").value;
-        const reviewRating = document.querySelector(".reviewRating").value;
-        fetch("http://localhost:8888/postReview",
+        const reviewMessage = document.querySelector(".reviewInput textarea").value;
+        const reviewRatingX = parseInt(document.querySelector(".starContainer").getAttribute('value'));
+        fetch("../PHP/postReview.php",
             {
                 method: "POST",
                 headers: {
@@ -160,28 +168,42 @@ function writeReview(beer) {
                 },
                 body: JSON.stringify({
                     beerId: beer.id,
-                    username: globalUsername,
-                    message: reviewMessage,
-                    rating: reviewRating
+                    username: globalUser,
+                    reviewContent: reviewMessage,
+                    rating: reviewRatingX
                 })
             })
             .then(res => {
                 if (res.status === 200) {
                     console.log("Review posted");
                 } else {
-                    const errorMessage = document.createElement("p");
-                    errorMessage.classList.add("errorMessage");
-                    errorMessage.innerHTML = "Please fill out atleast one field";
+                    renderPopUp("ratingReview")
+                    document.querySelector('.ok').addEventListener("click", function () {
+                        document.querySelector(".display_error").remove()
+                    })
                 }
                 return res.json();
             })
             .then(data => {
-                console.log(data)
-                reviewContainer.remove();
-                renderReviews(beer)
+                if (data["error"] !== "Neither rating nor review was submitted, please fill in one of the values") {
+                    reviewWindow.remove();
+                    //Fetching anew to get beer without the new review
+                    fetch(`../PHP/read_beerDatabase.php?un=${globalUser}&id=${beer.id}&beers`)
+                        .then(r => r.json())
+                        .then(updatedBeer => {
+                            console.log(updatedBeer)
+                            renderReviews(updatedBeer, ratingClass, ratingContent)
+                            let newRatingSum = calculateRating(updatedBeer)
+                            if (newRatingSum && reviewRatingX !== 0 || null) {
+                                // Call function with the ratingSum and star-element as parameters
+                                calculateStars(document.querySelector(`.ratingPopup${beer["id"]}`), newRatingSum);
+                            }
+                        })
+                }
             })
     })
-
+    document.querySelector("body").appendChild(reviewWindow);
+    document.querySelector(".reviewInput textarea").placeholder = "Write your review here..."
 }
 
 // Function for creating clickable stars when writing review
@@ -198,7 +220,6 @@ function createStars() {
         })
         starContainer.appendChild(star);
     }
-
     return starContainer;
 }
 
