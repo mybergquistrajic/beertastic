@@ -12,7 +12,7 @@ if ($request_method != "DELETE"){
 }
 
 //Checks that the requested data contains review- and beer-id 
-if(isset($r_data["review_id"], $r_data["beerId"])){
+if(isset($r_data["reviewId"], $r_data["beerId"])){
     //Loops through the beers in the database
     foreach($beers as $beerindex => $beer){
         //Loops through the array of reviews 
@@ -20,7 +20,7 @@ if(isset($r_data["review_id"], $r_data["beerId"])){
             foreach($beer["reviews"] as $reviewindex => $review){
                 //If the review id is the same as the requested data id and the username in the requested data is the same as the 
                 //Username in the review delete it. 
-                if($review["review_id"] == $r_data["review_id"]){
+                if($review["review_id"] == $r_data["reviewId"]){
 
                     // Remove old review
                     array_splice($beer["reviews"], $reviewindex, 1);

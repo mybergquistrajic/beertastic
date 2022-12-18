@@ -1,7 +1,7 @@
 globalUser = localStorage.getItem("globalUser");
 
 // render Reviews for selected beer
-function renderReviews(beer) {
+function renderReviews(beer, ratingClass, ratingContent) {
 
     const reviews = beer.reviews;
     const reviewsContainer = document.querySelector(".reviews");
@@ -14,58 +14,75 @@ function renderReviews(beer) {
         if (review.message != "") {
             const reviewContainer = document.createElement("div");
             reviewContainer.classList.add("review");
+            // APPEND REVIEW!!!
+            reviewsContainer.appendChild(reviewContainer);
 
-            // if user has written review, add delete button
-            if (review.username === globalUser) {
-                const deleteButton = document.createElement("div");
-                deleteButton.classList.add("reviewDelete");
-                deleteButton.innerHTML = //trashcan icon?
-                    deleteButton.addEventListener("click", function () {
+            const reviewHeader = document.createElement("div");
+            reviewHeader.classList.add("reviewHeader");
+            reviewContainer.appendChild(reviewHeader);
 
-                        // Confirm delete review
-                        renderPopup("deleteReview");
-
-                        const yesButton = document.querySelector(".yesButton");
-                        yesButton.addEventListener("click", function () {
-                            fetch("http://localhost:8888/deleteReview",
-                                {
-                                    method: "DELETE",
-                                    headers: {
-                                        "Content-Type": "application/json"
-                                    },
-                                    body: JSON.stringify({
-                                        beerId: beer.id,
-                                        reviewId: review.id
-                                    })
-
-                                })
-                                .then(res => res.json())
-                                .then(data => {
-                                    console.log(data)
-                                    renderReviews(beer)
-                                })
-                        })
-
-                        const noButton = document.querySelector(".noButton");
-                        noButton.addEventListener("click", function () {
-                            renderPopup("none"); //right way to close popup?
-                        })
-
-                        reviewContainer.appendChild(deleteButton);
-                    })
+            if (review.rating !== "") {
+                const reviewRating = document.createElement("div");
+                reviewRating.classList.add("reviewRating");
+                reviewRating.innerHTML = `<div class="${ratingClass} ratingReview${review.review_id}" style="font-size: 6.4vw">${ratingContent}</div>`
+                reviewHeader.appendChild(reviewRating);
+                // Call function with the ratingSum and star-element as parameters
+                calculateStars(document.querySelector(`.ratingReview${review.review_id}`), review.rating);
             }
 
-            // Review username
+            // if user has written review, add delete button
+            if (review.username == globalUser) {
+                const deleteButton = document.createElement("div");
+                deleteButton.classList.add("reviewDelete");
+                // deleteButton.innerHTML = `<img src="../IMAGES/delete.png">`
+                deleteButton.addEventListener("click", function () {
+
+                    // Confirm delete review
+                    renderPopUp("deleteReview");
+                    console.log(beer)
+                    const yesButton = document.querySelector(".yesButton");
+                    yesButton.addEventListener("click", function () {
+                        fetch("../PHP/deleteReview.php",
+                            {
+                                method: "DELETE",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify({
+                                    beerId: beer.id,
+                                    reviewId: review.review_id
+                                })
+
+                            })
+                            .then(res => res.json())
+                            .then(data => {
+                                //Fetching anew to get beer without the deleted review
+                                fetch(`../PHP/read_beerDatabase.php?un=${globalUser}&id=${beer.id}&beers`)
+                                    .then(r => r.json())
+                                    .then(updatedBeer => {
+                                        console.log(updatedBeer)
+                                        renderReviews(updatedBeer, ratingClass, ratingContent)
+                                        document.querySelector(".display_error").remove()
+                                    })
+                            })
+                    })
+
+                    const noButton = document.querySelector(".noButton");
+                    noButton.addEventListener("click", function () {
+                        document.querySelector(".display_error").remove()
+                    })
+
+
+                })
+                reviewHeader.appendChild(deleteButton);
+            }
+
+            // Review username & date
             const reviewUser = document.createElement("p");
             reviewUser.classList.add("reviewUser");
-            reviewUser.innerHTML = review.username;
+            reviewUser.style.margin = 0;
+            reviewUser.innerHTML = `<span style="font-weight: bolder; margin-right: 2vw; color: #ab4300;">${review.username}</span><span>(${review.date})</span>`
             reviewContainer.appendChild(reviewUser);
-
-            // Review date
-            const reviewDate = document.createElement("p");
-            reviewDate.classList.add("reviewDate");
-            reviewDate.innerHTML = review.date;
-            reviewContainer.appendChild(reviewDate);
 
             // Review message
             const reviewMessage = document.createElement("p");
@@ -86,13 +103,6 @@ function renderReviews(beer) {
                 reviewContainer.appendChild(showMore);
             }
 
-            // Review rating
-            const reviewRating = document.createElement("p");
-            reviewRating.classList.add("reviewRating");
-            // reviewRating.innerHTML = reviewRating(review.rating);
-            // reviewContainer.appendChild(reviewRating);
-
-            reviewsContainer.appendChild(reviewContainer);
         }
     })
 }
@@ -163,7 +173,6 @@ function writeReview(beer) {
                     errorMessage.classList.add("errorMessage");
                     errorMessage.innerHTML = "Please fill out atleast one field";
                 }
-
                 return res.json();
             })
             .then(data => {

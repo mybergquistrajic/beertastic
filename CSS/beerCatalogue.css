@@ -167,6 +167,7 @@ body {
   background-image: url(../IMAGES/Background_red.svg);
   background-size: cover;
   background-repeat: no-repeat;
+  overflow-y: scroll;
 }
 
 .oneBeerPopUpHeader {
@@ -176,7 +177,7 @@ body {
   background-color: #ab4300;
   position: sticky;
   top: 0;
-  z-index: 5;
+  z-index: 10;
 }
 
 .oneBeerPopUpHeader img:first-child {
@@ -229,4 +230,47 @@ body {
   border-radius: 15px;
   font-family: "Snippet", sans-serif;
   text-align: center;
+}
+
+/* REVIEWS */
+
+
+.reviews{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10vw auto 20vw auto;
+}
+
+.review{
+  width: 90vw;
+  max-height: 50vw;
+  margin: 3.3vw;
+  background-color: white;
+  opacity: 90%;
+  border-radius: 15px;
+  font-family: "Snippet", sans-serif;
+  filter: drop-shadow(0 0 0.3rem #00000030);
+  padding: 3vw;
+  box-sizing: border-box;
+}
+
+.reviewHeader{
+  display: grid;
+  grid-template-columns: 80% 20%;
+  height: 20%;
+}
+
+.reviewDelete{
+  background-image: url(../IMAGES/delete.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.reviewRating{
+  width: 40%;
+  display: flex;
+  align-items: center;
 }

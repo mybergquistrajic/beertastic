@@ -54,6 +54,7 @@
   padding: 3vh;
   color: #ab4300;
   font-family: "Snippet", sans-serif;
+  z-index: 50;
 }
 
 .display_error > div {
