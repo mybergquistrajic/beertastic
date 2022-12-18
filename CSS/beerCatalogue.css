@@ -108,18 +108,6 @@ body {
   margin: 5px 0px 5px 0px;
 }
 
-/* .beerDiv > div > h3 {
-  font-family: "Shadows Into Light", cursive;
-  letter-spacing: 2px;
-  line-height: 0em;
-} */
-/* .beerDiv > div:first-child {
-
-} */
-/* .beerDiv > div:first-child > img {
-  height: 70%;
-} */
-
 /* HEARTS */
 .filled {
   height: 10vw;
@@ -184,22 +172,28 @@ body {
 .oneBeerPopUpHeader {
   display: flex;
   align-items: center;
-  height: 8vh;
+  height: 9vh;
   background-color: #ab4300;
   position: sticky;
   top: 0;
+  z-index: 5;
 }
 
 .oneBeerPopUpHeader img:first-child {
   height: 50%;
-  /* Negative margin to help with positioning heart */
-  margin: 0vw -1.5vw 0vw 2vw;
+  padding: 2vw;
+  /* Margin helps placing heartBtn */
+  margin-right: -4vw;
 }
 
 .oneBeerPopUpHeader img:last-child {
   height: 60%;
   margin-left: auto;
   padding-right: 3%;
+}
+
+.oneBeerPopUpContent {
+  mask-image: linear-gradient(to top, black calc(100% - 40px), transparent 100%);
 }
 
 .oneBeerPopUpInfo {
@@ -213,7 +207,7 @@ body {
 
 .oneBeerPopUpInfo img {
   height: 70%;
-  padding-top: 4vw;
+  padding-top: 5vw;
 }
 
 .starDivPopup {
