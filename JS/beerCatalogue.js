@@ -158,7 +158,6 @@ function popUpBeer(beer, favorite, ratingClass, ratingContent, ratingSum) {
   oneBeerPopUpContent.appendChild(infoDiv);
   oneBeerPopUpContent.appendChild(starDiv);
   oneBeerPopUpContent.appendChild(reviewBtn);
-  console.log(beer)
 
   // When clicking heart
   heartBtn.addEventListener("click", heartOnClick);
