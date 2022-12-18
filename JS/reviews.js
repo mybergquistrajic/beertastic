@@ -2,14 +2,13 @@ globalUser = localStorage.getItem("globalUser");
 
 // render Reviews for selected beer
 function renderReviews(beer, ratingClass, ratingContent) {
-
+    console.log(beer)
     const reviews = beer.reviews;
     const reviewsContainer = document.querySelector(".reviews");
     reviewsContainer.innerHTML = "";
 
     // render a review for each review in the array
     reviews.forEach(function (review) {
-
         // if reviewMessage is not empty, render review
         if (review.message != "") {
             const reviewContainer = document.createElement("div");
@@ -20,15 +19,16 @@ function renderReviews(beer, ratingClass, ratingContent) {
             const reviewHeader = document.createElement("div");
             reviewHeader.classList.add("reviewHeader");
             reviewContainer.appendChild(reviewHeader);
-
-            if (review.rating !== null) {
+            console.log(review.rating)
+            if (review.rating !== "" || null) {
                 const reviewRating = document.createElement("div");
                 reviewRating.classList.add("reviewRating");
-                reviewRating.innerHTML = `<div class="${ratingClass} ratingReview${review.review_id}" style="font-size: 6.4vw">${ratingContent}</div>`
+                reviewRating.innerHTML = `<div class="${ratingClass} ratingReview${review.review_id}" style="font-size: 6.4vw">★★★★★</div>`
                 reviewHeader.appendChild(reviewRating);
                 // Call function with the ratingSum and star-element as parameters
                 calculateStars(document.querySelector(`.ratingReview${review.review_id}`), review.rating);
             } else {
+                console.log("else")
                 const reviewNoRating = document.createElement("div");
                 reviewNoRating.classList.add("reviewNoRating");
                 reviewNoRating.innerText = "No rating given"
@@ -69,7 +69,8 @@ function renderReviews(beer, ratingClass, ratingContent) {
                                     .then(updatedBeer => {
                                         let newRatingSum = calculateRating(updatedBeer)
                                         renderReviews(updatedBeer, ratingClass, ratingContent)
-                                        if (newRatingSum !== null) {
+                                        console.log(newRatingSum)
+                                        if (newRatingSum !== "" || null) {
                                             console.log(newRatingSum)
                                             // Call function with the ratingSum and star-element as parameters
                                             calculateStars(document.querySelector(`.ratingPopup${beer["id"]}`), newRatingSum);

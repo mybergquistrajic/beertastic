@@ -123,7 +123,7 @@
         "reviews": [
             {
                 "review_id": 10,
-                "username": "test",
+                "username": "ratQueen",
                 "rating": 3,
                 "message": "Tastes just like Brooklyn! Meaning art shows and rats. Take that as you will.",
                 "date": "22-11-05"
@@ -303,7 +303,15 @@
         "name": "Pistonhead Kustom Lager",
         "type": "Pale Lager",
         "avb": 4.9,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "ratQueen",
+                "rating": 4,
+                "message": "Approved by the Rat Queen.",
+                "date": "22-12-18"
+            }
+        ],
         "img": "\/pistonhead_kustom_lager.png"
     },
     {
@@ -455,7 +463,15 @@
         "name": "Sitting Bulldog IPA",
         "type": "Indian Pale Ale",
         "avb": 6.4,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "ratQueen",
+                "rating": 2,
+                "message": "Only bought it because I thought it said \"Shitting\" Bulldog. The flavor matched the name...",
+                "date": "22-12-18"
+            }
+        ],
         "img": "\/SittingIPA.png"
     },
     {
@@ -503,7 +519,15 @@
         "name": "Stigbergets, Existens essens transcendens",
         "type": "Indian Pale Ale",
         "avb": 5.9,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "ratQueen",
+                "rating": 5,
+                "message": "This is all I've ever wanted in a beer. Of course, one could wish for a rat on the cover rather than that feline. But that's a discussion another day.",
+                "date": "22-12-18"
+            }
+        ],
         "img": "\/Stigbergets.png"
     },
     {
