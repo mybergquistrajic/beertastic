@@ -111,13 +111,6 @@
                 "rating": 3,
                 "message": "With the growing market of alcohol free beers, Carlsberg really could do better. That said, it could be much worse\u2026",
                 "date": "22-12-08"
-            },
-            {
-                "review_id": 1,
-                "username": "mybr",
-                "rating": "5",
-                "message": "testingtesting 1 2",
-                "date": "22-12-18"
             }
         ],
         "img": "\/carlsberg_alcohol_free.png"

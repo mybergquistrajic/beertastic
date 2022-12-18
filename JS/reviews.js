@@ -144,7 +144,7 @@ function writeReview(beer, ratingClass, ratingContent) {
     // Review Message
     const reviewInput = document.createElement("div");
     reviewInput.classList.add("reviewInput");
-    reviewInput.innerHTML = `<textarea rows = "5" cols = "60"></textarea>`
+    reviewInput.innerHTML = `<textarea></textarea>`
     reviewWindow.appendChild(reviewInput);
 
     // Submit button

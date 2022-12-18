@@ -26,9 +26,10 @@ body {
   z-index: 1;
   background-color: #ab4300;
   filter: drop-shadow(0 2mm 4mm rgba(207, 207, 207, 0.529));
+  box-sizing: border-box;
 }
 .searchBar > input {
-  width: 87%;
+  width: 90%;
   height: 70%;
   background-image: url(../IMAGES/search.png);
   background-repeat: no-repeat;
@@ -220,7 +221,7 @@ body {
   width: 50vw;
 }
 
-.reviewBtn {
+.reviewBtn, .reviewSubmit {
   margin-left: auto;
   margin-right: auto;
   width: 30vw;
@@ -322,6 +323,7 @@ body {
 
 .reviewInput{
   width: 80%;
+  height: 35%;
 }
 
 .reviewInput textarea{
@@ -330,4 +332,7 @@ body {
   border: 5px solid white;
   filter: drop-shadow(0 0 0.3rem #00000030);
   box-sizing: border-box;
+  margin-bottom: 5vw;
+  resize: none;
+  height: 95%;
 }
