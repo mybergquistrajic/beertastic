@@ -108,7 +108,7 @@ function renderReviews(beer, ratingClass, ratingContent) {
 }
 
 // Funtion for creating write review window
-function writeReview(beer) {
+function writeReview(beer, ratingClass, ratingContent) {
     const reviewWindow = document.createElement("div");
     reviewWindow.classList.add("reviewWindow");
 
@@ -138,23 +138,26 @@ function writeReview(beer) {
     const reviewRating = document.createElement("div");
     reviewRating.classList.add("reviewRatingStars");
     reviewRating.appendChild(createStars());
-    console.log(reviewRating)
+    console.log(reviewRating.value)
     reviewWindow.appendChild(reviewRating);
 
     // Review Message
     const reviewInput = document.createElement("div");
     reviewInput.classList.add("reviewInput");
-    reviewInput.innerHTML = `<input type="text" placeholder="Write review">`
+    reviewInput.innerHTML = `<textarea rows = "5" cols = "60"></textarea>`
     reviewWindow.appendChild(reviewInput);
 
     // Submit button
     const reviewSubmit = document.createElement("div");
     reviewSubmit.classList.add("reviewSubmit");
     reviewSubmit.innerHTML = "Submit"
+    reviewWindow.appendChild(reviewSubmit);
     reviewSubmit.addEventListener("click", function () {
-        const reviewMessage = document.querySelector(".reviewInput input").value;
-        const reviewRating = document.querySelector(".reviewRating").value;
-        fetch("http://localhost:8888/postReview",
+        const reviewMessage = document.querySelector(".reviewInput textarea").value;
+        const reviewRatingX = document.querySelector(".starContainer").getAttribute('value');
+        // const reviewRatingX = document.querySelector(".starContainer").value;
+        console.log(reviewRatingX)
+        fetch("../PHP/postReview.php",
             {
                 method: "POST",
                 headers: {
@@ -162,9 +165,9 @@ function writeReview(beer) {
                 },
                 body: JSON.stringify({
                     beerId: beer.id,
-                    username: globalUsername,
-                    message: reviewMessage,
-                    rating: reviewRating
+                    username: globalUser,
+                    reviewContent: reviewMessage,
+                    rating: reviewRatingX
                 })
             })
             .then(res => {
@@ -178,12 +181,19 @@ function writeReview(beer) {
                 return res.json();
             })
             .then(data => {
-                console.log(data)
-                reviewContainer.remove();
-                renderReviews(beer)
+                reviewWindow.remove();
+                //Fetching anew to get beer without the new review
+                fetch(`../PHP/read_beerDatabase.php?un=${globalUser}&id=${beer.id}&beers`)
+                    .then(r => r.json())
+                    .then(updatedBeer => {
+                        console.log(updatedBeer)
+                        renderReviews(updatedBeer, ratingClass, ratingContent)
+                    })
+                // renderReviews(beer)
             })
     })
     document.querySelector("body").appendChild(reviewWindow);
+    document.querySelector(".reviewInput textarea").placeholder = "Write your review here..."
 }
 
 // Function for creating clickable stars when writing review

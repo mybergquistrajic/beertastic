@@ -172,7 +172,7 @@ function popUpBeer(beer, favorite, ratingClass, ratingContent, ratingSum) {
     calculateStars(document.querySelector(`.ratingPopup${beer["id"]}`), ratingSum);
   }
   // On review button click
-  reviewBtn.addEventListener("click", () => { writeReview(beer) })
+  reviewBtn.addEventListener("click", () => { writeReview(beer, ratingClass, ratingContent) })
 
 }
 
