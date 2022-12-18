@@ -174,22 +174,27 @@ function writeReview(beer, ratingClass, ratingContent) {
                 if (res.status === 200) {
                     console.log("Review posted");
                 } else {
-                    const errorMessage = document.createElement("p");
-                    errorMessage.classList.add("errorMessage");
-                    errorMessage.innerHTML = "Please fill out atleast one field";
+                    renderPopUp("ratingReview")
+                    document.querySelector('.ok').addEventListener("click", function () {
+                        document.querySelector(".display_error").remove()
+                    })
+                    // const errorMessage = document.createElement("p");
+                    // errorMessage.classList.add("errorMessage");
+                    // errorMessage.innerHTML = "Please fill out atleast one field";
                 }
                 return res.json();
             })
             .then(data => {
-                reviewWindow.remove();
-                //Fetching anew to get beer without the new review
-                fetch(`../PHP/read_beerDatabase.php?un=${globalUser}&id=${beer.id}&beers`)
-                    .then(r => r.json())
-                    .then(updatedBeer => {
-                        console.log(updatedBeer)
-                        renderReviews(updatedBeer, ratingClass, ratingContent)
-                    })
-                // renderReviews(beer)
+                if (data["error"] !== "Neither rating nor review was submitted, please fill in one of the values") {
+                    reviewWindow.remove();
+                    //Fetching anew to get beer without the new review
+                    fetch(`../PHP/read_beerDatabase.php?un=${globalUser}&id=${beer.id}&beers`)
+                        .then(r => r.json())
+                        .then(updatedBeer => {
+                            console.log(updatedBeer)
+                            renderReviews(updatedBeer, ratingClass, ratingContent)
+                        })
+                }
             })
     })
     document.querySelector("body").appendChild(reviewWindow);
