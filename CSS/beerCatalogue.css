@@ -274,3 +274,59 @@ body {
   display: flex;
   align-items: center;
 }
+
+/* ADD REVIEW POPUP */
+.reviewWindow {
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  background-image: url(../IMAGES/Background_red.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reviewExit{
+  position: absolute;
+  left: 5vw;
+  top: 5vw;
+  background-image: url(../IMAGES/close.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 8vw;
+  height: 8vw;
+}
+
+.reviewImage {
+  height: 60vw;
+  padding-top: 10vw;
+}
+
+.reviewImage img {
+  height: 100%;
+}
+
+.starContainer {
+  display: flex;
+}
+
+.starContainer div {
+  font-size: 10vw;
+}
+
+.reviewInput{
+  width: 80%;
+}
+
+.reviewInput input{
+  width: 100%;
+  border-radius: 10px;
+  border: 5px solid white;
+  filter: drop-shadow(0 0 0.3rem #00000030);
+}

@@ -164,13 +164,16 @@ function popUpBeer(beer, favorite, ratingClass, ratingContent, ratingSum) {
 
   // When clicking heart
   heartBtn.addEventListener("click", heartOnClick);
-  // Stars
+  // Remove popup on arrow click
+  backBtn.addEventListener("click", () => { oneBeerPopUp.remove() })
+  // Rating stars
   if (ratingSum !== 0) {
     // Call function with the ratingSum and star-element as parameters
     calculateStars(document.querySelector(`.ratingPopup${beer["id"]}`), ratingSum);
   }
-  // Remove popup on arrow click
-  backBtn.addEventListener("click", () => { oneBeerPopUp.remove() })
+  // On review button click
+  reviewBtn.addEventListener("click", () => { writeReview(beer) })
+
 }
 
 // Check if current beer (from renderBeer function) is a favorite

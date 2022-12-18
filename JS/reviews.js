@@ -115,7 +115,6 @@ function writeReview(beer) {
     // Exit button
     const reviewExit = document.createElement("div");
     reviewExit.classList.add("reviewExit");
-    reviewExit.innerHTML = "X"
     reviewExit.addEventListener("click", function () {
         reviewWindow.remove();
     })
@@ -131,12 +130,15 @@ function writeReview(beer) {
     const reviewBeername = document.createElement("div");
     reviewBeername.classList.add("reviewBeername");
     reviewBeername.innerHTML = beer.name;
+    reviewBeername.style.fontFamily = `'Shadows Into Light', cursive`
+    reviewBeername.style.fontSize = `2em`
     reviewWindow.appendChild(reviewBeername);
 
     // Render stars for rating 
     const reviewRating = document.createElement("div");
-    reviewRating.classList.add("reviewRating");
-    reviewRating.innerHTML = createStars();
+    reviewRating.classList.add("reviewRatingStars");
+    reviewRating.appendChild(createStars());
+    console.log(reviewRating)
     reviewWindow.appendChild(reviewRating);
 
     // Review Message
@@ -181,7 +183,7 @@ function writeReview(beer) {
                 renderReviews(beer)
             })
     })
-
+    document.querySelector("body").appendChild(reviewWindow);
 }
 
 // Function for creating clickable stars when writing review
@@ -198,7 +200,6 @@ function createStars() {
         })
         starContainer.appendChild(star);
     }
-
     return starContainer;
 }
 
