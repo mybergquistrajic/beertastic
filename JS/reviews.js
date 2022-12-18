@@ -60,8 +60,13 @@ function renderReviews(beer, ratingClass, ratingContent) {
                                 fetch(`../PHP/read_beerDatabase.php?un=${globalUser}&id=${beer.id}&beers`)
                                     .then(r => r.json())
                                     .then(updatedBeer => {
-                                        console.log(updatedBeer)
+                                        let newRatingSum = calculateRating(updatedBeer)
                                         renderReviews(updatedBeer, ratingClass, ratingContent)
+                                        if (newRatingSum !== null) {
+                                            console.log(newRatingSum)
+                                            // Call function with the ratingSum and star-element as parameters
+                                            calculateStars(document.querySelector(`.ratingPopup${beer["id"]}`), newRatingSum);
+                                        }
                                         document.querySelector(".display_error").remove()
                                     })
                             })
@@ -154,9 +159,7 @@ function writeReview(beer, ratingClass, ratingContent) {
     reviewWindow.appendChild(reviewSubmit);
     reviewSubmit.addEventListener("click", function () {
         const reviewMessage = document.querySelector(".reviewInput textarea").value;
-        const reviewRatingX = document.querySelector(".starContainer").getAttribute('value');
-        // const reviewRatingX = document.querySelector(".starContainer").value;
-        console.log(reviewRatingX)
+        const reviewRatingX = parseInt(document.querySelector(".starContainer").getAttribute('value'));
         fetch("../PHP/postReview.php",
             {
                 method: "POST",
@@ -178,9 +181,6 @@ function writeReview(beer, ratingClass, ratingContent) {
                     document.querySelector('.ok').addEventListener("click", function () {
                         document.querySelector(".display_error").remove()
                     })
-                    // const errorMessage = document.createElement("p");
-                    // errorMessage.classList.add("errorMessage");
-                    // errorMessage.innerHTML = "Please fill out atleast one field";
                 }
                 return res.json();
             })
@@ -193,6 +193,11 @@ function writeReview(beer, ratingClass, ratingContent) {
                         .then(updatedBeer => {
                             console.log(updatedBeer)
                             renderReviews(updatedBeer, ratingClass, ratingContent)
+                            let newRatingSum = calculateRating(updatedBeer)
+                            if (newRatingSum && reviewRatingX !== 0 || null) {
+                                // Call function with the ratingSum and star-element as parameters
+                                calculateStars(document.querySelector(`.ratingPopup${beer["id"]}`), newRatingSum);
+                            }
                         })
                 }
             })
