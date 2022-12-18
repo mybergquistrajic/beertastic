@@ -21,14 +21,21 @@ function renderReviews(beer, ratingClass, ratingContent) {
             reviewHeader.classList.add("reviewHeader");
             reviewContainer.appendChild(reviewHeader);
 
-            if (review.rating !== "") {
+            if (review.rating !== null) {
                 const reviewRating = document.createElement("div");
                 reviewRating.classList.add("reviewRating");
                 reviewRating.innerHTML = `<div class="${ratingClass} ratingReview${review.review_id}" style="font-size: 6.4vw">${ratingContent}</div>`
                 reviewHeader.appendChild(reviewRating);
                 // Call function with the ratingSum and star-element as parameters
                 calculateStars(document.querySelector(`.ratingReview${review.review_id}`), review.rating);
+            } else {
+                const reviewNoRating = document.createElement("div");
+                reviewNoRating.classList.add("reviewNoRating");
+                reviewNoRating.innerText = "No rating given"
+                reviewNoRating.style.fontStyle = "italic";
+                reviewHeader.appendChild(reviewNoRating);
             }
+            console.log(review.rating)
 
             // if user has written review, add delete button
             if (review.username == globalUser) {
