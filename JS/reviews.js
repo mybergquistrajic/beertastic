@@ -173,7 +173,6 @@ function writeReview(beer) {
                     errorMessage.classList.add("errorMessage");
                     errorMessage.innerHTML = "Please fill out atleast one field";
                 }
-
                 return res.json();
             })
             .then(data => {
