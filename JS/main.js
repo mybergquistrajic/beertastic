@@ -1,6 +1,7 @@
 "use strict";
 //This contains the code that runs all the time
 
+//Direct code
 menuBar();
 
 //MENU
@@ -56,7 +57,7 @@ function renderPopUp(type) {
   const popUpDiv = document.createElement("div");
   //Adding a class for styling the popUpDiv
   popUpDiv.classList.add("display_error");
-
+  //reaching the body-element
   const body = document.querySelector("body");
 
   //Depending on the popUp type , the HTML is different
@@ -123,7 +124,7 @@ function renderPopUp(type) {
     <div>
     <h1>Sorry!</h1>
     <p>The username is already taken. Please try again.</p>
-    <button class = "ok">Ok</button>
+    <button class= "ok">Ok</button>
     </div>`;
   } else if (type === "none") {
     popUpDiv.innerHTML = "";
@@ -134,21 +135,29 @@ function renderPopUp(type) {
     <p>Your password has been changed.</p>
     <button class = "ok">Ok</button>
     </div>`;
+  } else if (type === "wrongPW") {
+    popUpDiv.innerHTML = `
+    <div>
+    <h1>Oops!</h1>
+    <p>The current password is wrong. Please try again.</p>
+    <button class = "ok">Ok</button>
+    </div>`;
   }
 
   //append the popUpDiv to body
   body.append(popUpDiv);
+
+  //Creating eventListner for the ok button
+  const ok = document.querySelector(".ok");
+  ok.addEventListener("click", addAndRemoveClass);
 }
 
-function addAndRemoveClass() {
-  const popUpDiv = document.getElementsByClassName("display_error");
-  popUpDiv.document.classList.remove("display_error");
-  popUpDiv.document.classList.add("display_none");
+//function for adding and removing the class for the popUpdiv
+function addAndRemoveClass(e) {
+  e.preventDefault();
+  const body = document.querySelector("body");
+  const popUpDiv = document.querySelector(".display_error");
+  popUpDiv.classList.remove("display_error");
+  //Also removing the popUpdiv from the body. Otherwise it would create extra div each time.
+  body.removeChild(popUpDiv);
 }
-const ok_button = document.getElementsByClassName("ok");
-ok_button.addEventListner("click", addAndRemoveClass);
-
-//EVENT-FUNCTIONS
-
-// Direct code:
-// menuBar();

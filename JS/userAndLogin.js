@@ -145,13 +145,12 @@ function createdUser(newUser) {
   //the new user gets send to user.html
   window.location.href = "user.html";
 }
-// const c_button = document.getElementById("createAccountButton");
-// c_button.addEventListener("click", renderNewUser);
 
-// document.getElementById("favoritesBtn").addEventListener("click", favorites);
+//Evenlistner for the createAccount button that runs the renderNewUser function
 const c_button = document.getElementById("createAccountButton");
 c_button.addEventListener("click", renderNewUser);
 
+//The eventlistner for the loginButton and runs the login-funcion with the parameter globalUser
 const logInButton = document.getElementById("login_button");
 logInButton.addEventListener("click", () => {
   logIn(globalUser);
