@@ -277,7 +277,15 @@
         "name": "Mariestads Export",
         "type": "Pale Lager",
         "avb": 5.3,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "mybr",
+                "rating": 3,
+                "message": "qwerty",
+                "date": "22-12-19"
+            }
+        ],
         "img": "\/mariestads_export.png"
     },
     {

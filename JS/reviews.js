@@ -67,14 +67,9 @@ function renderReviews(beer, ratingClass, ratingContent) {
                                 fetch(`../PHP/read_beerDatabase.php?un=${globalUser}&id=${beer.id}&beers`)
                                     .then(r => r.json())
                                     .then(updatedBeer => {
-                                        let newRatingSum = calculateRating(updatedBeer)
-                                        renderReviews(updatedBeer, ratingClass, ratingContent)
-                                        console.log(newRatingSum)
-                                        if (newRatingSum !== "" || null) {
-                                            console.log(newRatingSum)
-                                            // Call function with the ratingSum and star-element as parameters
-                                            calculateStars(document.querySelector(`.ratingPopup${beer["id"]}`), newRatingSum);
-                                        }
+                                        // Removing old popup and rendering anew, to ensure that it's updated
+                                        document.querySelector(".oneBeerPopUp").remove()
+                                        popUpBeer(updatedBeer)
                                         document.querySelector(".display_error").remove()
                                     })
                             })
@@ -121,7 +116,8 @@ function renderReviews(beer, ratingClass, ratingContent) {
 }
 
 // Funtion for creating write review window
-function writeReview(beer, ratingClass, ratingContent) {
+async function writeReview(beer) {
+
     const reviewWindow = document.createElement("div");
     reviewWindow.classList.add("reviewWindow");
 
@@ -199,13 +195,9 @@ function writeReview(beer, ratingClass, ratingContent) {
                     fetch(`../PHP/read_beerDatabase.php?un=${globalUser}&id=${beer.id}&beers`)
                         .then(r => r.json())
                         .then(updatedBeer => {
-                            console.log(updatedBeer)
-                            renderReviews(updatedBeer, ratingClass, ratingContent)
-                            let newRatingSum = calculateRating(updatedBeer)
-                            if (newRatingSum && reviewRatingX !== 0 || null) {
-                                // Call function with the ratingSum and star-element as parameters
-                                calculateStars(document.querySelector(`.ratingPopup${beer["id"]}`), newRatingSum);
-                            }
+                            // Removing old popup and rendering anew, to ensure that it's updated
+                            document.querySelector(".oneBeerPopUp").remove()
+                            popUpBeer(updatedBeer)
                         })
                 }
             })
