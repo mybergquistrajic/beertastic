@@ -146,12 +146,18 @@ function createdUser(newUser) {
   window.location.href = "user.html";
 }
 
+//Checks the pathlocation and const if the path is create_account
 //Evenlistner for the createAccount button that runs the renderNewUser function
-const c_button = document.getElementById("createAccountButton");
-c_button.addEventListener("click", renderNewUser);
+if (window.location.pathname.endsWith("create_account.html")) {
+  const c_button = document.getElementById("createAccountButton");
+  c_button.addEventListener("click", renderNewUser);
+}
 
+//Checks the pathlocation and const if the path is login
 //The eventlistner for the loginButton and runs the login-funcion with the parameter globalUser
-const logInButton = document.getElementById("login_button");
-logInButton.addEventListener("click", () => {
-  logIn(globalUser);
-});
+if (window.location.pathname.endsWith("login.html")) {
+  const logInButton = document.getElementById("login_button");
+  logInButton.addEventListener("click", () => {
+    logIn(globalUser);
+  });
+}
