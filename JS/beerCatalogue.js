@@ -48,40 +48,18 @@ function renderBeers(result) {
   }
 }
 
-
-async function checkFavorite(beer) {
-  let favorite = await getFavorites(beer);
-  if ((await favorite) == 1) {
-    favorite = "filled";
-  } else {
-    favorite = "notfilled";
-  }
-  return favorite;
-}
-
-async function checkRating(beer) {
-  let ratingSum = await calculateRating(beer);
-  if (ratingSum == 0) {
-    // ratingsum, ratingContent, ratingClass, reviewWidth
-    return [ratingSum, "No ratings yet...", "norating", "100%"]
-  } else {
-    return [ratingSum, `★★★★★`, "rating", "50%"]
-  }
-}
-
-
+// Renders one beer
 async function renderBeer(beer) {
-  // Checking if the beer is a favorite, and deciding on heart filled or not filled.
-  // Used as a class to determine if the heart will be filled or not
-
+  // Get favourite status
   let favorite = await checkFavorite(beer)
+  // Get rating values
   let rating = await checkRating(beer);
   let ratingSum = await rating[0]
   let ratingContent = await rating[1]
   let ratingClass = await rating[2]
   let reviewWidth = await rating[3]
 
-  // Render each beer
+  // HTML of the beer
   let beerDiv = document.createElement("div");
   beerDiv.innerHTML = `
     <div class="${favorite} heart${beer["id"]}"></div>
@@ -109,14 +87,15 @@ async function renderBeer(beer) {
   }
   // When clicking the heart
   document.querySelector(`.heart${beer["id"]}`).addEventListener("click", heartOnClick);
-
+  // When clicking the beer
   document.querySelector(`.popUp${beer["id"]}`).addEventListener("click", () => { popUpBeer(beer); })
 }
 
 // Render the popup when clicking beer
 async function popUpBeer(beer) {
-
+  // Get favourite status
   let favorite = await checkFavorite(beer)
+  // Get rating values
   let rating = await checkRating(beer);
   let ratingSum = await rating[0]
   let ratingContent = await rating[1]
@@ -174,7 +153,8 @@ async function popUpBeer(beer) {
   oneBeerPopUpContent.appendChild(reviewBtn);
   oneBeerPopUpContent.appendChild(reviewsDiv);
 
-  renderReviews(beer, ratingClass, ratingContent)
+  // Render the reviews
+  renderReviews(beer, ratingClass)
 
   // When clicking heart
   heartBtn.addEventListener("click", heartOnClick);
@@ -206,6 +186,29 @@ async function getFavorites(beer) {
   }
   // If no, return 0
   return 0;
+}
+
+// Checking if beer is a favourite and deciding on future class
+async function checkFavorite(beer) {
+  let favorite = await getFavorites(beer);
+  if ((await favorite) == 1) {
+    favorite = "filled";
+  } else {
+    favorite = "notfilled";
+  }
+  return favorite;
+}
+
+// Checking the beers rating and returning different values
+// for sum, content, class and starwidth. 
+async function checkRating(beer) {
+  let ratingSum = await calculateRating(beer);
+  if (ratingSum == 0) {
+    // ratingsum, ratingContent, ratingClass, reviewWidth
+    return [ratingSum, "No ratings yet...", "norating", "100%"]
+  } else {
+    return [ratingSum, `★★★★★`, "rating", "50%"]
+  }
 }
 
 // Search & main
@@ -244,4 +247,4 @@ else {
   document.querySelector(".searchBar input").onkeyup = function () {
     filterBeers();
   };
-}
+};
