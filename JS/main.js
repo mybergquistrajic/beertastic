@@ -147,9 +147,13 @@ function renderPopUp(type) {
   //append the popUpDiv to body
   body.append(popUpDiv);
 
-  //Creating eventListner for the ok button
-  const ok = document.querySelector(".ok");
-  ok.addEventListener("click", addAndRemoveClass);
+  //Checking so that the yes/no button doesn't exist in the popUpDiv
+  if (!type === "checkage" || !type === "deleteReview") {
+    console.log(type);
+    //Creating eventListner for the ok button
+    const ok = document.querySelector(".ok");
+    ok.addEventListener("click", addAndRemoveClass);
+  }
 }
 
 //function for adding and removing the class for the popUpdiv

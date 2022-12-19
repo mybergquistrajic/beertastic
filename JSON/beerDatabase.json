@@ -148,20 +148,6 @@
                 "rating": 4,
                 "message": "The aroma is nicely balanced between sweet fruit and savory herbs and there's a decent amount of variety in the flavors too. My only qualm is that it's quite sweet and lacks bitterness. But this might only be an issue for you if you plan to knock a few back in a session.",
                 "date": "22-12-08"
-            },
-            {
-                "review_id": 1,
-                "username": "mybr",
-                "rating": null,
-                "message": "I would really like to try this one! Maybe only because of the packaging...",
-                "date": "22-12-18"
-            },
-            {
-                "review_id": 1,
-                "username": "beerLover",
-                "rating": null,
-                "message": "hej",
-                "date": "22-12-19"
             }
         ],
         "img": "\/brooklyn_special_effects.png"
