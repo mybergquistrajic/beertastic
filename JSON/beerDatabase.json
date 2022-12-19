@@ -155,6 +155,13 @@
                 "rating": null,
                 "message": "I would really like to try this one! Maybe only because of the packaging...",
                 "date": "22-12-18"
+            },
+            {
+                "review_id": 1,
+                "username": "beerLover",
+                "rating": null,
+                "message": "hej",
+                "date": "22-12-19"
             }
         ],
         "img": "\/brooklyn_special_effects.png"

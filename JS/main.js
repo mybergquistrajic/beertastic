@@ -66,8 +66,8 @@ function renderPopUp(type) {
       <div>
       <h1>Hi!</h1>
       <p>Are you over 18 years of age?</p>
-      <button class = "yes">Yes</button>
-      <button class = "no" >No</button>
+      <button class = "yes_18">Yes</button>
+      <button class = "no_18" >No</button>
       </div>
       `;
   } else if (type === "underAgeAccount") {
@@ -101,8 +101,8 @@ function renderPopUp(type) {
   } else if (type === "deleteReview") {
     popUpDiv.innerHTML = `
     <div>
-    <h1>Are you sure?</h1>
-    <p>You want to delete this review?</p>
+    <h1>Hey!</h1>
+    <p>Are you sure you want to delete this review?</p>
     <button class="yesButton">Yes</button>
     <button class="noButton">No</button>`;
   } else if (type === "NoUserFound") {
