@@ -20,7 +20,7 @@ if($request_method == "PUT") {
     foreach($users as $user){
         if ($user["username"] == $r_data["username"]) { if($user["password"] != $r_data["password"]) {
             $error = ["error" => "The password is incorrect."];
-            sendJSON($error, 400);};
+            sendJSON($error, 404);};
         }
     }
 

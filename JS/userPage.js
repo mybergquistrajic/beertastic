@@ -28,26 +28,31 @@ function putPassword() {
     headers: { "Content-type": "application/json" },
   };
 
-  //The request to the update password file
-  let responseStatus;
   const putRequest = new Request("../PHP/updatePassword.php", options);
 
+  //The request to the update password file
+  let response;
   //Fetthing the request
   fetch(putRequest)
+    //Updating the response with the response and returning it
     .then((r) => {
-      responseStatus = r;
+      response = r;
       return r.json();
     })
-    .then((responseStatus) => {
-      changedPWStatus(responseStatus);
+    //Run the funciton for the response
+    .then(() => {
+      changedPWStatus(response);
     });
 }
 
+//Function for the response status. Depending on the responsestatus render different popUp-types.
 function changedPWStatus(response) {
   if (response.status === 200) {
     renderPopUp("changedPW");
   } else if (response.status === 400) {
     renderPopUp("missingInfo");
+  } else if (response.status === 404) {
+    renderPopUp("wrongPW");
   }
 }
 //Logout that clears the localstorage and sends the user to the startpage
