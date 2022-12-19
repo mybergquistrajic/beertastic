@@ -6,25 +6,11 @@
         "avb": 4.7,
         "reviews": [
             {
-                "review_id": 1,
-                "username": "test",
-                "rating": 5,
-                "message": "Amazing beer! I drank it when I was on vacation and haven't stopped thinking about it since.",
-                "date": "22-12-05"
-            },
-            {
                 "review_id": 2,
                 "username": "test",
                 "rating": 3,
                 "message": "A very nice Brown Ale. I really recommend it.",
                 "date": "22-12-08"
-            },
-            {
-                "review_id": 1,
-                "username": "porter",
-                "rating": 1,
-                "message": "No. Just no.",
-                "date": "22-12-19"
             }
         ],
         "img": "\/Newcastle.png"
@@ -99,9 +85,9 @@
         "reviews": [
             {
                 "review_id": 1,
-                "username": "mybr",
+                "username": "beerLover",
                 "rating": null,
-                "message": "asdfghjk",
+                "message": "amazing",
                 "date": "22-12-19"
             }
         ],
@@ -278,15 +264,7 @@
         "name": "Mariestads Export",
         "type": "Pale Lager",
         "avb": 5.3,
-        "reviews": [
-            {
-                "review_id": 1,
-                "username": "mybr",
-                "rating": 3,
-                "message": "qwerty",
-                "date": "22-12-19"
-            }
-        ],
+        "reviews": [],
         "img": "\/mariestads_export.png"
     },
     {
