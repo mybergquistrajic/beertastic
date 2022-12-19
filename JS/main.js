@@ -146,11 +146,8 @@ function renderPopUp(type) {
 
   //append the popUpDiv to body
   body.append(popUpDiv);
-
-  //Checking so that the yes/no button doesn't exist in the popUpDiv
-  if (!type === "checkage" || !type === "deleteReview") {
-    console.log(type);
-    //Creating eventListner for the ok button
+  if (type === "deleteReview" || type === "checkage") {
+  } else {
     const ok = document.querySelector(".ok");
     ok.addEventListener("click", addAndRemoveClass);
   }
