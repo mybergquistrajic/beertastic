@@ -6,8 +6,8 @@
   align-items: center;
   background-color: white;
   width: 100vw;
-  height: 25vw;
-  position: sticky;
+  height: 10vh;
+  position: fixed;
   bottom: 0px;
   filter: drop-shadow(0 -2mm 4mm rgba(207, 207, 207, 0.529));
   z-index: 50;
