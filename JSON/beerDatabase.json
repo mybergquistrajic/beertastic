@@ -18,6 +18,13 @@
                 "rating": 3,
                 "message": "A very nice Brown Ale. I really recommend it.",
                 "date": "22-12-08"
+            },
+            {
+                "review_id": 1,
+                "username": "porter",
+                "rating": 1,
+                "message": "No. Just no.",
+                "date": "22-12-19"
             }
         ],
         "img": "\/Newcastle.png"
@@ -73,6 +80,13 @@
                 "rating": 4,
                 "message": "Drank straight from the bottle. You know what you're getting with this one, and as long as you know that you're good. Don't expect much but a light, easy drinking Euro Lager. Order a large pie from Patsy's and grab a 6 of Peroni and you're good. It does exactly what it's supposed to do. Also a very good summer quencher.",
                 "date": "22-12-02"
+            },
+            {
+                "review_id": 1,
+                "username": "THETRAVELLER",
+                "rating": 2,
+                "message": "You know what they say, when in Rome!\nItalian beer... well... maybe they should stick to the pasta and pizza?",
+                "date": "22-12-19"
             }
         ],
         "img": "\/Peroni_nastro_azzurro.png"
@@ -130,7 +144,7 @@
             },
             {
                 "review_id": 11,
-                "username": "test",
+                "username": "JohnDoe",
                 "rating": 4,
                 "message": "The aroma is nicely balanced between sweet fruit and savory herbs and there's a decent amount of variety in the flavors too. My only qualm is that it's quite sweet and lacks bitterness. But this might only be an issue for you if you plan to knock a few back in a session.",
                 "date": "22-12-08"
@@ -213,7 +227,7 @@
             },
             {
                 "review_id": 18,
-                "username": "test",
+                "username": "JohnDoe",
                 "rating": 5,
                 "message": "This, my friends, I consider to be the best, most affordable pale lager available at bolaget. It tastes great, has a nice bitterness and tastes like a pale lager should taste.",
                 "date": "22-12-08"
@@ -271,7 +285,22 @@
         "name": "Carlsberg Export",
         "type": "Pale Lager",
         "avb": 5,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "lightboozer",
+                "rating": 5,
+                "message": "The Danes know how to brew beer!",
+                "date": "22-12-19"
+            },
+            {
+                "review_id": 1,
+                "username": "THETRAVELLER",
+                "rating": 4,
+                "message": "During a walk along \"Str\u00f8get\", I witnessed a crazy long line (and we all know scandis love queuing). What were they queueing for? This beer being handed out for FREE! The danes are just something special... and great at brewing too!",
+                "date": "22-12-19"
+            }
+        ],
         "img": "\/carlsberg_export.png"
     },
     {
@@ -279,7 +308,15 @@
         "name": "Corona Extra",
         "type": "Pale Lager",
         "avb": 4.5,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "ratQueen",
+                "rating": 1,
+                "message": "I think we're all just scarred at this point...",
+                "date": "22-12-19"
+            }
+        ],
         "img": "\/corona_extra.png"
     },
     {
@@ -319,7 +356,15 @@
         "name": "Mythos",
         "type": "Pale Lager",
         "avb": 4.7,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "lightboozer",
+                "rating": 2,
+                "message": "If you go out to a pub to have a good beer and end up with this in your hand, you probably won't be pleasantly surprised, unfortunately.",
+                "date": "22-12-19"
+            }
+        ],
         "img": "\/mythos.png"
     },
     {
@@ -327,7 +372,15 @@
         "name": "Brooklyn Lager",
         "type": "Pale Lager",
         "avb": 5.2,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "THETRAVELLER",
+                "rating": 5,
+                "message": "Cracked this one open right at the brewery. Did it give the beer an unfair advantage? Maybe. But it sure was delicious!",
+                "date": "22-12-19"
+            }
+        ],
         "img": "\/Brooklyn.png"
     },
     {
@@ -335,7 +388,22 @@
         "name": "Dugges Ka-Pow!",
         "type": "Ale",
         "avb": 10.7,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "ratQueen",
+                "rating": 3,
+                "message": "I looked death in the eye with this one.",
+                "date": "22-12-19"
+            },
+            {
+                "review_id": 1,
+                "username": "lightboozer",
+                "rating": 1,
+                "message": "I was, in fact, not lightly boozed.",
+                "date": "22-12-19"
+            }
+        ],
         "img": "\/Dugges_KP.png"
     },
     {
@@ -351,7 +419,15 @@
         "name": "Budvar",
         "type": "Pale Lager",
         "avb": 5,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "JohnDoe",
+                "rating": 3,
+                "message": "Bready and slightly herbal with crisp notes of red apples, grass and lime. The aftertaste is long and just right.",
+                "date": "22-12-19"
+            }
+        ],
         "img": "\/Budvar.png"
     },
     {
@@ -359,7 +435,15 @@
         "name": "Chang Classic",
         "type": "Pale Lager",
         "avb": 5,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "THETRAVELLER",
+                "rating": 3,
+                "message": "Tried this at a small, small restaurant in southern Thailand. Goes down well over there, but would\u2019ve disappeared in the crowd back at home.",
+                "date": "22-12-19"
+            }
+        ],
         "img": "\/Chang.png"
     },
     {
@@ -367,7 +451,15 @@
         "name": "Karlovacko",
         "type": "Pale Lager",
         "avb": 5,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "THETRAVELLER",
+                "rating": 1,
+                "message": "Was treated to this one during a stay with a lovely family in Croatia. I didn\u2019t have it in me to confess how shitty it was. ",
+                "date": "22-12-19"
+            }
+        ],
         "img": "\/Karlovacko.png"
     },
     {
@@ -375,7 +467,15 @@
         "name": "Guinness Draught",
         "type": "Porter & Stout",
         "avb": 4.2,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "porter",
+                "rating": 5,
+                "message": "This was the very first stout I ever tried, and equally my first love. It's creamy, soft and with a hint of black coffee. A go-to!",
+                "date": "22-12-19"
+            }
+        ],
         "img": "\/Guinness.png"
     },
     {
@@ -391,7 +491,15 @@
         "name": "Bright Brew",
         "type": "Pale Lager",
         "avb": 5,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "lightboozer",
+                "rating": 4,
+                "message": "Surprisingly tasty and deep despite the light tone. Bright indeed!",
+                "date": "22-12-19"
+            }
+        ],
         "img": "\/BrightBrew.png"
     },
     {
@@ -399,7 +507,15 @@
         "name": "Stockholm Noir",
         "type": "Porter & Stout",
         "avb": 8,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "porter",
+                "rating": 2,
+                "message": "Besides the stunning (!!!) minimalist packaging, this was a disappointment. It just felt like they were unable to decide which taste to go for and it ended up being a terrible blend of everything. ",
+                "date": "22-12-19"
+            }
+        ],
         "img": "\/Stockholm.png"
     },
     {
@@ -407,7 +523,15 @@
         "name": "DAB",
         "type": "Pale Lager",
         "avb": 5,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "THETRAVELLER",
+                "rating": 4,
+                "message": "Easy to drink, round taste, clean and good flavors, elegant and well made. Classic German.",
+                "date": "22-12-19"
+            }
+        ],
         "img": "\/DAB.png"
     },
     {
@@ -439,7 +563,15 @@
         "name": "Oppig\u00e5rds,Norn Pale Ale",
         "type": "American Pale Ale",
         "avb": 5.6,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "porter",
+                "rating": 1,
+                "message": "This was the beer that finalized it: pale ale really isn\u2019t my thing.",
+                "date": "22-12-19"
+            }
+        ],
         "img": "\/Oppis.png"
     },
     {
@@ -455,7 +587,15 @@
         "name": "Crocodile Lager",
         "type": "Pale Lager",
         "avb": 5.2,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "lightboozer",
+                "rating": 4,
+                "message": "Drinkable, fresh and well-balanced beer with a slight malt flavor and slight soft aromatic hop bitterness.",
+                "date": "22-12-19"
+            }
+        ],
         "img": "\/Crocodile.png"
     },
     {
@@ -479,7 +619,15 @@
         "name": "Gr\u00e4nges Pilsner",
         "type": "Pale Lager",
         "avb": 5,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "lightboozer",
+                "rating": 5,
+                "message": "A lovely end to the week!",
+                "date": "22-12-19"
+            }
+        ],
         "img": "\/Granges.png"
     },
     {
@@ -543,7 +691,15 @@
         "name": "Leffe Blonde",
         "type": "Pale Ale",
         "avb": 6.6,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "lightboozer",
+                "rating": 5,
+                "message": "Leffe Blonde is tasty beer to drink as a companion drink or with all kinds of food really. I could imagine it being suitable for mussels and other shellfish. Simply stable.",
+                "date": "22-12-19"
+            }
+        ],
         "img": "\/Leffe.png"
     },
     {
@@ -567,7 +723,22 @@
         "name": "Zlatopramen, Half n' Half",
         "type": "Dark Lager",
         "avb": 4.8,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "porter",
+                "rating": 4,
+                "message": "You know what? This was a pleasant surprise! The aftertaste is slightly chemical with medium bitterness and notes of wet leather, corrugated cardboard and butter. And then it finishes off with a sweetness. Will definitely grab this one again.",
+                "date": "22-12-19"
+            },
+            {
+                "review_id": 1,
+                "username": "THETRAVELLER",
+                "rating": 5,
+                "message": "The Czechs do it again!!!",
+                "date": "22-12-19"
+            }
+        ],
         "img": "\/Zlato.png"
     },
     {
@@ -575,7 +746,15 @@
         "name": "Norrlands Guld Export",
         "type": "Pale Lager",
         "avb": 5.3,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "lightboozer",
+                "rating": 4,
+                "message": "Honestly, a classic.",
+                "date": "22-12-19"
+            }
+        ],
         "img": "\/Norrlands.png"
     },
     {
@@ -599,7 +778,15 @@
         "name": "Swedish Elk Brew",
         "type": "Pale Lager",
         "avb": 7.5,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "lightboozer",
+                "rating": 3,
+                "message": "If you're looking for JUST the alcohol, this is the beer for you.",
+                "date": "22-12-19"
+            }
+        ],
         "img": "\/Elk.png"
     },
     {
