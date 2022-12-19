@@ -398,7 +398,15 @@
         "name": "1664 Blanc",
         "type": "Ale",
         "avb": 5,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "beerLover",
+                "rating": 4,
+                "message": "",
+                "date": "22-12-19"
+            }
+        ],
         "img": "\/1664.png"
     },
     {

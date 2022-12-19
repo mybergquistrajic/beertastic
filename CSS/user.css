@@ -23,13 +23,13 @@ body {
 }
 
 #userInfo {
-  padding: 5vh;
-  height: 20vh;
+  height: 10vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 3vh;
+  text-align: center;
 }
 
 #changePassword {
@@ -43,6 +43,7 @@ body {
   justify-content: center;
   border-radius: 10px;
   text-align: center;
+  font-size: 2vh;
 }
 
 #changePassword > input {
@@ -73,7 +74,6 @@ body {
 #logOutButton {
   background-color: #ab4300;
   color: #eddc46;
-  
 }
 h2 {
   font-weight: 50;
