@@ -1,53 +1,56 @@
 globalUser = localStorage.getItem("globalUser");
 
 // render Reviews for selected beer
-function renderReviews(beer, ratingClass, ratingContent) {
-    console.log(beer)
+async function renderReviews(beer) {
+    let rating = await checkRating(beer);
+    let ratingContent = await rating[1]
+    let ratingClass = await rating[2]
+
     const reviews = beer.reviews;
     const reviewsContainer = document.querySelector(".reviews");
     reviewsContainer.innerHTML = "";
 
     // render a review for each review in the array
     reviews.forEach(function (review) {
-        // if reviewMessage is not empty, render review
+        // If reviewMessage is not empty, render review
         if (review.message != "") {
+            // Create and append reviewbox
             const reviewContainer = document.createElement("div");
             reviewContainer.classList.add("review");
-            // APPEND REVIEW!!!
             reviewsContainer.appendChild(reviewContainer);
-
+            // Create and append header of review
             const reviewHeader = document.createElement("div");
             reviewHeader.classList.add("reviewHeader");
             reviewContainer.appendChild(reviewHeader);
-            console.log(review.rating)
-            if (review.rating !== "" || null) {
+
+            // If the review includes a rating
+            if (review.rating !== null) {
                 const reviewRating = document.createElement("div");
                 reviewRating.classList.add("reviewRating");
-                reviewRating.innerHTML = `<div class="${ratingClass} ratingReview${review.review_id}" style="font-size: 6.4vw">★★★★★</div>`
+                reviewRating.innerHTML = `<div class="${ratingClass} ratingReview${review.review_id}" style="font-size: 6.4vw">${ratingContent}</div>`
                 reviewHeader.appendChild(reviewRating);
                 // Call function with the ratingSum and star-element as parameters
                 calculateStars(document.querySelector(`.ratingReview${review.review_id}`), review.rating);
-            } else {
-                console.log("else")
+            }
+            // If the review doesn't include a rating
+            else {
                 const reviewNoRating = document.createElement("div");
                 reviewNoRating.classList.add("reviewNoRating");
                 reviewNoRating.innerText = "No rating given"
                 reviewNoRating.style.fontStyle = "italic";
                 reviewHeader.appendChild(reviewNoRating);
             }
-            console.log(review.rating)
 
-            // if user has written review, add delete button
+            // If user is the author of the review, add delete button
             if (review.username == globalUser) {
                 const deleteButton = document.createElement("div");
                 deleteButton.classList.add("reviewDelete");
-                // deleteButton.innerHTML = `<img src="../IMAGES/delete.png">`
+                // On delete click
                 deleteButton.addEventListener("click", function () {
-
                     // Confirm delete review
                     renderPopUp("deleteReview");
-                    console.log(beer)
                     const yesButton = document.querySelector(".yesButton");
+                    // If yes
                     yesButton.addEventListener("click", function () {
                         fetch("../PHP/deleteReview.php",
                             {
@@ -74,13 +77,9 @@ function renderReviews(beer, ratingClass, ratingContent) {
                                     })
                             })
                     })
-
+                    // If no
                     const noButton = document.querySelector(".noButton");
-                    noButton.addEventListener("click", function () {
-                        document.querySelector(".display_error").remove()
-                    })
-
-
+                    noButton.addEventListener("click", function () { document.querySelector(".display_error").remove() })
                 })
                 reviewHeader.appendChild(deleteButton);
             }
@@ -98,7 +97,7 @@ function renderReviews(beer, ratingClass, ratingContent) {
             reviewMessage.innerHTML = review.message;
             reviewContainer.appendChild(reviewMessage);
 
-            // if review is longer than 100 characters, add show more button
+            // If review is longer than 100 characters, add show more button
             if (review.message.length > 100) {
                 const showMore = document.createElement("p");
                 showMore.classList.add("showMore");
@@ -110,14 +109,12 @@ function renderReviews(beer, ratingClass, ratingContent) {
                 })
                 reviewContainer.appendChild(showMore);
             }
-
         }
     })
 }
 
-// Funtion for creating write review window
+// Create write review popup
 async function writeReview(beer) {
-
     const reviewWindow = document.createElement("div");
     reviewWindow.classList.add("reviewWindow");
 
@@ -147,7 +144,6 @@ async function writeReview(beer) {
     const reviewRating = document.createElement("div");
     reviewRating.classList.add("reviewRatingStars");
     reviewRating.appendChild(createStars());
-    console.log(reviewRating.value)
     reviewWindow.appendChild(reviewRating);
 
     // Review Message
@@ -178,9 +174,12 @@ async function writeReview(beer) {
                 })
             })
             .then(res => {
+                // If successful post
                 if (res.status === 200) {
                     console.log("Review posted");
-                } else {
+                }
+                // If not successful post, alert user
+                else {
                     renderPopUp("ratingReview")
                     document.querySelector('.ok').addEventListener("click", function () {
                         document.querySelector(".display_error").remove()
@@ -189,6 +188,7 @@ async function writeReview(beer) {
                 return res.json();
             })
             .then(data => {
+                // If successfull reviewpost
                 if (data["error"] !== "Neither rating nor review was submitted, please fill in one of the values") {
                     reviewWindow.remove();
                     //Fetching anew to get beer without the new review
@@ -243,7 +243,6 @@ function addRating(number) {
 function reviewRating(reviewRating) {
     const ratingContainer = document.createElement("div");
     ratingContainer.classList.add("ratingContainer");
-
     for (let i = 0; i < 5; i++) {
         const star = document.createElement("div");
         star.classList.add("star");
@@ -255,6 +254,5 @@ function reviewRating(reviewRating) {
         }
         ratingContainer.appendChild(star);
     }
-
     return ratingContainer;
 }

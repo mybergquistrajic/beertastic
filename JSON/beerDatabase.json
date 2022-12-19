@@ -96,7 +96,15 @@
         "name": "Sofiero Original",
         "type": "Pale Lager",
         "avb": 5.2,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "mybr",
+                "rating": null,
+                "message": "asdfghjk",
+                "date": "22-12-19"
+            }
+        ],
         "img": "\/Sofiero_original.png"
     },
     {
