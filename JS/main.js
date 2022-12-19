@@ -8,10 +8,26 @@ menuBar();
 // Menubar, to be called in all JS-files that are directly connected to HTML-files
 function menuBar() {
   let menu = document.createElement("div");
+  let heart, beer, user;
+  if (window.location.pathname.endsWith("favorites.html")) {
+    heart = "heart-color.png"
+  } else {
+    heart = "heart-nofilled.png"
+  }
+  if (window.location.pathname.endsWith("search.html")) {
+    beer = "beer-color.png"
+  } else {
+    beer = "beer.png"
+  }
+  if (window.location.pathname.endsWith("user.html")) {
+    user = "user-color.png"
+  } else {
+    user = "userprofile.png"
+  }
   menu.innerHTML = `
-    <a href="../HTML/favorites.html"><img src="../IMAGES/heart-nofilled.png" id="favoritesBtn"></a>
-    <a href="../HTML/search.html"><img src="../IMAGES/beer.png" id="beerBtn"></a>
-    <a href="../HTML/user.html"><img src="../IMAGES/userprofile.png" id="userBtn"></a>
+    <a href="../HTML/favorites.html"><img src="../IMAGES/${heart}" id="favoritesBtn"></a>
+    <a href="../HTML/search.html"><img src="../IMAGES/${beer}" id="beerBtn"></a>
+    <a href="../HTML/user.html"><img src="../IMAGES/${user}" id="userBtn"></a>
     `;
   document.querySelector("body").appendChild(menu);
   menu.id = "mainMenu";
