@@ -211,6 +211,9 @@ function renderSearchAndMain() {
 // DIRECT CODE
 // If current file/view is favorites
 if (window.location.pathname.endsWith("favorites.html")) {
+  if (globalUser == null) {
+    renderPopUp("haveToLogIn")
+  }
   let main = document.createElement("div");
   main.classList.add("beerResults");
   document.querySelector("body").appendChild(main);
