@@ -136,6 +136,11 @@ async function popUpBeer(beer) {
   let starDiv = document.createElement("div");
   starDiv.classList.add("starDivPopup")
   starDiv.innerHTML = `<div class="${ratingClass} ratingPopup${beer["id"]}" style="font-size: ${popUpRating}">${ratingContent}</div>`
+  // Create rating numbers
+  let ratingNumbers = document.createElement("div");
+  ratingNumbers.classList.add("ratingNumber")
+  ratingNumbers.innerHTML = `(${ratingSum} / 5)`
+  // Create reviewBtn
   let reviewBtn = document.createElement("div");
   reviewBtn.classList.add("reviewBtn")
   reviewBtn.innerHTML = `Review Beer`
@@ -150,6 +155,7 @@ async function popUpBeer(beer) {
   header.appendChild(heartBtn);
   oneBeerPopUpContent.appendChild(infoDiv);
   oneBeerPopUpContent.appendChild(starDiv);
+  starDiv.appendChild(ratingNumbers);
   oneBeerPopUpContent.appendChild(reviewBtn);
   oneBeerPopUpContent.appendChild(reviewsDiv);
 

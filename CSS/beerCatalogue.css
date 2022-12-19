@@ -233,6 +233,18 @@ body {
   text-align: center;
 }
 
+.ratingNumber{
+  position: relative;
+  left: 4vw;
+  top: 0.5vw;
+  font-family: "Snippet", sans-serif;
+  text-align: center;
+  /* 0 width to ensure the stars remain centered */
+  width: 0;
+  /* Ensures no linebreak */
+  white-space: nowrap;
+}
+
 /* REVIEWS */
 
 
