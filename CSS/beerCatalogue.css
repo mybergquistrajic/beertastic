@@ -241,12 +241,12 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 10vw auto 20vw auto;
+  margin: 10vw auto 25vw auto;
 }
 
 .review{
   width: 90vw;
-  max-height: 50vw;
+  max-height: 70vw;
   margin: 3.3vw;
   background-color: white;
   opacity: 90%;
@@ -336,4 +336,15 @@ body {
   margin-bottom: 5vw;
   resize: none;
   height: 95%;
+}
+
+.showStyling {
+  width: 30%;
+  background-color: #ab4300;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: white;
+  padding: 2vw;
+  border-radius: 10px;
 }

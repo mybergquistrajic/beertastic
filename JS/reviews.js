@@ -94,20 +94,37 @@ async function renderReviews(beer) {
             // Review message
             const reviewMessage = document.createElement("p");
             reviewMessage.classList.add("reviewMessage");
-            reviewMessage.innerHTML = review.message;
             reviewContainer.appendChild(reviewMessage);
-
-            // If review is longer than 100 characters, add show more button
-            if (review.message.length > 100) {
-                const showMore = document.createElement("p");
-                showMore.classList.add("showMore");
+            // If the message length is more than 200
+            if (review.message.length > 200) {
+                // Slice the message by 200 and add ...
+                reviewMessage.innerHTML = review.message.slice(0, 200) + "...";
+                // Create and append show more btn
+                const showMore = document.createElement("div");
+                showMore.classList.add("show");
+                showMore.classList.add("showStyling");
                 showMore.innerHTML = "Show more";
-                // Toggle show more button
-                showMore.addEventListener("click", function () {
-                    reviewMessage.classList.toggle("showMore");
-                    showMore.classList.toggle("showMore");
-                })
                 reviewContainer.appendChild(showMore);
+                // Toggle show more button
+                showMore.addEventListener("click", function (event) {
+                    // If clicking to show more
+                    if (showMore.classList.contains("show")) {
+                        // Let height of review be full
+                        event.target.parentElement.style.maxHeight = "100%";
+                        reviewMessage.innerHTML = review.message;
+                        showMore.innerHTML = "Show less";
+                    }
+                    // If clicking to show less
+                    else {
+                        event.target.parentElement.style.maxHeight = "60vw";
+                        reviewMessage.innerHTML = review.message.slice(0, 200) + "...";
+                        showMore.innerHTML = "Show more";
+                    }
+                    // Change/toggle
+                    showMore.classList.toggle("show");
+                })
+            } else {
+                reviewMessage.innerHTML = review.message;
             }
         }
     })
