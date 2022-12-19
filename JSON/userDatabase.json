@@ -66,5 +66,69 @@
         "password": "miranda123",
         "age": "18",
         "likedBeers": []
+    },
+    {
+        "userId": 6,
+        "username": "ratQueen",
+        "password": "queenRat",
+        "age": "23",
+        "likedBeers": [
+            {
+                "id": "41"
+            },
+            {
+                "id": "17"
+            }
+        ]
+    },
+    {
+        "userId": 7,
+        "username": "porter",
+        "password": "retrop",
+        "age": "32",
+        "likedBeers": []
+    },
+    {
+        "userId": 8,
+        "username": "lightboozer",
+        "password": "boozer",
+        "age": "29",
+        "likedBeers": []
+    },
+    {
+        "userId": 9,
+        "username": "JohnDoe",
+        "password": "doodoo",
+        "age": "49",
+        "likedBeers": []
+    },
+    {
+        "userId": 10,
+        "username": "THETRAVELLER",
+        "password": "airplane",
+        "age": "37",
+        "likedBeers": [
+            {
+                "id": "19"
+            },
+            {
+                "id": "23"
+            },
+            {
+                "id": "24"
+            },
+            {
+                "id": "4"
+            },
+            {
+                "id": "13"
+            },
+            {
+                "id": "29"
+            },
+            {
+                "id": "46"
+            }
+        ]
     }
 ]
