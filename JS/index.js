@@ -81,3 +81,12 @@ function dragStop() {
     autoCenterSlide();
 }
  
+swipeBox.addEventListener("mousedown", dragStart)
+swipeBox.addEventListener("touchstart", dragStart)
+
+swipeBox.addEventListener("mousemove", dragging)
+swipeBox.addEventListener("touchmove", dragging)
+
+swipeBox.addEventListener("mouseup", dragStop)
+swipeBox.addEventListener("mouseleave", dragStop)
+swipeBox.addEventListener("touchend", dragStop)
