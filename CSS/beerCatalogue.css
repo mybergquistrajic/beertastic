@@ -60,7 +60,7 @@ body {
   font-size: 2em;
 }
 
-.noResult div{
+.noResult div {
   text-align: center;
   margin: auto 5vw auto 5vw;
   background-color: white;
@@ -78,7 +78,7 @@ body {
 }
 
 .noResult div p:last-child {
-  font-size: 0.6em; 
+  font-size: 0.6em;
   font-family: "Snippet", sans-serif;
 }
 
@@ -222,13 +222,14 @@ body {
 }
 
 .oneBeerPopUpInfo {
-  height: 35vh;
+  height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   font-family: "Snippet", sans-serif;
-  text-align: left;
+  color: #ab4300;
+  font-size: 2vh;
 }
 
 .oneBeerPopUpInfo img {
