@@ -81,6 +81,25 @@ function dragStop() {
     autoCenterSlide();
 }
  
+// Function to show and hide the left and right buttons
+function showHideButton() {
+
+    // if user is at the start of the swipebox (where the scrollLeft is 0), hide left button else show left button
+    if (swipeBox.scrollLeft == 0) {
+        leftButton.style.display = "none";
+    } else {
+        leftButton.style.display = "block";
+    }
+
+    // if user is at the end of the swipebox (takes the scrollWidth aka the length of the whole swipeBox minus the current slide), hide right button else show right button
+    if (swipeBox.scrollLeft == swipeBox.scrollWidth - swipeBox.clientWidth) {
+        rightButton.style.display = "none";
+    } else {
+        rightButton.style.display = "block";
+    }
+}
+
+// All the event listeners for when user starts, drags and stops dragging
 swipeBox.addEventListener("mousedown", dragStart)
 swipeBox.addEventListener("touchstart", dragStart)
 
