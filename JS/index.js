@@ -41,3 +41,43 @@ function renderSlides() {
 
 createSlides();
 
+// Variables for the swipebox
+const swipeBox = document.querySelector("#swipeBox");
+const leftButton = document.querySelector("#swipeLeft");
+const rightButton = document.querySelector("#swipeRight");
+// Function for when user starts dragging with event as parameter
+function dragStart(e) {
+    isDragStart = true;
+    // gets the x position of where the user started dragging
+    prevPageX = e.pageX || e.touches[0].pageX;
+    // gets the scrollLeft position of the swipebox aka how far away from the left the user is in the swipebox
+    prevScrollLeft = swipeBox.scrollLeft;
+}
+
+// Function for when user is dragging with event as parameter
+function dragging(e) {
+    // if user is not dragging, return (safety measure)
+    if (!isDragStart) {
+        return;
+    }
+    // prevent default action of the event aka prevent the user from selecting text or images
+    e.preventDefault();
+    isDragging = true;
+    swipeBox.classList.add("dragging")
+    // gets the difference between the x position of where the user started dragging and the current x position of the user
+    positionDiff = (e.pageX || e.touches[0].pageX) - prevPageX;
+    // sets the scrollLeft of the swipebox to the previous scrollLeft minus the positionDiff
+    swipeBox.scrollLeft = prevScrollLeft - positionDiff;
+    showHideButton();
+}
+
+// Function for when user stops dragging with event as parameter
+function dragStop() {
+    isDragStart = false;
+    swipeBox.classList.remove("dragging")
+    if (!isDragging) return;
+    isDragging = false;
+    // runs the autoCenterSlide function to center the slide if stopped before the slide is centered
+    autoCenterSlide();
+}
+ 
