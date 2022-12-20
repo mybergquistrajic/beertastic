@@ -13,6 +13,7 @@ async function renderReviews(beer) {
     // render a review for each review in the array
     reviews.forEach(function (review) {
         // If reviewMessage is not empty, render review
+        console.log(review)
         if (review.message != "") {
             // Create and append reviewbox
             const reviewContainer = document.createElement("div");
@@ -125,6 +126,12 @@ async function renderReviews(beer) {
             }
         }
     })
+    // If no WRITTEN reviews
+    if(reviewsContainer.innerHTML == ""){
+        reviewsContainer.innerHTML = "This beer has no written reviews yet. This is your chance, be the first one!"
+        reviewsContainer.classList.add("noReviews")
+        document.querySelector(".oneBeerPopUpContent").style.paddingBottom = "5vw";
+    }
 }
 
 // Create write review popup
