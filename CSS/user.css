@@ -79,3 +79,12 @@ h2 {
   font-weight: 50;
   font-size: 4vh;
 }
+
+.aboutUs {
+  font-family: "Snippet", sans-serif;
+  text-align: center;
+  padding: 2vh;
+}
+.aboutUs a {
+  color: #ab4300;
+}
