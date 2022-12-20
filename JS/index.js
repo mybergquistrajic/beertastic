@@ -45,6 +45,42 @@ createSlides();
 const swipeBox = document.querySelector("#swipeBox");
 const leftButton = document.querySelector("#swipeLeft");
 const rightButton = document.querySelector("#swipeRight");
+
+// Function to auto center the slide when moved to the left or right
+function autoCenterSlide() {
+    // if user position is at the end of the swipebox, return
+    if (swipeBox.scrollLeft == (swipeBox.scrollWidth - swipeBox.clientWidth)) {
+        return;
+    }
+
+    // converts positionDiff to absolute value aka positive number
+    positionDiff = Math.abs(positionDiff);
+
+    // get the width of the first slide
+    let firstSlideWidth = swipeBox.clientWidth;
+
+    // get the difference between the first slide width and the positionDiff
+    let valueDifference = firstSlideWidth - positionDiff;
+
+    // if user position swipes to the right
+    if (swipeBox.scrollLeft > prevScrollLeft) {
+        // if user positionDiff is greater than 33% of the slide width, add valueDifference to scrollLeft else subtract positionDiff
+        if (positionDiff > firstSlideWidth / 3) {
+            return swipeBox.scrollLeft += valueDifference;
+        } else {
+            return swipeBox.scrollLeft -= positionDiff;
+        }
+    }
+
+    // if user position swipes to the left do the same as above but in reverse
+    if (positionDiff > firstSlideWidth / 3) {
+        return swipeBox.scrollLeft -= valueDifference;
+    } else {
+        return swipeBox.scrollLeft += positionDiff;
+    }
+
+}
+
 // Function for when user starts dragging with event as parameter
 function dragStart(e) {
     isDragStart = true;
