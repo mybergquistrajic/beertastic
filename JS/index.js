@@ -22,3 +22,22 @@ function createSlides() {
     });
 }
 
+// Function to render the slides
+function renderSlides() {
+    let slideContainer = document.querySelector("#swipeBox");
+    beerSlides.forEach(beer => {
+        let slide = document.createElement("div");
+        slide.classList.add("slide");
+        slide.innerHTML = `
+            <div class="slideImage">
+                <img src="../IMAGES/${beer.img}" alt="${beer.name}" draggable="false">
+            </div>
+            <div class="slideText">
+                <h2>${beer.name}</h2>
+            </div>`;
+        slideContainer.appendChild(slide);
+    });
+}
+
+createSlides();
+
