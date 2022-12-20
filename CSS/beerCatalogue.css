@@ -295,6 +295,18 @@ body {
   align-items: center;
 }
 
+.noReviews {
+  margin: 20vw 5vw auto 5vw;
+  font-family: "Snippet", sans-serif;
+  font-size: 1.2em;
+  background-color: white;
+  opacity: 90%;
+  border-radius: 15px;
+  font-family: "Snippet", sans-serif;
+  filter: drop-shadow(0 0 0.3rem #00000030);
+  padding: 5vw;
+}
+
 /* ADD REVIEW POPUP */
 .reviewWindow {
   background-color: white;
