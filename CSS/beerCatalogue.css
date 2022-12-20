@@ -222,14 +222,12 @@ body {
 }
 
 .oneBeerPopUpInfo {
-  height: 50vh;
+  height: 35vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   font-family: "Snippet", sans-serif;
-  color: #ab4300;
-  font-size: 2vh;
 }
 
 .oneBeerPopUpInfo img {
