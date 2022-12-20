@@ -69,8 +69,12 @@ function showFavorites(username) {
       // If no favorites, display message
       if (user["likedBeers"].length == 0) {
         let noResult = document.createElement("div");
-        noResult.innerHTML =
-          "<p style='font-weight: bolder;'>Sorrrrrry!</p><p style='font-size: 0.7em;'>No beer with that name</p>";
+        noResult.innerHTML = `
+        <div>
+        <p>No favorites yet</p>
+        <p>Try adding some from the catalogue!</p>
+        </div>
+        `;
         document.querySelector(".beerResults").appendChild(noResult);
         noResult.classList.add("noResult");
       }
