@@ -109,3 +109,16 @@ swipeBox.addEventListener("touchmove", dragging)
 swipeBox.addEventListener("mouseup", dragStop)
 swipeBox.addEventListener("mouseleave", dragStop)
 swipeBox.addEventListener("touchend", dragStop)
+
+// Event listeners for when user clicks the left and right buttons
+rightButton.addEventListener("click", () => { 
+    swipeBox.scrollLeft += swipeBox.clientWidth;
+    setTimeout(showHideButton, 500);
+})
+
+leftButton.addEventListener("click", () => {
+    swipeBox.scrollLeft -= swipeBox.clientWidth;
+    setTimeout(showHideButton, 500);
+})
+
+
