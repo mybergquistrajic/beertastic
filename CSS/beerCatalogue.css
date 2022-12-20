@@ -60,7 +60,25 @@ body {
   font-size: 2em;
 }
 
-.noResult > p {
+.noResult div{
+  text-align: center;
+  margin: auto 5vw auto 5vw;
+  background-color: white;
+  opacity: 90%;
+  border-radius: 15px;
+  filter: drop-shadow(0 0 0.3rem #00000030);
+  padding: 5vw;
+  width: 70vw;
+}
+
+.noResult div p:first-child {
+  font-weight: bolder;
+  margin: 3vw auto 1vw auto;
+  font-size: 1.3em;
+}
+
+.noResult div p:last-child {
+  font-size: 0.6em; 
   font-family: "Snippet", sans-serif;
 }
 
