@@ -109,14 +109,11 @@ async function renderReviews(beer) {
                 showMore.addEventListener("click", function (event) {
                     // If clicking to show more
                     if (showMore.classList.contains("show")) {
-                        // Let height of review be full
-                        event.target.parentElement.style.maxHeight = "100%";
                         reviewMessage.innerHTML = review.message;
                         showMore.innerHTML = "Show less";
                     }
                     // If clicking to show less
                     else {
-                        event.target.parentElement.style.maxHeight = "60vw";
                         reviewMessage.innerHTML = review.message.slice(0, 200) + "...";
                         showMore.innerHTML = "Show more";
                     }
