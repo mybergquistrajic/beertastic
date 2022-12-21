@@ -250,6 +250,7 @@ function renderSearchAndMain() {
   document.querySelector("body").appendChild(main);
 }
 
+// Function for rendering scroll to top button with eventlistener
 function scrollToTopButton() {
   console.log("scrollToTopButton");
   // Create button
@@ -264,6 +265,7 @@ function scrollToTopButton() {
 
 }
 
+// Function for changing the display of the scroll to top button depending on where you are
 function scrollFunction(page) {
   if(page == "beerResults") {
 
@@ -283,14 +285,17 @@ function scrollFunction(page) {
   }
 }
 
+// Function for scrolling to top of beerResults
 function scrollToBeerResults() {
   document.querySelector(".beerResults").scrollTop = 0;
 }
 
+// Function for scrolling to top of oneBeerPopUp
 function scrollToPopUpBeer() {
   document.querySelector(".oneBeerPopUp").scrollTop = 0;
 }
 
+// Function for switching eventlisteners
 function switchEventListeners() {
   document.querySelector(".scrollToTopBtn").removeEventListener("click", scrollToBeerResults);
   document.querySelector(".beerResults").removeEventListener("scroll", () => { scrollFunction("beerResults") });
