@@ -118,20 +118,6 @@ async function renderBeer(beer) {
 
 // Render the popup when clicking beer
 async function popUpBeer(beer) {
-
-  // Get favourite status
-  let favorite = await checkFavorite(beer);
-  // Get rating values
-  let rating = await checkRating(beer);
-  let ratingSum = await rating[0];
-  let ratingContent = await rating[1];
-  let ratingClass = await rating[2];
-  let popUpRating;
-  if (ratingSum == 0) {
-    popUpRating = "5vw";
-  } else {
-    popUpRating = "11.5vw";
-
   // If not logged in
   if (globalUser == "admin") {
     renderPopUp("haveToLogIn")
