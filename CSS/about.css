@@ -1,0 +1,47 @@
+body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-image: url(../IMAGES/Background_yellow.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.wrapperAboutUs {
+  display: flex;
+  width: 80vw;
+  flex-direction: column;
+  font-family: "Snippet", sans-serif;
+  height: 100vh;
+  overflow-y: scroll;
+  margin-bottom: 20vh;
+}
+
+h1 {
+  font-size: 5vh;
+  color: #eddc46;
+  font-weight: 100;
+  text-align: center;
+  font-family: "Shadows Into Light", cursive;
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.644);
+
+  padding: 2vh;
+  text-align: left;
+  border-bottom: solid #ab4300 0.5px;
+  color: black;
+}
+
+#noBorder {
+  border-bottom: none;
+}
+
+h3 {
+  color: #ab4300;
+}
