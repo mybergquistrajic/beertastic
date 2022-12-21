@@ -1,4 +1,5 @@
  <?php
+
     require_once ("functions.php");
 
     // If method is not post
@@ -26,12 +27,12 @@
 
     // Finding the right beer
     foreach($beers as $index => $beer){
+        $highestId = 0;
         if($beer["id"] == $r_data["beerId"]){
-            $highestId = 0;
             // For each review, change highestId
             foreach($beer["reviews"] as $review){
-                if ($review["id"] > $highestId){
-                    $highestId = $review["id"];
+                if ($review["review_id"] > $highestId){
+                    $highestId = $review["review_id"];
                 }
             }
             $highestId = $highestId + 1;
