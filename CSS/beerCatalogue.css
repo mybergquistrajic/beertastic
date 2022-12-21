@@ -48,6 +48,7 @@ body {
   align-items: center;
   flex-direction: column;
   overflow-y: scroll;
+  scroll-behavior: smooth
 }
 
 .noResult {
