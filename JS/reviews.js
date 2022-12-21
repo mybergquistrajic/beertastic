@@ -28,7 +28,7 @@ async function renderReviews(beer) {
             if (review.rating !== null) {
                 const reviewRating = document.createElement("div");
                 reviewRating.classList.add("reviewRating");
-                reviewRating.innerHTML = `<div class="${ratingClass} ratingReview${review.review_id}" style="font-size: 6.4vw">${ratingContent}</div>`
+                reviewRating.innerHTML = `<div class="${ratingClass} ratingReview${review.review_id}" style="font-size: 6.2vw">${ratingContent}</div>`
                 reviewHeader.appendChild(reviewRating);
                 // Call function with the ratingSum and star-element as parameters
                 calculateStars(document.querySelector(`.ratingReview${review.review_id}`), review.rating);
@@ -127,7 +127,7 @@ async function renderReviews(beer) {
         }
     })
     // If no WRITTEN reviews
-    if(reviewsContainer.innerHTML == ""){
+    if (reviewsContainer.innerHTML == "") {
         reviewsContainer.innerHTML = "This beer has no written reviews yet. This is your chance, be the first one!"
         reviewsContainer.classList.add("noReviews")
         document.querySelector(".oneBeerPopUpContent").style.paddingBottom = "5vw";
