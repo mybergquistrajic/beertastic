@@ -172,6 +172,23 @@ function renderPopUp(type) {
     <p>The current password is wrong. Please try again.</p>
     <button class = "ok">Ok</button>
     </div>`;
+<<<<<<< Updated upstream
+=======
+  } else if (type === "loggedIn") {
+    popUpDiv.innerHTML = `
+    <div>
+    <h1>Hey!</h1>
+    <p>You're already logged in.</p>
+    <button class = "ok">Ok</button>
+    </div>`;
+  } else if (type === "wrongLenght") {
+    popUpDiv.innerHTML = `
+    <div>
+    <h1>Oops!</h1>
+    <p>The password must contain at least 5 characters.</p>
+    <button class = "ok">Ok</button>
+    </div>`;
+>>>>>>> Stashed changes
   }
 
   //append the popUpDiv to body
