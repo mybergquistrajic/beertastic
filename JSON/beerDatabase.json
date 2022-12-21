@@ -366,6 +366,13 @@
                 "rating": 5,
                 "message": "Cracked this one open right at the brewery. Did it give the beer an unfair advantage? Maybe. But it sure was delicious!",
                 "date": "22-12-19"
+            },
+            {
+                "review_id": 2,
+                "username": "mirandaL",
+                "rating": null,
+                "message": "Enjoyed drinking this! A good Lager.",
+                "date": "22-12-21"
             }
         ],
         "img": "\/Brooklyn.png"
@@ -409,22 +416,15 @@
             {
                 "review_id": 2,
                 "username": "beerLover",
-                "rating": null,
-                "message": "hejhej",
+                "rating": 4,
+                "message": "AMAZING. Perfect when you're tired of the normal beertaste. ",
                 "date": "22-12-21"
             },
             {
                 "review_id": 3,
-                "username": "beerLover",
+                "username": "mirandaL",
                 "rating": null,
-                "message": "gadhgoa",
-                "date": "22-12-21"
-            },
-            {
-                "review_id": 4,
-                "username": "beerLover",
-                "rating": null,
-                "message": "nud\u00e5??",
+                "message": "Love this. Very fresh and tasty - pefect for a warm day! ",
                 "date": "22-12-21"
             }
         ],
@@ -442,6 +442,13 @@
                 "rating": 3,
                 "message": "Bready and slightly herbal with crisp notes of red apples, grass and lime. The aftertaste is long and just right.",
                 "date": "22-12-19"
+            },
+            {
+                "review_id": 2,
+                "username": "mirandaL",
+                "rating": 4,
+                "message": "This is one of my favorite Lagers (pale). Good price, good taste, good desgin. Recommend it!",
+                "date": "22-12-21"
             }
         ],
         "img": "\/Budvar.png"
@@ -458,6 +465,13 @@
                 "rating": 3,
                 "message": "Tried this at a small, small restaurant in southern Thailand. Goes down well over there, but would\u2019ve disappeared in the crowd back at home.",
                 "date": "22-12-19"
+            },
+            {
+                "review_id": 2,
+                "username": "beerLover",
+                "rating": 3,
+                "message": "Drank this in Thailand while backpacking. Very tasty in the hot climate. ",
+                "date": "22-12-21"
             }
         ],
         "img": "\/Chang.png"
@@ -659,7 +673,15 @@
         "name": "Arte in Lattina",
         "type": "Pale Lager",
         "avb": 5.2,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "beerLover",
+                "rating": 3,
+                "message": "A normal Pale Lager. Works fine. Extra credits to the artsy can - (it makes it look more expensive than it is).",
+                "date": "22-12-21"
+            }
+        ],
         "img": "\/Arte.png"
     },
     {
@@ -714,6 +736,20 @@
                 "rating": 5,
                 "message": "Leffe Blonde is tasty beer to drink as a companion drink or with all kinds of food really. I could imagine it being suitable for mussels and other shellfish. Simply stable.",
                 "date": "22-12-19"
+            },
+            {
+                "review_id": 2,
+                "username": "beerLover",
+                "rating": 1,
+                "message": "drank this once.... never again. ",
+                "date": "22-12-21"
+            },
+            {
+                "review_id": 3,
+                "username": "mirandaL",
+                "rating": 1,
+                "message": "I didn't like this at all. Don't recommend. ",
+                "date": "22-12-21"
             }
         ],
         "img": "\/Leffe.png"
@@ -723,7 +759,15 @@
         "name": "Tuborg Gr\u00f6n",
         "type": "Pale Lager",
         "avb": 4.2,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "beerLover",
+                "rating": null,
+                "message": "This was my go-to for a week at Roskilde. I'm still not tired of it... so I guess that's a good sign..",
+                "date": "22-12-21"
+            }
+        ],
         "img": "\/Tuborg.png"
     },
     {
@@ -842,7 +886,15 @@
         "name": "Omaka Afrodite",
         "type": "Mix of different beertypes",
         "avb": 6,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "mirandaL",
+                "rating": 1,
+                "message": "Drank this the other day. Cool design, but no more than that. ",
+                "date": "22-12-21"
+            }
+        ],
         "img": "\/Omaka.png"
     }
 ]
