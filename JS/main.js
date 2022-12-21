@@ -172,8 +172,6 @@ function renderPopUp(type) {
     <p>The current password is wrong. Please try again.</p>
     <button class = "ok">Ok</button>
     </div>`;
-<<<<<<< Updated upstream
-=======
   } else if (type === "loggedIn") {
     popUpDiv.innerHTML = `
     <div>
@@ -188,7 +186,6 @@ function renderPopUp(type) {
     <p>The password must contain at least 5 characters.</p>
     <button class = "ok">Ok</button>
     </div>`;
->>>>>>> Stashed changes
   }
 
   //append the popUpDiv to body
