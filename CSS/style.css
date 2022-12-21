@@ -1,5 +1,4 @@
 /* Main CSS for frequently used elements such as the menu */
-
 #mainMenu {
   display: flex;
   justify-content: space-evenly;
