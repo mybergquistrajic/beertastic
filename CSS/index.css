@@ -17,6 +17,7 @@ body {
 #mainWrapper {
   height: 100vh;
   margin-top: 5vh;
+  width: 100vw;
 }
 #indexContent {
   margin: 5vh;

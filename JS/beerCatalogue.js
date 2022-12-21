@@ -1,4 +1,9 @@
 "use strict";
+// console.log(localStorage.getItem(globalUser))
+// if (localStorage.getItem("globalUser") === null) {
+//   localStorage.setItem("globalUser", "admin");
+//   console.log("hej")
+// }
 
 // Global variables
 let globalBeers;

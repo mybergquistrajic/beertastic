@@ -1,5 +1,9 @@
 "use strict";
 
+if (localStorage.getItem("globalUser") === null) {
+  localStorage.setItem("globalUser", "admin");
+}
+
 if (localStorage.getItem("globalUser") === "admin") {
   renderPopUp("haveToLogIn");
 }
