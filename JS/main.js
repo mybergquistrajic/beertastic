@@ -8,23 +8,29 @@ menuBar();
 // Menubar, to be called in all JS-files that are directly connected to HTML-files
 function menuBar() {
   let menu = document.createElement("div");
-  let heart, beer, user;
+  let home, heart, beer, user;
   if (window.location.pathname.endsWith("favorites.html")) {
-    heart = "heart-color.png"
+    heart = "heart-color.png";
   } else {
-    heart = "heart-nofilled.png"
+    heart = "heart-nofilled.png";
   }
   if (window.location.pathname.endsWith("search.html")) {
-    beer = "beer-color.png"
+    beer = "beer-color.png";
   } else {
-    beer = "beer.png"
+    beer = "beer.png";
   }
   if (window.location.pathname.endsWith("user.html")) {
-    user = "user-color.png"
+    user = "user-color.png";
   } else {
-    user = "userprofile.png"
+    user = "userprofile.png";
+  }
+  if (window.location.pathname.endsWith("index.html")) {
+    home = "home-color.png";
+  } else {
+    home = "home.png";
   }
   menu.innerHTML = `
+    <a href="../HTML/index.html"><img src="../IMAGES/${home}" id="homeBtn"></a>
     <a href="../HTML/favorites.html"><img src="../IMAGES/${heart}" id="favoritesBtn"></a>
     <a href="../HTML/search.html"><img src="../IMAGES/${beer}" id="beerBtn"></a>
     <a href="../HTML/user.html"><img src="../IMAGES/${user}" id="userBtn"></a>
@@ -39,7 +45,7 @@ function heartOnClick(event) {
   globalUser = localStorage.getItem("globalUser");
   // If not logged in
   if (globalUser == "admin") {
-    renderPopUp("haveToLogIn")
+    renderPopUp("haveToLogIn");
   }
   // If logged in
   else {
