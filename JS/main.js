@@ -85,6 +85,7 @@ function renderPopUp(type) {
   const popUpDiv = document.createElement("div");
   //Adding a class for styling the popUpDiv
   popUpDiv.classList.add("display_error");
+
   //reaching the body-element
   const body = document.querySelector("body");
 
@@ -120,6 +121,7 @@ function renderPopUp(type) {
     <button class = "ok">Ok</button>
     </div>`;
   } else if (type === "haveToLogIn") {
+    popUpDiv.setAttribute("id", "haveToLogIn");
     popUpDiv.innerHTML = `
     <div>
     <h1>Sorry!</h1>

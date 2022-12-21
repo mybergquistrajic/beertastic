@@ -74,7 +74,6 @@ h1 {
   overflow: hidden;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
-
 }
 
 .dragging {
@@ -110,7 +109,6 @@ h1 {
   background-color: #ab4300;
   color: #eddc46;
   cursor: pointer;
-
 }
 
 #swipeWrapper {
@@ -138,6 +136,3 @@ h1 {
   align-items: center;
   flex-direction: column;
 }
-
-
-
