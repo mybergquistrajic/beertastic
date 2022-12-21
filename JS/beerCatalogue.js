@@ -58,6 +58,7 @@ function renderBeers(result) {
       renderBeer(beer);
     });
   }
+  scrollToTopButton();
 }
 
 // Renders one beer
@@ -246,6 +247,30 @@ function renderSearchAndMain() {
   document.querySelector("body").appendChild(main);
 }
 
+function scrollToTopButton() {
+  console.log("scrollToTopButton");
+  // Create button
+  let scrollToTopBtn = document.createElement("div");
+  scrollToTopBtn.classList.add("scrollToTopBtn");
+  scrollToTopBtn.innerHTML = `<div class="arrow-up">↑</div>`;
+  document.querySelector(".beerResults").appendChild(scrollToTopBtn);
+  // On click
+  scrollToTopBtn.addEventListener("click", scrollToBeerResults);
+  scrollFunction("beerResults");
+  document.querySelector(".beerResults").addEventListener("scroll", () => { scrollFunction("beerResults") });
+
+}
+
+function scrollFunction(page) {
+  if(page == "beerResults") {
+
+    if (document.querySelector(`.beerResults`).scrollTop > 10) {
+      document.querySelector(".scrollToTopBtn").style.display = "flex";
+    } else {
+      document.querySelector(".scrollToTopBtn").style.display = "none";
+    }
+  }
+  
 // DIRECT CODE
 
 // If current file/view is favorites
