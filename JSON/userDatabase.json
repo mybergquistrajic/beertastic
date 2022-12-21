@@ -123,5 +123,12 @@
                 "id": "46"
             }
         ]
+    },
+    {
+        "userId": 11,
+        "username": "admin",
+        "password": "admin",
+        "age": "99",
+        "likedBeers": []
     }
 ]
