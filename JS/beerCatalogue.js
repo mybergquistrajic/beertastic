@@ -62,8 +62,13 @@ function renderBeers(result) {
 
 // Renders one beer
 async function renderBeer(beer) {
+  let favorite;
   // Get favourite status
-  let favorite = await checkFavorite(beer);
+  if (globalUser == "admin") {
+    favorite = "notfilled";
+  } else {
+    favorite = await checkFavorite(beer);
+  }
   // Get rating values
   let rating = await checkRating(beer);
   let ratingSum = await rating[0];
@@ -107,92 +112,99 @@ async function renderBeer(beer) {
 
 // Render the popup when clicking beer
 async function popUpBeer(beer) {
-  // Get favourite status
-  let favorite = await checkFavorite(beer);
-  // Get rating values
-  let rating = await checkRating(beer);
-  let ratingSum = await rating[0];
-  let ratingContent = await rating[1];
-  let ratingClass = await rating[2];
-  let popUpRating;
-  if (ratingSum == 0) {
-    popUpRating = "5vw";
-  } else {
-    popUpRating = "11.5vw";
+  // If not logged in
+  if (globalUser == "admin") {
+    renderPopUp("haveToLogIn")
   }
-  // Create popup
-  let oneBeerPopUp = document.createElement("div");
-  oneBeerPopUp.classList.add("oneBeerPopUp");
-  // Create content box
-  let oneBeerPopUpContent = document.createElement("div");
-  oneBeerPopUpContent.classList.add("oneBeerPopUpContent");
-  // Create header
-  let header = document.createElement("div");
-  header.classList.add("oneBeerPopUpHeader");
-  // Create back button
-  let backBtn = document.createElement("img");
-  backBtn.src = "../IMAGES/left-arrow.png";
-  // Create heart
-  let heartBtn = document.createElement("div");
-  heartBtn.classList.add(`${favorite}`);
-  heartBtn.classList.add(`heart${beer["id"]}`);
-  heartBtn.style.height = "65%";
-  // Create info div
-  let infoDiv = document.createElement("div");
-  infoDiv.classList.add("oneBeerPopUpInfo");
-  infoDiv.innerHTML = `
+  // If logged in
+  else {
+    // Get favourite status
+    let favorite = await checkFavorite(beer);
+    // Get rating values
+    let rating = await checkRating(beer);
+    let ratingSum = await rating[0];
+    let ratingContent = await rating[1];
+    let ratingClass = await rating[2];
+    let popUpRating;
+    if (ratingSum == 0) {
+      popUpRating = "5vw";
+    } else {
+      popUpRating = "11.5vw";
+    }
+    // Create popup
+    let oneBeerPopUp = document.createElement("div");
+    oneBeerPopUp.classList.add("oneBeerPopUp");
+    // Create content box
+    let oneBeerPopUpContent = document.createElement("div");
+    oneBeerPopUpContent.classList.add("oneBeerPopUpContent");
+    // Create header
+    let header = document.createElement("div");
+    header.classList.add("oneBeerPopUpHeader");
+    // Create back button
+    let backBtn = document.createElement("img");
+    backBtn.src = "../IMAGES/left-arrow.png";
+    // Create heart
+    let heartBtn = document.createElement("div");
+    heartBtn.classList.add(`${favorite}`);
+    heartBtn.classList.add(`heart${beer["id"]}`);
+    heartBtn.style.height = "65%";
+    // Create info div
+    let infoDiv = document.createElement("div");
+    infoDiv.classList.add("oneBeerPopUpInfo");
+    infoDiv.innerHTML = `
   <img src="../IMAGES/${beer["img"]}">
   <h2 style="font-family: 'Shadows Into Light', cursive; margin-bottom: 0px;">${beer["name"]}</h2>
   ${beer["avb"]}% <br>
   ${beer["type"]} <br>
   `;
-  // Create starDiv
-  let starDiv = document.createElement("div");
-  starDiv.classList.add("starDivPopup");
-  starDiv.innerHTML = `<div class="${ratingClass} ratingPopup${beer["id"]}" style="font-size: ${popUpRating}">${ratingContent}</div>`;
-  // Create rating numbers
-  let ratingNumbers = document.createElement("div");
-  ratingNumbers.classList.add("ratingNumber");
-  ratingNumbers.innerHTML = `(${ratingSum} / 5)`;
-  // Create reviewBtn
-  let reviewBtn = document.createElement("div");
-  reviewBtn.classList.add("reviewBtn");
-  reviewBtn.innerHTML = `Review Beer`;
-  // Create reviewsDiv
-  let reviewsDiv = document.createElement("div");
-  reviewsDiv.classList.add("reviews");
-  // Append everything
-  document.querySelector("body").appendChild(oneBeerPopUp);
-  oneBeerPopUp.appendChild(header);
-  oneBeerPopUp.appendChild(oneBeerPopUpContent);
-  header.appendChild(backBtn);
-  header.appendChild(heartBtn);
-  oneBeerPopUpContent.appendChild(infoDiv);
-  oneBeerPopUpContent.appendChild(starDiv);
-  starDiv.appendChild(ratingNumbers);
-  oneBeerPopUpContent.appendChild(reviewBtn);
-  oneBeerPopUpContent.appendChild(reviewsDiv);
+    // Create starDiv
+    let starDiv = document.createElement("div");
+    starDiv.classList.add("starDivPopup");
+    starDiv.innerHTML = `<div class="${ratingClass} ratingPopup${beer["id"]}" style="font-size: ${popUpRating}">${ratingContent}</div>`;
+    // Create rating numbers
+    let ratingNumbers = document.createElement("div");
+    ratingNumbers.classList.add("ratingNumber");
+    ratingNumbers.innerHTML = `(${ratingSum} / 5)`;
+    // Create reviewBtn
+    let reviewBtn = document.createElement("div");
+    reviewBtn.classList.add("reviewBtn");
+    reviewBtn.innerHTML = `Review Beer`;
+    // Create reviewsDiv
+    let reviewsDiv = document.createElement("div");
+    reviewsDiv.classList.add("reviews");
+    // Append everything
+    document.querySelector("body").appendChild(oneBeerPopUp);
+    oneBeerPopUp.appendChild(header);
+    oneBeerPopUp.appendChild(oneBeerPopUpContent);
+    header.appendChild(backBtn);
+    header.appendChild(heartBtn);
+    oneBeerPopUpContent.appendChild(infoDiv);
+    oneBeerPopUpContent.appendChild(starDiv);
+    starDiv.appendChild(ratingNumbers);
+    oneBeerPopUpContent.appendChild(reviewBtn);
+    oneBeerPopUpContent.appendChild(reviewsDiv);
 
-  // Render the reviews
-  renderReviews(beer, ratingClass);
+    // Render the reviews
+    renderReviews(beer, ratingClass);
 
-  // When clicking heart
-  heartBtn.addEventListener("click", heartOnClick);
-  // Remove popup on arrow click
-  backBtn.addEventListener("click", () => {
-    oneBeerPopUp.remove();
-    //Re-fetch in case a beer has been updated
-    getAllBeers();
-  });
-  // Rating stars
-  if (ratingSum !== 0) {
-    // Call function with the ratingSum and star-element as parameters
-    calculateStars(document.querySelector(`.ratingPopup${beer["id"]}`), ratingSum);
+    // When clicking heart
+    heartBtn.addEventListener("click", heartOnClick);
+    // Remove popup on arrow click
+    backBtn.addEventListener("click", () => {
+      oneBeerPopUp.remove();
+      //Re-fetch in case a beer has been updated
+      getAllBeers();
+    });
+    // Rating stars
+    if (ratingSum !== 0) {
+      // Call function with the ratingSum and star-element as parameters
+      calculateStars(document.querySelector(`.ratingPopup${beer["id"]}`), ratingSum);
+    }
+    // On review button click
+    reviewBtn.addEventListener("click", () => {
+      writeReview(beer);
+    });
   }
-  // On review button click
-  reviewBtn.addEventListener("click", () => {
-    writeReview(beer);
-  });
 }
 
 // Check if current beer (from renderBeer function) is a favorite
@@ -250,7 +262,7 @@ function renderSearchAndMain() {
 
 // If current file/view is favorites
 if (window.location.pathname.endsWith("favorites.html")) {
-  if (globalUser == null) {
+  if (globalUser == "admin") {
     renderPopUp("haveToLogIn");
   }
   let main = document.createElement("div");
