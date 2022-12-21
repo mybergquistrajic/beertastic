@@ -32,20 +32,6 @@ body {
   padding: 1vh;
 }
 
-#swipeBox {
-  width: 90vw;
-  height: 50vw;
-  margin: 3.3vw;
-  display: grid;
-  grid-template-columns: 40% 60%;
-  background-color: white;
-  opacity: 90%;
-  border-radius: 15px;
-  font-family: "Snippet", sans-serif;
-  filter: drop-shadow(0 0 0.3rem #00000030);
-  color: #ab4300;
-  font-weight: 50;
-}
 h3 {
   text-align: center;
   color: #ab4300;
@@ -70,3 +56,87 @@ h1 {
   padding: 0;
   font-weight: 50;
 }
+
+#swipeBox {
+  width: 90vw;
+  height: 50vw;
+  margin: 3.3vw;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  opacity: 90%;
+  border-radius: 15px;
+  font-family: "Snippet", sans-serif;
+  filter: drop-shadow(0 0 0.3rem #00000030);
+  color: #ab4300;
+  font-weight: 50;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+
+}
+
+.dragging {
+  /* scroll-behavior: auto; */
+  cursor: grabbing;
+}
+
+.dragging img {
+  pointer-events: none;
+}
+
+#swipeBox img {
+  height: 40vw;
+  object-fit: cover;
+  border-radius: 15px 0 0 15px;
+  user-select: none;
+}
+
+#swipeBox h2 {
+  font-size: 3.5vw;
+  margin: 0;
+  padding: 0;
+  margin-left: 1vw;
+  user-select: none;
+}
+
+.swipeButtons {
+  height: 10vw;
+  width: 10vw;
+  position: absolute;
+  border-radius: 50%;
+  border: none;
+  background-color: #ab4300;
+  color: #eddc46;
+  cursor: pointer;
+
+}
+
+#swipeWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#swipeLeft {
+  left: 0;
+  margin-left: 10px;
+  z-index: 1;
+}
+
+#swipeRight {
+  right: 0;
+  margin-right: 10px;
+}
+
+.slide {
+  min-width: 90vw;
+  height: 50vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+
