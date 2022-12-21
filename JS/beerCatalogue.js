@@ -63,6 +63,7 @@ function renderBeers(result) {
       renderBeer(beer);
     });
   }
+  scrollToTopButton();
 }
 
 // Renders one beer
@@ -117,6 +118,20 @@ async function renderBeer(beer) {
 
 // Render the popup when clicking beer
 async function popUpBeer(beer) {
+
+  // Get favourite status
+  let favorite = await checkFavorite(beer);
+  // Get rating values
+  let rating = await checkRating(beer);
+  let ratingSum = await rating[0];
+  let ratingContent = await rating[1];
+  let ratingClass = await rating[2];
+  let popUpRating;
+  if (ratingSum == 0) {
+    popUpRating = "5vw";
+  } else {
+    popUpRating = "11.5vw";
+
   // If not logged in
   if (globalUser == "admin") {
     renderPopUp("haveToLogIn")
@@ -210,6 +225,13 @@ async function popUpBeer(beer) {
       writeReview(beer);
     });
   }
+
+  // On review button click
+  reviewBtn.addEventListener("click", () => {
+    writeReview(beer);
+  });
+
+  switchEventListeners();
 }
 
 // Check if current beer (from renderBeer function) is a favorite
@@ -263,7 +285,67 @@ function renderSearchAndMain() {
   document.querySelector("body").appendChild(main);
 }
 
+// Function for rendering scroll to top button with eventlistener
+function scrollToTopButton() {
+  console.log("scrollToTopButton");
+  // Create button
+  let scrollToTopBtn = document.createElement("div");
+  scrollToTopBtn.classList.add("scrollToTopBtn");
+  scrollToTopBtn.innerHTML = `<div class="arrow-up">↑</div>`;
+  document.querySelector(".beerResults").appendChild(scrollToTopBtn);
+  // On click
+  scrollToTopBtn.addEventListener("click", scrollToBeerResults);
+  scrollFunction("beerResults");
+  document.querySelector(".beerResults").addEventListener("scroll", () => { scrollFunction("beerResults") });
+
+}
+
+// Function for changing the display of the scroll to top button depending on where you are
+function scrollFunction(page) {
+  if(page == "beerResults") {
+
+    if (document.querySelector(`.beerResults`).scrollTop > 10) {
+      document.querySelector(".scrollToTopBtn").style.display = "flex";
+    } else {
+      document.querySelector(".scrollToTopBtn").style.display = "none";
+    }
+  }
+  
+  if (page == "oneBeerPopUp") {
+    if (document.querySelector(`.oneBeerPopUp`).scrollTop > 10) {
+      document.querySelector(".scrollToTopBtn").style.display = "flex";
+    } else {
+      document.querySelector(".scrollToTopBtn").style.display = "none";
+    }
+  }
+}
+
+// Function for scrolling to top of beerResults
+function scrollToBeerResults() {
+  document.querySelector(".beerResults").scrollTop = 0;
+}
+
+// Function for scrolling to top of oneBeerPopUp
+function scrollToPopUpBeer() {
+  document.querySelector(".oneBeerPopUp").scrollTop = 0;
+}
+
+// Function for switching eventlisteners
+function switchEventListeners() {
+  document.querySelector(".scrollToTopBtn").removeEventListener("click", scrollToBeerResults);
+  document.querySelector(".beerResults").removeEventListener("scroll", () => { scrollFunction("beerResults") });
+
+
+  document.querySelector(".scrollToTopBtn").addEventListener("click", () => {
+    document.querySelector(".oneBeerPopUp").scrollTop = 0;
+  });
+  scrollFunction("oneBeerPopUp");
+  document.querySelector(".oneBeerPopUp").addEventListener("scroll", () => { scrollFunction("oneBeerPopUp") });
+}
+
 // DIRECT CODE
+
+// scrollToTopButton();
 
 // If current file/view is favorites
 if (window.location.pathname.endsWith("favorites.html")) {
