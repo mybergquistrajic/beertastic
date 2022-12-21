@@ -120,7 +120,7 @@ async function renderBeer(beer) {
 async function popUpBeer(beer) {
   // If not logged in
   if (globalUser == "admin") {
-    renderPopUp("haveToLogIn")
+    renderPopUp("haveToLogIn");
   }
   // If logged in
   else {
@@ -237,7 +237,7 @@ async function getFavorites(beer) {
 // Checking if beer is a favourite and deciding on future class
 async function checkFavorite(beer) {
   let favorite = await getFavorites(beer);
-  if ((await favorite) == 1) {
+  if (favorite == 1) {
     favorite = "filled";
   } else {
     favorite = "notfilled";
@@ -282,21 +282,21 @@ function scrollToTopButton() {
   // On click
   scrollToTopBtn.addEventListener("click", scrollToBeerResults);
   scrollFunction("beerResults");
-  document.querySelector(".beerResults").addEventListener("scroll", () => { scrollFunction("beerResults") });
-
+  document.querySelector(".beerResults").addEventListener("scroll", () => {
+    scrollFunction("beerResults");
+  });
 }
 
 // Function for changing the display of the scroll to top button depending on where you are
 function scrollFunction(page) {
-  if(page == "beerResults") {
-
+  if (page == "beerResults") {
     if (document.querySelector(`.beerResults`).scrollTop > 10) {
       document.querySelector(".scrollToTopBtn").style.display = "flex";
     } else {
       document.querySelector(".scrollToTopBtn").style.display = "none";
     }
   }
-  
+
   if (page == "oneBeerPopUp") {
     if (document.querySelector(`.oneBeerPopUp`).scrollTop > 10) {
       document.querySelector(".scrollToTopBtn").style.display = "flex";
@@ -319,14 +319,17 @@ function scrollToPopUpBeer() {
 // Function for switching eventlisteners
 function switchEventListeners() {
   document.querySelector(".scrollToTopBtn").removeEventListener("click", scrollToBeerResults);
-  document.querySelector(".beerResults").removeEventListener("scroll", () => { scrollFunction("beerResults") });
-
+  document.querySelector(".beerResults").removeEventListener("scroll", () => {
+    scrollFunction("beerResults");
+  });
 
   document.querySelector(".scrollToTopBtn").addEventListener("click", () => {
     document.querySelector(".oneBeerPopUp").scrollTop = 0;
   });
   scrollFunction("oneBeerPopUp");
-  document.querySelector(".oneBeerPopUp").addEventListener("scroll", () => { scrollFunction("oneBeerPopUp") });
+  document.querySelector(".oneBeerPopUp").addEventListener("scroll", () => {
+    scrollFunction("oneBeerPopUp");
+  });
 }
 
 // DIRECT CODE
