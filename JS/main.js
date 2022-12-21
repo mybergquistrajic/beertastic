@@ -194,6 +194,15 @@ function renderPopUp(type) {
     <p>You're already logged in.</p>
     <button class = "ok">Ok</button>
     </div>`;
+
+  } else if (type === "wrongLenght") {
+    popUpDiv.innerHTML = `
+    <div>
+    <h1>Oops!</h1>
+    <p>The password must contain at least 5 characters.</p>
+    <button class = "ok">Ok</button>
+    </div>`;
+
   }
 
   //append the popUpDiv to body

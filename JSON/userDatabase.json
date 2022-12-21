@@ -140,6 +140,7 @@
         "password": "admin",
         "age": "99",
         "likedBeers": []
+
     },
     {
         "userId": 12,
@@ -147,5 +148,14 @@
         "password": "MirandaLyng",
         "age": "27",
         "likedBeers": []
+
+    },
+    {
+        "userId": 13,
+        "username": "agag",
+        "password": "adg",
+        "age": "18",
+        "likedBeers": []
+
     }
 ]

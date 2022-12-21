@@ -123,7 +123,7 @@ function renderNewUser() {
         return renderPopUp("takenUsername");
       }
 
-      if (newUser.age < 18) {
+      if (response.status === 403) {
         return renderPopUp("underAgeAccount");
       }
 
@@ -131,6 +131,9 @@ function renderNewUser() {
         return renderPopUp("missingInfo");
       }
 
+      if (response.status === 416) {
+        return renderPopUp("wrongLenght");
+      }
       return response.json();
     })
     //Function to update the userJSON-file?

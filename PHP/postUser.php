@@ -22,11 +22,25 @@ if(!isset($r_data["username"], $r_data["password"], $r_data["age"])){
 
 
 //Checks that the user data isn't empty and that the user is over 18. The password also has to be longer than 5 characters. 
-if(empty($r_data["username"]) or empty($r_data["password"]) or $r_data["age"] < 18 or strlen($r_data["password"]) < 5) {
+if(empty($r_data["username"]) or empty($r_data["password"]) or empty($r_data["age"])) {
  
         $error = ["error" => "Missing data."];
         sendJSON($error, 404);
 
+}
+
+
+//If the user is under 18 send error
+if($r_data["age"] < 18){
+
+$error = ["error" => "Forbidden age."];
+        sendJSON($error, 403);
+}
+
+//If the password is under 5 characters send error 
+if(strlen($r_data["password"]) < 5){
+    $error = ["error" => " The password must be at least 5 characters long."];
+        sendJSON($error, 416);
 }
 
 //Checks that the user isn't already in the database of users
