@@ -4,6 +4,21 @@
 //Direct code
 menuBar();
 
+if (localStorage.getItem("globalUser") === null) {
+  localStorage.setItem("globalUser", "admin");
+}
+
+if (localStorage.getItem("globalUser") !== "admin") {
+  if (window.location.pathname.endsWith("index.html")) {
+    const href = document.querySelector("#logIn");
+    const href1 = document.querySelector("#createA");
+    const wrapper = document.querySelector("#swipeWrapper");
+    wrapper.style.marginTop = "20vh";
+    href.remove();
+    href1.remove();
+  }
+}
+
 //MENU
 // Menubar, to be called in all JS-files that are directly connected to HTML-files
 function menuBar() {
@@ -179,6 +194,7 @@ function renderPopUp(type) {
     <p>You're already logged in.</p>
     <button class = "ok">Ok</button>
     </div>`;
+
   } else if (type === "wrongLenght") {
     popUpDiv.innerHTML = `
     <div>
@@ -186,6 +202,7 @@ function renderPopUp(type) {
     <p>The password must contain at least 5 characters.</p>
     <button class = "ok">Ok</button>
     </div>`;
+
   }
 
   //append the popUpDiv to body

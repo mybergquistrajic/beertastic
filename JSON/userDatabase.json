@@ -140,8 +140,7 @@
         "password": "admin",
         "age": "99",
         "likedBeers": []
-<<<<<<< Updated upstream
-=======
+
     },
     {
         "userId": 12,
@@ -149,6 +148,7 @@
         "password": "MirandaLyng",
         "age": "27",
         "likedBeers": []
+
     },
     {
         "userId": 13,
@@ -156,6 +156,6 @@
         "password": "adg",
         "age": "18",
         "likedBeers": []
->>>>>>> Stashed changes
+
     }
 ]
