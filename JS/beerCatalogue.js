@@ -108,6 +108,7 @@ async function renderBeer(beer) {
 
 // Render the popup when clicking beer
 async function popUpBeer(beer) {
+
   // Get favourite status
   let favorite = await checkFavorite(beer);
   // Get rating values
@@ -194,6 +195,8 @@ async function popUpBeer(beer) {
   reviewBtn.addEventListener("click", () => {
     writeReview(beer);
   });
+
+  switchEventListeners();
 }
 
 // Check if current beer (from renderBeer function) is a favorite
@@ -271,7 +274,38 @@ function scrollFunction(page) {
     }
   }
   
+  if (page == "oneBeerPopUp") {
+    if (document.querySelector(`.oneBeerPopUp`).scrollTop > 10) {
+      document.querySelector(".scrollToTopBtn").style.display = "flex";
+    } else {
+      document.querySelector(".scrollToTopBtn").style.display = "none";
+    }
+  }
+}
+
+function scrollToBeerResults() {
+  document.querySelector(".beerResults").scrollTop = 0;
+}
+
+function scrollToPopUpBeer() {
+  document.querySelector(".oneBeerPopUp").scrollTop = 0;
+}
+
+function switchEventListeners() {
+  document.querySelector(".scrollToTopBtn").removeEventListener("click", scrollToBeerResults);
+  document.querySelector(".beerResults").removeEventListener("scroll", () => { scrollFunction("beerResults") });
+
+
+  document.querySelector(".scrollToTopBtn").addEventListener("click", () => {
+    document.querySelector(".oneBeerPopUp").scrollTop = 0;
+  });
+  scrollFunction("oneBeerPopUp");
+  document.querySelector(".oneBeerPopUp").addEventListener("scroll", () => { scrollFunction("oneBeerPopUp") });
+}
+
 // DIRECT CODE
+
+// scrollToTopButton();
 
 // If current file/view is favorites
 if (window.location.pathname.endsWith("favorites.html")) {
