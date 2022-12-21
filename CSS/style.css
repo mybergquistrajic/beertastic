@@ -57,11 +57,12 @@
 }
 
 #haveToLogIn {
-  height: 83vh;
+  position: absolute;
+  bottom: 15vh;
 }
 
 #haveToLogIn div {
-  bottom: 0;
+  bottom: 15vh;
 }
 
 .display_error > div {
