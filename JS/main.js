@@ -8,10 +8,26 @@ menuBar();
 // Menubar, to be called in all JS-files that are directly connected to HTML-files
 function menuBar() {
   let menu = document.createElement("div");
+  let heart, beer, user;
+  if (window.location.pathname.endsWith("favorites.html")) {
+    heart = "heart-color.png"
+  } else {
+    heart = "heart-nofilled.png"
+  }
+  if (window.location.pathname.endsWith("search.html")) {
+    beer = "beer-color.png"
+  } else {
+    beer = "beer.png"
+  }
+  if (window.location.pathname.endsWith("user.html")) {
+    user = "user-color.png"
+  } else {
+    user = "userprofile.png"
+  }
   menu.innerHTML = `
-    <a href="../HTML/favorites.html"><img src="../IMAGES/heart-nofilled.png" id="favoritesBtn"></a>
-    <a href="../HTML/search.html"><img src="../IMAGES/beer.png" id="beerBtn"></a>
-    <a href="../HTML/user.html"><img src="../IMAGES/userprofile.png" id="userBtn"></a>
+    <a href="../HTML/favorites.html"><img src="../IMAGES/${heart}" id="favoritesBtn"></a>
+    <a href="../HTML/search.html"><img src="../IMAGES/${beer}" id="beerBtn"></a>
+    <a href="../HTML/user.html"><img src="../IMAGES/${user}" id="userBtn"></a>
     `;
   document.querySelector("body").appendChild(menu);
   menu.id = "mainMenu";
@@ -66,8 +82,8 @@ function renderPopUp(type) {
       <div>
       <h1>Hi!</h1>
       <p>Are you over 18 years of age?</p>
-      <button class = "yes">Yes</button>
-      <button class = "no" >No</button>
+      <button class = "yes_18">Yes</button>
+      <button class = "no_18" >No</button>
       </div>
       `;
   } else if (type === "underAgeAccount") {
@@ -101,8 +117,8 @@ function renderPopUp(type) {
   } else if (type === "deleteReview") {
     popUpDiv.innerHTML = `
     <div>
-    <h1>Are you sure?</h1>
-    <p>You want to delete this review?</p>
+    <h1>Hey!</h1>
+    <p>Are you sure you want to delete this review?</p>
     <button class="yesButton">Yes</button>
     <button class="noButton">No</button>`;
   } else if (type === "NoUserFound") {
@@ -146,10 +162,11 @@ function renderPopUp(type) {
 
   //append the popUpDiv to body
   body.append(popUpDiv);
-
-  //Creating eventListner for the ok button
-  const ok = document.querySelector(".ok");
-  ok.addEventListener("click", addAndRemoveClass);
+  if (type === "deleteReview" || type === "checkage") {
+  } else {
+    const ok = document.querySelector(".ok");
+    ok.addEventListener("click", addAndRemoveClass);
+  }
 }
 
 //function for adding and removing the class for the popUpdiv

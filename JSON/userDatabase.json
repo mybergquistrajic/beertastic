@@ -4,20 +4,7 @@
         "username": "mybr",
         "password": "mrPotatoHead",
         "age": 22,
-        "likedBeers": [
-            {
-                "id": "8"
-            },
-            {
-                "id": "6"
-            },
-            {
-                "id": "7"
-            },
-            {
-                "id": "9"
-            }
-        ]
+        "likedBeers": []
     },
     {
         "userId": 2,
@@ -39,6 +26,9 @@
             },
             {
                 "id": "1"
+            },
+            {
+                "id": "19"
             }
         ]
     },

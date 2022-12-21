@@ -69,8 +69,12 @@ function showFavorites(username) {
       // If no favorites, display message
       if (user["likedBeers"].length == 0) {
         let noResult = document.createElement("div");
-        noResult.innerHTML =
-          "<p style='font-weight: bolder;'>Sorrrrrry!</p><p style='font-size: 0.7em;'>No beer with that name</p>";
+        noResult.innerHTML = `
+        <div>
+        <p>No favorites yet</p>
+        <p>Try adding some from the catalogue!</p>
+        </div>
+        `;
         document.querySelector(".beerResults").appendChild(noResult);
         noResult.classList.add("noResult");
       }
@@ -146,12 +150,18 @@ function createdUser(newUser) {
   window.location.href = "user.html";
 }
 
+//Checks the pathlocation and const if the path is create_account
 //Evenlistner for the createAccount button that runs the renderNewUser function
-const c_button = document.getElementById("createAccountButton");
-c_button.addEventListener("click", renderNewUser);
+if (window.location.pathname.endsWith("create_account.html")) {
+  const c_button = document.getElementById("createAccountButton");
+  c_button.addEventListener("click", renderNewUser);
+}
 
+//Checks the pathlocation and const if the path is login
 //The eventlistner for the loginButton and runs the login-funcion with the parameter globalUser
-const logInButton = document.getElementById("login_button");
-logInButton.addEventListener("click", () => {
-  logIn(globalUser);
-});
+if (window.location.pathname.endsWith("login.html")) {
+  const logInButton = document.getElementById("login_button");
+  logInButton.addEventListener("click", () => {
+    logIn(globalUser);
+  });
+}

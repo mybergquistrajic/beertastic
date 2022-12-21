@@ -9,6 +9,7 @@ body {
   background-image: url(../IMAGES/Background_yellow.svg);
   background-size: cover;
   background-repeat: no-repeat;
+  overflow-y: scroll;
 }
 #userPageWrapper {
   height: 100vh;
@@ -23,13 +24,13 @@ body {
 }
 
 #userInfo {
-  padding: 5vh;
-  height: 20vh;
+  height: 10vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 3vh;
+  text-align: center;
 }
 
 #changePassword {
@@ -43,6 +44,7 @@ body {
   justify-content: center;
   border-radius: 10px;
   text-align: center;
+  font-size: 2vh;
 }
 
 #changePassword > input {
@@ -73,9 +75,17 @@ body {
 #logOutButton {
   background-color: #ab4300;
   color: #eddc46;
-  
 }
 h2 {
   font-weight: 50;
   font-size: 4vh;
+}
+
+.aboutUs {
+  font-family: "Snippet", sans-serif;
+  text-align: center;
+  padding: 2vh;
+}
+.aboutUs a {
+  color: #ab4300;
 }

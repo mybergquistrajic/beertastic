@@ -1,12 +1,11 @@
 /* Main CSS for frequently used elements such as the menu */
-
 #mainMenu {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   background-color: white;
   width: 100vw;
-  height: 10vh;
+  padding: 2vh;
   position: fixed;
   bottom: 0px;
   filter: drop-shadow(0 -2mm 4mm rgba(207, 207, 207, 0.529));
@@ -19,6 +18,7 @@
   align-items: center;
   width: 15vw;
   padding: 0px 10px 0px 10px;
+  height: fit-content;
 }
 
 .Buttons {
@@ -30,7 +30,7 @@
   padding: 1vh;
   font-family: "Shadows Into Light", cursive;
   color: #ab4300;
-  font-size: large;
+  font-size: 2vh;
 }
 
 /* POPUP for errors */

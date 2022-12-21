@@ -38,6 +38,7 @@ body {
   background-color: white;
   border-radius: 10px;
   border: 5px solid white;
+  font-size: 2vh;
 }
 
 /* BEER RESULTS */
@@ -59,7 +60,25 @@ body {
   font-size: 2em;
 }
 
-.noResult > p {
+.noResult div {
+  text-align: center;
+  margin: auto 5vw auto 5vw;
+  background-color: white;
+  opacity: 90%;
+  border-radius: 15px;
+  filter: drop-shadow(0 0 0.3rem #00000030);
+  padding: 5vw;
+  width: 70vw;
+}
+
+.noResult div p:first-child {
+  font-weight: bolder;
+  margin: 3vw auto 1vw auto;
+  font-size: 1.3em;
+}
+
+.noResult div p:last-child {
+  font-size: 0.6em;
   font-family: "Snippet", sans-serif;
 }
 
@@ -76,6 +95,8 @@ body {
   font-family: "Snippet", sans-serif;
   filter: drop-shadow(0 0 0.3rem #00000030);
   color: #ab4300;
+  font-size: 2vh;
+  line-height: 3vh;
 }
 
 .beerDiv > div:last-child {
@@ -169,6 +190,8 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   overflow-y: scroll;
+  font-size: 2vh;
+  text-align: center;
 }
 
 .oneBeerPopUpHeader {
@@ -221,7 +244,8 @@ body {
   width: 50vw;
 }
 
-.reviewBtn, .reviewSubmit {
+.reviewBtn,
+.reviewSubmit {
   margin-left: auto;
   margin-right: auto;
   width: 30vw;
@@ -233,20 +257,30 @@ body {
   text-align: center;
 }
 
+.ratingNumber {
+  position: relative;
+  left: 4vw;
+  top: 0.5vw;
+  font-family: "Snippet", sans-serif;
+  text-align: center;
+  /* 0 width to ensure the stars remain centered */
+  width: 0;
+  /* Ensures no linebreak */
+  white-space: nowrap;
+}
+
 /* REVIEWS */
 
-
-.reviews{
+.reviews {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 10vw auto 20vw auto;
+  margin: 10vw auto 25vw auto;
 }
 
-.review{
+.review {
   width: 90vw;
-  max-height: 50vw;
   margin: 3.3vw;
   background-color: white;
   opacity: 90%;
@@ -255,15 +289,16 @@ body {
   filter: drop-shadow(0 0 0.3rem #00000030);
   padding: 3vw;
   box-sizing: border-box;
+  text-align: left;
 }
 
-.reviewHeader{
+.reviewHeader {
   display: grid;
   grid-template-columns: 80% 20%;
   height: 20%;
 }
 
-.reviewDelete{
+.reviewDelete {
   background-image: url(../IMAGES/delete.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -271,10 +306,22 @@ body {
   height: 7vw;
 }
 
-.reviewRating{
+.reviewRating {
   width: 40%;
   display: flex;
   align-items: center;
+}
+
+.noReviews {
+  margin: 20vw 5vw auto 5vw;
+  font-family: "Snippet", sans-serif;
+  font-size: 1.2em;
+  background-color: white;
+  opacity: 90%;
+  border-radius: 15px;
+  font-family: "Snippet", sans-serif;
+  filter: drop-shadow(0 0 0.3rem #00000030);
+  padding: 5vw;
 }
 
 /* ADD REVIEW POPUP */
@@ -294,7 +341,7 @@ body {
   align-items: center;
 }
 
-.reviewExit{
+.reviewExit {
   position: absolute;
   left: 5vw;
   top: 5vw;
@@ -322,12 +369,12 @@ body {
   font-size: 10vw;
 }
 
-.reviewInput{
+.reviewInput {
   width: 80%;
   height: 35%;
 }
 
-.reviewInput textarea{
+.reviewInput textarea {
   width: 100%;
   border-radius: 10px;
   border: 5px solid white;
@@ -336,4 +383,15 @@ body {
   margin-bottom: 5vw;
   resize: none;
   height: 95%;
+}
+
+.showStyling {
+  width: 30%;
+  background-color: #ab4300;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: white;
+  padding: 2vw;
+  border-radius: 10px;
 }
