@@ -1,6 +1,10 @@
 "use strict";
 
 if (localStorage.getItem("globalUser") === null) {
+  localStorage.setItem("globalUser", "admin");
+}
+
+if (localStorage.getItem("globalUser") === "admin") {
   renderPopUp("haveToLogIn");
 }
 
@@ -57,7 +61,8 @@ function changedPWStatus(response) {
 }
 //Logout that clears the localstorage and sends the user to the startpage
 function logOut() {
-  localStorage.clear();
+  localStorage.setItem("globalUser", "admin");
+  // localStorage.clear();
   window.location.href = "index.html";
 }
 

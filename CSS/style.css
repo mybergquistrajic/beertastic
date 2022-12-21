@@ -56,6 +56,15 @@
   z-index: 50;
 }
 
+#haveToLogIn {
+  position: absolute;
+  bottom: 15vh;
+}
+
+#haveToLogIn div {
+  bottom: 15vh;
+}
+
 .display_error > div {
   filter: drop-shadow(0 -2mm 4mm rgba(207, 207, 207, 0.529));
 

@@ -156,7 +156,7 @@ body {
 .rating {
   display: inline-block;
   overflow: hidden;
-  font-size: 5.3vw;
+  font-size: 5.25vw;
   color: rgb(0, 0, 0);
 }
 .norating {

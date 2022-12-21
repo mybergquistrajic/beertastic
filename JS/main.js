@@ -8,23 +8,29 @@ menuBar();
 // Menubar, to be called in all JS-files that are directly connected to HTML-files
 function menuBar() {
   let menu = document.createElement("div");
-  let heart, beer, user;
+  let home, heart, beer, user;
   if (window.location.pathname.endsWith("favorites.html")) {
-    heart = "heart-color.png"
+    heart = "heart-color.png";
   } else {
-    heart = "heart-nofilled.png"
+    heart = "heart-nofilled.png";
   }
   if (window.location.pathname.endsWith("search.html")) {
-    beer = "beer-color.png"
+    beer = "beer-color.png";
   } else {
-    beer = "beer.png"
+    beer = "beer.png";
   }
   if (window.location.pathname.endsWith("user.html")) {
-    user = "user-color.png"
+    user = "user-color.png";
   } else {
-    user = "userprofile.png"
+    user = "userprofile.png";
+  }
+  if (window.location.pathname.endsWith("index.html")) {
+    home = "home-color.png";
+  } else {
+    home = "home.png";
   }
   menu.innerHTML = `
+    <a href="../HTML/index.html"><img src="../IMAGES/${home}" id="homeBtn"></a>
     <a href="../HTML/favorites.html"><img src="../IMAGES/${heart}" id="favoritesBtn"></a>
     <a href="../HTML/search.html"><img src="../IMAGES/${beer}" id="beerBtn"></a>
     <a href="../HTML/user.html"><img src="../IMAGES/${user}" id="userBtn"></a>
@@ -37,32 +43,38 @@ function menuBar() {
 //filles and unfills the hearts and updates the database [favorites]
 function heartOnClick(event) {
   globalUser = localStorage.getItem("globalUser");
-  console.log(event);
-  // The heart we clicked on
-  let heart = event.target;
-  // Takes the class name (ex heart5) and splices 5, to only get the beer ID
-  let beerId = event.target.classList[1].slice(5);
-  console.log(beerId);
-
-  // If the heart is filled, make it not filled
-  if (heart.classList.contains("filled")) {
-    heart.classList.replace("filled", "notfilled");
+  // If not logged in
+  if (globalUser == "admin") {
+    renderPopUp("haveToLogIn");
   }
-  // If the heart is not filled, fill it
+  // If logged in
   else {
-    heart.classList.replace("notfilled", "filled");
+    // The heart we clicked on
+    let heart = event.target;
+    // Takes the class name (ex heart5) and splices 5, to only get the beer ID
+    let beerId = event.target.classList[1].slice(5);
+    console.log(beerId);
+
+    // If the heart is filled, make it not filled
+    if (heart.classList.contains("filled")) {
+      heart.classList.replace("filled", "notfilled");
+    }
+    // If the heart is not filled, fill it
+    else {
+      heart.classList.replace("notfilled", "filled");
+    }
+    // Fetch to update database
+    fetch("../PHP/heart.php", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: globalUser,
+        beerId: beerId,
+      }),
+    })
+      .then((r) => r.json())
+      .then();
   }
-  // Fetch to update database
-  fetch("../PHP/heart.php", {
-    method: "PATCH",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      username: globalUser,
-      beerId: beerId,
-    }),
-  })
-    .then((r) => r.json())
-    .then();
 }
 
 //POP-UP Code
@@ -73,6 +85,7 @@ function renderPopUp(type) {
   const popUpDiv = document.createElement("div");
   //Adding a class for styling the popUpDiv
   popUpDiv.classList.add("display_error");
+
   //reaching the body-element
   const body = document.querySelector("body");
 
@@ -108,6 +121,7 @@ function renderPopUp(type) {
     <button class = "ok">Ok</button>
     </div>`;
   } else if (type === "haveToLogIn") {
+    popUpDiv.setAttribute("id", "haveToLogIn");
     popUpDiv.innerHTML = `
     <div>
     <h1>Sorry!</h1>
