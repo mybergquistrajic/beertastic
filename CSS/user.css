@@ -9,6 +9,7 @@ body {
   background-image: url(../IMAGES/Background_yellow.svg);
   background-size: cover;
   background-repeat: no-repeat;
+  overflow-y: scroll;
 }
 #userPageWrapper {
   height: 100vh;
