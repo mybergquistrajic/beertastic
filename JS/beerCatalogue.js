@@ -1,9 +1,4 @@
 "use strict";
-// console.log(localStorage.getItem(globalUser))
-// if (localStorage.getItem("globalUser") === null) {
-//   localStorage.setItem("globalUser", "admin");
-//   console.log("hej")
-// }
 
 // Global variables
 let globalBeers;
@@ -14,7 +9,7 @@ function getAllBeers() {
   fetch(`../PHP/read_beerDatabase.php?un=${globalUser}&beers`)
     .then((r) => r.json())
     .then((result) => {
-      //sorting the result in alphabetical order based on the beers name.
+      //Sorting the result in alphabetical order based on the beers name
       result.sort(function (a, b) {
         if (a.name > b.name) {
           return 1;
@@ -32,25 +27,25 @@ function getAllBeers() {
     });
 }
 
-// Filter beers (if search bar is filled, else keeps all beers)
+// Filter beers
 function filterBeers() {
   // If there's no value in searchbar, render all beers
   if (document.querySelector(".searchBar input").value == "") {
     renderBeers(globalBeers);
-  }
+  };
   // If there is a value in searchbar, filter the beers and then render
   if (document.querySelector(".searchBar input").value !== "") {
     let filteredResult = globalBeers.filter((beer) =>
       beer["name"].toLowerCase().includes(document.querySelector(".searchBar input").value)
     );
     renderBeers(filteredResult);
-  }
+  };
 }
 
 // Render beers
 function renderBeers(result) {
   document.querySelector(".beerResults").innerHTML = "";
-  // If result is empty
+  // If result is empty, display message
   if (result.length < 1) {
     let noResult = document.createElement("div");
     noResult.innerHTML = `<div><p>Sorry!</p><p>No beer with that name, try searching for another one</p></div>`;
@@ -63,24 +58,27 @@ function renderBeers(result) {
       renderBeer(beer);
     });
   }
+  // Call scrollToTopButton function
   scrollToTopButton();
 }
 
-// Renders one beer
+// Renders one single beer
 async function renderBeer(beer) {
   let favorite;
-  // Get favourite status
+  // Get favourite status (admin == not logged in)
   if (globalUser == "admin") {
+    // If not logged in, heart will be empty
     favorite = "notfilled";
   } else {
+    // Else, check if the beer is a favourite 
     favorite = await checkFavorite(beer);
   }
   // Get rating values
   let rating = await checkRating(beer);
-  let ratingSum = await rating[0];
-  let ratingContent = await rating[1];
-  let ratingClass = await rating[2];
-  let reviewWidth = await rating[3];
+  let ratingSum = rating[0];
+  let ratingContent = rating[1];
+  let ratingClass = rating[2];
+  let reviewWidth = rating[3];
 
   // HTML of the beer
   let beerDiv = document.createElement("div");
@@ -98,22 +96,19 @@ async function renderBeer(beer) {
         </div>
     </div>
     `;
-
   // Append beer and give class
   document.querySelector(".beerResults").appendChild(beerDiv);
   beerDiv.classList.add("beerDiv");
   beerDiv.id = "beer" + beer.id;
-  // If the bees has (at least one) rating(s)
+  // If the bees has at least one rating
   if (ratingSum !== 0) {
-    // Call function with the ratingSum and star-element as parameters
+    // Call calculating function with the ratingSum and star-element as parameters
     calculateStars(document.querySelector(`.rating${beer["id"]}`), ratingSum);
   }
   // When clicking the heart
   document.querySelector(`.heart${beer["id"]}`).addEventListener("click", heartOnClick);
-  // When clicking the beer
-  document.querySelector(`.popUp${beer["id"]}`).addEventListener("click", () => {
-    popUpBeer(beer);
-  });
+  // When clicking the beer (popup)
+  document.querySelector(`.popUp${beer["id"]}`).addEventListener("click", () => { popUpBeer(beer) });
 }
 
 // Render the popup when clicking beer
@@ -128,10 +123,11 @@ async function popUpBeer(beer) {
     let favorite = await checkFavorite(beer);
     // Get rating values
     let rating = await checkRating(beer);
-    let ratingSum = await rating[0];
-    let ratingContent = await rating[1];
-    let ratingClass = await rating[2];
+    let ratingSum = rating[0];
+    let ratingContent = rating[1];
+    let ratingClass = rating[2];
     let popUpRating;
+    // Different width based on if it's going to be stars or "no ratings yet"
     if (ratingSum == 0) {
       popUpRating = "5vw";
     } else {
@@ -192,7 +188,6 @@ async function popUpBeer(beer) {
 
     // Render the reviews
     renderReviews(beer, ratingClass);
-
     // When clicking heart
     heartBtn.addEventListener("click", heartOnClick);
     // Remove popup on arrow click
@@ -203,20 +198,13 @@ async function popUpBeer(beer) {
     });
     // Rating stars
     if (ratingSum !== 0) {
-      // Call function with the ratingSum and star-element as parameters
+      // Call calculating function with the ratingSum and star-element as parameters
       calculateStars(document.querySelector(`.ratingPopup${beer["id"]}`), ratingSum);
     }
     // On review button click
-    reviewBtn.addEventListener("click", () => {
-      writeReview(beer);
-    });
+    reviewBtn.addEventListener("click", () => { writeReview(beer) });
   }
-
-  // On review button click
-  reviewBtn.addEventListener("click", () => {
-    writeReview(beer);
-  });
-
+  // Switch eventListeners to ensure backtotopbtn and scrolling works correctly
   switchEventListeners();
 }
 
@@ -257,15 +245,15 @@ async function checkRating(beer) {
   }
 }
 
-// Search & main
+// Rendering search & main
 function renderSearchAndMain() {
-  // Search
+  // Searchbar
   let searchDiv = document.createElement("div");
   searchDiv.classList.add("searchBar");
   searchDiv.innerHTML = `<input placeholder="search by name..."></input>`;
   document.querySelector("body").appendChild(searchDiv);
 
-  // Result
+  // Result (main)
   let main = document.createElement("div");
   main.classList.add("beerResults");
   document.querySelector("body").appendChild(main);
@@ -273,7 +261,6 @@ function renderSearchAndMain() {
 
 // Function for rendering scroll to top button with eventlistener
 function scrollToTopButton() {
-  console.log("scrollToTopButton");
   // Create button
   let scrollToTopBtn = document.createElement("div");
   scrollToTopBtn.classList.add("scrollToTopBtn");
@@ -334,20 +321,19 @@ function switchEventListeners() {
 
 // DIRECT CODE
 
-// scrollToTopButton();
-
+// Different direct renderings based on if you're on the favorites or catalogue page
 // If current file/view is favorites
 if (window.location.pathname.endsWith("favorites.html")) {
   if (globalUser == "admin") {
     renderPopUp("haveToLogIn");
   }
+  // Create main result div
   let main = document.createElement("div");
   main.classList.add("beerResults");
   document.querySelector("body").appendChild(main);
   main.style.maskImage = "linear-gradient(to top, black calc(100% - 40px), transparent 100%)";
   showFavorites(globalUser);
 }
-
 // If current file/view is beerCatalogue
 else {
   // Render searchbar and main (beerResults)
