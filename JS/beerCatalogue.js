@@ -261,7 +261,6 @@ function renderSearchAndMain() {
 
 // Function for rendering scroll to top button with eventlistener
 function scrollToTopButton() {
-  console.log("scrollToTopButton");
   // Create button
   let scrollToTopBtn = document.createElement("div");
   scrollToTopBtn.classList.add("scrollToTopBtn");
