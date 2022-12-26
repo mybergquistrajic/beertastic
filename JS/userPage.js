@@ -53,10 +53,15 @@ function putPassword() {
 function changedPWStatus(response) {
   if (response.status === 200) {
     renderPopUp("changedPW");
-  } else if (response.status === 400) {
+  }
+  if (response.status === 400) {
     renderPopUp("missingInfo");
-  } else if (response.status === 404) {
+  }
+  if (response.status === 404) {
     renderPopUp("wrongPW");
+  }
+  if (response.status === 416) {
+    renderPopUp("wrongLenght");
   }
 }
 //Logout that clears the localstorage and sends the user to the startpage

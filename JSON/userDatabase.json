@@ -39,6 +39,9 @@
             },
             {
                 "id": "19"
+            },
+            {
+                "id": "21"
             }
         ]
     },
@@ -140,15 +143,13 @@
         "password": "admin",
         "age": "99",
         "likedBeers": []
-
     },
     {
         "userId": 12,
         "username": "mirandaL",
-        "password": "MirandaLyng",
+        "password": "mirre",
         "age": "27",
         "likedBeers": []
-
     },
     {
         "userId": 13,
@@ -156,6 +157,12 @@
         "password": "adg",
         "age": "18",
         "likedBeers": []
-
+    },
+    {
+        "userId": 14,
+        "username": "mirreeeee",
+        "password": "mirre123",
+        "age": "18",
+        "likedBeers": []
     }
 ]
