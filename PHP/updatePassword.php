@@ -27,7 +27,7 @@ if($request_method == "PUT") {
     // Check if the new password is at least 5 characters long
     if (strlen($r_data["newPassword"]) < 5) {
         $error = ["error" => "The new Password must be at least 5 characters long."];
-        sendJSON($error, 400);
+        sendJSON($error, 416);
     }
 
     $username = $r_data["username"];
@@ -43,7 +43,7 @@ if($request_method == "PUT") {
             $users[$index]["likedBeers"] = $user["likedBeers"];
             $users[$index]["age"] = $user["age"];
             file_put_contents($userDatabase, json_encode($users, JSON_PRETTY_PRINT));
-            sendJSON($users[$index], 200);
+            sendJSON($users[$index]);
         }
     }
 

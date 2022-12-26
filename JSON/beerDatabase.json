@@ -414,13 +414,6 @@
                 "date": "22-12-19"
             },
             {
-                "review_id": 2,
-                "username": "beerLover",
-                "rating": 4,
-                "message": "AMAZING. Perfect when you're tired of the normal beertaste. ",
-                "date": "22-12-21"
-            },
-            {
                 "review_id": 3,
                 "username": "mirandaL",
                 "rating": null,
