@@ -4,18 +4,34 @@
 //Direct code
 menuBar();
 
+//If the user is null set the user to admin
+
 if (localStorage.getItem("globalUser") === null) {
   localStorage.setItem("globalUser", "admin");
 }
 
+//If the global user is not admin (loged out) and the startpage is set
 if (localStorage.getItem("globalUser") !== "admin") {
   if (window.location.pathname.endsWith("index.html")) {
     const href = document.querySelector("#logIn");
     const href1 = document.querySelector("#createA");
     const wrapper = document.querySelector("#swipeWrapper");
-    wrapper.style.marginTop = "20vh";
+    //Adjustingn the swipe box to look better visually
+    wrapper.style.marginTop = "15vh";
+    //removes the sign in and createaccount button
     href.remove();
     href1.remove();
+
+    //Also adds a log Out button to the startpage if the user is logged in.
+    const logout_startpage = document.createElement("button");
+    //Styles it
+    logout_startpage.classList.add("Buttons");
+    logout_startpage.innerText = "Log Out";
+    logout_startpage.style.border = "solid";
+    let index = document.querySelector("#indexContent");
+    index.append(logout_startpage);
+    //Eventfuntion on logout that runs logout  funciton
+    logout_startpage.addEventListener("click", logOut);
   }
 }
 
@@ -93,7 +109,6 @@ function heartOnClick(event) {
 }
 
 //POP-UP Code
-
 //Function to load different answers based on the "type" - parameter
 function renderPopUp(type) {
   //Creates the popUpDiv
@@ -220,4 +235,11 @@ function addAndRemoveClass(e) {
   popUpDiv.classList.remove("display_error");
   //Also removing the popUpdiv from the body. Otherwise it would create extra div each time.
   body.removeChild(popUpDiv);
+}
+
+//Logout that clears the localstorage and sends the user to the startpage
+function logOut() {
+  localStorage.setItem("globalUser", "admin");
+  // localStorage.clear();
+  window.location.href = "index.html";
 }

@@ -64,12 +64,6 @@ function changedPWStatus(response) {
     renderPopUp("wrongLenght");
   }
 }
-//Logout that clears the localstorage and sends the user to the startpage
-function logOut() {
-  localStorage.setItem("globalUser", "admin");
-  // localStorage.clear();
-  window.location.href = "index.html";
-}
 
 //Funciton to get the username in the h1
 function welcomeUser(username) {
