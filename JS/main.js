@@ -1,11 +1,10 @@
 "use strict";
-//This contains the code that runs all the time
+//This contains the code that is used all the time
 
-//Direct code
+//DIRECT CODE
 menuBar();
 
 //If the user is null set the user to admin
-
 if (localStorage.getItem("globalUser") === null) {
   localStorage.setItem("globalUser", "admin");
 }
@@ -34,6 +33,8 @@ if (localStorage.getItem("globalUser") !== "admin") {
     logout_startpage.addEventListener("click", logOut);
   }
 }
+
+//FUNCTIONS
 
 //MENU
 // Menubar, to be called in all JS-files that are directly connected to HTML-files
@@ -84,7 +85,6 @@ function heartOnClick(event) {
     let heart = event.target;
     // Takes the class name (ex heart5) and splices 5, to only get the beer ID
     let beerId = event.target.classList[1].slice(5);
-    console.log(beerId);
 
     // If the heart is filled, make it not filled
     if (heart.classList.contains("filled")) {
@@ -108,7 +108,7 @@ function heartOnClick(event) {
   }
 }
 
-//POP-UP Code
+//POP-UP
 //Function to load different answers based on the "type" - parameter
 function renderPopUp(type) {
   //Creates the popUpDiv
@@ -119,30 +119,17 @@ function renderPopUp(type) {
   //reaching the body-element
   const body = document.querySelector("body");
 
-  //Depending on the popUp type , the HTML is different
-  if (type === "checkage") {
-    popUpDiv.innerHTML = `
-      <div>
-      <h1>Hi!</h1>
-      <p>Are you over 18 years of age?</p>
-      <button class = "yes_18">Yes</button>
-      <button class = "no_18" >No</button>
-      </div>
-      `;
-  } else if (type === "underAgeAccount") {
+  //Depending on the popUp type name , the HTML is different
+  //if the user is under 18
+  if (type === "underAgeAccount") {
     popUpDiv.innerHTML = `
     <div>
     <h1>Sorry!</h1>
     <p>You need to be to be at least 18 to create an account.</p>
     <button class = "ok">Ok</button>
     </div>`;
-  } else if (type === "underAgeBeer") {
-    popUpDiv.innerHTML = `
-    <div>
-    <h1>Sorry!</h1>
-    <p>You have to be over the age of 18 to view this beers.</p>
-    <button class = "ok">Ok</button>
-    </div>`;
+
+    //If the rating (text or stars is empty)
   } else if (type === "ratingReview") {
     popUpDiv.innerHTML = `
     <div>
@@ -150,6 +137,8 @@ function renderPopUp(type) {
     <p>You have to add a rating or a review.</p>
     <button class = "ok">Ok</button>
     </div>`;
+
+    //If the user isn't logged in
   } else if (type === "haveToLogIn") {
     popUpDiv.setAttribute("id", "haveToLogIn");
     popUpDiv.innerHTML = `
@@ -158,6 +147,8 @@ function renderPopUp(type) {
     <p>You have to be logged in to view this.</p>
     <button><a href = "../HTML/login.html">Log in</a></button> 
     </div>`;
+
+    //Deleting a review
   } else if (type === "deleteReview") {
     popUpDiv.innerHTML = `
     <div>
@@ -165,6 +156,8 @@ function renderPopUp(type) {
     <p>Are you sure you want to delete this review?</p>
     <button class="yesButton">Yes</button>
     <button class="noButton">No</button>`;
+
+    //If no user is found
   } else if (type === "NoUserFound") {
     popUpDiv.innerHTML = `
     <div>
@@ -172,6 +165,8 @@ function renderPopUp(type) {
     <p>No user found. Please create an account.</p>
     <button class = "ok">Ok</button>
     </div>`;
+
+    //Informaiton is missing
   } else if (type === "missingInfo") {
     popUpDiv.innerHTML = `
     <div>
@@ -179,6 +174,8 @@ function renderPopUp(type) {
     <p>You have to fill in all of the information to create an account.</p>
     <button class = "ok">Ok</button>
     </div>`;
+
+    //The username is already taken
   } else if (type === "takenUsername") {
     popUpDiv.innerHTML = `
     <div>
@@ -186,8 +183,8 @@ function renderPopUp(type) {
     <p>The username is already taken. Please try again.</p>
     <button class= "ok">Ok</button>
     </div>`;
-  } else if (type === "none") {
-    popUpDiv.innerHTML = "";
+
+    //When changing the password
   } else if (type === "changedPW") {
     popUpDiv.innerHTML = `
     <div>
@@ -195,6 +192,8 @@ function renderPopUp(type) {
     <p>Your password has been changed.</p>
     <button class = "ok">Ok</button>
     </div>`;
+
+    //The wrong password is filled in
   } else if (type === "wrongPW") {
     popUpDiv.innerHTML = `
     <div>
@@ -202,13 +201,8 @@ function renderPopUp(type) {
     <p>The current password is wrong. Please try again.</p>
     <button class = "ok">Ok</button>
     </div>`;
-  } else if (type === "loggedIn") {
-    popUpDiv.innerHTML = `
-    <div>
-    <h1>Hey!</h1>
-    <p>You're already logged in.</p>
-    <button class = "ok">Ok</button>
-    </div>`;
+
+    //the password is to short
   } else if (type === "wrongLenght") {
     popUpDiv.innerHTML = `
     <div>
@@ -219,6 +213,7 @@ function renderPopUp(type) {
   }
 
   //append the popUpDiv to body
+  //if the type is deletereview,checkage,havetologin dont create an ok button
   body.append(popUpDiv);
   if (type === "deleteReview" || type === "checkage" || type === "haveToLogIn") {
   } else {
@@ -233,13 +228,12 @@ function addAndRemoveClass(e) {
   const body = document.querySelector("body");
   const popUpDiv = document.querySelector(".display_error");
   popUpDiv.classList.remove("display_error");
-  //Also removing the popUpdiv from the body. Otherwise it would create extra div each time.
+  //Also removing the popUpdiv from the body
   body.removeChild(popUpDiv);
 }
 
 //Logout that clears the localstorage and sends the user to the startpage
 function logOut() {
   localStorage.setItem("globalUser", "admin");
-  // localStorage.clear();
   window.location.href = "index.html";
 }

@@ -32,14 +32,14 @@ function filterBeers() {
   // If there's no value in searchbar, render all beers
   if (document.querySelector(".searchBar input").value == "") {
     renderBeers(globalBeers);
-  };
+  }
   // If there is a value in searchbar, filter the beers and then render
   if (document.querySelector(".searchBar input").value !== "") {
     let filteredResult = globalBeers.filter((beer) =>
       beer["name"].toLowerCase().includes(document.querySelector(".searchBar input").value)
     );
     renderBeers(filteredResult);
-  };
+  }
 }
 
 // Render beers
@@ -70,7 +70,7 @@ async function renderBeer(beer) {
     // If not logged in, heart will be empty
     favorite = "notfilled";
   } else {
-    // Else, check if the beer is a favourite 
+    // Else, check if the beer is a favourite
     favorite = await checkFavorite(beer);
   }
   // Get rating values
@@ -108,7 +108,9 @@ async function renderBeer(beer) {
   // When clicking the heart
   document.querySelector(`.heart${beer["id"]}`).addEventListener("click", heartOnClick);
   // When clicking the beer (popup)
-  document.querySelector(`.popUp${beer["id"]}`).addEventListener("click", () => { popUpBeer(beer) });
+  document.querySelector(`.popUp${beer["id"]}`).addEventListener("click", () => {
+    popUpBeer(beer);
+  });
 }
 
 // Render the popup when clicking beer
@@ -202,7 +204,9 @@ async function popUpBeer(beer) {
       calculateStars(document.querySelector(`.ratingPopup${beer["id"]}`), ratingSum);
     }
     // On review button click
-    reviewBtn.addEventListener("click", () => { writeReview(beer) });
+    reviewBtn.addEventListener("click", () => {
+      writeReview(beer);
+    });
   }
   // Switch eventListeners to ensure backtotopbtn and scrolling works correctly
   switchEventListeners();

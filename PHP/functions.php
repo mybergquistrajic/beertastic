@@ -20,6 +20,7 @@ $users = [];
 //Array of beers
 $beers = [];
 
+
 //IF-STATMENTS
 
 //If statment to check that the content-type is JSON if the method is not GET

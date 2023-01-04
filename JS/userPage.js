@@ -1,12 +1,28 @@
 "use strict";
 
+//DIRECT CODE
+//If the global user is null set it to "admin", that represents the user is not logged in.
 if (localStorage.getItem("globalUser") === null) {
   localStorage.setItem("globalUser", "admin");
 }
 
+//Render the logIn popUp if the user is not logged in (admin)
 if (localStorage.getItem("globalUser") === "admin") {
   renderPopUp("haveToLogIn");
 }
+
+//Eventfuntion on logout button that runs logout  funciton
+const log_out_b = document.getElementById("logOutButton");
+log_out_b.addEventListener("click", logOut);
+
+//Eventfuntion for the change passowrd button
+const changePWbutton = document.getElementById("changePW");
+changePWbutton.addEventListener("click", putPassword);
+
+//runs the function welcomeUser with the username as parameter
+welcomeUser(localStorage.getItem("globalUser"));
+
+//FUNCTIONS
 
 //Function for the patching of the password/Changing the password
 function putPassword() {
@@ -25,25 +41,26 @@ function putPassword() {
   };
 
   //The method, body and headers
-
   const options = {
     method: "PUT",
     body: JSON.stringify(putPW),
     headers: { "Content-type": "application/json" },
   };
 
+  //the request for changing password
   const putRequest = new Request("../PHP/updatePassword.php", options);
 
-  //The request to the update password file
+  //The response to the update password file
   let response;
-  //Fetthing the request
+
+  //Fetching the request
   fetch(putRequest)
     //Updating the response with the response and returning it
     .then((r) => {
       response = r;
       return r.json();
     })
-    //Run the funciton for the response
+    //Run the funciton with the response
     .then(() => {
       changedPWStatus(response);
     });
@@ -65,20 +82,10 @@ function changedPWStatus(response) {
   }
 }
 
-//Funciton to get the username in the h1
+//Funciton to visualize the username in the userPage
 function welcomeUser(username) {
   const userInfo = document.getElementById("userInfo");
   const div = document.createElement("div");
   div.innerText = `Welcome ${username}`;
   userInfo.append(div);
 }
-
-//Eventfuntion on logout that runs logout  funciton
-const log_out_b = document.getElementById("logOutButton");
-log_out_b.addEventListener("click", logOut);
-
-//Eventfuntion for the change passowrd button
-const changePWbutton = document.getElementById("changePW");
-changePWbutton.addEventListener("click", putPassword);
-//Direct code
-welcomeUser(localStorage.getItem("globalUser"));

@@ -1,12 +1,12 @@
  <?php
 
+    //The function file is required 
     require_once ("functions.php");
 
     // If method is not post
     if($request_method !== "POST"){
         $error = ["error" => "The method must be POST"]; 
-        sendJSON($error, 400);
-        exit();
+        sendJSON($error, 400);   
     }
 
     // If neither rating nor review have been submitted
@@ -15,14 +15,12 @@
     if(($r_data["rating"] == "" and $r_data["reviewContent"] == "")){
         $error = ["error" => "Neither rating nor review was submitted, please fill in one of the values"]; 
         sendJSON($error, 404);
-        exit();
     }
 
     // If paramaters are missing (fetch)
     if(!isset($r_data["username"], $r_data["beerId"])){
         $error = ["error" => "One or more paramaters are missing"]; 
         sendJSON($error, 400);
-        exit();
     }
 
     // Finding the right beer
