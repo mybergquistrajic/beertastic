@@ -1,25 +1,24 @@
 <?php
+
+//The function file is required 
     require_once ("functions.php");
 
     // If method is not patch
     if($request_method !== "PATCH"){
         $error = ["error" => "The method must be PATCH"]; 
-        sendJSON($error, 400);
-        exit();
+        sendJSON($error, 400);    
     }
 
     // If paramaters are missing (fetch)
     if(!isset($r_data["username"], $r_data["beerId"])){
         $error = ["error" => "One or more paramaters are missing"]; 
         sendJSON($error, 400);
-        exit();
     }
 
     // If beerId paramater isn't numeric
     if(!is_numeric($r_data["beerId"])){
         $error = ["error" => "The beerId paramater has to be numeric"]; 
         sendJSON($error, 400);
-        exit();
     }
 
     // Finding the right user
@@ -45,7 +44,6 @@
                     $usersJSON = json_encode($users, JSON_PRETTY_PRINT);
                     $usersData = file_put_contents($userDatabase, $usersJSON);
                     sendJSON(0);
-                    exit();
                 }
             }
 
@@ -64,7 +62,6 @@
             $usersJSON = json_encode($users, JSON_PRETTY_PRINT);
             $usersData = file_put_contents($userDatabase, $usersJSON);
             sendJSON(1);
-            exit();
 
             }
         }

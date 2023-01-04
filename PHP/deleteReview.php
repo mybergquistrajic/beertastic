@@ -1,8 +1,10 @@
 <?php
 //For deleting a review 
 
+//The function file is required 
 require_once "functions.php";
 
+//Display errors 
 ini_set("display_errors", 1);
 
 //Checks that the method is DELETE 
@@ -35,7 +37,7 @@ if(isset($r_data["reviewId"], $r_data["beerId"])){
                     $beersJSON = json_encode($beers, JSON_PRETTY_PRINT);
                     $beersData = file_put_contents($beerDatabase, $beersJSON);
                     sendJSON($review["review_id"]);
-                    exit();
+                    
                 }
             }
         }

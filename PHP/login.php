@@ -1,6 +1,7 @@
 <?php
 //For login with username and password
 
+//The function file is required 
 require_once "functions.php";
 
 //Displays errors
@@ -14,6 +15,7 @@ if($request_method != "POST"){
 
 //The r_data must include username and password 
 if(isset($r_data["username"], $r_data["password"])){
+    //The r_data can't be empty
     if(empty($r_data["username"]) or empty($r_data["password"])){
         $error = ["error" => "Please fill in all of the information."];
         sendJSON($error, 404);
@@ -27,6 +29,7 @@ if(isset($r_data["username"], $r_data["password"])){
 
         }
     }
+    //Else send error 
     $error = ["error" => "No user found."];
     sendJSON($error, 400);
 }

@@ -1,8 +1,10 @@
 <?php
 //File for creating a new user
 
+//The function file is required 
 require_once "functions.php";
 
+//Displaying errors 
 ini_set("display_errors", 1);
 
 
@@ -13,7 +15,7 @@ if($request_method != "POST"){
 }
 
 
-//Check so that the new user contains username, password and date of birth
+//Check so that the new user contains username, password and age
 if(!isset($r_data["username"], $r_data["password"], $r_data["age"])){
     $error = ["error" => "Incorrect data."];
     sendJSON($error, 400);
@@ -21,7 +23,7 @@ if(!isset($r_data["username"], $r_data["password"], $r_data["age"])){
 
 
 
-//Checks that the user data isn't empty and that the user is over 18. The password also has to be longer than 5 characters. 
+//Checks that the user request data isn't empty 
 if(empty($r_data["username"]) or empty($r_data["password"]) or empty($r_data["age"])) {
  
         $error = ["error" => "Missing data."];
@@ -32,7 +34,6 @@ if(empty($r_data["username"]) or empty($r_data["password"]) or empty($r_data["ag
 
 //If the user is under 18 send error
 if($r_data["age"] < 18){
-
 $error = ["error" => "Forbidden age."];
         sendJSON($error, 403);
 }
@@ -51,8 +52,7 @@ foreach($users as $user){
     }
 }
 
-//variables for the data 
-
+// variables for the data 
 $username = $r_data["username"];
 $password = $r_data["password"];
 $age = $r_data["age"];

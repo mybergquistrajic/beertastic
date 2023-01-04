@@ -1,13 +1,16 @@
 <?php
 
+//Displaying errors 
+
 ini_set('display_errors', 1);
 
+//The function file is required  
 require_once 'functions.php';
 
 // Check if the request method is PUT
 if($request_method == "PUT") {
 
-    // Check if the request body is empty
+    // Check if the request body is empty and contains the right request data and sends error in that case  
     if(!isset($r_data["username"], $r_data["password"], $r_data["newPassword"])) {
         $error = ["error" => "The password and new Password must be set."];
         sendJSON($error, 400);
@@ -16,7 +19,7 @@ if($request_method == "PUT") {
         sendJSON($error, 400);
     } 
     
-    // Check if the password is correct
+    // Loops through the users and check if the password is correct, sends error if it's not 
     foreach($users as $user){
         if ($user["username"] == $r_data["username"]) { if($user["password"] != $r_data["password"]) {
             $error = ["error" => "The password is incorrect."];
@@ -30,6 +33,7 @@ if($request_method == "PUT") {
         sendJSON($error, 416);
     }
 
+    //variables with the requested/php input data
     $username = $r_data["username"];
     $password = $r_data["password"];
     $newPassword = $r_data["newPassword"];

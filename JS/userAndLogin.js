@@ -1,14 +1,35 @@
 "use strict";
-//Global variabel for user to see if logged in or not.
+
+//DIRECT CODE
+
+//Global variabel for user
 let globalUser;
 
-//USER LOGIN
-//function to log in with the user_status to define logged in or not
+//If the pathlocation is createa_ccount.html
+//Evenlistner for the createAccount button that runs the renderNewUser function
+if (window.location.pathname.endsWith("create_account.html")) {
+  const c_button = document.getElementById("createAccountButton");
+  c_button.addEventListener("click", renderNewUser);
+}
+
+//if pathlocation is login.html
+//The eventlistner for the loginButton and runs the login-funcion with the parameter globalUser
+if (window.location.pathname.endsWith("login.html")) {
+  const logInButton = document.getElementById("login_button");
+  logInButton.addEventListener("click", () => {
+    logIn(globalUser);
+  });
+}
+
+//FUNCTIONS
+
+//function to log in
 function logIn() {
+  //Reads the values of the inputs (username, password)
   const username = document.getElementById("logIn_username").value;
   const password = document.getElementById("logIn_password").value;
 
-  //user that is in the body with username and password
+  //The user data for the body
   const user = {
     username: username,
     password: password,
@@ -21,11 +42,13 @@ function logIn() {
     headers: { "Content-type": "application/json" },
   };
 
-  //request to log in PHP-file
+  //request to log in
   const user_status_request = new Request("../PHP/login.php", options);
 
+  //The responseStatus
   let responseStatus;
-  //fetch the request , when the resource promise comes call the function logIn_answer
+
+  //fetch the request , when the resource promise comes call the function logIn_answer (responseStatus and username)
   fetch(user_status_request)
     .then((r) => {
       responseStatus = r;
@@ -36,22 +59,22 @@ function logIn() {
     });
 }
 
-//Function for the response to the request to log in
+//Function for the response to the log in request
 function logIn_answer(responseStatus, username) {
-  //If the user is in the database and the log in is sucessful show the log in view.
-
+  //If the user is in the database and the log in is sucessful
   if (responseStatus.status === 200) {
     //Update the global variabel to the username
-
     localStorage.setItem("globalUser", username);
-    //Run the funciton for the Log in view
-    // showFavorites(username);
+    //send the user to the their favorites
     window.location.href = "favorites.html";
+
+    //if not successful log in
   } else if (responseStatus.status === 400) {
     // render popup for no user found in the databas
     renderPopUp("NoUserFound");
     //Update the global variabel to 0 to show that user is not logged in
     globalUser = 0;
+    //if the information is incorrect render popUp
   } else if (responseStatus.status === 404) {
     renderPopUp("missingInfo");
   }
@@ -96,6 +119,7 @@ function showFavorites(username) {
 
 //CreateAccount for the new user
 function renderNewUser() {
+  //the values in the input fields for username, password, age
   const c_username = document.getElementById("c_username").value;
   const c_password = document.getElementById("c_password").value;
   const age = document.getElementById("age").value;
@@ -114,33 +138,38 @@ function renderNewUser() {
     headers: { "Content-type": "application/json" },
   };
 
-  //request create new user to the postuser php file
+  //request create new user
   const new_user_request = new Request("../PHP/postUser.php", options);
-  //fetch the request ,
+
+  //fetch the request and depenting on the response status renderPopUp
   fetch(new_user_request)
     .then((response) => {
+      //taken username
       if (response.status === 400) {
         return renderPopUp("takenUsername");
       }
-
+      //under 18
       if (response.status === 403) {
         return renderPopUp("underAgeAccount");
       }
-
+      //missing information in the request
       if (response.status === 404) {
         return renderPopUp("missingInfo");
       }
-
+      //Wrong password length
       if (response.status === 416) {
         return renderPopUp("wrongLenght");
       }
+
       return response.json();
     })
-    //Function to update the userJSON-file?
+
+    //returning the new user
     .then((new_user) => {
       if (new_user === undefined) {
         return;
       }
+      //runs the function create user with the new user data
       createdUser(new_user);
     });
 }
@@ -149,22 +178,6 @@ function renderNewUser() {
 function createdUser(newUser) {
   //Stores the new user in localStorage
   localStorage.setItem("globalUser", newUser["username"]);
-  //the new user gets send to user.html
+  //the new user gets send to user.html when creating an account
   window.location.href = "user.html";
-}
-
-//Checks the pathlocation and const if the path is create_account
-//Evenlistner for the createAccount button that runs the renderNewUser function
-if (window.location.pathname.endsWith("create_account.html")) {
-  const c_button = document.getElementById("createAccountButton");
-  c_button.addEventListener("click", renderNewUser);
-}
-
-//Checks the pathlocation and const if the path is login
-//The eventlistner for the loginButton and runs the login-funcion with the parameter globalUser
-if (window.location.pathname.endsWith("login.html")) {
-  const logInButton = document.getElementById("login_button");
-  logInButton.addEventListener("click", () => {
-    logIn(globalUser);
-  });
 }
