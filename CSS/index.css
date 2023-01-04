@@ -88,7 +88,7 @@ h1 {
 #swipeBox img {
   height: 40vw;
   object-fit: cover;
-  border-radius: 15px 0 0 15px;
+  /* border-radius: 15px 0 0 15px; */
   user-select: none;
 }
 

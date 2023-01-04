@@ -81,9 +81,9 @@ button {
   background-color: white;
   position: absolute;
   top: 25vh;
-  bottom: 25vh;
   left: 5vw;
   right: 5vw;
+  padding-bottom: 10%;
 }
 .display_error div > h1 {
   font-family: "Shadows Into Light", cursive;
