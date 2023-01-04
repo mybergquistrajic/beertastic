@@ -164,5 +164,19 @@
         "password": "mirre123",
         "age": "18",
         "likedBeers": []
+    },
+    {
+        "userId": 15,
+        "username": "SannySillsson",
+        "password": "fannyb\u00e4st",
+        "age": "29",
+        "likedBeers": [
+            {
+                "id": "23"
+            },
+            {
+                "id": "29"
+            }
+        ]
     }
 ]

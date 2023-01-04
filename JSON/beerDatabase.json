@@ -690,7 +690,15 @@
         "name": "Nordliga Sarek",
         "type": "Pale Lager",
         "avb": 5.2,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "SannySillsson",
+                "rating": 4,
+                "message": "it looks so beautiful",
+                "date": "23-01-03"
+            }
+        ],
         "img": "\/Sarek.png"
     },
     {
