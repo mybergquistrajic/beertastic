@@ -658,7 +658,22 @@
         "name": "Brooklyn,East IPA",
         "type": "Indian Pale Ale",
         "avb": 6.9,
-        "reviews": [],
+        "reviews": [
+            {
+                "review_id": 1,
+                "username": "beerLover",
+                "rating": 3,
+                "message": "",
+                "date": "23-01-04"
+            },
+            {
+                "review_id": 2,
+                "username": "beerLover",
+                "rating": 2,
+                "message": "",
+                "date": "23-01-04"
+            }
+        ],
         "img": "\/Brooklyn_East.png"
     },
     {
