@@ -278,17 +278,21 @@ function scrollToTopButton() {
 function scrollFunction(page) {
   if (page == "beerResults") {
     if (document.querySelector(`.beerResults`).scrollTop > 10) {
-      document.querySelector(".scrollToTopBtn").style.display = "flex";
+      document.querySelector(".scrollToTopBtn").style.visibility = "visible";
+      document.querySelector(".scrollToTopBtn").style.opacity = "1";
     } else {
-      document.querySelector(".scrollToTopBtn").style.display = "none";
+      document.querySelector(".scrollToTopBtn").style.visibility = "hidden";
+      document.querySelector(".scrollToTopBtn").style.opacity = "0";
     }
   }
 
   if (page == "oneBeerPopUp") {
     if (document.querySelector(`.oneBeerPopUp`).scrollTop > 10) {
-      document.querySelector(".scrollToTopBtn").style.display = "flex";
+      document.querySelector(".scrollToTopBtn").style.visibility = "visible";
+      document.querySelector(".scrollToTopBtn").style.opacity = "1";
     } else {
-      document.querySelector(".scrollToTopBtn").style.display = "none";
+      document.querySelector(".scrollToTopBtn").style.visibility = "hidden";
+      document.querySelector(".scrollToTopBtn").style.opacity = "0";
     }
   }
 }
