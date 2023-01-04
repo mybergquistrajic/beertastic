@@ -48,7 +48,7 @@ body {
   align-items: center;
   flex-direction: column;
   overflow-y: scroll;
-  scroll-behavior: smooth
+  scroll-behavior: smooth;
 }
 
 .noResult {
@@ -256,6 +256,7 @@ body {
   border-radius: 15px;
   font-family: "Snippet", sans-serif;
   text-align: center;
+  cursor: pointer;
 }
 
 .ratingNumber {

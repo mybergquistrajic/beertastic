@@ -1,3 +1,13 @@
+/* smooth scroll behaviour */
+html {
+  scroll-behavior: smooth;
+}
+
+/* all the buttons has pointer on them */
+button {
+  cursor: pointer !important;
+}
+
 /* Main CSS for frequently used elements such as the menu */
 #mainMenu {
   display: flex;
@@ -58,7 +68,7 @@
 
 #haveToLogIn {
   position: absolute;
-  bottom: 15vh;
+  bottom: 11vh;
 }
 
 #haveToLogIn div {
