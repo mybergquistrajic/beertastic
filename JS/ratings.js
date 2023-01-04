@@ -5,7 +5,9 @@ function calculateRating(beer) {
   // Sum all ratings and getting median
   let ratings = [];
   beer["reviews"].forEach((review) => {
-    ratings.push(review["rating"]);
+    if (review["rating"] !== null) {
+      ratings.push(review["rating"]);
+    }
   });
   let sum = ratings.reduce((a, b) => a + b, 0) / ratings.length;
   let finalSum = (Math.round(sum * 100) / 100);
