@@ -1,5 +1,7 @@
 "use strict";
 
+// Function to support the beer catalogue and favorites page
+
 // Global variables
 let globalBeers;
 globalUser = localStorage.getItem("globalUser");

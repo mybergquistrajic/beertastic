@@ -1,5 +1,7 @@
 "use strict";
 
+// Functions for the Swipe box on index.html
+
 // Global variables
 let beerSlides = [];
 let isDragStart = false,
@@ -46,7 +48,7 @@ const swipeBox = document.querySelector("#swipeBox");
 const leftButton = document.querySelector("#swipeLeft");
 const rightButton = document.querySelector("#swipeRight");
 
-// Function to auto center the slide when moved to the left or right
+// Function to auto center the slide when moved to the left or right (A little finicky but works)
 function autoCenterSlide() {
   // if user position is at the end of the swipebox, return
   if (swipeBox.scrollLeft == swipeBox.scrollWidth - swipeBox.clientWidth) {
@@ -59,7 +61,7 @@ function autoCenterSlide() {
   // get the width of the first slide
   let firstSlideWidth = swipeBox.clientWidth;
 
-  // get the difference between the first slide width and the positionDiff
+  // get the difference between the first slide width and the positionDiff (x)
   let valueDifference = firstSlideWidth - positionDiff;
 
   // if user position swipes to the right

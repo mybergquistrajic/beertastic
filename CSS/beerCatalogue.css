@@ -397,6 +397,7 @@ body {
   border-radius: 10px;
 }
 
+/* SCROLL TO TOP BUTTON */
 .scrollToTopBtn {
   position: fixed;
   z-index: 10;

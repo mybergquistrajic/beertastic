@@ -1,3 +1,6 @@
+
+// Functions for rendering reviews with correct info
+
 globalUser = localStorage.getItem("globalUser");
 
 // render Reviews for selected beer
