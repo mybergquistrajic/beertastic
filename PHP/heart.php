@@ -1,4 +1,5 @@
 <?php
+//Users favorites (hearts) 
 
 //The function file is required 
     require_once ("functions.php");

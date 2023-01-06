@@ -1,4 +1,6 @@
 <?php
+    //Reading the database of users 
+
     //The function file is required 
     require_once ("functions.php");
 

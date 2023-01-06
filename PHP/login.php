@@ -1,11 +1,8 @@
 <?php
-//For login with username and password
+//Login with username and password
 
 //The function file is required 
 require_once "functions.php";
-
-//Displays errors
-ini_set("display_errors", 1);
 
 // If request method is not POST send error message 
 if($request_method != "POST"){

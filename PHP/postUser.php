@@ -1,11 +1,8 @@
 <?php
-//File for creating a new user
+//Creating a new user
 
 //The function file is required 
 require_once "functions.php";
-
-//Displaying errors 
-ini_set("display_errors", 1);
 
 
 //Checks that the method is POST 

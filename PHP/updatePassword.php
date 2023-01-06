@@ -1,8 +1,5 @@
 <?php
-
-//Displaying errors 
-
-ini_set('display_errors', 1);
+//Updating the password 
 
 //The function file is required  
 require_once 'functions.php';
