@@ -1,11 +1,11 @@
 <?php
-//Variables 
+//The main file that is used in all of the code 
 
 //JSON - files 
 $userDatabase = "../JSON/userDatabase.json";
 $beerDatabase = "../JSON/beerDatabase.json";
 
-//Request methods
+//Request method
 $request_method = $_SERVER["REQUEST_METHOD"];
 
 //Requested JSON 

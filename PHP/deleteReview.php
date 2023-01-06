@@ -4,9 +4,6 @@
 //The function file is required 
 require_once "functions.php";
 
-//Display errors 
-ini_set("display_errors", 1);
-
 //Checks that the method is DELETE 
 if ($request_method != "DELETE"){
     $error = ["error" => "Wrong method used."];

@@ -26,7 +26,6 @@ body {
 
 #logInStartpage {
   background-color: #fffbf3;
-
   border-radius: 10px;
   border: solid 5px #fffbf3;
   width: 50vw;
@@ -43,6 +42,7 @@ h3 {
 a {
   text-decoration: none;
 }
+
 h1 {
   font-size: 8vh;
   color: #eddc46;
@@ -57,6 +57,8 @@ h1 {
   padding: 0;
   font-weight: 50;
 }
+
+/* SWIPE BOX */
 
 #swipeBox {
   width: 90vw;
@@ -77,7 +79,6 @@ h1 {
 }
 
 .dragging {
-  /* scroll-behavior: auto; */
   cursor: grabbing;
 }
 
@@ -88,7 +89,6 @@ h1 {
 #swipeBox img {
   height: 40vw;
   object-fit: cover;
-  /* border-radius: 15px 0 0 15px; */
   user-select: none;
 }
 

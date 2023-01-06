@@ -1,4 +1,5 @@
  <?php
+    //Posting a review 
 
     //The function file is required 
     require_once ("functions.php");
