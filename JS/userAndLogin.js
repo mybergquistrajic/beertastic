@@ -1,5 +1,7 @@
 "use strict";
 
+// Functions to support login and create account
+
 //DIRECT CODE
 
 //Global variabel for user

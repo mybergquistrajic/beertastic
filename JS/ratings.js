@@ -1,5 +1,7 @@
 "use strict"
 
+// Functions for the ratings presented accross the site
+
 // Calculating median rating
 function calculateRating(beer) {
   // Sum all ratings and getting median
