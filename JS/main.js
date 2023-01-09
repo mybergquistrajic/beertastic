@@ -235,5 +235,5 @@ function addAndRemoveClass(e) {
 //Logout that clears the localstorage and sends the user to the startpage
 function logOut() {
   localStorage.setItem("globalUser", "admin");
-  window.location.href = "index.html";
+  window.location.href = "/index.html";
 }
