@@ -62,7 +62,7 @@ function menuBar() {
     home = "home.png";
   }
   menu.innerHTML = `
-    <a href="../HTML/index.html"><img src="../IMAGES/${home}" id="homeBtn"></a>
+    <a href="/index.html"><img src="../IMAGES/${home}" id="homeBtn"></a>
     <a href="../HTML/favorites.html"><img src="../IMAGES/${heart}" id="favoritesBtn"></a>
     <a href="../HTML/search.html"><img src="../IMAGES/${beer}" id="beerBtn"></a>
     <a href="../HTML/user.html"><img src="../IMAGES/${user}" id="userBtn"></a>
