@@ -12,7 +12,7 @@ let isDragStart = false,
 
 // Function to fetch the beers for the slides
 function createSlides() {
-  fetch("../PHP/read_beerDatabase.php?un=" + "Eminem" + "&beers")
+  fetch("PHP/read_beerDatabase.php?un=" + "admin" + "&beers")
     .then((r) => r.json())
     .then((result) => {
       for (let i = 0; i < 5; i++) {
@@ -32,7 +32,7 @@ function renderSlides() {
     slide.classList.add("slide");
     slide.innerHTML = `
             <div class="slideImage">
-                <img src="../IMAGES/${beer.img}" alt="${beer.name}" draggable="false">
+                <img src="IMAGES/${beer.img}" alt="${beer.name}" draggable="false">
             </div>
             <div class="slideText">
                 <h2>${beer.name}</h2>

@@ -45,7 +45,7 @@ function logIn() {
   };
 
   //request to log in
-  const user_status_request = new Request("../PHP/login.php", options);
+  const user_status_request = new Request("PHP/login.php", options);
 
   //The responseStatus
   let responseStatus;
@@ -87,7 +87,7 @@ function showFavorites(username) {
   // Empty array to fill with beers
   let faveBeers = [];
   // Get user object from fetch
-  fetch(`../PHP/readUsersDatabase.php?un=${username}`)
+  fetch(`PHP/readUsersDatabase.php?un=${username}`)
     .then((r) => r.json())
 
     .then((user) => {
@@ -105,7 +105,7 @@ function showFavorites(username) {
       }
       user["likedBeers"].forEach((favorite) => {
         // For each beer ID, fetch readBeerDatabase to get the full beer object
-        fetch(`../PHP/read_beerDatabase.php?un=${username}&id=${favorite.id}&beers`)
+        fetch(`PHP/read_beerDatabase.php?un=${username}&id=${favorite.id}&beers`)
           .then((r) => r.json())
           .then((result) => {
             // For each beer, push the beer to the faveBeers array
@@ -141,7 +141,7 @@ function renderNewUser() {
   };
 
   //request create new user
-  const new_user_request = new Request("../PHP/postUser.php", options);
+  const new_user_request = new Request("PHP/postUser.php", options);
 
   //fetch the request and depenting on the response status renderPopUp
   fetch(new_user_request)

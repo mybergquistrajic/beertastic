@@ -56,7 +56,7 @@ async function renderReviews(beer) {
           const yesButton = document.querySelector(".yesButton");
           // If yes
           yesButton.addEventListener("click", function () {
-            fetch("../PHP/deleteReview.php", {
+            fetch("PHP/deleteReview.php", {
               method: "DELETE",
               headers: {
                 "Content-Type": "application/json",
@@ -69,7 +69,7 @@ async function renderReviews(beer) {
               .then((res) => res.json())
               .then((data) => {
                 //Fetching anew to get beer without the deleted review
-                fetch(`../PHP/read_beerDatabase.php?un=${globalUser}&id=${beer.id}&beers`)
+                fetch(`PHP/read_beerDatabase.php?un=${globalUser}&id=${beer.id}&beers`)
                   .then((r) => r.json())
                   .then((updatedBeer) => {
                     // Removing old popup and rendering anew, to ensure that it's updated
@@ -154,7 +154,7 @@ async function writeReview(beer) {
   // Beer image
   const reviewImage = document.createElement("div");
   reviewImage.classList.add("reviewImage");
-  reviewImage.innerHTML = `<img src="../IMAGES/${beer.img}">`;
+  reviewImage.innerHTML = `<img src="IMAGES/${beer.img}">`;
   reviewWindow.appendChild(reviewImage);
 
   // Beer name
@@ -185,7 +185,7 @@ async function writeReview(beer) {
   reviewSubmit.addEventListener("click", function () {
     const reviewMessage = document.querySelector(".reviewInput textarea").value;
     const reviewRatingX = parseInt(document.querySelector(".starContainer").getAttribute("value"));
-    fetch("../PHP/postReview.php", {
+    fetch("PHP/postReview.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -218,7 +218,7 @@ async function writeReview(beer) {
         ) {
           reviewWindow.remove();
           //Fetching anew to get beer without the new review
-          fetch(`../PHP/read_beerDatabase.php?un=${globalUser}&id=${beer.id}&beers`)
+          fetch(`PHP/read_beerDatabase.php?un=${globalUser}&id=${beer.id}&beers`)
             .then((r) => r.json())
             .then((updatedBeer) => {
               // Removing old popup and rendering anew, to ensure that it's updated

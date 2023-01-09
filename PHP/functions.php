@@ -49,15 +49,9 @@ if(file_exists($beerDatabase)){
 }
 
 //Allows all methods, Origins and Methods to acess the API  
-if($request_method == "OPTIONS"){
-    header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Allow-Headers: *");
-    header("Access-Control-Allow-Methods: *");
-    
-    exit();
-}else{
-    header("Access-Control-Allow-Origin: *");
-};
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: *");
+header("Access-Control-Allow-Methods: *");
 
 //Function for sending the JSON-data and statusCode. The statusCode is 200 by default. 
 
