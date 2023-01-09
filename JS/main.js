@@ -62,10 +62,10 @@ function menuBar() {
     home = "home.png";
   }
   menu.innerHTML = `
-    <a href="/index.html"><img src="../IMAGES/${home}" id="homeBtn"></a>
-    <a href="../HTML/favorites.html"><img src="../IMAGES/${heart}" id="favoritesBtn"></a>
-    <a href="../HTML/search.html"><img src="../IMAGES/${beer}" id="beerBtn"></a>
-    <a href="../HTML/user.html"><img src="../IMAGES/${user}" id="userBtn"></a>
+    <a href="index.html"><img src="IMAGES/${home}" id="homeBtn"></a>
+    <a href="favorites.html"><img src="IMAGES/${heart}" id="favoritesBtn"></a>
+    <a href="search.html"><img src="IMAGES/${beer}" id="beerBtn"></a>
+    <a href="user.html"><img src="IMAGES/${user}" id="userBtn"></a>
     `;
   document.querySelector("body").appendChild(menu);
   menu.id = "mainMenu";
@@ -95,7 +95,7 @@ function heartOnClick(event) {
       heart.classList.replace("notfilled", "filled");
     }
     // Fetch to update database
-    fetch("../PHP/heart.php", {
+    fetch("PHP/heart.php", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -145,7 +145,7 @@ function renderPopUp(type) {
     <div>
     <h1>Sorry!</h1>
     <p>You have to be logged in to view this.</p>
-    <button><a href = "../HTML/login.html">Log in</a></button> 
+    <button><a href = "login.html">Log in</a></button> 
     </div>`;
 
     //Deleting a review
@@ -235,5 +235,5 @@ function addAndRemoveClass(e) {
 //Logout that clears the localstorage and sends the user to the startpage
 function logOut() {
   localStorage.setItem("globalUser", "admin");
-  window.location.href = "/index.html";
+  window.location.href = "index.html";
 }

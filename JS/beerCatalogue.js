@@ -8,7 +8,9 @@ globalUser = localStorage.getItem("globalUser");
 
 // Fetch all beers
 function getAllBeers() {
-  fetch(`../PHP/read_beerDatabase.php?un=${globalUser}&beers`)
+  fetch(`PHP/read_beerDatabase.php?un=${globalUser}&beers`, {
+    method: "GET",
+    })
     .then((r) => r.json())
     .then((result) => {
       //Sorting the result in alphabetical order based on the beers name
@@ -88,7 +90,7 @@ async function renderBeer(beer) {
     <div class="${favorite} heart${beer["id"]}"></div>
     <div class="popUp${beer["id"]}">
         <div>
-          <img src="../IMAGES/${beer["img"]}">
+          <img src="IMAGES/${beer["img"]}">
         </div>
         <div>
           <h3>${beer["name"]} </h3>
@@ -148,7 +150,7 @@ async function popUpBeer(beer) {
     header.classList.add("oneBeerPopUpHeader");
     // Create back button
     let backBtn = document.createElement("img");
-    backBtn.src = "../IMAGES/left-arrow.png";
+    backBtn.src = "IMAGES/left-arrow.png";
     // Create heart
     let heartBtn = document.createElement("div");
     heartBtn.classList.add(`${favorite}`);
@@ -158,7 +160,7 @@ async function popUpBeer(beer) {
     let infoDiv = document.createElement("div");
     infoDiv.classList.add("oneBeerPopUpInfo");
     infoDiv.innerHTML = `
-  <img src="../IMAGES/${beer["img"]}">
+  <img src="IMAGES/${beer["img"]}">
   <h2 style="font-family: 'Shadows Into Light', cursive; margin-bottom: 0px;">${beer["name"]}</h2>
   ${beer["avb"]}% <br>
   ${beer["type"]} <br>
@@ -216,7 +218,7 @@ async function popUpBeer(beer) {
 
 // Check if current beer (from renderBeer function) is a favorite
 async function getFavorites(beer) {
-  let user = await (await fetch(`../PHP/readUsersDatabase.php?un=${globalUser}`)).json();
+  let user = await (await fetch(`PHP/readUsersDatabase.php?un=${globalUser}`)).json();
   // Loop through current users favorites
   for (let i = 0; i < (await user.likedBeers.length); i++) {
     if (user.likedBeers[i].id == beer["id"]) {

@@ -48,7 +48,7 @@ function putPassword() {
   };
 
   //the request for changing password
-  const putRequest = new Request("../PHP/updatePassword.php", options);
+  const putRequest = new Request("PHP/updatePassword.php", options);
 
   //The response to the update password file
   let response;
