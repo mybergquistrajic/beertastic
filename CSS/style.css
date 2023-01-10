@@ -23,7 +23,7 @@ button {
   align-items: center;
   width: 15vw;
   padding: 0px 10px 0px 10px;
-  height: fit-content;
+  /* height: fit-content; */
 }
 
 .Buttons {
