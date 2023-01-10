@@ -78,14 +78,6 @@ h1 {
   scroll-snap-type: x mandatory;
 }
 
-.dragging {
-  cursor: grabbing;
-}
-
-.dragging img {
-  pointer-events: none;
-}
-
 #swipeBox img {
   height: 40vw;
   object-fit: cover;

@@ -77,13 +77,15 @@ button {
   top: 25vh;
   left: 5vw;
   right: 5vw;
-  padding-bottom: 10%;
+  padding: 3vh;
+  /* padding-bottom: 10%; */
 }
 .display_error div > h1 {
   font-family: "Shadows Into Light", cursive;
   color: #ab4300;
   font-size: 8vh;
   font-weight: 100;
+  margin-top: 0;
 }
 
 .display_error div > p {
