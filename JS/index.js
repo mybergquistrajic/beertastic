@@ -4,11 +4,11 @@
 
 // Global variables
 let beerSlides = [];
-let isDragStart = false,
-  isDragging = false,
-  prevPageX,
-  prevScrollLeft,
-  positionDiff;
+// let isDragStart = false,
+//   isDragging = false,
+//   prevPageX,
+//   prevScrollLeft,
+//   positionDiff;
 
 // Function to fetch the beers for the slides
 function createSlides() {
@@ -38,121 +38,87 @@ function renderSlides() {
                 <h2>${beer.name}</h2>
             </div>`;
     slideContainer.appendChild(slide);
-  });
+
+
+
+  })
+
+  enableSwipe();
 }
 
-createSlides();
+function enableSwipe() { 
+  // Variables for the swipebox
+  const swipeBox = document.querySelector("#swipeBox");
+  const box = document.querySelector(".slide");
+  let start;
+  let change;
 
-// Variables for the swipebox
-const swipeBox = document.querySelector("#swipeBox");
-const leftButton = document.querySelector("#swipeLeft");
-const rightButton = document.querySelector("#swipeRight");
+  // Width of the slide
+  let width = box.offsetWidth;
 
-// Function to auto center the slide when moved to the left or right (A little finicky but works)
-function autoCenterSlide() {
-  // if user position is at the end of the swipebox, return
-  if (swipeBox.scrollLeft == swipeBox.scrollWidth - swipeBox.clientWidth) {
-    return;
+  // Eventlistener for where the user starts touching the screen
+  swipeBox.addEventListener('touchstart', (e) => {
+    // Stores the position of the user's finger when start touching
+    start = e.touches[0].clientX;
+  })
+
+  // Eventlistener for where the user is moving their finger on the screen
+  swipeBox.addEventListener('touchmove', (e) => {
+    // Prevents the default action of the event aka prevents the user from selecting text or images
+    e.preventDefault();
+    // Stores the position of the user's finger when moving
+    let touch = e.touches[0];
+    // Stores the difference between the position of the user's finger when start touching and when moving
+    change = start - touch.clientX;
+  })
+
+  // Eventlistener for where the user stops touching the screen
+  swipeBox.addEventListener('touchend', slideShow);
+
+  // Function to show the next slide
+  function slideShow() {
+    // If the difference between the position of the user's finger when start touching and when moving is greater than 0, scroll to the right else scroll to the left (x position value is either positive or negative depending on which way the user swipes)
+    if (change > 0) {
+      swipeBox.scrollLeft += width;
+    } else {
+      swipeBox.scrollLeft -= width;
+    }
+
+    showHideButton();
   }
 
-  // converts positionDiff to absolute value aka positive number
-  positionDiff = Math.abs(positionDiff);
-
-  // get the width of the first slide
-  let firstSlideWidth = swipeBox.clientWidth;
-
-  // get the difference between the first slide width and the positionDiff (x)
-  let valueDifference = firstSlideWidth - positionDiff;
-
-  // if user position swipes to the right
-  if (swipeBox.scrollLeft > prevScrollLeft) {
-    // if user positionDiff is greater than 33% of the slide width, add valueDifference to scrollLeft else subtract positionDiff
-    if (positionDiff > firstSlideWidth / 3) {
-      return (swipeBox.scrollLeft += valueDifference);
+  function showHideButton() {
+    // if user is at the start of the swipebox (where the scrollLeft is 0), hide left button else show left button
+    if (swipeBox.scrollLeft == 0) {
+      leftButton.style.display = "none";
     } else {
-      return (swipeBox.scrollLeft -= positionDiff);
+      leftButton.style.display = "block";
+    }
+  
+    // if user is at the end of the swipebox (takes the scrollWidth aka the length of the whole swipeBox minus the current slide), hide right button else show right button
+    if (swipeBox.scrollLeft == swipeBox.scrollWidth - swipeBox.clientWidth) {
+      rightButton.style.display = "none";
+    } else {
+      rightButton.style.display = "block";
     }
   }
 
-  // if user position swipes to the left do the same as above but in reverse
-  if (positionDiff > firstSlideWidth / 3) {
-    return (swipeBox.scrollLeft -= valueDifference);
-  } else {
-    return (swipeBox.scrollLeft += positionDiff);
-  }
-}
+  const leftButton = document.querySelector("#swipeLeft");
+  const rightButton = document.querySelector("#swipeRight");
 
-// Function for when user starts dragging with event as parameter
-function dragStart(e) {
-  isDragStart = true;
-  // gets the x position of where the user started dragging
-  prevPageX = e.pageX || e.touches[0].pageX;
-  // gets the scrollLeft position of the swipebox aka how far away from the left the user is in the swipebox
-  prevScrollLeft = swipeBox.scrollLeft;
-}
+  rightButton.addEventListener("click", () => {
+    swipeBox.scrollLeft += swipeBox.clientWidth;
+    setTimeout(showHideButton, 300);
+  });
+  
+  leftButton.addEventListener("click", () => {
+    swipeBox.scrollLeft -= swipeBox.clientWidth;
+    setTimeout(showHideButton, 300);
+  });
 
-// Function for when user is dragging with event as parameter
-function dragging(e) {
-  // if user is not dragging, return (safety measure)
-  if (!isDragStart) {
-    return;
-  }
-  // prevent default action of the event aka prevent the user from selecting text or images
-  e.preventDefault();
-  isDragging = true;
-  swipeBox.classList.add("dragging");
-  // gets the difference between the x position of where the user started dragging and the current x position of the user
-  positionDiff = (e.pageX || e.touches[0].pageX) - prevPageX;
-  // sets the scrollLeft of the swipebox to the previous scrollLeft minus the positionDiff
-  swipeBox.scrollLeft = prevScrollLeft - positionDiff;
-  showHideButton();
-}
+};
 
-// Function for when user stops dragging with event as parameter
-function dragStop() {
-  isDragStart = false;
-  swipeBox.classList.remove("dragging");
-  if (!isDragging) return;
-  isDragging = false;
-  // runs the autoCenterSlide function to center the slide if stopped before the slide is centered
-  autoCenterSlide();
-}
 
-// Function to show and hide the left and right buttons
-function showHideButton() {
-  // if user is at the start of the swipebox (where the scrollLeft is 0), hide left button else show left button
-  if (swipeBox.scrollLeft == 0) {
-    leftButton.style.display = "none";
-  } else {
-    leftButton.style.display = "block";
-  }
+createSlides();
 
-  // if user is at the end of the swipebox (takes the scrollWidth aka the length of the whole swipeBox minus the current slide), hide right button else show right button
-  if (swipeBox.scrollLeft == swipeBox.scrollWidth - swipeBox.clientWidth) {
-    rightButton.style.display = "none";
-  } else {
-    rightButton.style.display = "block";
-  }
-}
 
-// All the event listeners for when user starts, drags and stops dragging
-swipeBox.addEventListener("mousedown", dragStart);
-swipeBox.addEventListener("touchstart", dragStart);
-
-swipeBox.addEventListener("mousemove", dragging);
-swipeBox.addEventListener("touchmove", dragging);
-
-swipeBox.addEventListener("mouseup", dragStop);
-swipeBox.addEventListener("mouseleave", dragStop);
-swipeBox.addEventListener("touchend", dragStop);
-
-// Event listeners for when user clicks the left and right buttons
-rightButton.addEventListener("click", () => {
-  swipeBox.scrollLeft += swipeBox.clientWidth;
-  setTimeout(showHideButton, 500);
-});
-
-leftButton.addEventListener("click", () => {
-  swipeBox.scrollLeft -= swipeBox.clientWidth;
-  setTimeout(showHideButton, 500);
-});

@@ -1,5 +1,5 @@
 body {
-  height: 90vh;
+  height: 100vh;
   margin: 0;
   display: flex;
   justify-content: center;
@@ -10,6 +10,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   overflow-y: scroll;
+  padding-bottom: 20vh;
 }
 #userPageWrapper {
   height: 100vh;

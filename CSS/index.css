@@ -1,17 +1,17 @@
 body {
-  height: 90vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   overflow-x: hidden;
   margin: 0;
-
   background-image: url(../IMAGES/Background_red.svg);
   background-size: cover;
   background-repeat: no-repeat;
   font-family: "Shadows Into Light", cursive;
   font-size: large;
+  padding-bottom: 20vh;
 }
 
 #mainWrapper {
@@ -76,14 +76,6 @@ h1 {
   overflow: hidden;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
-}
-
-.dragging {
-  cursor: grabbing;
-}
-
-.dragging img {
-  pointer-events: none;
 }
 
 #swipeBox img {

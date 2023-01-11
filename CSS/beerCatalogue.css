@@ -1,5 +1,5 @@
 body {
-  height: 90vh;
+  height: 100vh;
   margin: 0;
   display: flex;
   justify-content: center;
@@ -9,6 +9,7 @@ body {
   background-image: url(../IMAGES/Background_yellow.svg);
   background-size: cover;
   background-repeat: no-repeat;
+  padding-bottom: 20vh;
 }
 
 /* SEARCH BAR */
