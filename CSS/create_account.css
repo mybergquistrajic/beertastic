@@ -1,5 +1,5 @@
 body {
-  height: 90vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,6 +9,7 @@ body {
   background-image: url(../IMAGES/Background_red.svg);
   background-size: cover;
   background-repeat: no-repeat;
+  padding-bottom: 20vh;
 }
 #CreateWrapper {
   height: 100%;

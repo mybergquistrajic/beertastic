@@ -40,7 +40,7 @@ function filterBeers() {
   // If there is a value in searchbar, filter the beers and then render
   if (document.querySelector(".searchBar input").value !== "") {
     let filteredResult = globalBeers.filter((beer) =>
-      beer["name"].toLowerCase().includes(document.querySelector(".searchBar input").value)
+      beer["name"].toLowerCase().includes(document.querySelector(".searchBar input").value.toLowerCase())
     );
     renderBeers(filteredResult);
   }

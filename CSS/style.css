@@ -23,7 +23,6 @@ button {
   align-items: center;
   width: 15vw;
   padding: 0px 10px 0px 10px;
-  /* height: fit-content; */
 }
 
 .Buttons {
@@ -58,7 +57,8 @@ button {
   padding: 3vh;
   color: #ab4300;
   font-family: "Snippet", sans-serif;
-  z-index: 50;
+  z-index: 40;
+  height: 100vh;
 }
 
 #haveToLogIn {
