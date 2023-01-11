@@ -308,7 +308,7 @@ body {
 }
 
 .reviewRating {
-  width: 40%;
+  width: 20vw;
   display: flex;
   align-items: center;
 }
@@ -415,4 +415,17 @@ body {
   cursor: pointer;
   opacity: 0;
   transition: visibility 0s, opacity 0.5s linear;
+}
+
+.reviewstarsize div img{
+  width: 20vw;
+}
+
+.popupdivstarbig div img{
+  width: 50vw;
+  margin-top: 5vw;
+}
+
+.cataloguerating img{
+  width: 30vw;
 }

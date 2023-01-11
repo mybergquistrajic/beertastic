@@ -10,7 +10,7 @@ globalUser = localStorage.getItem("globalUser");
 function getAllBeers() {
   fetch(`PHP/read_beerDatabase.php?un=${globalUser}&beers`, {
     method: "GET",
-    })
+  })
     .then((r) => r.json())
     .then((result) => {
       //Sorting the result in alphabetical order based on the beers name
@@ -40,7 +40,7 @@ function filterBeers() {
   // If there is a value in searchbar, filter the beers and then render
   if (document.querySelector(".searchBar input").value !== "") {
     let filteredResult = globalBeers.filter((beer) =>
-      beer["name"].toLowerCase().includes(document.querySelector(".searchBar input").value)
+      beer["name"].toLowerCase().includes(document.querySelector(".searchBar input").value.toLowerCase())
     );
     renderBeers(filteredResult);
   }
@@ -96,7 +96,7 @@ async function renderBeer(beer) {
           <h3>${beer["name"]} </h3>
           ${beer["avb"]}% <br>
           ${beer["type"]} <br>
-          <div style="width: ${reviewWidth}"><div class="${ratingClass} rating${beer["id"]}">${ratingContent}</div></div>
+          <div style="width: ${reviewWidth}"><div class="${ratingClass} rating${beer["id"]} cataloguerating">${ratingContent}</div></div>
         </div>
     </div>
     `;
@@ -134,11 +134,12 @@ async function popUpBeer(beer) {
     let ratingClass = rating[2];
     let popUpRating;
     // Different width based on if it's going to be stars or "no ratings yet"
-    if (ratingSum == 0) {
-      popUpRating = "5vw";
-    } else {
-      popUpRating = "11.5vw";
-    }
+    // if (ratingSum == 0) {
+    //   popUpRating = "5vw";
+    // }
+    // else {
+    //   popUpRating = "11.5vw";
+    // }
     // Create popup
     let oneBeerPopUp = document.createElement("div");
     oneBeerPopUp.classList.add("oneBeerPopUp");
@@ -168,7 +169,8 @@ async function popUpBeer(beer) {
     // Create starDiv
     let starDiv = document.createElement("div");
     starDiv.classList.add("starDivPopup");
-    starDiv.innerHTML = `<div class="${ratingClass} ratingPopup${beer["id"]}" style="font-size: ${popUpRating}">${ratingContent}</div>`;
+    starDiv.innerHTML = `<div class="${ratingClass} ratingPopup${beer["id"]}" style="width: ${popUpRating}">${ratingContent}</div>`;
+    starDiv.classList.add("popupdivstarbig")
     // Create rating numbers
     let ratingNumbers = document.createElement("div");
     ratingNumbers.classList.add("ratingNumber");
@@ -249,7 +251,7 @@ async function checkRating(beer) {
     // ratingsum, ratingContent, ratingClass, reviewWidth
     return [ratingSum, "No ratings yet...", "norating", "100%"];
   } else {
-    return [ratingSum, `★★★★★`, "rating", "50%"];
+    return [ratingSum, `<img src="IMAGES/stars2.png">`, "rating", "50%"];
   }
 }
 
