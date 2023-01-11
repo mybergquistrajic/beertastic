@@ -31,10 +31,11 @@ async function renderReviews(beer) {
       if (review.rating !== null) {
         const reviewRating = document.createElement("div");
         reviewRating.classList.add("reviewRating");
-        reviewRating.innerHTML = `<div class="${ratingClass} ratingReview${review.review_id}" style="font-size: 6.2vw">${ratingContent}</div>`;
+        reviewRating.innerHTML = `<div class="${ratingClass} ratingReview${review.review_id}">${ratingContent}</div>`;
         reviewHeader.appendChild(reviewRating);
         // Call function with the ratingSum and star-element as parameters
         calculateStars(document.querySelector(`.ratingReview${review.review_id}`), review.rating);
+        reviewRating.classList.add("reviewstarsize")
       }
       // If the review doesn't include a rating
       else {
