@@ -251,7 +251,7 @@ async function checkRating(beer) {
     // ratingsum, ratingContent, ratingClass, reviewWidth
     return [ratingSum, "No ratings yet...", "norating", "100%"];
   } else {
-    return [ratingSum, `<img src="IMAGES/stars2.png">`, "rating", "50%"];
+    return [ratingSum, `<img src="IMAGES/stars2.png">`, "rating", "30vw"];
   }
 }
 

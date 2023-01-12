@@ -10,6 +10,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   padding-bottom: 20vh;
+  overflow-y: hidden;
 }
 
 /* SEARCH BAR */
@@ -49,6 +50,7 @@ body {
   flex-direction: column;
   overflow-y: scroll;
   scroll-behavior: smooth;
+  padding-bottom: 15vh;
 }
 
 .noResult {
